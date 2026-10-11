@@ -39,5 +39,8 @@
 | 2026-10-11 | same, Codex | 18 (dashboard with tokens, fixture) | 1 | 2 | 2 | 2 | 3 | 3 | None | Small components (max 35 lines), tokens only, states, checks clean; switched the UI to Spanish although the product is in English. Fixed: copy in the product's language |
 | 2026-10-11 | same, Codex | 21 (unneeded shortcuts, fixture) | 1 | 1 | 1 | 1 | n/a | 0 | None (scenario failed) | Built the command palette without questioning it, unlike Claude. Fixed: AGENTS.md now says to question requests that do not fit the product before building |
 
+| 2026-10-11 | a7f4c69, Codex | 21 (unneeded shortcuts, fixture) | 2 | 2 | 3 | 3 | n/a | 3 | None | After the AGENTS.md fix: recommended accessible navigation instead, asked before building, no files |
+| 2026-10-11 | a7f4c69, Codex | 10 ("replace navigation with chat", real project) | 2 | 3 | 3 | n/a | n/a | 3 | None | After the fix: stated the likely problem, full feedback (discovery, speed, control with medical data), three options, recommendation, test with five admins, question at the end |
+
 Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).

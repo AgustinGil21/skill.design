@@ -138,7 +138,9 @@ See [recipes](14-recipes.md) for full structures, and the type-specific guides
 
 - **Write per market**, not translate: problems, objections, proof and even the action can differ by country.
 - **Local proof**: customers, currencies, regulations and payment methods from the visitor's market.
-- **Separate URLs per language** (see [SEO and content](../14-seo-and-content.md)).
+- **Separate URLs per language** with the locale in the path (`/en/…`, `/es/…`), each loading only its own
+  translations (see [content and localization](../24-content-and-localization.md) and
+  [SEO and content](../14-seo-and-content.md)).
 
 ## Measuring
 

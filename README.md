@@ -14,7 +14,8 @@ expansion, formality, right-to-left scripts, formats).
 design/
 ├── SKILL.md              Entry point for agents: rules, router by task, knowledge map
 ├── AGENTS.md             Entry point for agents that do not load skills (Codex, Cursor, etc.)
-├── WRITING-GUIDE.md      How the knowledge base is written and extended
+├── WRITING-GUIDE.md      How the knowledge base is written (structure and rules per file type)
+├── RESEARCH-GUIDE.md     How to research and add knowledge: Mobbin, sources, understanding why designers decided
 ├── workflows/            How to work in each mode
 │   ├── start.md          Study the project first: product, audience, stakes, tone, brand; ask; offer modes
 │   ├── ideate.md         Options with a recommendation, and honest feedback on ideas
@@ -126,7 +127,7 @@ node scripts/a11y-static.mjs src/
 
 - Test: `node --test scripts/tests/` (checks the scripts, the frontmatter, file naming and that every cited path
   exists).
-- Add knowledge following `WRITING-GUIDE.md`; new patterns go in `knowledge/patterns/` and are added to the map in
+- Add knowledge by researching with `RESEARCH-GUIDE.md` and writing with `WRITING-GUIDE.md`; new patterns go in `knowledge/patterns/` and are added to the map in
   `SKILL.md` and to the index `knowledge/README.md`.
 - Add a language to the slop detector with a new file in `scripts/lexicon/` (see its README).
 - `SKILL.md` must stay short: detail belongs in `workflows/` and `knowledge/`.

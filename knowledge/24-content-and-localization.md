@@ -191,6 +191,48 @@ Translation is not enough when meaning depends on culture.
 - **Humor and idioms** rarely survive translation; write them out of core interface copy.
 - **Payment methods, ID documents and legal requirements** differ by country and affect flows, not only copy.
 
+## Internationalization architecture (recommend it from the start)
+
+Recommend i18n from the first screen, even when the product launches in one language: moving hard-coded strings
+into translation files later is slow and error-prone, and it forces copy reviews anyway. If the person decides not
+to, respect it, and keep strings at least centralized so the door stays open.
+
+### The locale goes in the URL (web)
+
+On the web, put the locale in the path: `/en/pricing`, `/es/precios` or `/es/pricing`, `/pt-BR/…`.
+
+- **Each locale loads only its own translations.** The route knows the locale before rendering, so the app requests
+  that locale's messages (split per locale and, in large apps, per page or feature) instead of shipping every
+  language in one bundle.
+- **Links are shareable and stable**: a URL opens in the language it was shared in, regardless of the browser.
+- **Search engines index each language** separately, with `hreflang` alternates between versions and a canonical
+  per language (see [SEO and content](14-seo-and-content.md)).
+- **Server rendering and caching work per locale** without guessing from headers.
+- `<html lang="…">` is set from the route.
+
+Behavior around it:
+
+- **The root (`/`) chooses a locale** from the person's saved preference, then the browser language, then the
+  default — and redirects to `/{locale}/…`. Always offer a visible language switcher that keeps the current page.
+- **Remember the choice** (cookie or account setting) and use it on the next visit.
+- **Avoid query parameters** (`?lang=es`) and cookie-only switching for public pages: they are harder to share,
+  cache and index.
+- Subdomains or country domains (`es.example.com`, `example.es`) are alternatives when markets differ in content,
+  legal entity or pricing; for the same product in several languages, path prefixes are simpler.
+- Inside an authenticated app, the URL prefix is still recommended; at minimum, the locale is part of the route
+  state and translations are loaded per locale.
+
+### Native apps
+
+Apps have no URL: use the platform's localization (string catalogs, `strings.xml`, ARB files), follow the device
+language by default, offer an in-app language choice where the platform allows it, and load resources per locale.
+
+### Code rules
+
+- No user-facing string hard-coded in components; keys with ICU messages for plurals, gender and variables.
+- Formats with `Intl` (or the platform's formatters), never hand-built.
+- Translations reviewed by native speakers; machine translation only as a draft.
+
 ## Language selection and fallback
 
 - **Detect, then let people choose.** Use the browser or device language as an initial guess, never as a lock. Make

@@ -74,7 +74,9 @@ All paths are relative to this skill's folder.
     reasons before building, and build only after the person confirms.
 16. **Any language.** Write the output in the product's language and form of address; by default, the language of
     the person asking. Apply copy rules by their function, not by English wording, and account for plurals,
-    text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`).
+    text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`). Recommend
+    i18n from the start (unless the person declines): no hard-coded strings, translations loaded per locale, and on
+    the web the locale in the URL (`/en/…`, `/es/…`) so each page loads only its own language.
 
 ## 2. Router: what to read for each task
 

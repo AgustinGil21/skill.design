@@ -56,6 +56,8 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
 - Titles, buttons, empty states, errors and confirmations with `knowledge/04-interface-writing.md`, in the product's
   language and form of address (`knowledge/24-content-and-localization.md`).
 - Buttons name the outcome of the action; errors say what happened and how to continue.
+- Use the project's i18n (keys, not hard-coded strings). If there is none, recommend setting it up, with the locale in
+  the URL on the web (`/en/…`, `/es/…`) and translations loaded per locale (`knowledge/24-content-and-localization.md`).
 - Check the copy with the longest realistic values and, if the product is multilingual, with the longest language.
 
 ## 6. Apply the visual system

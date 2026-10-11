@@ -197,3 +197,7 @@ Guidance becomes wrong when standards change, platforms change, or new evidence 
 - [ ] Corpus biases are compensated with standards, research and testing.
 - [ ] Standards and thresholds are verified against current official versions.
 - [ ] New knowledge follows the writing guide and updates contradicting rules.
+
+## Adding more
+
+To research and add knowledge, follow [RESEARCH-GUIDE.md](../RESEARCH-GUIDE.md).

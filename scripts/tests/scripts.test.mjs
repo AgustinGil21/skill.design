@@ -422,3 +422,22 @@ test('system-check: icons drawn by hand, icon families and typefaces', async () 
   const project = checkPaths([dir]).filter((f) => f.file === '(project)').map((f) => `${f.rule}:${f.level}`);
   assert.deepEqual(project.sort(), ['font-families:warning', 'icon-families:warning']);
 });
+
+test('design-scan: i18n and the locale in the URL', async () => {
+  const { scanProject } = await import('../design-scan.mjs');
+  const { mkdirSync } = await import('node:fs');
+  const withRoutes = mkdtempSync(join(tmpdir(), 'scan-i18n-'));
+  writeFileSync(join(withRoutes, 'package.json'), JSON.stringify({ dependencies: { react: '19.0.0', i18next: '23.0.0' } }));
+  mkdirSync(join(withRoutes, 'src'));
+  writeFileSync(join(withRoutes, 'src', 'routes.tsx'), "export const routes = [{ path: '/:lang/pricing', element: <Pricing /> }];");
+  const a = scanProject(withRoutes);
+  assert.equal(a.i18n.library, true);
+  assert.match(a.i18n.localeInUrl, /routes\.tsx/);
+  const nextApp = mkdtempSync(join(tmpdir(), 'scan-i18n-'));
+  writeFileSync(join(nextApp, 'package.json'), JSON.stringify({ dependencies: { next: '15.0.0', 'next-intl': '3.0.0' } }));
+  mkdirSync(join(nextApp, 'src', 'app', '[locale]'), { recursive: true });
+  assert.equal(scanProject(nextApp).i18n.localeInUrl, 'route folder');
+  const none = mkdtempSync(join(tmpdir(), 'scan-i18n-'));
+  writeFileSync(join(none, 'package.json'), JSON.stringify({ dependencies: { react: '19.0.0' } }));
+  assert.deepEqual(scanProject(none).i18n, { library: false, localeInUrl: null });
+});

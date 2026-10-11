@@ -71,6 +71,9 @@ const INPUT_CODE = [
   [/\bwheel\b[^\n]{0,80}ctrlKey|ctrlKey[^\n]{0,80}\bwheel\b/, 'pinch zoom on touchpads (wheel + ctrlKey)'],
 ];
 
+// The locale in the URL: route params or folders like :lang, :locale, [lang], [locale].
+const LOCALE_ROUTE = /path:\s*['"`][^'"`]*:(?:lang|locale|lng)\b|\/\[(?:lang|locale|lng)\]\/|\(\[(?:lang|locale)\]\)|prefixDefaultLocale|i18n:\s*\{[^}]*locales/;
+
 // Platforms the product targets, from its stack and folders. Hints, to be confirmed.
 export function inferPlatforms(stack, root) {
   const has = (...labels) => labels.some((l) => stack.some((s) => s.startsWith(l)));
@@ -206,6 +209,7 @@ export function scanProject(root) {
   const { product, pkg } = readProduct(root);
   const { stack, fontPackages, inputLibs } = readStack(pkg, root);
   const inputCode = new Map();
+  let localeInUrl = existsSync(join(root, 'src', 'app', '[locale]')) || existsSync(join(root, 'app', '[locale]')) || existsSync(join(root, 'src', 'pages', '[lang]')) ? 'route folder' : null;
   const all = collect([root], new Set([...CODE, ...ASSETS, ...STRINGS, '.md', '.json'])).slice(0, MAX_FILES);
 
   const colors = new Map();
@@ -340,6 +344,7 @@ export function scanProject(root) {
       }
     }
 
+    if (!TEST_FILE.test(rel) && LOCALE_ROUTE.test(text)) localeInUrl = rel;
     if (!TEST_FILE.test(rel)) {
       for (const [pattern, what] of INPUT_CODE) if (pattern.test(text) && !inputCode.has(what)) inputCode.set(what, rel);
     }
@@ -373,6 +378,7 @@ export function scanProject(root) {
     platforms: inferPlatforms(stack, root),
     input: [...inputLibs, ...[...inputCode.entries()].map(([what, file]) => `${what} (e.g. ${file})`)],
     languages: [...new Set([...langs, ...localeFolders])],
+    i18n: { library: stack.some((x) => /i18next|next-intl|react-intl/.test(x)) || localeFolders.size > 0, localeInUrl },
     brand: { assets: groupDensities(brandAssets).slice(0, 30), docs: brandDocs },
     fonts: [...top(fonts, 10).map(([f, n]) => ({ font: f, uses: n })), ...fontPackages.map((p) => ({ font: p, uses: 0 }))],
     colors: top(colors, 15).map(([color, uses]) => ({ color, uses })),
@@ -430,7 +436,11 @@ export function render(scan) {
   ].filter(Boolean), 'Platform not detected and no special input handling found: ask which devices and inputs matter.');
   line();
   line('## Stack and languages');
-  list([scan.stack.length ? `Stack: ${scan.stack.join(', ')}` : null, scan.languages.length ? `Languages: ${scan.languages.join(', ')}` : null].filter(Boolean), 'Not detected.');
+  list([
+    scan.stack.length ? `Stack: ${scan.stack.join(', ')}` : null,
+    scan.languages.length ? `Languages: ${scan.languages.join(', ')}` : null,
+    `i18n: ${scan.i18n.library ? 'translation files found' : 'none found (recommend setting it up)'}; locale in the URL: ${scan.i18n.localeInUrl ? `yes (${scan.i18n.localeInUrl})` : 'not found (on the web, recommend /en/…, /es/…)'}`,
+  ].filter(Boolean), 'Not detected.');
   line();
   line('## Brand');
   list(scan.brand.docs.map((d) => `Doc: ${d}`).concat(scan.brand.assets.map((a) => `Asset: ${a}`)), 'No brand docs or logo files found.');

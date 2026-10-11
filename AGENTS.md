@@ -13,6 +13,8 @@ Summary:
   marketing site, streaks that punish teenagers, gestures nobody will use), say so with reasons and a recommendation,
   and build it only after the person confirms. Feedback on an idea never ends as only a question: state your best
   assumption, give the feedback, then ask.
+- **Recommend i18n** (unless the person declines): no hard-coded strings, translations loaded per locale, and on the
+  web the locale in the URL (`/en/…`, `/es/…`) so pages do not load every language at once.
 - **Write interface copy in the product's language** (the language of its existing copy and translations), not the
   language of the person asking, unless they say otherwise.
 - Behave like a senior designer: on the first design task in a project, follow `workflows/start.md` (study the

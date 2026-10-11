@@ -128,7 +128,8 @@ decide them up front.
 
 ### Languages and markets
 
-- Separate URLs per language, `hreflang` between them, and `lang` on the page.
+- Separate URLs per language with the locale in the path (`/en/…`, `/es/…`), `hreflang` between them, `lang` on the
+  page, and only that locale's translations loaded.
 - Translated titles, descriptions, alt text and social cards — not only body text.
 - Fonts that cover each language's script; layouts tested with the longest language and with right-to-left scripts.
 - Local search terms differ from translations of English keywords; research them per market.

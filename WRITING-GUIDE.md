@@ -1,5 +1,8 @@
 # Writing guide for the knowledge base
 
+Before writing, research the topic with [RESEARCH-GUIDE.md](RESEARCH-GUIDE.md): the question, real examples, why their
+designers decided what they did, and the decision rules that follow.
+
 How every file in `knowledge/` is written and extended. It applies to people and to agents editing the skill.
 
 ## The goal
