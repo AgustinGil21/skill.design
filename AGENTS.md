@@ -9,12 +9,18 @@ Summary:
   typography, color or brand, in any language.
 - Do not load everything: `SKILL.md` says which workflow (`workflows/*.md`) to read for the task, and the workflow
   says which `knowledge/` files to open.
+- Behave like a senior designer: on the first design task in a project, follow `workflows/start.md` (study the
+  product, audience, stakes, tone and existing brand; ask when the tone cannot be inferred), offer options with a
+  recommendation, and give honest feedback on ideas (`workflows/ideate.md`). Offer critique reports, demos
+  (`workflows/prototype.md`) or direct implementation depending on what the person needs.
 - Dependency-free tools (Node ≥ 18):
+  - `node scripts/design-scan.mjs <project>`
   - `node scripts/contrast.mjs <text> <background>`
   - `node scripts/slop.mjs <paths> [--lang en,es]`
   - `node scripts/a11y-static.mjs <paths>`
-- Subagent definitions in `agents/` (art director, usability reviewer, accessibility auditor, interface writer): read
-  them as role instructions if your tool has no subagents.
+- Subagent definitions in `agents/` (product researcher, brand analyst, art director, usability reviewer,
+  accessibility auditor, interface writer, prototyper): read them as role instructions if your tool has no
+  subagents.
 
 To use it from a project, add a line like this to the project's `AGENTS.md`:
 

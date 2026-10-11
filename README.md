@@ -16,6 +16,9 @@ design/
 ├── AGENTS.md             Entry point for agents that do not load skills (Codex, Cursor, etc.)
 ├── WRITING-GUIDE.md      How the knowledge base is written and extended
 ├── workflows/            How to work in each mode
+│   ├── start.md          Study the project first: product, audience, stakes, tone, brand; ask; offer modes
+│   ├── ideate.md         Options with a recommendation, and honest feedback on ideas
+│   ├── prototype.md      Quick demos and prototypes
 │   ├── create.md         Screens, flows, components
 │   ├── landing.md        Landing pages and marketing sites
 │   ├── review.md         Critique and review with severities
@@ -23,9 +26,12 @@ design/
 │   ├── write.md          Interface and marketing copy, in any language
 │   └── brand.md          Identity, typography, color, voice
 ├── knowledge/            The base: foundations, patterns by screen type, landing pages and reasoned case studies
-├── agents/               Subagents: art director, usability reviewer, accessibility auditor, interface writer
-├── templates/            Brief, states table, review report
+├── agents/               Subagents: product researcher, brand analyst, art director, usability reviewer,
+│                         accessibility auditor, interface writer, prototyper
+├── templates/            Brief, design context, brand audit, directions, idea feedback, states table, review report
+├── evals/                Behavioral scenarios and rubric to check the skill acts like a senior designer
 ├── scripts/              Dependency-free tools (Node ≥ 18)
+│   ├── design-scan.mjs   Evidence about a project: product, stack, languages, brand assets, fonts, colors, copy
 │   ├── contrast.mjs      WCAG contrast (HEX, rgb, oklch)
 │   ├── slop.mjs          Generic copy and styles, with per-language lexicons
 │   ├── a11y-static.mjs   Static accessibility in HTML/JSX/Astro/Vue/Svelte/CSS
@@ -88,8 +94,15 @@ For any design, interface, accessibility or copy work, follow the skill at ~/ski
 
 ## Use
 
+It works like a senior designer joining your project: on the first task it studies the product, audience, stakes,
+tone and existing brand, tells you what it understood (and how sure it is), asks what it cannot infer, and offers
+ways to help — a critique report, ideas and directions, feedback on your ideas, a quick demo, or building it.
+
 Example requests, in any language (the skill picks the workflow):
 
+- "Look at this project and tell me how you'd improve the design."
+- "What do you think of adding a leaderboard for players?"
+- "Give me three directions for the onboarding, and make a demo of the best two."
 - "Design the billing screen with all its states."
 - "Review this screen and tell me what to fix first." (with a screenshot, URL or code path)
 - "Audit the accessibility of `src/components`."
@@ -100,6 +113,7 @@ Example requests, in any language (the skill picks the workflow):
 Direct tools:
 
 ```bash
+node scripts/design-scan.mjs path/to/project
 node scripts/contrast.mjs "#6b7280" "#ffffff"
 node scripts/slop.mjs src/ --lang en,es
 node scripts/a11y-static.mjs src/

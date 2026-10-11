@@ -1,5 +1,8 @@
 # Workflow: accessibility audit (WCAG 2.2 AA)
 
+> **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
+> `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
+
 Read `knowledge/02-accessibility.md` and `knowledge/15-advanced-accessibility.md`.
 
 ## 1. Scope

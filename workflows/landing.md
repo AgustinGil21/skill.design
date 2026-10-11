@@ -1,5 +1,8 @@
 # Workflow: landing page or marketing site
 
+> **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
+> `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
+
 The full guide lives in `knowledge/landing/`. Order:
 
 1. **Strategy** — `knowledge/landing/01-strategy-and-structure.md`: one goal, a concrete audience, its stage of

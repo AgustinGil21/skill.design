@@ -1,5 +1,8 @@
 # Workflow: create a screen, flow or component
 
+> **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
+> `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
+
 ## 1. Frame the problem (do not skip)
 
 - Who uses it, in which situation, and what are they trying to achieve? What happens before and after this screen?

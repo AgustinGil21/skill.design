@@ -2,6 +2,7 @@
 
 **Scope:** [screens, flows, files]
 **Type:** [usability / accessibility / copy / visual / full]
+**Context:** [audience, primary task, stakes, tone — from `DESIGN-CONTEXT.md` or stated assumptions]
 **How it was reviewed:** [code, running product, screenshots · scripts used · manual tests performed]
 
 ## Summary
@@ -12,12 +13,15 @@
 
 ## Findings
 
-| # | Severity | Finding | Evidence | Why it matters | Proposed fix |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Critical | | file:line / screenshot / selector | principle or WCAG criterion | concrete change, and its cost |
-| 2 | High | | | | |
-| 3 | Medium | | | | |
-| 4 | Low | | | | |
+| # | Severity | Confidence | Finding | Evidence (type and where) | Why it matters | Proposed fix |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Critical | High | | code / running product / test with people / prediction · file:line, screenshot | principle or WCAG criterion | concrete change, its cost, how to verify it |
+| 2 | High | | | | | |
+| 3 | Medium | | | | | |
+| 4 | Low | | | | | |
+
+Severity and confidence are separate: a potentially severe problem can rest on weak evidence. Say whether a finding
+was **observed** (in code, in the running product, in a test with people) or is a **prediction** from principles.
 
 Severity: **Critical** blocks the task, excludes people, misleads or causes irreversible harm · **High** causes
 errors or abandonment · **Medium** confuses, with a way out · **Low** polish.

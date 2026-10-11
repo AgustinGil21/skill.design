@@ -43,13 +43,16 @@ function resolves(path, from) {
   return candidates.some((c) => existsSync(c));
 }
 
+// Files that live in the user's project, not in the skill.
+const PROJECT_FILES = new Set(['DESIGN-CONTEXT.md', 'DESIGN.md', 'PRODUCT.md']);
+
 test('every path cited in SKILL.md, AGENTS.md, workflows, agents and templates exists', () => {
   const dirFiles = (dir) => readdirSync(join(ROOT, dir)).map((f) => `${dir}/${f}`);
   const files = ['SKILL.md', 'AGENTS.md', ...dirFiles('workflows'), ...dirFiles('agents'), ...dirFiles('templates')];
   const missing = [];
   for (const file of files) {
     for (const path of citedPaths(read(file))) {
-      if (path.includes('<') || path.startsWith('*')) continue;
+      if (path.includes('<') || path.startsWith('*') || PROJECT_FILES.has(path)) continue;
       if (!resolves(path, file)) missing.push(`${file} → ${path}`);
     }
   }

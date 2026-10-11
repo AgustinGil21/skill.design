@@ -2,6 +2,9 @@
 
 Works for screenshots, prototypes, URLs or code. The result is an actionable report, not an opinion.
 
+> **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
+> `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
+
 ## 1. Context
 
 - Which task does the screen solve, and for whom? What should the review achieve (launch, improve conversion,
@@ -53,8 +56,20 @@ Use `templates/review-report.md`:
   fix is a trade-off, name what it costs.
 - What works well (so it does not get broken).
 - What was checked and how (script, by hand, with screenshots), and what was not evaluated.
+- Judge against the design context (audience, stakes, tone, brand), and say which kind of judgment each finding is:
+  requirement, evidence, principle, convention or taste (`knowledge/31-critique-feedback-and-options.md`).
 
-## 5. If you also have to fix it
+For large reviews, run `usability-reviewer`, `accessibility-auditor` and `interface-writer` in parallel and merge
+their findings into one report, removing duplicates and re-ranking by impact. Offer to save the report as a Markdown
+file in the project (for example in a `design-reports/` folder, named with the date) when the person may share it.
+
+## 5. What next
+
+Close by offering the next step that fits the findings: fix the top issues now, show a demo of the proposed
+structure (`workflows/prototype.md`), explore directions for a deeper redesign (`workflows/ideate.md`), or test with
+people first.
+
+## 6. If you also have to fix it
 
 Apply the highest-severity fixes first, within the existing system, and re-run the scripts and the checks that
 found the problem.

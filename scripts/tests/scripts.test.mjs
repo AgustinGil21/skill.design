@@ -193,3 +193,46 @@ test('known false positives: skip-link target, JSON keys and "all in one place"'
   assert.equal(analyzeText('Everything in one place, all in one secure place.', 'a.md').length, 0);
   assert.ok(analyzeText('The all-in-one platform', 'a.md').length > 0);
 });
+
+test('design-scan: reads product, stack, languages, brand, fonts, colors, tokens and copy from a project', async () => {
+  const { scanProject, render } = await import('../design-scan.mjs');
+  const { mkdirSync } = await import('node:fs');
+  const dir = mkdtempSync(join(tmpdir(), 'design-scan-'));
+  writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'pocket-budget', description: 'Budget app for families', dependencies: { react: '19.0.0', tailwindcss: '4.0.0' } }));
+  writeFileSync(join(dir, 'README.md'), '# Pocket Budget\n\nTrack your household budget and savings together.\n');
+  mkdirSync(join(dir, 'src', 'locales', 'es'), { recursive: true });
+  writeFileSync(join(dir, 'src', 'locales', 'es', 'common.json'), JSON.stringify({ hero: { title: 'Tu presupuesto familiar, claro y en un solo lugar' }, k: '{count} items' }));
+  mkdirSync(join(dir, 'public'));
+  writeFileSync(join(dir, 'public', 'logo.svg'), '<svg/>');
+  writeFileSync(join(dir, 'src', 'app.css'), '@theme { --color-primary: #1f6f5c; --color-empty: initial; }\nbody { font-family: "Fraunces", serif; color: #1F6F5C; }');
+  writeFileSync(join(dir, 'src', 'page.tsx'), '<html lang="en"><h1>Your money, together</h1><h2>landing.faq.title</h2></html>');
+  mkdirSync(join(dir, 'tests'));
+  writeFileSync(join(dir, 'tests', 'colors.test.ts'), 'const fake = "#123456";');
+
+  const scan = scanProject(dir);
+  assert.equal(scan.product.name, 'pocket-budget');
+  assert.equal(scan.product.readme.title, 'Pocket Budget');
+  assert.ok(scan.stack.includes('React') && scan.stack.includes('Tailwind CSS'));
+  assert.deepEqual(scan.languages.sort(), ['en', 'es']);
+  assert.deepEqual(scan.brand.assets, [join('public', 'logo.svg')]);
+  assert.equal(scan.fonts[0].font, 'Fraunces');
+  assert.equal(scan.colors[0].color, '#1f6f5c');
+  assert.ok(!scan.colors.some((c) => c.color === '#123456'), 'colors in tests are ignored');
+  assert.ok(scan.tokens.sample.some(([k]) => k === '--color-primary'));
+  assert.ok(!scan.tokens.sample.some(([k]) => k === '--color-empty'), 'empty tokens are skipped');
+  assert.ok(scan.copy.includes('Your money, together'));
+  assert.ok(!scan.copy.includes('landing.faq.title'), 'translation keys are not copy');
+  assert.ok(scan.copy.some((c) => c.startsWith('Tu presupuesto familiar')));
+  assert.equal(scan.domains[0].domain, 'personal finance and banking');
+  assert.match(render(scan), /# Design scan: pocket-budget/);
+});
+
+test('design-scan: domain signals count mentions and mark single mentions as weak', async () => {
+  const { inferDomains } = await import('../design-scan.mjs');
+  const [strong] = inferDomains('Book a hotel. Your trip, your flight, your hotel booking.');
+  assert.equal(strong.domain, 'travel and hospitality');
+  assert.equal(strong.strength, 'strong');
+  const weak = inferDomains('A training menu').find((d) => d.domain === 'fitness and sport');
+  assert.equal(weak.strength, 'weak');
+  assert.deepEqual(inferDomains('Detailed paint colors'), [], 'words inside other words do not count');
+});

@@ -1,5 +1,8 @@
 # Workflow: write or fix copy
 
+> **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
+> `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
+
 1. Read `knowledge/04-interface-writing.md` (interface) and, for marketing,
    `knowledge/landing/04-persuasive-writing.md`. For any product in more than one language, or any language other
    than English, also read `knowledge/24-content-and-localization.md`.

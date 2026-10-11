@@ -1,5 +1,11 @@
 # Workflow: brand, typography and color
 
+> **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
+> `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
+
+0. **Study what exists** — if the project already has an identity, audit it first with the `brand-analyst` agent or
+   `knowledge/32-reading-an-existing-brand.md` (`templates/brand-audit.md`). Decide with the person whether the work
+   is to **evolve** the brand (keep the equity) or **replace** it; never replace silently.
 1. **Platform** — `knowledge/11-brand-and-identity.md`: purpose, audience, promise, difference, personality
    (traits with their opposites), proof. Start from what people already associate with the brand, not from a blank
    page.

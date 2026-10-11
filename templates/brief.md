@@ -1,5 +1,9 @@
 # Design brief
 
+**Delivery mode:** [report / ideas / demo / implementation]
+
+**Domain, audience and tone (with confidence):** [from the design context; mark guesses]
+
 **What is being designed:** [screen / flow / component / landing page]
 
 **The problem, in one sentence:** [the problem, not the requested solution]
@@ -26,7 +30,8 @@
 
 **Reference pattern:** [file in `knowledge/patterns/` and chosen examples]
 
-**Alternatives considered:** [at least two, and why one was chosen]
+**Alternatives:** [at least two; for open decisions, shown to the person with a recommendation, not only
+considered internally]
 
 **Assumptions made:** [what was decided without confirmation]
 
