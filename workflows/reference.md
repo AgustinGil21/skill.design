@@ -18,6 +18,9 @@ node scripts/reference-capture.mjs <url> [more urls] --out design-references [--
 - The script scrolls each page to the end (so lazy content loads and scroll animations run), captures it slice by
   slice on each viewport, dismisses an obvious cookie banner, and writes `report.md` with sections, headings, copy,
   calls to action, navigation, typography, colors, background layers, videos and motion libraries.
+- Every run also updates `index.md` in the output folder: the index of **all pages studied there**, across runs (a
+  recaptured page replaces its row). Reuse the same `--out` folder for a project so the index keeps growing, and read
+  it first to know which references already exist.
 - It needs Chrome, Chromium or Edge and Node 22+, and permission to launch a browser (sandboxed agents may not have
   it). Otherwise use a browser tool: scroll the page to the end, capture each screen on desktop and phone widths,
   and run the contents of `scripts/lib/page-inventory.js` in the page to get the same inventory (sections, headings,

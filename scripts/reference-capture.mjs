@@ -10,7 +10,7 @@
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { isMainScript } from './lib/main.mjs';
 import { findChrome } from './screenshots.mjs';
 
@@ -197,8 +197,28 @@ async function capturePage(cdp, url, viewportName, opts, dir) {
   }
 }
 
+// One row per page and viewport, for the index of everything captured.
+export function indexEntries(pages, date = new Date().toISOString().slice(0, 10)) {
+  return pages.map((p) => ({ url: p.url, title: p.title || '', viewport: p.viewportName, slices: p.slices.length, sections: p.sections.length, dir: p.dir, date }));
+}
+
+// Merges new entries into the existing index: the same URL and viewport replaces the old row.
+export function mergeIndex(existing, entries) {
+  const key = (e) => `${e.url}|${e.viewport}`;
+  const map = new Map(existing.map((e) => [key(e), e]));
+  for (const e of entries) map.set(key(e), e);
+  return [...map.values()].sort((a, b) => a.url.localeCompare(b.url) || a.viewport.localeCompare(b.viewport));
+}
+
+export function renderIndex(entries, title = 'Pages studied') {
+  const out = [`# ${title}`, '', '| Page | URL | Viewport | Slices | Sections | Folder | Captured |', '| --- | --- | --- | --- | --- | --- | --- |'];
+  for (const e of entries) out.push(`| ${e.title.replace(/\|/g, '/')} | ${e.url} | ${e.viewport} | ${e.slices} | ${e.sections} | \`${e.dir}\` | ${e.date} |`);
+  return out.join('\n') + '\n';
+}
+
 export function renderReport(pages) {
   const out = ['# Reference capture', '', 'Screenshots are slices from top to bottom; each heading and section lists the slice where it appears.', 'Read the slices in order, then the structure, then interpret (workflows/reference.md).', ''];
+  out.push(renderIndex(indexEntries(pages), 'Pages in this capture').replace(/^# /, '## '));
   for (const page of pages) {
     out.push(`## ${page.title || page.url} — ${page.viewportName}`, '', `- URL: ${page.url}`, `- Language: ${page.lang || 'not declared'} · Height: ${page.height}px at ${page.viewport.width}px (${page.viewportName})`);
     if (page.description) out.push(`- Description: ${page.description}`);
@@ -247,7 +267,7 @@ export async function captureReferences(opts) {
         try {
           const page = await capturePage(cdp, url, viewportName, opts, dir);
           page.viewportName = viewportName;
-          page.dir = dir;
+          page.dir = relative(opts.out, dir) || dir;
           pages.push(page);
           writeFileSync(join(dir, `${viewportName}.json`), JSON.stringify(page, null, 2));
           console.log(`✓ ${url} (${viewportName}): ${page.slices.length} slices, ${page.sections.length} sections, ${page.headings.length} headings`);
@@ -270,7 +290,18 @@ export async function captureReferences(opts) {
   }
   const report = renderReport(pages);
   writeFileSync(join(opts.out, 'report.md'), report);
-  console.log(`\nReport: ${join(opts.out, 'report.md')}`);
+  // The index accumulates every page captured into this folder, across runs.
+  const indexJson = join(opts.out, 'index.json');
+  let existing = [];
+  try {
+    existing = JSON.parse(readFileSync(indexJson, 'utf8'));
+  } catch {
+    existing = [];
+  }
+  const index = mergeIndex(existing, indexEntries(pages));
+  writeFileSync(indexJson, JSON.stringify(index, null, 2));
+  writeFileSync(join(opts.out, 'index.md'), renderIndex(index));
+  console.log(`\nReport: ${join(opts.out, 'report.md')} · Index of all pages studied here: ${join(opts.out, 'index.md')} (${index.length} rows)`);
   return pages;
 }
 

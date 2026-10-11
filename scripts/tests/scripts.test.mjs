@@ -470,3 +470,17 @@ test('reference-capture: arguments, page folders and the report (no browser need
     assert.ok(report.includes(expected), expected);
   }
 });
+
+test('reference-capture: the index of pages studied accumulates across runs and replaces repeated pages', async () => {
+  const { indexEntries, mergeIndex, renderIndex } = await import('../reference-capture.mjs');
+  const page = (url, viewport, slices) => ({ url, title: `T ${url}`, viewportName: viewport, slices: Array(slices).fill({}), sections: [{}], dir: 'out/x' });
+  const first = indexEntries([page('https://a.test/', 'desktop', 3), page('https://a.test/', 'mobile', 4)], '2026-10-01');
+  const second = indexEntries([page('https://a.test/', 'desktop', 5), page('https://b.test/pricing', 'desktop', 2)], '2026-10-11');
+  const merged = mergeIndex(first, second);
+  assert.equal(merged.length, 3);
+  assert.equal(merged.find((e) => e.url === 'https://a.test/' && e.viewport === 'desktop').slices, 5, 'a recapture replaces the old row');
+  assert.equal(merged.find((e) => e.viewport === 'mobile').date, '2026-10-01', 'rows not recaptured are kept');
+  const md = renderIndex(merged);
+  assert.match(md, /^# Pages studied/);
+  assert.match(md, /\| https:\/\/b\.test\/pricing \| desktop \| 2 \| 1 \|/);
+});
