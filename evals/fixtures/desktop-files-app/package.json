@@ -1,0 +1,1 @@
+{ "name": "stackbox", "private": true, "description": "Desktop file manager for design agencies (macOS and Windows)", "main": "main.js", "dependencies": { "electron": "33.0.0", "react": "19.0.0" } }

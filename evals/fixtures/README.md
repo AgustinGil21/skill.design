@@ -14,3 +14,6 @@ temporary folder before running a scenario, so any file the agent writes does no
 | `strategy-game-tables/` | 6 (keep useful density) |
 | `white-label-app/` | 9 (brand ownership and theme boundaries) |
 | `checkout-flow/` | 16 (written critique, no edits), 17 (audit and fix) |
+| `desktop-files-app/` | 19 (context menus and shortcuts in a desktop app) |
+| `phone-orders-app/` | 20 (adapt a phone app to tablets) |
+| `marketing-site/` | 21 (shortcuts and a command palette that are not needed) |

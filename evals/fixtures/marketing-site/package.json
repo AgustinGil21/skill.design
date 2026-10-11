@@ -1,0 +1,1 @@
+{ "name": "estudio-norte", "private": true, "description": "Website of an architecture studio: projects, studio and contact form", "dependencies": { "astro": "5.0.0" } }

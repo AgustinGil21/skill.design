@@ -19,4 +19,9 @@
 | 2026-10-11 | same | 4 (attendance, real project) | 1 | 3 | 3 | 3 | 3 | 3 | None | Found the backend only stores RSVPs, not real attendance; three alternatives with a recommendation for one-handed use at the pitch; tried Mobbin (no permission in the run) and said so |
 | 2026-10-11 | same | 13 (tabs or sidebar, real project) | 1 | 3 | 3 | 3 | n/a | 3 | None | Recommended a grouped secondary sidebar with reasons from the code (7 permission-dependent sections, long Spanish labels, existing URLs) |
 
-Not yet run: scenarios 5, 6, 8, 9, 14, 16, 17, and repeated runs (the rubric asks for three per scenario).
+| 2026-10-11 | 1e1db77 (platform rules) | 5 (competitive game HUD, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Genre-appropriate review: off-center crosshair, HUD layer likely blocking the mouse, team colors at 1.59:1 for color-blind players, missing critical states; report only, no edits |
+| 2026-10-11 | same | 6 (strategy tables, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Kept the density; right-aligned tabular numbers, signed deltas, row headers for screen readers; asked what the delta measures instead of guessing |
+| 2026-10-11 | same | 9 (white-label, fixture) | 1 | 2 | 2 | 3 | 3 | 3 | None | Removed one client's hard-coded brand; base tokens plus per-tenant tokens; brand color as background only because one tenant's yellow fails as text; flagged font licensing |
+| 2026-10-11 | same | 16 (checkout critique, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Report with severity, observed vs. inferred and confidence: non-functional div button, total only after payment, pre-checked newsletter, 2.32:1 notice; no edits |
+
+Not yet run: scenarios 8, 14, 17, 19, 20, 21, and repeated runs (the rubric asks for three per scenario).

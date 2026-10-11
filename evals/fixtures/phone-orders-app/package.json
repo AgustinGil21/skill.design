@@ -1,0 +1,1 @@
+{ "name": "tablero-pedidos", "private": true, "description": "Order management app for restaurant staff", "dependencies": { "react-native": "0.79.0", "expo": "53.0.0" } }
