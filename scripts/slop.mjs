@@ -15,7 +15,7 @@ import de from './lexicon/de.mjs';
 // Hollow phrases per language. See lexicon/README.md to add a language.
 export const LEXICONS = { en, es, pt, fr, de };
 
-const EXTENSIONS = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.ts', '.astro', '.vue', '.svelte', '.md', '.mdx', '.css', '.scss', '.json', '.txt']);
+const EXTENSIONS = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.ts', '.astro', '.vue', '.svelte', '.md', '.mdx', '.css', '.scss', '.json', '.txt', '.dart', '.swift', '.kt']);
 
 // Placeholder content is the same problem in every language.
 const PLACEHOLDERS = [
@@ -48,6 +48,32 @@ const STYLE_RULES = [
   },
 ];
 
+// Gimmicky motion: bounces, elastic and "back" easings, springs with overshoot, attention-seeking loops. Professional
+// motion decelerates and settles without overshooting (see knowledge/landing/06-motion.md).
+const GIMMICK = 'Bouncy, elastic or attention-seeking motion reads as generated: use a decelerating ease without overshoot';
+const MOTION_RULES = [
+  { pattern: /\banimate-(?:bounce|ping|wiggle|wobble|jello|tada|shake|swing|heartbeat|heart-beat|rubber-band|float)\b/gi, message: GIMMICK },
+  { pattern: /@keyframes\s+(?:bounce\w*|wobble|jello|tada|rubber\w*|swing|heart-?beat|shake|jiggle|float\w*|glow\w*|breath\w*)\b/gi, message: GIMMICK },
+  { pattern: /\banimation(?:-name)?\s*:\s*[^;]*\b(?:bounce\w*|wobble|jello|tada|rubber\w*|heart-?beat|jiggle|glow\w*|breath\w*)\b/gi, message: GIMMICK },
+  { pattern: /\b(?:easeOutBack|easeInOutBack|easeInBack|easeOutElastic|easeInOutElastic|easeOutBounce|easeInOutBounce|backOut|backInOut|backIn)\b/g, message: GIMMICK },
+  { pattern: /\bease\s*:\s*['"](?:elastic|bounce|back|anticipate)[^'"]*['"]|\b(?:Elastic|Bounce|Back)\.ease\w*/g, message: GIMMICK },
+  { pattern: /\bbounce\s*:\s*(?:0?\.\d*[1-9]|[1-9])/g, message: 'Spring with bounce: set bounce to 0 or use a decelerating ease' },
+  { pattern: /\bCurves\.(?:bounce\w*|elastic\w*|easeOutBack|easeInOutBack|easeInBack)\b/g, message: GIMMICK },
+  { pattern: /\.(?:bouncy|snappy)\b|\.spring\([^)]*bounce:\s*0?\.\d*[1-9]/g, message: 'Bouncy SwiftUI spring: use .smooth or an ease without overshoot' },
+  { pattern: /\bSpring\.DampingRatio(?:HighBouncy|MediumBouncy|LowBouncy)\b/g, message: 'Bouncy Compose spring: use DampingRatioNoBouncy or a tween' },
+];
+
+// cubic-bezier with y values outside 0–1 overshoots (the element passes its target and comes back).
+function overshootingBeziers(text) {
+  const out = [];
+  for (const m of text.matchAll(/cubic-bezier\(\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*,\s*([-\d.]+)\s*\)/g)) {
+    const y1 = Number(m[2]);
+    const y2 = Number(m[4]);
+    if (y1 < 0 || y1 > 1 || y2 < 0 || y2 > 1) out.push(m);
+  }
+  return out;
+}
+
 const EMOJI = /\p{Extended_Pictographic}/u;
 // "Simple. Fast. Secure." in any cased script.
 const TRIAD = /\b(\p{Lu}\p{Ll}+)\.\s+(\p{Lu}\p{Ll}+)\.\s+(\p{Lu}\p{Ll}+)\./u;
@@ -72,6 +98,19 @@ export function analyzeText(text, file, languages = Object.keys(LEXICONS)) {
 
   for (const { rule, pattern, message, level } of STYLE_RULES) {
     for (const m of text.matchAll(pattern)) add(m.index, rule, message, m[0], level);
+  }
+
+  for (const { pattern, message } of MOTION_RULES) {
+    for (const m of text.matchAll(pattern)) add(m.index, 'gimmick-motion', message, m[0]);
+  }
+  for (const m of overshootingBeziers(text)) {
+    add(m.index, 'gimmick-motion', 'Easing that overshoots (y outside 0–1): the element passes its target and bounces back', m[0]);
+  }
+  // Pulsing is legitimate for loading skeletons; as decoration (AI glow, pulsing dots or badges) it is noise.
+  for (const m of text.matchAll(/\banimate-pulse\b/g)) {
+    const line = text.slice(text.lastIndexOf('\n', m.index) + 1, text.indexOf('\n', m.index) === -1 ? undefined : text.indexOf('\n', m.index));
+    if (/skeleton|placeholder|loading|shimmer/i.test(line)) continue;
+    add(m.index, 'gimmick-motion', 'Decorative pulse (AI-style glow, pulsing dot or badge): keep pulse for loading placeholders only', line, 'info');
   }
 
   let index = 0;

@@ -53,7 +53,7 @@ Treat motion like typography: a small set of tokens used consistently.
 | What | Duration | Easing |
 | --- | --- | --- |
 | Response to hover / focus / click | 100–200 ms | ease-out |
-| Element entrance | 200–400 ms | ease-out or a spring with little bounce |
+| Element entrance | 200–400 ms | ease-out, or a critically damped spring (no overshoot) |
 | Exit | 150–250 ms (faster than entrance) | ease-in |
 | Movement between two places | 300–500 ms | ease-in-out |
 | Section or page transition | 400–700 ms | ease-in-out |
@@ -62,11 +62,31 @@ Treat motion like typography: a small set of tokens used consistently.
 These are guides drawn from common practice, not standards. Adjust to the brand:
 
 - **Precise brands** (developer tools, finance): short durations, no bounce, linear-ish curves.
-- **Warm or playful brands**: springs with gentle overshoot, slightly longer entrances.
+- **Warm or playful brands**: softer, slightly longer decelerating curves and larger fades — warmth comes from
+  timing, color and illustration, not from bouncing.
 - **Editorial brands**: slow crossfades, little movement.
 
 Distances stay short (8–24 px) for entrances; nothing flies from off-screen unless that is the concept. Larger
 elements move more slowly than small ones; the same distance feels faster on a phone than on a large screen.
+
+## Professional motion vs. generated-looking motion
+
+Some motion patterns have become the signature of generated, template-made interfaces. Avoid them unless the person
+explicitly asks for them (or the product is a game or toy where they are part of the concept):
+
+| Avoid | Why it reads as cheap | Use instead |
+| --- | --- | --- |
+| **Bounce and elastic easings** (`easeOutBack`, `elastic`, `bounce`, springs with bounce > 0) | The element overshoots its target and wobbles back: it calls attention to the animation, not the content | A decelerating ease-out or a critically damped spring that settles once |
+| **Elements that fly in, hit an edge and rebound** | Physics theater with no meaning | A short fade plus 8–16 px of translation |
+| **AI-style pulses and glows** (pulsing orbs, breathing gradients, glowing borders, ping dots on everything) | Signals "AI" without saying anything; constant motion in the periphery | A static status indicator; motion only when the state changes |
+| **Infinite floating, wiggling or breathing decorations** | Distracts reading, costs battery, fails WCAG 2.2.2 when it lasts | Stillness; one purposeful moment |
+| **Attention loops** (`animate-bounce` arrows, shaking buttons, ping badges) | Nagging; people learn to ignore it | Clear copy and hierarchy; a single change when something new arrives |
+| **Scale pops on every click** (scale 1.1 → 0.9 → 1) | Toy-like for productivity, finance or health products | Color or elevation change within 100–150 ms |
+
+Professional motion: short, decelerating, settles once, moves only what changed, has a reason (explain, orient,
+give feedback, one brand moment), and has a reduced version. A loading skeleton may pulse gently; decoration should
+not. `scripts/slop.mjs` reports bounces, elastic and back easings, overshooting curves, bouncy springs (web, Flutter,
+SwiftUI, Compose) and decorative pulses.
 
 ## Choreography
 

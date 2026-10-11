@@ -66,11 +66,19 @@ Fill in `templates/brief.md` (mentally or in writing, depending on size).
 
 - Follow the repository's conventions (structure, naming, tests, package manager).
 - Existing library components before new ones; customize through tokens.
+- **Compose from small components**: screens compose sections, sections compose components, components compose
+  primitives; data and logic in screens or hooks, presentational components fed by props. No giant screen
+  components (`knowledge/35-components-tokens-and-code-quality.md`).
+- **Tokens for every reusable value**: colors, spacing, sizes, radii, type, shadows, durations, easing, z-index. Use
+  the project's existing tokens; add missing ones in its format instead of writing raw values.
+- **Motion**: decelerating, settles once, with a reduced version; no bounce, elastic, overshoot or AI-style pulses
+  unless asked (`knowledge/landing/06-motion.md`).
 - Write or update tests if the project has them.
 
 ## 9. Verify and close
 
-1. `node scripts/a11y-static.mjs <touched files>` and `node scripts/slop.mjs <touched files>`.
+1. `node scripts/a11y-static.mjs <touched files>`, `node scripts/slop.mjs <touched files>` and
+   `node scripts/system-check.mjs <touched files>` (raw values, arbitrary values, oversized components).
 2. Contrast of any new color pair with `node scripts/contrast.mjs`.
 3. Look at the real result: capture it with `node scripts/screenshots.mjs <urls>` or a browser tool and review the
    images (`knowledge/33-looking-at-the-real-interface.md`); check keyboard, 200 % zoom, 320 px width, dark mode if

@@ -330,3 +330,43 @@ test('screenshots: local demo files are named after the file, and Chrome gets an
   assert.equal(chromeArgs({ ...shot, scheme: 'light' }, '/tmp/p').find((a) => a.startsWith('--blink')), '--blink-settings=preferredColorScheme=1');
   assert.equal(findChrome({ CHROME_PATH: '/nonexistent' }, 'plan9'), null);
 });
+
+test('slop: flags bouncy, elastic and attention-seeking motion on web and native, but not calm motion', () => {
+  const flagged = (text, file = 'x.tsx') => analyzeText(text, file, []).filter((f) => f.rule === 'gimmick-motion');
+  assert.equal(flagged('<span className="animate-bounce">').length, 1);
+  assert.equal(flagged('<span className="animate-ping absolute">').length, 1);
+  assert.equal(flagged('transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);', 'a.css').length, 1);
+  assert.equal(flagged("animate={{ x: 0 }} transition={{ type: 'spring', bounce: 0.4 }}").length, 1);
+  assert.equal(flagged("gsap.to(el, { x: 100, ease: 'elastic.out(1, 0.3)' })").length, 1);
+  assert.equal(flagged('@keyframes bounce-in { from { transform: scale(0.3) } }', 'a.css').length, 1);
+  assert.equal(flagged('curve: Curves.elasticOut,', 'a.dart').length, 1);
+  assert.equal(flagged('.animation(.bouncy, value: open)', 'a.swift').length, 1);
+  assert.equal(flagged('spring(dampingRatio = Spring.DampingRatioHighBouncy)', 'a.kt').length, 1);
+  assert.equal(flagged("transition={{ ease: 'anticipate' }}").length, 1);
+  // Calm, professional motion passes, and the English word "anticipate" in prose is not motion.
+  assert.equal(flagged('We anticipate questions about pricing.', 'a.md').length, 0);
+  assert.equal(flagged('transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);', 'a.css').length, 0);
+  assert.equal(flagged("transition={{ type: 'spring', bounce: 0, duration: 0.3 }}").length, 0);
+  assert.equal(flagged('<div className="h-4 w-32 animate-pulse rounded bg-muted" data-slot="skeleton" />').length, 0);
+  const decorative = flagged('<span className="size-2 rounded-full bg-accent animate-pulse" />');
+  assert.equal(decorative.length, 1);
+  assert.equal(decorative[0].level, 'info');
+});
+
+test('system-check: raw colors and arbitrary values in components, tokens allowed in token files, large components', async () => {
+  const { analyzeFile, checkPaths, HUGE_COMPONENT_LINES } = await import('../system-check.mjs');
+  const rules = (f) => f.map((x) => x.rule).sort();
+  assert.deepEqual(rules(analyzeFile('<div style={{ color: "#dc2626", padding: 18 }} className="bg-[#7a0f1e] rounded-[13px]" />', 'Card.tsx')),
+    ['arbitrary-color', 'arbitrary-value', 'hardcoded-color', 'inline-magic-number']);
+  assert.deepEqual(analyzeFile(':root { --color-action: #7a0f1e; }\n.btn { background: var(--color-action); }', 'app.css'), []);
+  assert.deepEqual(rules(analyzeFile('.btn { color: #fff; }', 'app.css')), ['hardcoded-color']);
+  assert.deepEqual(analyzeFile('<div className="bg-action rounded-control p-4" style={{ margin: 0 }} />', 'Ok.tsx'), []);
+  assert.deepEqual(rules(analyzeFile('const brand = Color(0xFF7A0F1E);', 'card.dart')), ['hardcoded-color']);
+  const big = analyzeFile('x\n'.repeat(HUGE_COMPONENT_LINES + 1), 'Dashboard.tsx');
+  assert.equal(big[0].rule, 'large-component');
+  assert.equal(big[0].level, 'warning');
+  const dir = mkdtempSync(join(tmpdir(), 'system-check-'));
+  writeFileSync(join(dir, 'theme.ts'), 'export const brand = "#7a0f1e";');
+  writeFileSync(join(dir, 'tokens.css'), '.x { color: #7a0f1e; }');
+  assert.deepEqual(checkPaths([dir]), [], 'token and theme files are exempt');
+});

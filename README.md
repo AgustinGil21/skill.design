@@ -32,6 +32,7 @@ design/
 ├── evals/                Behavioral scenarios and rubric to check the skill acts like a senior designer
 ├── scripts/              Dependency-free tools (Node ≥ 18)
 │   ├── design-scan.mjs   Evidence about a project, web or native: product, stack, languages, brand, fonts, colors, copy
+│   ├── system-check.mjs  Raw values instead of tokens, arbitrary values, oversized components
 │   ├── screenshots.mjs   Phone and desktop, light and dark captures of a running interface
 │   ├── contrast.mjs      WCAG contrast (HEX, rgb, oklch)
 │   ├── slop.mjs          Generic copy and styles, with per-language lexicons

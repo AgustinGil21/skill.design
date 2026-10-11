@@ -26,6 +26,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Study an existing brand before changing anything | [32-reading-an-existing-brand](32-reading-an-existing-brand.md) |
 | See the product as people see it (screenshots, browser) | [33-looking-at-the-real-interface](33-looking-at-the-real-interface.md) |
 | Use live references (Mobbin) and design files (Figma) | [34-references-and-design-tools](34-references-and-design-tools.md) |
+| Build from small components and tokens; keep code professional | [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) |
 | Give it character without slop | [01-anti-slop](01-anti-slop.md) · [13-human-design](13-human-design.md) · [11-brand-and-identity](11-brand-and-identity.md) |
 | Choose type, color, layout and imagery | [09-typography](09-typography.md) · [10-color](10-color.md) · [17-composition-and-layout](17-composition-and-layout.md) · [19-imagery-icons-and-illustration](19-imagery-icons-and-illustration.md) · [05-visual-system](05-visual-system.md) |
 | Persuade without manipulating | [12-psychology-and-ethical-persuasion](12-psychology-and-ethical-persuasion.md) |
@@ -83,6 +84,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [32-reading-an-existing-brand](32-reading-an-existing-brand.md) | Brand audit from code and assets: inventory, equity, inconsistencies, fit |
 | [33-looking-at-the-real-interface](33-looking-at-the-real-interface.md) | Getting to the real screens, how to look, what screenshots can and cannot prove |
 | [34-references-and-design-tools](34-references-and-design-tools.md) | Live references by job and platform, design files as intent, working without tools |
+| [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) | Composition over giant components, tokens for every reusable value, exceptions, checking |
 | [sources](sources.md) | Where the knowledge comes from and how to add to it |
 
 ## Patterns by screen type

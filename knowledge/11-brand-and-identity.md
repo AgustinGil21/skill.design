@@ -90,7 +90,7 @@ See [interface writing](04-interface-writing.md) and [content and localization](
 | **Color** | A lead color, neutrals and semantic colors ([color](10-color.md)) | Colors have names and defined uses |
 | **Shape** | Radii, stroke weights, angles, a graphic gesture of its own | It repeats in icons, illustration and components |
 | **Imagery** | Type (photo, 3D, illustration, screenshot), light, framing, treatment | Ten images together look like one family |
-| **Motion** | Curves, speed, personality (firm, elastic, calm) | It feels the same in a button and in a video |
+| **Motion** | Curves, speed, personality (firm, soft, calm; never bouncy by default) | It feels the same in a button and in a video |
 | **Sound** (if any) | Notification tones, music | Brief, optional, coherent |
 
 ## 6. Distinctive assets

@@ -71,6 +71,8 @@ Each component documents its behavior, not just its appearance:
 ## 4. Rules that prevent disorder
 
 - **One way to do each thing**: one primary button style, one way to show errors.
+- **Small composable components and tokens for every reusable value**: see
+  [components, tokens and code quality](35-components-tokens-and-code-quality.md).
 - **Names by function**, not appearance (`button-danger`, not `button-red`).
 - **Few variants.**
 - **Accessibility inside the component** (keyboard, ARIA, contrast) so it is inherited — but remember that a component

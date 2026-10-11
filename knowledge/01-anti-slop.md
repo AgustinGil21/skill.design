@@ -79,6 +79,25 @@ These signals exist in every language; the English examples illustrate them. The
 - **Fake progress**: bars that move at a constant speed regardless of the work.
 - **Gratuitous gamification**: confetti for routine actions, badges for nothing.
 
+## Motion signals
+
+- **Bounce, elastic and "back" easings**; springs that overshoot and wobble.
+- **Elements that fly to a side, rebound and come back.**
+- **AI-style pulses and glows**: pulsing orbs, breathing gradients, glowing borders, ping dots.
+- **Infinite decorative loops**: floating, wiggling, breathing elements.
+- **Attention loops**: bouncing arrows, shaking buttons.
+- **Everything fading up on scroll.**
+
+Professional motion is short, decelerates, settles once and has a reason. See [motion](landing/06-motion.md).
+
+## Code signals
+
+- **One giant component per screen** that fetches, formats and renders everything.
+- **Raw hex colors and arbitrary values** (`bg-[#7a0f1e]`, `rounded-[13px]`) inside components.
+- **The same value written in many places** instead of a token.
+
+See [components, tokens and code quality](35-components-tokens-and-code-quality.md).
+
 ## Why slop happens
 
 Knowing the cause helps prevent it, because each cause has a different remedy.

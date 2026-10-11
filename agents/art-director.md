@@ -46,7 +46,8 @@ Deliver:
    only if the product needs one, and the key contrasts verified (`node scripts/contrast.mjs`).
 4. **Imagery**: type, light, framing, treatment; what to avoid.
 5. **Shape and a recurring graphic gesture.**
-6. **Motion**: personality, curves and durations, a few moments and their reduced version.
+6. **Motion**: personality, curves and durations, a few moments and their reduced version. Decelerating curves that
+   settle once; no bounce, elastic or AI-style pulses unless the brief asks for them.
 7. **Intentional decisions**: the choices that make it recognizable, each with its evidence and trade-off.
    Expression is proportional to the product: restraint is often the right decision for operational tools.
 8. **What to avoid** in this specific project.

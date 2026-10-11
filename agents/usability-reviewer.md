@@ -30,7 +30,8 @@ anything yourself), and read the images (`knowledge/33-looking-at-the-real-inter
 from screens, which from code, and which are predictions.
 
 Run on the interface files:
-- `node <skill>/scripts/slop.mjs <paths>`
+- `node <skill>/scripts/slop.mjs <paths>` (copy, styles and gimmicky motion)
+- `node <skill>/scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components)
 - `node <skill>/scripts/a11y-static.mjs <paths>`
 
 Critique like `knowledge/31-critique-feedback-and-options.md` describes: restate the intent, judge against the

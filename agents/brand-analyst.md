@@ -33,7 +33,8 @@ The prompt that launched you should give the `design` skill folder. If it does n
    role or is a default.
 5. **Shape, space and elevation**: radii, borders, shadows, density; whether they are consistent.
 6. **Imagery and icons**: photography or illustration style, icon set(s), mixed styles.
-7. **Motion**: libraries, durations, easing, whether reduced motion is honored.
+7. **Motion**: libraries, durations, easing, whether reduced motion is honored, and gimmicky motion (bounces,
+   elastic easings, pulsing glows) that cheapens the brand.
 8. **Voice**: read headings, buttons, empty states, errors and emails in every language; describe the voice as it
    is (formality, warmth, humor, length) and where it breaks.
 9. **Brand documents**: `DESIGN.md`, `PRODUCT.md`, `DESIGN-CONTEXT.md`, brand guidelines, Figma links in the README.

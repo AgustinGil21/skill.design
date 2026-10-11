@@ -122,7 +122,9 @@ See [imagery, icons and illustration](19-imagery-icons-and-illustration.md).
 - **To explain, not to decorate**: where something came from, where it went, what changed.
 - **Durations** as starting values: about 100–150 ms for small state changes (hover, toggle); 200–300 ms for panels
   and dialogs; longer only for large, rare transitions.
-- **Easing**: ease-out for entering, ease-in for exiting; gentle springs for direct manipulation.
+- **Easing**: ease-out for entering, ease-in for exiting; springs without overshoot (critically damped) for direct
+  manipulation. No bounce, elastic or "back" easings unless explicitly asked for (see
+  [motion](landing/06-motion.md)).
 - **Do not animate layout while people read or type**; no bouncing in chat scrolls or changing lists.
 - **Honor reduced motion**: replace movement with fades or instant changes, keeping the information the motion carried.
 

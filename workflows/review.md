@@ -33,7 +33,8 @@ Works for screenshots, prototypes, URLs or code. The result is an actionable rep
 7. **Visual**: hierarchy, type, color, spacing, alignment, consistency (`knowledge/05-visual-system.md`,
    `knowledge/09-typography.md`, `knowledge/10-color.md`, `knowledge/17-composition-and-layout.md`).
 8. **Slop**: generic signals (`knowledge/01-anti-slop.md`, `knowledge/13-human-design.md`) plus
-   `node scripts/slop.mjs`. A signal is a question, not a verdict.
+   `node scripts/slop.mjs`. A signal is a question, not a verdict. In code, also run `node scripts/system-check.mjs`
+   (raw values instead of tokens, oversized components) and look for gimmicky motion.
 9. **Quick accessibility**: contrast, focus, keyboard, names (`knowledge/02-accessibility.md`) plus
    `node scripts/a11y-static.mjs`. For a full audit, follow `workflows/accessibility.md`.
 10. **Ethics**: dark patterns, undue pressure (`knowledge/12-psychology-and-ethical-persuasion.md`).

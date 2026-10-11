@@ -42,15 +42,24 @@ All paths are relative to this skill's folder.
 8. **Look at the real interface**, not only the code: screenshots or a browser on phone and desktop, light and
    dark, with realistic data (`knowledge/33-looking-at-the-real-interface.md`). Use live references and design files
    when tools for them are available (`knowledge/34-references-and-design-tools.md`). Say what you could not see.
-9. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
+9. **Small components and tokens, always when possible**: build from small components with one responsibility that
+   compose into larger ones (atomize; no giant screen components), and put every reusable value in variables —
+   colors, spacing, sizes, radii, type, shadows, durations, easing, z-index, breakpoints. Components use semantic
+   tokens, never raw values. The project's conventions and the person's wishes come first
+   (`knowledge/35-components-tokens-and-code-quality.md`).
+10. **Professional motion, never gimmicky**: short, decelerating motion that settles once and has a reason. Unless
+   the person asks for it, no bounce or elastic easings, no springs that overshoot, no elements that fly to a side
+   and rebound, no AI-style pulses, glows or breathing decorations, no attention loops
+   (`knowledge/landing/06-motion.md`). Aim for quality in everything you generate.
+11. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
    not replace it unless asked.
-10. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
+12. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
    `knowledge/08-real-state-and-verification.md`).
-11. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
+13. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
     feedback on the person's ideas (what works, risks, alternatives, recommendation), without flattery or reflexive
     criticism (`knowledge/31-critique-feedback-and-options.md`). When a request is open, offer the ways you can help
     (critique report, ideas, feedback, demo, build, brand study; see `workflows/start.md`, step 6).
-12. **Any language.** Write the output in the product's language and form of address; by default, the language of
+14. **Any language.** Write the output in the product's language and form of address; by default, the language of
     the person asking. Apply copy rules by their function, not by English wording, and account for plurals,
     text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`).
 
@@ -117,6 +126,8 @@ in order.
 | Reading and auditing an existing brand | `32-reading-an-existing-brand.md` |
 | Looking at the real interface (screenshots, browser, what a screen can prove) | `33-looking-at-the-real-interface.md` |
 | Live references (Mobbin) and design files (Figma) | `34-references-and-design-tools.md` |
+| Small composable components, tokens for every reusable value | `35-components-tokens-and-code-quality.md` |
+| Professional motion (and what reads as generated: bounce, elastic, AI pulses) | `landing/06-motion.md` |
 | Reasoned case studies | `knowledge/cases/README.md` |
 
 ### Patterns by screen type (`knowledge/patterns/`)
@@ -157,10 +168,11 @@ conversion forms, dark aesthetics, blogs, full recipes and CSS motion recipes).
 
 | Script | What for | Usage |
 | --- | --- | --- |
+| `scripts/system-check.mjs` | Tokens and component size: raw colors and arbitrary values in components, inline magic numbers, oversized components | `node scripts/system-check.mjs <files or folders>` |
 | `scripts/screenshots.mjs` | Screenshots of a running interface: phone and desktop, light and dark, reduced motion (uses the project's Playwright or the installed Chrome) | `node scripts/screenshots.mjs <urls> [--out dir]` |
 | `scripts/design-scan.mjs` | Evidence about a project, web or native (Flutter, iOS, Android, React Native): product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |
 | `scripts/contrast.mjs` | WCAG contrast between two colors (HEX, rgb, simple oklch) | `node scripts/contrast.mjs "#777" "#fff"` |
-| `scripts/slop.mjs` | Detects generic copy and styles (hollow phrases per language, purple-blue gradients, decorative emojis, lorem) | `node scripts/slop.mjs <files or folders> [--lang en,es]` |
+| `scripts/slop.mjs` | Detects generic copy, styles and motion (hollow phrases per language, purple-blue gradients, decorative emojis, lorem, bounce/elastic/overshoot easings, AI-style pulses) | `node scripts/slop.mjs <files or folders> [--lang en,es]` |
 | `scripts/a11y-static.mjs` | Static check of HTML/JSX/Astro/Vue: images without alt, unnamed buttons, skipped headings, unlabeled fields, `outline: none`, positive `tabindex`, `lang` | `node scripts/a11y-static.mjs <files or folders>` |
 
 They are quick aids and **do not** replace testing with a keyboard, a screen reader and tools such as axe or
@@ -211,5 +223,6 @@ files in the project when they ask, or offered in one line when they do not.
 ## 7. Before calling anything done
 
 1. Go through `knowledge/06-review.md` (and `knowledge/landing/08-review.md` for landing pages).
-2. Run `scripts/slop.mjs` and `scripts/a11y-static.mjs` on what you touched; fix or justify each finding.
+2. Run `scripts/slop.mjs`, `scripts/a11y-static.mjs` and `scripts/system-check.mjs` on what you touched; fix or
+   justify each finding.
 3. Verify in the real result (browser, device) whenever possible, and say which level of verification was reached.
