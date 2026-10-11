@@ -48,24 +48,29 @@ All paths are relative to this skill's folder.
    desktop app (platform conventions, Cmd vs Ctrl, menus, context menus, shortcuts, fast and few animations).
    Whatever works with a mouse works with a touchpad. Add shortcuts, gestures and context menus only when the
    product's use justifies them (`knowledge/36-platforms-and-input.md`).
-10. **Small components and tokens, always when possible**: build from small components with one responsibility that
+10. **Never draw icons; few families.** Do not generate icons yourself (no hand-written SVG paths, CSS-shape icons
+   or generated icon images): use one maintained icon family, two at most when one cannot cover the needs. Use two
+   typefaces at most whenever possible, and build contrast with weights, sizes and semantic heading levels. If the
+   person asks to break these rules you may, but recommend against it first (`knowledge/19-imagery-icons-and-illustration.md`,
+   `knowledge/09-typography.md`).
+11. **Small components and tokens, always when possible**: build from small components with one responsibility that
    compose into larger ones (atomize; no giant screen components), and put every reusable value in variables —
    colors, spacing, sizes, radii, type, shadows, durations, easing, z-index, breakpoints. Components use semantic
    tokens, never raw values. The project's conventions and the person's wishes come first
    (`knowledge/35-components-tokens-and-code-quality.md`).
-11. **Professional motion, never gimmicky**: short, decelerating motion that settles once and has a reason. Unless
+12. **Professional motion, never gimmicky**: short, decelerating motion that settles once and has a reason. Unless
    the person asks for it, no bounce or elastic easings, no springs that overshoot, no elements that fly to a side
    and rebound, no AI-style pulses, glows or breathing decorations, no attention loops
    (`knowledge/landing/06-motion.md`). Aim for quality in everything you generate.
-12. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
+13. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
    not replace it unless asked.
-13. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
+14. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
    `knowledge/08-real-state-and-verification.md`).
-14. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
+15. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
     feedback on the person's ideas (what works, risks, alternatives, recommendation), without flattery or reflexive
     criticism (`knowledge/31-critique-feedback-and-options.md`). When a request is open, offer the ways you can help
     (critique report, ideas, feedback, demo, build, brand study; see `workflows/start.md`, step 6).
-15. **Any language.** Write the output in the product's language and form of address; by default, the language of
+16. **Any language.** Write the output in the product's language and form of address; by default, the language of
     the person asking. Apply copy rules by their function, not by English wording, and account for plurals,
     text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`).
 
@@ -175,7 +180,7 @@ conversion forms, dark aesthetics, blogs, full recipes and CSS motion recipes).
 
 | Script | What for | Usage |
 | --- | --- | --- |
-| `scripts/system-check.mjs` | Tokens and component size: raw colors and arbitrary values in components, inline magic numbers, oversized components | `node scripts/system-check.mjs <files or folders>` |
+| `scripts/system-check.mjs` | Tokens, component size and families: raw colors and arbitrary values in components, inline magic numbers, oversized components, icons drawn by hand, more than two icon families or typefaces | `node scripts/system-check.mjs <files or folders>` |
 | `scripts/screenshots.mjs` | Screenshots of a running interface: phone and desktop, light and dark, reduced motion (uses the project's Playwright or the installed Chrome) | `node scripts/screenshots.mjs <urls> [--out dir]` |
 | `scripts/design-scan.mjs` | Evidence about a project, web or native (Flutter, iOS, Android, React Native): product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |
 | `scripts/contrast.mjs` | WCAG contrast between two colors (HEX, rgb, simple oklch) | `node scripts/contrast.mjs "#777" "#fff"` |

@@ -15,6 +15,8 @@ Summary:
   (`workflows/prototype.md`) or direct implementation depending on what the person needs.
 - Design for the platform and its inputs (responsive web, mobile gestures and fluid motion, tablets, desktop
   conventions and shortcuts, touchpad parity), adding shortcuts and gestures only when the product needs them.
+- Never draw icons yourself: one maintained icon family (two at most); two typefaces at most, with contrast from
+  weights and heading levels.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
   bounce, elastic or AI-style pulses unless asked).
 - Dependency-free tools (Node ≥ 18):
@@ -22,7 +24,8 @@ Summary:
   - `node scripts/screenshots.mjs <urls>` (phone and desktop, light and dark; uses the project's Playwright or Chrome)
   - `node scripts/contrast.mjs <text> <background>`
   - `node scripts/slop.mjs <paths> [--lang en,es]` (also flags bouncy, elastic and pulsing motion)
-  - `node scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components)
+  - `node scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components, hand-drawn icons,
+    too many icon families or typefaces)
   - `node scripts/a11y-static.mjs <paths>`
 - Subagent definitions in `agents/` (product researcher, brand analyst, art director, usability reviewer,
   accessibility auditor, interface writer, prototyper): read them as role instructions if your tool has no

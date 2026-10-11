@@ -168,7 +168,8 @@ tokens, never add a raw value that duplicates one.
 ## Checking it
 
 `node scripts/system-check.mjs <paths>` reports hard-coded colors and arbitrary values in components, raw values in
-style attributes, and component files large enough to deserve splitting. It is a prompt for judgment, not a verdict:
+style attributes, component files large enough to deserve splitting, icons drawn by hand, and more than two icon
+families or typefaces across the project. It is a prompt for judgment, not a verdict:
 token definition files and legitimate exceptions are expected to contain raw values.
 
 ## Worked comparison

@@ -66,7 +66,25 @@ Start from the job the image must do.
 
 ## 4. Icons
 
-### Choosing and drawing
+### Never draw icons yourself
+
+**An agent must not generate icons** — no hand-written SVG paths, no icons composed from CSS shapes, no generated
+icon images. Generated icons come out inconsistent in stroke, grid and optical weight, and they look amateur next to
+a professional set. Use an existing, maintained icon family instead:
+
+- Use the family the project already has. If it has none, pick one that fits the brand and platform, for example
+  Lucide, Phosphor, Tabler, Heroicons, Material Symbols, Remix Icon, or SF Symbols on Apple platforms (check the
+  license and that it has every icon the product needs).
+- **One family whenever possible; at most two** when one cannot cover the needs (for example a UI set plus a set of
+  brand or payment logos). Never mix families inside the same area of the interface.
+- If the family lacks an icon, choose the closest existing one with a text label, or ask for a designer-made icon
+  drawn on the family's grid. Do not improvise one.
+- Logos and brand marks come from their owners (official asset kits), never redrawn.
+- If the person asks to ignore this rule, you may, but recommend against it once and explain why.
+
+`scripts/system-check.mjs` reports hand-written SVG icons in components and more than two icon libraries.
+
+### Choosing and using a family
 
 - **One set**: the same stroke width, the same grid (often 20 or 24 px), the same corner radius language as the rest
   of the system.

@@ -64,7 +64,8 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
   spacing, radii) and `knowledge/09-typography.md`, `knowledge/10-color.md`,
   `knowledge/17-composition-and-layout.md` to choose values.
 - Hierarchy through size and weight before color; space to group before borders.
-- Icons from a single set, with a text label when their meaning is not universal
+- Icons from a single maintained family (two at most), never drawn by you; a text label when their meaning is not
+  universal
   (`knowledge/19-imagery-icons-and-illustration.md`).
 
 ## 7. Build accessibility in while building

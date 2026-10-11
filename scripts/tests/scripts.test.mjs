@@ -404,3 +404,21 @@ test('a11y: right-click detected by mouse button warns (touchpads fire contextme
   assert.ok(rules('<div onMouseDown={(e) => { if (e.button === 2) openMenu(); }} />').includes('input contextmenu-by-button'));
   assert.ok(!rules('<div onContextMenu={(e) => { e.preventDefault(); openMenu(); }} />').includes('input contextmenu-by-button'));
 });
+
+test('system-check: icons drawn by hand, icon families and typefaces', async () => {
+  const { analyzeFile, iconFamilies, fontFamilies, checkPaths } = await import('../system-check.mjs');
+  const icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 01-2 2H5" /></svg>';
+  assert.ok(analyzeFile(`export const Upload = () => ${icon};`, 'ChatInput.tsx').some((f) => f.rule === 'handmade-icon'));
+  const logo = '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M1 1" /><path fill="#34A853" d="M2 2" /></svg>';
+  assert.ok(!analyzeFile(`const G = () => ${logo};`, 'LoginForm.tsx').some((f) => f.rule === 'handmade-icon'), 'multi-color marks are logos');
+  assert.ok(!analyzeFile(`const L = () => ${icon};`, 'BrandLogo.tsx').some((f) => f.rule === 'handmade-icon'));
+  assert.ok(!analyzeFile('<svg viewBox="0 0 800 400"><path d="M0 0L800 400" /></svg>', 'Chart.tsx').some((f) => f.rule === 'handmade-icon'), 'large drawings are not icons');
+  assert.deepEqual([...iconFamilies("import { Bell } from 'lucide-react';\nimport { FaUser } from 'react-icons/fa';\nimport { Ionicons, MaterialIcons } from '@expo/vector-icons';")],
+    ['Lucide', 'react-icons/fa', 'vector-icons Ionicons', 'vector-icons MaterialIcons']);
+  assert.deepEqual([...fontFamilies(`--font-sans: "Inter Variable", sans-serif; font-family: Inter, Arial; font-family: "JetBrains Mono", monospace; <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&display=swap">`)], ['Inter', 'Fraunces']);
+  const dir = mkdtempSync(join(tmpdir(), 'families-'));
+  writeFileSync(join(dir, 'a.tsx'), "import { Bell } from 'lucide-react';\nimport { HomeIcon } from '@heroicons/react/24/outline';\nimport { FaUser } from 'react-icons/fa';");
+  writeFileSync(join(dir, 'app.css'), 'h1 { font-family: "Playfair Display"; } body { font-family: "DM Sans"; } .x { font-family: Inter; }');
+  const project = checkPaths([dir]).filter((f) => f.file === '(project)').map((f) => `${f.rule}:${f.level}`);
+  assert.deepEqual(project.sort(), ['font-families:warning', 'icon-families:warning']);
+});

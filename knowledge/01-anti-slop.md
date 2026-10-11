@@ -92,6 +92,9 @@ Professional motion is short, decelerates, settles once and has a reason. See [m
 
 ## Code signals
 
+- **Icons drawn by the agent**: inline SVG paths written by hand, icons built from CSS shapes, generated icon images.
+- **Mixed icon families** (more than two, or two in the same area) and **more than two typefaces**.
+
 - **One giant component per screen** that fetches, formats and renders everything.
 - **Raw hex colors and arbitrary values** (`bg-[#7a0f1e]`, `rounded-[13px]`) inside components.
 - **The same value written in many places** instead of a token.

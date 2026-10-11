@@ -45,7 +45,7 @@ Deliver:
 3. **Color**: OKLCH tokens by role (background, text, muted text, border, action, semantic colors), a dark version
    only if the product needs one, and the key contrasts verified (`node scripts/contrast.mjs`).
 4. **Imagery**: type, light, framing, treatment; what to avoid.
-5. **Shape and a recurring graphic gesture.**
+5. **Shape, a recurring graphic gesture and the icon family** (one existing family, two at most; never drawn by you).
 6. **Motion**: personality, curves and durations, a few moments and their reduced version. Decelerating curves that
    settle once; no bounce, elastic or AI-style pulses unless the brief asks for them.
 7. **Intentional decisions**: the choices that make it recognizable, each with its evidence and trade-off.

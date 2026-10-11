@@ -70,7 +70,11 @@ headlines may lose in data (see the worked comparison below).
 
 ## 2. Pairing
 
-- **Two families at most** (plus a monospace for code or data). A third needs a strong reason.
+- **Two families at most whenever possible** (plus a monospace for code or data, when the product shows code). A
+  third needs a strong reason and, if the person asks for it, recommend against it once and explain why.
+- **Build contrast inside the families**: weight (400 vs. 600–700), size, case, letter spacing and color carry
+  hierarchy; semantic heading levels (`h1`–`h6`) structure the page. One well-chosen family with three weights is
+  usually more professional than three families.
 - **Contrast in one dimension, not all**: serif with sans of similar proportions (similar x-height), or one family at
   opposite weights.
 - **Avoid two similar sans-serifs** (for example two neo-grotesques): it looks like a mistake, not a decision.
