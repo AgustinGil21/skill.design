@@ -24,4 +24,9 @@
 | 2026-10-11 | same | 9 (white-label, fixture) | 1 | 2 | 2 | 3 | 3 | 3 | None | Removed one client's hard-coded brand; base tokens plus per-tenant tokens; brand color as background only because one tenant's yellow fails as text; flagged font licensing |
 | 2026-10-11 | same | 16 (checkout critique, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Report with severity, observed vs. inferred and confidence: non-functional div button, total only after payment, pre-checked newsletter, 2.32:1 notice; no edits |
 
-Not yet run: scenarios 8, 14, 17, 19, 20, 21, and repeated runs (the rubric asks for three per scenario).
+| 2026-10-11 | 0db9007 | 17 (audit and fix, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | WCAG table with criterion, who is affected and fix; separated design decisions for the person (pre-checked newsletter, unknown total, language). Left raw colors because the project has no tokens (said so) |
+| 2026-10-11 | same | 19 (desktop context menu, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Native Electron menu with trade-offs; right-click, two-finger tap, Ctrl+click, Shift+F10 and Menu key; Finder/Explorer names and shortcuts per OS; no Ctrl+D for duplicate on Windows because it deletes in Explorer; fixed a listbox that claimed selection |
+| 2026-10-11 | same | 20 (tablet adaptation, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | List and detail side by side from 720 dp by window width (rotation, split view); phone unchanged; small components; new states; considered a kitchen board as alternative |
+| 2026-10-11 | same | 21 (unneeded shortcuts, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Added nothing; explained why (no daily use, two actions, accessibility costs, tone); proposed useful keyboard work and left the decision with options |
+
+Not yet run: scenarios 8 and 14, and repeated runs (the rubric asks for three per scenario).

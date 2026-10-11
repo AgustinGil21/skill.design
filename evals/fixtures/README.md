@@ -17,3 +17,5 @@ temporary folder before running a scenario, so any file the agent writes does no
 | `desktop-files-app/` | 19 (context menus and shortcuts in a desktop app) |
 | `phone-orders-app/` | 20 (adapt a phone app to tablets) |
 | `marketing-site/` | 21 (shortcuts and a command palette that are not needed) |
+| `burgundy-brand-app/` | 8 (add a page within an existing brand that has inconsistencies) |
+| `approved-component/` | 14 (implement an approved component with a design context already in place) |

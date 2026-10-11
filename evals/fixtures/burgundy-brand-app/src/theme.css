@@ -1,0 +1,8 @@
+@theme {
+  --color-brand: #6b1d2a;
+  --color-brand-soft: #f6ecee;
+  --color-text: #1f1a1b;
+  --color-text-muted: #6b6264;
+  --color-border: #e7dfe1;
+  --radius-card: 0.75rem;
+}

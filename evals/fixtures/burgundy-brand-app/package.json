@@ -1,0 +1,1 @@
+{ "name": "vinoteca-club", "private": true, "description": "Wine club members area: subscriptions, shipments and tastings", "dependencies": { "react": "19.0.0", "tailwindcss": "4.0.0" } }

@@ -1,0 +1,9 @@
+@theme {
+  --color-action: oklch(0.52 0.09 190);
+  --color-danger: oklch(0.52 0.19 25);
+  --color-surface: oklch(0.99 0.003 190);
+  --color-text: oklch(0.24 0.02 220);
+  --color-text-muted: oklch(0.47 0.02 220);
+  --color-border: oklch(0.9 0.01 220);
+  --radius-card: 0.5rem;
+}
