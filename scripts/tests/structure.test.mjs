@@ -44,7 +44,7 @@ function resolves(path, from) {
 }
 
 // Files that live in the user's project or are written by the scripts, not in the skill.
-const PROJECT_FILES = new Set(['DESIGN-CONTEXT.md', 'DESIGN.md', 'PRODUCT.md', 'report.md']);
+const PROJECT_FILES = new Set(['DESIGN-CONTEXT.md', 'DESIGN.md', 'PRODUCT.md', 'report.md', 'index.md']);
 
 test('every path cited in SKILL.md, AGENTS.md, workflows, agents and templates exists', () => {
   const dirFiles = (dir) => readdirSync(join(ROOT, dir)).map((f) => `${dir}/${f}`);
