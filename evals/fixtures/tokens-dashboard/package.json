@@ -1,0 +1,1 @@
+{ "name": "fleetline", "private": true, "description": "Dispatch dashboard for delivery fleets", "dependencies": { "react": "19.0.0", "tailwindcss": "4.0.0" } }

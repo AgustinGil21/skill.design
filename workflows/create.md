@@ -84,5 +84,6 @@ Fill in `templates/brief.md` (mentally or in writing, depending on size).
    images (`knowledge/33-looking-at-the-real-interface.md`); check keyboard, 200 % zoom, 320 px width, dark mode if
    it exists, reduced motion, the longest locale. Compare with screenshots taken before the change.
 4. Go through `knowledge/06-review.md`.
-5. Report what was done, which assumptions were made, which alternative was discarded and why, and which level of
+5. Report the whole result, not only the last change: what was built (files and structure), what was done, which
+   assumptions were made, which alternative was discarded and why, and which level of
    verification was reached.

@@ -1,0 +1,1 @@
+{ "name": "iron-provinces", "private": true, "description": "Grand strategy game: manage provinces, trade and armies over long campaigns", "dependencies": { "react": "19.0.0" } }

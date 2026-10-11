@@ -1,0 +1,1 @@
+{ "name": "neon-rift", "private": true, "description": "5v5 competitive arena shooter for the browser", "dependencies": { "phaser": "3.80.0", "react": "19.0.0" } }

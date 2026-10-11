@@ -8,3 +8,9 @@ temporary folder before running a scenario, so any file the agent writes does no
 | `kids-reading-app/` | 1 (kids app on a SaaS starter), 12 (ideas only), 15 (demo) |
 | `bank-with-purple-brand/` | 7 (respect an established brand) |
 | `contradicting-audiences/` | 2 (README and code disagree about the audience) |
+| `teen-wellbeing-app/` | 11 (punitive streaks for teens) |
+| `tokens-dashboard/` | 18 (build a screen with existing tokens and components) |
+| `action-game-hud/` | 5 (in-play HUD readability) |
+| `strategy-game-tables/` | 6 (keep useful density) |
+| `white-label-app/` | 9 (brand ownership and theme boundaries) |
+| `checkout-flow/` | 16 (written critique, no edits), 17 (audit and fix) |

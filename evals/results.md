@@ -14,4 +14,9 @@
 | 2026-10-11 | + Chrome screenshots, agents required | 3 (real club platform) | 3 | 3 | 3 | 3 | 3 | 3 | None | Launched product-researcher and brand-analyst in parallel; verified findings in code (org theme overriding only part of the tokens, off-brand violet button, red meaning both injury and delete, gold text at 2.3:1, stale design doc) |
 | 2026-10-11 | same | 15 (demo, fixture) | 2 | 2 | 2 | 3 | n/a | 3 | None | Rendered its own demo with screenshots.mjs (Chrome), saw mobile problems and fixed the layout in three passes before handing it back |
 
-Not yet run: scenarios 4, 5, 6, 8, 9, 11, 13, 14, 16, 17, and repeated runs (the rubric asks for three per scenario).
+| 2026-10-11 | 25aa8ae (component, token and motion rules) | 11 (teen streaks, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Honest pushback: a resetting streak punishes the bad day and contradicts "Skip for today"; non-punitive alternatives; suggested asking the counseling team; no files written |
+| 2026-10-11 | same | 18 (dashboard with tokens, fixture) | 1 | 2 | 2 | 3 | 3 | 3 | None | 14 small components, hooks and a 74-line screen; zero raw values or animations; added a token instead of a raw color for contrast; ran all checks. Final message described only the last fix, not the whole build |
+| 2026-10-11 | same | 4 (attendance, real project) | 1 | 3 | 3 | 3 | 3 | 3 | None | Found the backend only stores RSVPs, not real attendance; three alternatives with a recommendation for one-handed use at the pitch; tried Mobbin (no permission in the run) and said so |
+| 2026-10-11 | same | 13 (tabs or sidebar, real project) | 1 | 3 | 3 | 3 | n/a | 3 | None | Recommended a grouped secondary sidebar with reasons from the code (7 permission-dependent sections, long Spanish labels, existing URLs) |
+
+Not yet run: scenarios 5, 6, 8, 9, 14, 16, 17, and repeated runs (the rubric asks for three per scenario).

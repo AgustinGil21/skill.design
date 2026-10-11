@@ -1,0 +1,1 @@
+{ "name": "loyalto", "private": true, "description": "White-label loyalty app sold to retailers; each client ships it under its own brand", "dependencies": { "react": "19.0.0" } }
