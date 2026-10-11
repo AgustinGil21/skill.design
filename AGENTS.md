@@ -1,23 +1,23 @@
-# Skill de diseño — instrucciones para cualquier agente
+# Design skill — instructions for any agent
 
-Este archivo es para agentes que no cargan skills automáticamente (Codex, Cursor, Gemini, Copilot, etc.).
-Las instrucciones completas están en [SKILL.md](SKILL.md): leelo primero y seguí su enrutador.
+This file is for agents that do not load skills automatically (Codex, Cursor, Gemini, Copilot and others).
+The full instructions are in [SKILL.md](SKILL.md): read it first and follow its router.
 
-Resumen:
+Summary:
 
-- Cuando la tarea toque interfaces, sitios, landings, textos de interfaz, accesibilidad, tipografía, color o marca,
-  usá esta skill.
-- No cargues todo: `SKILL.md` indica qué flujo (`flujos/*.md`) leer según la tarea, y el flujo indica qué archivos de
-  `conocimiento/` abrir.
-- Herramientas sin dependencias (Node ≥ 18):
-  - `node scripts/contraste.mjs <texto> <fondo>`
-  - `node scripts/slop.mjs <rutas>`
-  - `node scripts/a11y-estatico.mjs <rutas>`
-- Definiciones de subagentes en `agentes/` (director de arte, revisor de usabilidad, auditor de accesibilidad,
-  redactor de interfaz): podés leerlas como instrucciones de rol si tu herramienta no tiene subagentes.
+- Use this skill whenever the task touches interfaces, websites, landing pages, interface copy, accessibility,
+  typography, color or brand, in any language.
+- Do not load everything: `SKILL.md` says which workflow (`workflows/*.md`) to read for the task, and the workflow
+  says which `knowledge/` files to open.
+- Dependency-free tools (Node ≥ 18):
+  - `node scripts/contrast.mjs <text> <background>`
+  - `node scripts/slop.mjs <paths> [--lang en,es]`
+  - `node scripts/a11y-static.mjs <paths>`
+- Subagent definitions in `agents/` (art director, usability reviewer, accessibility auditor, interface writer): read
+  them as role instructions if your tool has no subagents.
 
-Para usarla desde un proyecto, agregá al `AGENTS.md` del proyecto una línea como:
+To use it from a project, add a line like this to the project's `AGENTS.md`:
 
 ```
-Para cualquier trabajo de diseño, interfaz, accesibilidad o textos, seguí la skill en ~/Documents/Programming/Skills/diseno/SKILL.md
+For any design, interface, accessibility or copy work, follow the skill at ~/Documents/Programming/Skills/design/SKILL.md
 ```
