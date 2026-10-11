@@ -39,15 +39,18 @@ All paths are relative to this skill's folder.
    signals are questions, not verdicts: an established brand's real identity wins over the list, and an unusual
    palette needs a reason as much as a conventional one. Do not replace generic with a new house style (cream,
    terracotta and editorial serifs everywhere); fit the product.
-8. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
+8. **Look at the real interface**, not only the code: screenshots or a browser on phone and desktop, light and
+   dark, with realistic data (`knowledge/33-looking-at-the-real-interface.md`). Use live references and design files
+   when tools for them are available (`knowledge/34-references-and-design-tools.md`). Say what you could not see.
+9. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
    not replace it unless asked.
-9. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
+10. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
    `knowledge/08-real-state-and-verification.md`).
-10. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
+11. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
     feedback on the person's ideas (what works, risks, alternatives, recommendation), without flattery or reflexive
     criticism (`knowledge/31-critique-feedback-and-options.md`). When a request is open, offer the ways you can help
     (critique report, ideas, feedback, demo, build, brand study; see `workflows/start.md`, step 6).
-11. **Any language.** Write the output in the product's language and form of address; by default, the language of
+12. **Any language.** Write the output in the product's language and form of address; by default, the language of
     the person asking. Apply copy rules by their function, not by English wording, and account for plurals,
     text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`).
 
@@ -112,6 +115,8 @@ in order.
 | Product domains, audiences and tone (kids, finance, health, games, AI, B2B…) | `30-product-domains-and-tone.md` |
 | Critique, feedback on ideas, presenting options, asking questions | `31-critique-feedback-and-options.md` |
 | Reading and auditing an existing brand | `32-reading-an-existing-brand.md` |
+| Looking at the real interface (screenshots, browser, what a screen can prove) | `33-looking-at-the-real-interface.md` |
+| Live references (Mobbin) and design files (Figma) | `34-references-and-design-tools.md` |
 | Reasoned case studies | `knowledge/cases/README.md` |
 
 ### Patterns by screen type (`knowledge/patterns/`)
@@ -152,7 +157,8 @@ conversion forms, dark aesthetics, blogs, full recipes and CSS motion recipes).
 
 | Script | What for | Usage |
 | --- | --- | --- |
-| `scripts/design-scan.mjs` | Evidence about a project: product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |
+| `scripts/screenshots.mjs` | Screenshots of a running interface: phone and desktop, light and dark, reduced motion (uses the project's Playwright or the installed Chrome) | `node scripts/screenshots.mjs <urls> [--out dir]` |
+| `scripts/design-scan.mjs` | Evidence about a project, web or native (Flutter, iOS, Android, React Native): product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |
 | `scripts/contrast.mjs` | WCAG contrast between two colors (HEX, rgb, simple oklch) | `node scripts/contrast.mjs "#777" "#fff"` |
 | `scripts/slop.mjs` | Detects generic copy and styles (hollow phrases per language, purple-blue gradients, decorative emojis, lorem) | `node scripts/slop.mjs <files or folders> [--lang en,es]` |
 | `scripts/a11y-static.mjs` | Static check of HTML/JSX/Astro/Vue: images without alt, unnamed buttons, skipped headings, unlabeled fields, `outline: none`, positive `tabindex`, `lang` | `node scripts/a11y-static.mjs <files or folders>` |
@@ -180,7 +186,9 @@ questions; expected output.
 | `interface-writer` | Interface and marketing copy in any language | Copy work, reviews |
 | `prototyper` | Quick demos and variants in code | When the person wants to see or compare ideas |
 
-Use them when the person asks, at the start of a project, or when a large task benefits from parallel perspectives
+At the start of a project with more than about 30 source files, launching `product-researcher` and
+`brand-analyst` in parallel is **required**, not optional (`workflows/start.md`, step 2). Otherwise use agents when
+the person asks, or when a large task benefits from parallel perspectives
 (a full review = usability + accessibility + copy at once, then merged into one report). For small tasks, do the
 work yourself following the same files.
 

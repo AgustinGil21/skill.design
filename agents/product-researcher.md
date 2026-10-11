@@ -35,6 +35,11 @@ The prompt that launched you should give the `design` skill folder. If it does n
 6. **Triangulate**: a conclusion needs at least two independent sources. When sources disagree (the landing page
    says "for families", the data model has "tenant" and "invoice"), say so: the disagreement is a finding.
 
+**Look at the real interface** when you can: screenshots passed in the prompt, or capture them with
+`node <skill>/scripts/screenshots.mjs <urls>` if the app is already running (do not start servers or install
+anything yourself), and read the images (`knowledge/33-looking-at-the-real-interface.md`). Say which findings come
+from screens, which from code, and which are predictions.
+
 ## What you infer, and how
 
 - **Domain and category** in plain words ("management platform for amateur sports clubs: members, fees, training

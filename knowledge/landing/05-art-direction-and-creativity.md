@@ -26,13 +26,13 @@ other template with different colors.
 
 Generate two or three **territories** that are genuinely different, then choose with criteria.
 
-**Example:** a cycling insurance product.
+**Fictional example:** a cycling insurance product.
 
 | Territory | Idea | Visual language | Risk |
 | --- | --- | --- | --- |
-| **The road** | Insurance as part of the ride | Motion photography, road lines as graphic gesture | Can look like a bike brand, not insurance |
-| **The repair shop** | Practical, mechanical reassurance | Workshop materials, technical drawings, numbered parts | Can feel cold |
-| **The community** | Riders protecting riders | Portraits of real riders, warm palette | Can drift into generic "community" imagery |
+| **The road** | Insurance as part of the ride | Road photography and lines | May imply a bike brand |
+| **The repair shop** | Practical reassurance | Materials and technical drawings | Can feel cold |
+| **The community** | Riders protecting riders | Portraits of real riders, warm palette | May feel generic |
 
 Criteria:
 
@@ -94,7 +94,8 @@ ornament?
 
 ## Creativity vs. clarity
 
-- The visual idea **accompanies** the message; it never replaces it. The headline still says what it is.
+- The visual idea **accompanies** the message; it should not obscure the practical explanation. The headline still
+  says what it is.
 - Experimental approaches work for studios, campaigns and portfolios (the experience is the product). In a SaaS,
   creativity lives in the concept, typography and moments, not in hiding navigation.
 - **Anti-example**: a site that opens with random letters and a dot on a black screen, without saying what it is or
@@ -118,7 +119,7 @@ A direction that only works with ideal content fails in production. Test it with
 - Are the fonts licensed for all uses and languages?
 - Does the motion work on modest devices?
 
-## Signs of autopilot (avoid them)
+## Signs of autopilot (investigate their purpose)
 
 - Purple-blue gradients, blurred blobs, frosted glass, glows and background "auroras".
 - Centered hero + three cards + logos + testimonial carousel + blue CTA: everyone's template.
@@ -128,12 +129,15 @@ A direction that only works with ideal content fails in production. Test it with
 - Flat illustrated people with long limbs and no features (generic corporate style).
 - Everything with the same radius, shadow and spacing: no rhythm.
 
+These are diagnostic signals, not prohibited styles. Existing brand equity or a specific concept can justify any
+of these ingredients; the problem is choosing them without a reason.
+
 See [anti-slop](../01-anti-slop.md).
 
 ## Finding references without copying
 
 - Look outside the category: magazines, posters, packaging, architecture, film, the product's physical world.
-- Look at 10–20 sites in the category to know what is common… and do something else.
+- Review enough category references to distinguish useful conventions from repeated decoration.
 - Take a principle (how it uses color, how it composes), not the literal form.
 
 ## Critique with the same brief
@@ -141,7 +145,149 @@ See [anti-slop](../01-anti-slop.md).
 When comparing directions, critique them against the same brief and real content, side by side: which one makes the
 product clearer, which one is more recognizable, which one will the team be able to sustain?
 
+## Questions before proposing a territory
+
+- Which product truth should become easier to recognize because of this direction?
+- What does the audience need to trust, and what do they need to desire or understand?
+- Which existing assets carry recognition, and which are merely inherited production defaults?
+- Is this an enduring product identity or a temporary campaign with a defined end?
+- What content is available with permission, and what production can the team sustain?
+- Which devices, languages and assistive settings expose the direction's weak points?
+- How will it behave when the offer is unavailable or the person encounters an error?
+- What observation would make the team reject its preferred direction?
+
+Distinguish a visual hypothesis from a business fact. "Mechanical detail may communicate repair expertise" is a
+hypothesis; it is not proof that riders prefer technical diagrams. Evaluate the concept through realistic tasks
+and recognition, not only whether the team likes the moodboard.
+
+## Alternatives with real trade-offs
+
+| Situation | Direction | Why | Cost |
+| --- | --- | --- | --- |
+| Established identity with equity | Evolve current ingredients | Preserves recognition | Less visible novelty |
+| Product value is inspectable | Product-led composition | Demonstrates capability | Product imagery must stay current |
+| Material or craft differentiates | Photography-led story | Makes quality tangible | Requires repeatable production |
+| Abstract mechanism | Explanatory illustration | Makes relationships visible | Metaphor can oversimplify |
+| Campaign sells an experience | Expressive immersive moment | Demonstrates the idea | Adds resource and access risks |
+| Frequent publishing | Typographic system | Works with uneven assets | Needs strong editorial discipline |
+
+A direction should be rejected when its production cost exceeds its likely useful life, even if the prototype is
+beautiful. A launch can justify a commissioned scene; a weekly editorial operation needs a system that survives
+ordinary content. This is a maintenance decision rather than a judgment that one medium is more sophisticated.
+
+Do not use a metaphor when it creates a false model of the product. Insurance as an invulnerable shield can imply
+unlimited protection; a more literal repair image may support reassurance without concealing exclusions. If an
+expressive metaphor remains, nearby practical content must make the actual scope understandable.
+
+## From concept to a decision record
+
+For each proposed territory, write the same brief, content and constraints. Show a hero, a dense information block,
+a conversion moment and a failure state. This reveals whether the direction is a system or a single attractive
+poster. Include a narrow viewport and a language with different shaping or line-breaking behavior.
+
+Record what is fixed and what may vary. The palette's functional roles may be stable while campaign imagery changes.
+A crop can be expressive while a control target stays predictable. This distinction lets contributors produce new
+work without copying each previous layout or inventing a new style for every page.
+
+A useful rule states a reason and an exception. For example: use numbered callouts to connect material details
+with evidence; omit numbering when there is no meaningful sequence or relationship. Arbitrary rules such as "every
+section needs a large numeral" turn a concept into clutter once the original content changes.
+
+## States, missing assets and production edges
+
+| State or constraint | Direction must preserve | Example response |
+| --- | --- | --- |
+| Font loading or unavailable | Reading hierarchy | Test a compatible fallback and its line breaks |
+| Image missing | Meaning and rhythm | Use an editorial text treatment, not an empty decorative box |
+| Video disabled | Product explanation | Publish a useful still with supporting text |
+| Consent not granted | Access to essential facts | Avoid tying core meaning to a third-party embed |
+| Offer unavailable | Honest tone | Replace celebratory art with a clear explanation |
+| Form error | Legibility and recovery | Keep functional contrast and a stable message area |
+| High contrast settings | Distinct controls | Check boundaries and focus without relying on shadows |
+| Content grows | Editorial hierarchy | Let the layout expand rather than crop qualifications |
+| Image rights expire | Publishable fallback | Maintain a replacement plan with a named owner |
+
+Do not assume every missing image deserves a generic substitute. A deliberate text-led fallback can preserve trust
+better than a stock image that suggests the wrong material, audience or place. Specify its use in the direction
+so an editor does not need to improvise under launch pressure.
+
+## Accessibility: requirements and creative choices
+
+WCAG 1.4.3 Contrast (Minimum) (AA) applies to functional text; decorative atmosphere does not excuse unreadable
+headings or qualifications. WCAG 1.4.11 Non-text Contrast (AA) applies to relevant controls and graphical objects.
+Evaluate the actual composited colors, including overlays, image crops and interactive states.
+
+WCAG 1.4.4 Resize Text (AA), 1.4.10 Reflow (AA) and 1.4.12 Text Spacing (AA) constrain rigid editorial layouts.
+A striking crop of decorative lettering differs from cropping the only readable product explanation. Test the
+meaningful content with enlarged text and changed spacing rather than assuming the composition will adapt.
+
+WCAG 1.1.1 Non-text Content (A) requires appropriate alternatives for meaningful visuals. A decorative motif can
+have an empty alternative, while a material detail demonstrating construction needs an explanation. Avoid making
+screen reader users hear the same promotional sentence from both the image and its adjacent caption.
+
+As recommendations, preserve a quiet area for decisions, use experimental typography where reading demand is low,
+and keep control conventions recognizable. A serif, unconventional color or dense composition is not inherently
+inaccessible. Its suitability depends on legibility, semantics, task and implementation.
+
+## Localization beyond translated headlines
+
+A concept may rely on a cultural object, visual pun or gesture that means something different elsewhere. Ask local
+reviewers what they infer before explaining the intended metaphor. If it needs a long defense, consider a more
+portable expression rather than blaming the audience for missing it.
+
+Check font coverage, shaping and weights in the actual scripts. Do not substitute a thin fallback because it looks
+closer to the Latin display face if it harms readability. The typographic relationship may need to be preserved
+through proportion and hierarchy rather than through an identical typeface family.
+
+Images containing text need a source file and a localization owner. Directional callouts need right-to-left review;
+physical objects and logos should not be mirrored automatically. Long compounds, scripts without spaces and mixed
+numerals can alter composition. Test those conditions before freezing image crops or animation masks.
+
+Color meanings and representation need contextual review, but avoid simplistic national color rules. Consider
+market, occasion, audience and existing brand recognition together. Photography permissions and cultural fit are
+separate questions; permission to use an image does not prove that it communicates the intended relationship.
+
+## Worked comparison: cycling insurance
+
+This fictional scenario continues the cycling example. The offer includes repair support under stated conditions;
+no claim about response speed or claim acceptance is established. The visitor is comparing coverage after buying
+a bicycle, and the page needs to make exclusions easy to inspect.
+
+**Weak:** racing photography, a dark cinematic entrance and a shield icon create excitement. Coverage text appears
+in faint type over moving footage, and "Ride without limits" implies a broader promise than the policy supports.
+The direction could plausibly advertise a bicycle, a clothing label or an insurance product.
+
+**Stronger:** the repair-shop territory uses close views of parts and practical annotations. The hero states the
+coverage category and the action leads to checking cover. Expressive details recur in headings and transitions,
+while terms use a quiet background and ordinary reading hierarchy. An error state remains direct and calm.
+
+The stronger direction connects expression to the service's role without implying universal protection. It gives
+up some aspirational energy. Choose the road territory instead if the campaign brief and evidence support desire
+as the immediate task, but retain an explicit category explanation and a readable route to policy detail.
+
+Reject the community territory if permitted portraits and meaningful member stories are unavailable. Inventing a
+community to fill the moodboard would weaken trust. Reconsider that alternative when actual community activity
+becomes part of the service rather than merely a plausible visual theme.
+
+## Verification and measurement
+
+Present territories with the same content and comparable finish. Ask what product each appears to offer, what
+feels credible, which detail they remember and what they expect after acting. Separate recognition, understanding
+and preference; an attractive direction can improve preference while making the category less clear.
+
+Use delayed recall only as a diagnostic within a defined study, not as a universal brand-effectiveness score.
+Inspect qualified progression and confusion alongside brand response. A traffic change, campaign launch or new
+offer can explain conversion movement without the art direction being its cause.
+
+Production verification includes an ordinary editor making a new page, not just the original designer polishing
+one hero. Check asset preparation time, missing-language fallbacks and update burden. Reject a direction that
+requires repeated exceptions to keep practical content legible; a usable system should support routine variation.
+
 ## Common mistakes
+
+Effects without a concept often result from presenting moodboards without realistic content. Compare the same
+message and failure states across directions before deciding. Drift usually reflects missing production rules or
+unavailable assets, so repair the system and ownership rather than blaming each editor’s taste.
 
 - **Effects without an idea.**
 - **Territories that are variations of one idea.**
@@ -158,3 +304,7 @@ product clearer, which one is more recognizable, which one will the team be able
 - [ ] Tested with difficult content, translations, dark mode and mobile.
 - [ ] Production and maintenance are realistic.
 - [ ] Clarity intact: the headline still says what the product is.
+
+- [ ] Missing assets and high contrast settings preserve meaning and control.
+- [ ] Local script coverage and cultural interpretation were reviewed.
+- [ ] The direction improves recognition without obscuring product category or terms.

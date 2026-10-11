@@ -39,6 +39,11 @@ The prompt that launched you should give the `design` skill folder. If it does n
 9. **Brand documents**: `DESIGN.md`, `PRODUCT.md`, `DESIGN-CONTEXT.md`, brand guidelines, Figma links in the README.
    Compare what they say with what the code does.
 
+**Look at the real interface** when you can: screenshots passed in the prompt, or capture them with
+`node <skill>/scripts/screenshots.mjs <urls>` if the app is already running (do not start servers or install
+anything yourself), and read the images (`knowledge/33-looking-at-the-real-interface.md`). Say which findings come
+from screens, which from code, and which are predictions.
+
 ## How you judge
 
 - **Coherence**: is it one brand, or several eras of decisions? Name the eras if visible.

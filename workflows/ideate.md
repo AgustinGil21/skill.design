@@ -25,8 +25,9 @@ Produce more ideas than you will show, from different angles:
 - **Push one quality to the extreme**: radically simple, radically fast, radically personal, radically visual.
 - **The contrarian option**: the opposite of what competitors do, if it serves the audience.
 
-Use references: patterns in `knowledge/patterns/`, cases in `knowledge/cases/`, and Mobbin examples when a Mobbin tool
-is available.
+Use references: patterns in `knowledge/patterns/`, cases in `knowledge/cases/`, and — when a Mobbin (or similar)
+tool is available — a live search by job and platform, grouped by approach and cited in the directions
+(`knowledge/34-references-and-design-tools.md`). Take principles, not looks.
 
 ### 3. Converge to two to four directions
 

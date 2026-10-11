@@ -1,0 +1,5 @@
+{
+  "home": { "title": "Which story shall we read today?", "subtitle": "Tap a book to start. You can listen first if a word is tricky." },
+  "reward": { "title": "You read the whole story! Your sprout grew a new leaf." },
+  "parents": { "title": "Parent area", "gate": "Ask a grown-up: what is 7 + 5?", "progress": "Minutes read this week and new words learned" }
+}

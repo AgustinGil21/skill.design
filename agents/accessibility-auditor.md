@@ -23,6 +23,11 @@ answer would change.
 
 Follow `workflows/accessibility.md`. Read `knowledge/02-accessibility.md` and `knowledge/15-advanced-accessibility.md`.
 
+**Look at the real interface** when you can: screenshots passed in the prompt, or capture them with
+`node <skill>/scripts/screenshots.mjs <urls>` if the app is already running (do not start servers or install
+anything yourself), and read the images (`knowledge/33-looking-at-the-real-interface.md`). Say which findings come
+from screens, which from code, and which are predictions.
+
 Tools:
 - `node <skill>/scripts/a11y-static.mjs <paths>` for the code.
 - `node <skill>/scripts/contrast.mjs <text-color> <background-color>` for every combination found in styles and

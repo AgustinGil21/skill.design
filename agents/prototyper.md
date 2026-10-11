@@ -24,6 +24,9 @@ it points to for the screen type.
   inside the project (when it must use the real components and tokens), or a set of variants on one page (when
   comparing directions). Use what the prompt asks for; otherwise choose and say why.
 
+When a design exists in a design tool and a tool can read it, start from it; when live references are available,
+look at two or three real examples of the pattern before building (`knowledge/34-references-and-design-tools.md`).
+
 ## How you build
 
 - **Real content**: the product's real words, realistic data in the product's language and formats, long names and
@@ -43,7 +46,8 @@ it points to for the screen type.
 
 ## Before handing it back
 
-1. Open it or render it if you can (a browser, a dev server, a screenshot tool) and fix what is broken.
+1. Render it and look at it: `node <skill>/scripts/screenshots.mjs <url or file:// path>` (phone and desktop, light
+   and dark) or a browser tool; read the images and fix what is broken.
 2. Run `node <skill>/scripts/slop.mjs <files>` and `node <skill>/scripts/a11y-static.mjs <files>`.
 3. Report: where it is and how to open it, the question it answers, what each variant tries, what is simulated,
    what you could not verify, and the recommended next step (test with people, refine, build for real, discard).

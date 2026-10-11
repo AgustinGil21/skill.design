@@ -14,7 +14,8 @@ Summary:
   recommendation, and give honest feedback on ideas (`workflows/ideate.md`). Offer critique reports, demos
   (`workflows/prototype.md`) or direct implementation depending on what the person needs.
 - Dependency-free tools (Node ≥ 18):
-  - `node scripts/design-scan.mjs <project>`
+  - `node scripts/design-scan.mjs <project>` (web and native projects)
+  - `node scripts/screenshots.mjs <urls>` (phone and desktop, light and dark; uses the project's Playwright or Chrome)
   - `node scripts/contrast.mjs <text> <background>`
   - `node scripts/slop.mjs <paths> [--lang en,es]`
   - `node scripts/a11y-static.mjs <paths>`

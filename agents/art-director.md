@@ -33,6 +33,11 @@ Read, in this order:
 If the project has an existing system or brand, read it in the repository first (or the `brand-analyst` report):
 separate what is preserved from what is proposed, and respect it unless you are asked to replace it.
 
+**References and design files**: when a Mobbin (or similar) tool is available, search real examples by job and
+platform, group them by approach and cite them; when the project has Figma (or other design) files and a tool can
+read them, read the relevant frames and variables (`knowledge/34-references-and-design-tools.md`). Take principles,
+not looks.
+
 Deliver:
 1. **Concept in one sentence** and why it fits the product and its audience.
 2. **Typography**: families with roles, scale (ratio and values), details (spacing, numerals), and coverage of every

@@ -18,6 +18,9 @@ Fill in `templates/brief.md` (mentally or in writing, depending on size).
 ## 2. Find the pattern and model the information
 
 - Open the matching file in `knowledge/patterns/` (see the map in `SKILL.md`).
+- If a design exists in Figma (or another design tool) and a tool can read it, read it first and adapt it to the
+  project's components and tokens. For unfamiliar screen types, search live references when a Mobbin tool is
+  available (`knowledge/34-references-and-design-tools.md`).
 - Read its "questions to ask before deciding" and answer them for this case.
 - If the screen organizes several objects or sections, sketch the objects, their relationships and the words the
   person uses for them (`knowledge/22-information-architecture.md`).
@@ -69,8 +72,9 @@ Fill in `templates/brief.md` (mentally or in writing, depending on size).
 
 1. `node scripts/a11y-static.mjs <touched files>` and `node scripts/slop.mjs <touched files>`.
 2. Contrast of any new color pair with `node scripts/contrast.mjs`.
-3. Look at the real result: keyboard, 200 % zoom, 320 px width, dark mode if it exists, reduced motion, the
-   longest locale.
+3. Look at the real result: capture it with `node scripts/screenshots.mjs <urls>` or a browser tool and review the
+   images (`knowledge/33-looking-at-the-real-interface.md`); check keyboard, 200 % zoom, 320 px width, dark mode if
+   it exists, reduced motion, the longest locale. Compare with screenshots taken before the change.
 4. Go through `knowledge/06-review.md`.
 5. Report what was done, which assumptions were made, which alternative was discarded and why, and which level of
    verification was reached.

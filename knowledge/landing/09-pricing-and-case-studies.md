@@ -28,7 +28,7 @@ for detailed comparison tables, see [comparison, support and reviews](../pattern
   The struck price must be the real monthly price, not an inflated anchor.
 - **Separate plan families** before the cards (Site · Ecommerce; Start · Scale) instead of eight cards at once
   (Webflow, Circle).
-- **Three or four plans**, each with **who it is for** in one line ("For a blog or content site"), price with its
+- **A manageable set of plans**, each with **who it is for** in one line ("For a blog or content site"), price with its
   unit ("per user / month"), a button, and what it includes.
 - **"Everything in the previous plan, plus:"** to avoid repeating lists (OpenPhone).
 - **One highlighted plan** ("Most popular" only if true) with a border or band; enterprise in another tone with "Talk
@@ -36,7 +36,7 @@ for detailed comparison tables, see [comparison, support and reviews](../pattern
 - **Limits with numbers and an info tooltip** per row (items, form submissions, bandwidth; Webflow) instead of
   "Unlimited*".
 - **A button per plan that says what happens**: "Try 14 days" on self-serve plans, "Contact sales" on enterprise; the
-  current plan disabled if the person is signed in.
+  current plan identified if the person is signed in, with account management available where useful.
 - **A full comparison table below**, billing FAQ and a closing.
 - **Anti-example**: a pricing page that loads black with no content until an animation ends
   ([FLORA](https://mobbin.com/sites/sections/ce9e2e4f-09d6-4055-9271-7bdeb75ed593)).
@@ -50,7 +50,7 @@ for detailed comparison tables, see [comparison, support and reviews](../pattern
 | Per-seat pricing | Price per seat, a seat selector, total shown | Hiding the minimum seats |
 | Usage-based | Calculator (below) plus examples | Visitors unable to estimate their bill |
 | Several products | Family selector first, then plans | Eight cards on one screen |
-| Enterprise-heavy | Two self-serve plans + "Talk to us" with what it includes | "Contact us" with no information at all |
+| Enterprise-heavy | Self-serve offers plus explained sales option | "Contact us" without scope |
 
 ### Ethics of pricing design
 
@@ -102,7 +102,8 @@ Pricing is where persuasion turns into manipulation most easily (see
 ### What makes a case study persuasive
 
 A case study persuades when a visitor recognizes themselves in it (same industry, size, problem) and sees a specific,
-credible result. Praise without numbers, or results without context, do not persuade.
+credible result. Numbers help when their basis is sound; a concrete qualitative account can be stronger than
+an unsupported percentage. The visitor needs to understand whether the conditions resemble their own.
 
 ### Structure
 
@@ -132,14 +133,146 @@ credible result. Praise without numbers, or results without context, do not pers
 
 - Every name, logo, photo, figure and quote approved by the customer, with a date.
 - Results attributed to the product only as far as the customer would say.
-- Remove or update cases when the customer leaves or the product changes substantially.
+- Review cases when the customer leaves or the product changes. A historical case may remain with permission and
+  clear dates, provided it does not imply a current endorsement or currently available capability.
 
 ### Case studies across markets
 
 Visitors trust customers from their own market and size. Tag cases by region and language; feature local cases on
 local pages; translate with the customer's approval of the translated quote.
 
-## Worked comparison
+## Match the evidence to the commitment
+
+The pricing page and case study often serve different people in the same decision. An operator checks whether the
+workflow fits, a manager estimates value, and a buyer checks total commitment. Let them share the same assumptions
+rather than forcing each to reconstruct the offer from a different page.
+
+Before highlighting a plan, ask what makes it appropriate: usage, permissions, service level or purchasing process.
+Popularity is not suitability. A popular plan can be highlighted honestly while a selector recommends a different
+one for the visitor's inputs. Explain the basis so the two signals do not appear contradictory.
+
+### Questions beyond the plan cards
+
+- What is the billable unit, and can a newcomer estimate it before using the product?
+- Do invited, inactive, temporary or external people count as paid seats?
+- When does usage reset, and can delayed events change a previously displayed estimate?
+- Which costs are recurring, prepaid, one-time, optional or conditional?
+- Is a displayed amount payable now, an annual commitment divided by months, or only an estimate?
+- Can the buyer select a plan directly, or must another person approve billing?
+- Which evidence in a customer story is attributable to the product, and what else changed at the same time?
+- What content can be published with permission, and which details would expose the customer's operations?
+
+If the team cannot explain the price consistently, simplify or clarify the commercial model before adding a
+calculator. An elegant interface cannot make an undefined unit predictable.
+
+## Alternatives with decision costs
+
+| Situation | Option | Why | Cost |
+| --- | --- | --- | --- |
+| One clear price | One offer with exclusions | Avoids artificial choice | Less room for segmentation |
+| Stable customer needs | Tier cards and comparison | Supports fit assessment | Clear feature language needed |
+| Estimable variable usage | Calculator and scenarios | Connects usage to cost | Maintain formula and defaults |
+| Unpredictable usage | Range and spend controls | Honest uncertainty | Less apparent precision |
+| Negotiated scope | Example scope and quote process | Honest expectations | Slower decision path |
+| Qualitative evidence | Workflow story | Explains improvement | More reading than a headline metric |
+| Measured outcome | Result, method and baseline | Helps assess transfer | Permission and caveats needed |
+
+A quote-only model is reasonable when scope genuinely varies. Do not use it merely to hide a standardized price
+unless there is a defensible commercial reason and visitors can still assess likely fit and next steps.
+Similarly, do not add a calculator when the answer is a single fixed fee or the inputs are unknowable guesses.
+
+## Calculator reasoning and extreme inputs
+
+A useful calculator explains a model rather than manufacturing an impressive saving. Show the input units,
+billing period, included allowance, tier behavior and excluded charges close to the result.
+Changing an input should change only the assumptions it actually controls.
+
+For tiered rates, distinguish a graduated price from a volume price: charging each band separately produces a
+different total from applying one rate to all units. Show enough of the breakdown to make the transition legible.
+Test values just below, at and above each boundary against the billing system's approved examples.
+
+Treat zero, empty, negative, decimal and unusually large inputs as different cases. Zero may be valid even when
+the minimum commitment means the bill is not zero. Empty means no estimate is available; it should not silently
+become zero. Units that require whole items need an explained correction, not an arbitrary rounding surprise.
+
+For estimated currency conversion, distinguish the display estimate from the settlement currency. Do not let a
+locale switch silently reset selected seats or usage. Preserve assumptions so comparisons remain meaningful.
+
+## States around a commercial decision
+
+| State | What the visitor needs | Design response |
+| --- | --- | --- |
+| Prices loading | Whether an offer is available | Stable placeholder with retry; no false zero price |
+| Currency unsupported | Actual settlement currency | Explain before checkout, not after submission |
+| Existing customer | Current entitlement and change path | Show account context and effective dates |
+| Trial already used | Available next step | Replace the unavailable trial promise |
+| Quote requested | Confirmation and response expectation | Show confirmed receipt, only if known |
+| Price changed during selection | Updated amount and reason | Reconfirm the changed commitment |
+| Billing permission missing | Who can approve the choice | Offer a shareable summary or permitted request |
+| Estimate unavailable | Which assumptions are missing | Retain inputs and provide another evaluation path |
+| Case withdrawn | Relevant supported evidence | Remove endorsement and repair routes to the story |
+| Case materially outdated | What remains historically valid | Date it or replace it; do not silently modernize facts |
+
+A plan comparison may be public while account-specific discounts are private. Avoid exposing negotiated prices
+in shared links or screenshots unless that sharing is intended and authorized.
+A sales contact form confirming receipt is not confirmation of a purchased plan or a reserved price.
+
+## Accessibility and localization specifics
+
+**Requirements:** comparison relationships need programmatic structure under WCAG 1.3.1. Real tables can work
+well; when transforming them on mobile, retain the plan and feature association in the reading order.
+Keyboard operation is covered by 2.1.1, and custom controls need name, role and value under 4.1.2.
+A price update that functions as a status message needs programmatic exposure under 4.1.3 without moving focus.
+
+**Recommendations:** pair a slider with editable input because precise values can be difficult through dragging.
+Announce a settled result rather than every intermediate amount. Keep explanatory text available on focus and
+touch; if hover/focus content is used, check dismissibility, hoverability and persistence under 1.4.13.
+Do not rely on a colored border alone to identify the recommended or current plan (1.4.1).
+
+Currencies, billing periods and plurals belong in complete localized messages. An English example such as
+"per member, billed annually" names both unit and commitment; another language may need a different word order.
+Do not concatenate a currency, number and translated suffix and assume grammar will remain correct.
+
+Use locale-aware number entry deliberately: visitors may type separators differently from the display locale.
+Validate without silently changing magnitude. Clarify ambiguous currency symbols and distinguish tax treatment
+from language selection; speaking one language does not establish a person's tax location.
+
+In customer stories, preserve the speaker's meaning, title conventions and naming preferences. Translation may
+change sentence length and emphasis, but it must not strengthen a cautious observation into a guaranteed outcome.
+If a local case does not exist, explain the original customer's context rather than implying local evidence.
+
+## Copy by moment
+
+| Moment | Function | English illustration, not a required wording |
+| --- | --- | --- |
+| Plan introduction | Help self-identification | "For teams sharing projects with clients" |
+| Annual selection | Explain total obligation | "Annual payment; monthly equivalent shown" |
+| Estimate result | Separate model from bill | "Estimate based on the usage above" |
+| Trial action | Name access and duration | "Start the trial" with verified duration nearby |
+| Sales action | Name the next interaction | "Request a pricing conversation" |
+| Unsupported evidence | State the limit | "Customer-reported outcome; method below" |
+
+Avoid using the same action label for a trial, a sales form and checkout when their consequences differ.
+A shorter label can work when adjacent text clearly supplies the consequence; length alone is not clarity.
+
+## Test protocol and measurement
+
+Ask participants with different buying roles to choose a suitable plan and explain what they would pay now,
+what could increase the bill, and what happens at renewal. Then ask them to find evidence that a comparable
+customer succeeded. Observe reasoning rather than asking whether the page "feels trustworthy".
+
+Verify prices and estimator outputs against the approved commercial source, including boundary values and every
+supported billing period. Check the destination carries the chosen plan, currency and commitment accurately.
+
+Measure completed appropriate purchases or qualified quote requests, with plan changes, unexpected-bill contacts,
+refunds and early cancellation as guardrails. A high-priced plan selling more is not automatically success if
+buyers downgrade once they understand limits that the page concealed.
+
+For case studies, track whether readers can identify the customer context and evidence limits. Assisted purchase
+behavior can be informative but does not prove the story caused the purchase; readers self-select into it.
+Report low traffic and incomplete attribution instead of assigning invented revenue to every case-page visit.
+
+## Worked comparison (fictional design scenario)
 
 **Weak pricing page:** five plans with names like "Rocket" and "Galaxy", features listed with checkmarks only, a
 "Most popular" badge on the most expensive plan, "Unlimited*" with the footnote in a tooltip, prices without tax in a
@@ -150,21 +283,31 @@ seat with the yearly toggle and honest saving, numeric limits with explanations,
 customers actually choose, tax display per market, buttons saying "Try Team free for 14 days" and "Talk to sales", and
 the billing FAQ answering cancellation, refunds and seat changes.
 
+Keep the underlying product and entitlements constant while comparing these versions; reducing five genuine plans
+to three without changing the commercial model would hide options rather than improve explanation. First group
+the same five offers into meaningful families, then test whether visitors can identify which family applies.
+
+The stronger treatment wins through explicit units, limits and consequences, not through a magic card count.
+If research shows buyers need a dense procurement comparison, keep the full table with a short summary above it.
+If no plan is demonstrably most popular, omit that badge and explain a recommendation by fit instead.
+
 ## Common mistakes
 
 - **Plans named for marketing instead of audience.**
 - **Hidden limits and costs.**
 - **"Contact us" with no information.**
-- **Calculators with unrealistic defaults or unstated assumptions.**
-- **Case studies without numbers, or numbers without context.**
+- **Calculators with unrealistic defaults or unstated assumptions.** Optimistic defaults can make an estimate
+  look attractive while producing poorly matched purchases; validate defaults against actual use where known.
+- **Numbers without context, or qualitative evidence dismissed because it lacks a headline metric.** Teams seek
+  impressive proof; preserve the method and mechanism so the reader can judge relevance.
 - **Unapproved logos and quotes.**
 
 ## Checklist
 
 - [ ] Pricing model, buyer and top questions understood before designing.
 - [ ] Each plan says who it is for, the price unit and real limits.
-- [ ] Highlighted plan is honestly the most common; no decoys or fake urgency.
+- [ ] Highlighting has an explicit basis; popularity claims are supported; no decoys or fake urgency.
 - [ ] Currency, tax and number formats correct per market.
 - [ ] Signed-in, trial-used and price-change states designed.
 - [ ] Calculator accessible, with realistic defaults and stated assumptions.
-- [ ] Case studies with context, method, numbers and approval.
+- [ ] Case studies have context, evidence limits, method where applicable and current publication permission.

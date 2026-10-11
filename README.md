@@ -31,7 +31,8 @@ design/
 ├── templates/            Brief, design context, brand audit, directions, idea feedback, states table, review report
 ├── evals/                Behavioral scenarios and rubric to check the skill acts like a senior designer
 ├── scripts/              Dependency-free tools (Node ≥ 18)
-│   ├── design-scan.mjs   Evidence about a project: product, stack, languages, brand assets, fonts, colors, copy
+│   ├── design-scan.mjs   Evidence about a project, web or native: product, stack, languages, brand, fonts, colors, copy
+│   ├── screenshots.mjs   Phone and desktop, light and dark captures of a running interface
 │   ├── contrast.mjs      WCAG contrast (HEX, rgb, oklch)
 │   ├── slop.mjs          Generic copy and styles, with per-language lexicons
 │   ├── a11y-static.mjs   Static accessibility in HTML/JSX/Astro/Vue/Svelte/CSS
@@ -114,6 +115,7 @@ Direct tools:
 
 ```bash
 node scripts/design-scan.mjs path/to/project
+node scripts/screenshots.mjs http://localhost:3000/ --out design-screenshots
 node scripts/contrast.mjs "#6b7280" "#ffffff"
 node scripts/slop.mjs src/ --lang en,es
 node scripts/a11y-static.mjs src/

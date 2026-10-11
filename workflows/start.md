@@ -16,12 +16,21 @@ answer. Asking "which part?" or "what kind of help?" without having looked at th
 - Run `node scripts/design-scan.mjs <project>`: product description, stack, languages, brand assets, fonts, most
   used colors, tokens, visible copy and raw domain signals. It is an index of where to look, not a conclusion.
 - Note what the person already told you in the conversation: it outranks anything inferred.
+- **Design files**: if the README, docs or the person mention Figma (or another design tool) and a tool to read it is
+  available, read the relevant frames and variables (`knowledge/34-references-and-design-tools.md`).
+- **See the product**: if it is running or has a public URL, capture key screens with
+  `node scripts/screenshots.mjs <urls>` (phone and desktop, light and dark) or a browser tool, and look at them
+  (`knowledge/33-looking-at-the-real-interface.md`). Ask before starting servers or installing anything. If you could
+  not see it, say so in the summary.
 
 ## 2. Interpret it with two parallel perspectives
 
-When subagents are available and the project is more than a small prototype, **launch both in parallel by
-default** (the person asked for a designer's depth, and each agent verifies what the scan only hints at), passing each the
-absolute path of this skill's folder, the project path and the scan output:
+**Rule**: if subagents are available and the project has more than about 30 source files (the scan prints how many
+files it read), launch `product-researcher` and `brand-analyst` **in the same message, in parallel**, before writing
+your summary. Do not replace them with your own quick read: they open the screens, data model and assets that the
+scan only points to, and they disagree with each other in useful ways. Pass each the absolute path of this skill's
+folder, the project path, the scan output and the screenshot paths if any. In Claude Code they may be named with a
+plugin prefix (for example `design:product-researcher`).
 
 - **`product-researcher`**: what the product is, audiences, jobs, stakes, tone, with confidence levels and
   questions.

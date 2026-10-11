@@ -7,7 +7,8 @@ weak idea, offers distinct options, respects the requested delivery mode. These 
 ## How to run them
 
 1. Pick scenarios from [scenarios.md](scenarios.md). Each has a prompt, a project situation and the behavior expected.
-2. Prepare the situation: a small fixture project (a folder with a README, a few screens, tokens and translations
+2. Prepare the situation: copy a fixture from [fixtures/](fixtures/README.md) to a temporary folder, or create a small
+   fixture project (a folder with a README, a few screens, tokens and translations
    that create the situation) or a real project that matches it.
 3. Run the prompt in a fresh session with the skill installed. Repeat each scenario at least three times: the goal is
    reliable behavior, not one impressive run.

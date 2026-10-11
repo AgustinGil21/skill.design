@@ -1,0 +1,1 @@
+{ "name": "lumen-bank-web", "private": true, "dependencies": { "react": "19.0.0", "tailwindcss": "4.0.0" } }

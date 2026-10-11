@@ -83,6 +83,8 @@ test('file and folder names are lowercase kebab-case ASCII', () => {
     for (const entry of readdirSync(join(ROOT, folder), { withFileTypes: true })) {
       if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
       const path = join(folder, entry.name);
+      // Fixtures imitate real projects (App.tsx, package.json), so they follow those projects' conventions.
+      if (path === join('evals', 'fixtures')) continue;
       const base = entry.name.replace(/\.(md|mjs|sh|ps1)$/, '');
       const allowed = /^[a-z0-9]+(?:-[a-z0-9]+)*(?:\.test)?$/.test(base) || /^[A-Z][A-Z-]*$/.test(base);
       if (!allowed) bad.push(path);

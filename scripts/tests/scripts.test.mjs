@@ -236,3 +236,97 @@ test('design-scan: domain signals count mentions and mark single mentions as wea
   assert.equal(weak.strength, 'weak');
   assert.deepEqual(inferDomains('Detailed paint colors'), [], 'words inside other words do not count');
 });
+
+test('design-scan: Flutter project (pubspec, ARB strings, Color(0x…), fontFamily, Text)', async () => {
+  const { scanProject } = await import('../design-scan.mjs');
+  const { mkdirSync } = await import('node:fs');
+  const dir = mkdtempSync(join(tmpdir(), 'scan-flutter-'));
+  writeFileSync(join(dir, 'pubspec.yaml'), 'name: little_readers\ndescription: "Reading games for kids"\nflutter:\n  fonts:\n    - family: Andika\n');
+  mkdirSync(join(dir, 'lib', 'l10n'), { recursive: true });
+  writeFileSync(join(dir, 'lib', 'l10n', 'app_es.arb'), JSON.stringify({ '@@locale': 'es', welcome: '¡Hola! ¿Leemos un cuento juntos?', '@welcome': { description: 'x' } }));
+  writeFileSync(join(dir, 'lib', 'theme.dart'), "const brandOrange = Color(0xFFF2994A);\nfinal style = TextStyle(fontFamily: 'Andika');\nText('Pick a story to start');");
+  const scan = scanProject(dir);
+  assert.equal(scan.product.name, 'little_readers');
+  assert.ok(scan.stack.includes('Flutter'));
+  assert.ok(scan.languages.includes('es'));
+  assert.ok(scan.copy.some((c) => c.startsWith('¡Hola!')));
+  assert.ok(scan.copy.includes('Pick a story to start'));
+  assert.ok(scan.colors.some((c) => c.color === '#f2994a'));
+  assert.ok(scan.tokens.sample.some(([k, v]) => k === 'brandOrange' && v === '#f2994a'));
+  assert.ok(scan.fonts.some((f) => f.font.startsWith('Andika')));
+  assert.equal(scan.domains[0].domain, 'kids and family');
+});
+
+test('design-scan: iOS and Android resources (colorsets, .strings, strings.xml, #AARRGGBB, densities)', async () => {
+  const { scanProject } = await import('../design-scan.mjs');
+  const { mkdirSync } = await import('node:fs');
+  const dir = mkdtempSync(join(tmpdir(), 'scan-native-'));
+  mkdirSync(join(dir, 'App.xcodeproj'));
+  mkdirSync(join(dir, 'Assets.xcassets', 'BrandRed.colorset'), { recursive: true });
+  writeFileSync(join(dir, 'Assets.xcassets', 'BrandRed.colorset', 'Contents.json'), JSON.stringify({ colors: [{ color: { components: { red: '0x7A', green: '0x0F', blue: '0x1E', alpha: '1.000' } } }] }));
+  mkdirSync(join(dir, 'es.lproj'));
+  writeFileSync(join(dir, 'es.lproj', 'Localizable.strings'), '"transfer.title" = "Enviá dinero a quien quieras";');
+  writeFileSync(join(dir, 'Home.swift'), 'Text("Your balance today").font(.custom("Söhne", size: 17))\nlet c = Color(red: 1.0, green: 0.5, blue: 0.0)');
+  writeFileSync(join(dir, 'build.gradle'), 'apply plugin: "com.android.application"');
+  mkdirSync(join(dir, 'res', 'values-pt'), { recursive: true });
+  writeFileSync(join(dir, 'res', 'values-pt', 'strings.xml'), '<resources><string name="hero">Transferências sem complicação</string></resources>');
+  writeFileSync(join(dir, 'res', 'values-pt', 'colors.xml'), '<resources><color name="primary">#FF7A0F1E</color></resources>');
+  for (const d of ['hdpi', 'xhdpi']) {
+    mkdirSync(join(dir, 'res', `mipmap-${d}`), { recursive: true });
+    writeFileSync(join(dir, 'res', `mipmap-${d}`, 'ic_launcher.png'), '');
+  }
+  const scan = scanProject(dir);
+  assert.ok(scan.stack.includes('iOS (Xcode)') && scan.stack.includes('Android (Gradle)'));
+  assert.ok(scan.languages.includes('es') && scan.languages.includes('pt'));
+  assert.ok(scan.tokens.sample.some(([k, v]) => k === 'BrandRed (asset catalog)' && v === '#7a0f1e'));
+  assert.ok(scan.tokens.sample.some(([k, v]) => k === 'primary' && v === '#7a0f1e'));
+  assert.ok(scan.colors.some((c) => c.color === '#ff8000'));
+  assert.ok(scan.fonts.some((f) => f.font === 'Söhne'));
+  assert.ok(scan.copy.includes('Your balance today'));
+  assert.ok(scan.copy.some((c) => c.startsWith('Transferências')));
+  assert.deepEqual(scan.brand.assets, [join('res', 'mipmap-*', 'ic_launcher.png') + ' (2 densities)']);
+});
+
+test('screenshots: plans one shot per url, viewport and scheme with stable names', async () => {
+  const { parseArgs, planShots } = await import('../screenshots.mjs');
+  const opts = parseArgs(['http://localhost:3000/', 'http://localhost:3000/settings/billing', '--out', 'shots', '--viewports', 'mobile,desktop', '--schemes', 'dark']);
+  const shots = planShots(opts);
+  assert.equal(shots.length, 4);
+  assert.deepEqual(shots.map((s) => s.file), [
+    join('shots', '01-home-mobile-dark.png'),
+    join('shots', '01-home-desktop-dark.png'),
+    join('shots', '02-settings-billing-mobile-dark.png'),
+    join('shots', '02-settings-billing-desktop-dark.png'),
+  ]);
+  assert.throws(() => parseArgs(['http://x.test', '--viewports', 'watch']), /Unknown viewport/);
+  assert.throws(() => planShots({ ...opts, urls: ['not a url'] }), /Not a URL/);
+});
+
+test('screenshots: without Playwright or a browser it explains the alternatives and exits with code 2', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'no-playwright-'));
+  let code = 0;
+  let stderr = '';
+  try {
+    execFileSync('node', [join(ROOT, 'scripts', 'screenshots.mjs'), 'http://localhost:1/', '--from', dir], {
+      stdio: 'pipe',
+      env: { ...process.env, CHROME_PATH: join(dir, 'no-browser-here') },
+    });
+  } catch (error) {
+    code = error.status;
+    stderr = error.stderr.toString();
+  }
+  assert.equal(code, 2);
+  assert.match(stderr, /browser tool/);
+});
+
+test('screenshots: local demo files are named after the file, and Chrome gets an explicit color scheme', async () => {
+  const { planShots, chromeArgs, findChrome } = await import('../screenshots.mjs');
+  const [shot] = planShots({ urls: ['file:///tmp/project/design-demos/choose-story.html'], viewports: ['mobile'], schemes: ['dark'], out: 'shots' });
+  assert.equal(shot.file, join('shots', '01-choose-story-mobile-dark.png'));
+  const args = chromeArgs(shot, '/tmp/profile');
+  assert.ok(args.includes('--blink-settings=preferredColorScheme=0'), 'dark must be explicit or the system mode leaks in');
+  assert.ok(args.includes('--window-size=390,844'));
+  assert.ok(args.includes('--force-prefers-reduced-motion'));
+  assert.equal(chromeArgs({ ...shot, scheme: 'light' }, '/tmp/p').find((a) => a.startsWith('--blink')), '--blink-settings=preferredColorScheme=1');
+  assert.equal(findChrome({ CHROME_PATH: '/nonexistent' }, 'plan9'), null);
+});

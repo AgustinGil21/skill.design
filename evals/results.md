@@ -4,3 +4,14 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-10-11 | 80b242d | 3 ("help me with the design", real club platform) | 1 | 0 | 1 | 0 | 0 | 2 | None | Asked which part and what kind of help before looking at the project |
 | 2026-10-11 | working tree before this commit | 3 | 1 | 3 | 3 | 2 | 2 | 3 | None | Scan, routes and tokens read first; correct domain, stakes and voice with confidence; two questions with defaults; modes with a recommendation. Did not launch the research agents (now the default for larger projects) |
+| 2026-10-11 | working tree (agents, screenshots, references) | 1 (kids app on SaaS starter, fixture) | 1 | 3 | 3 | 3 | 2 | 3 | None | Found the template/product mismatch and the two audiences; no files written; small project, investigated inline |
+| 2026-10-11 | same | 2 (README vs routes, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Surfaced the contradiction, showed what each answer changes, did not design before knowing the audience |
+| 2026-10-11 | same | 7 (bank with purple brand, fixture) | 1 | 2 | 2 | 3 | 3 | 2 | None | Implemented the clearer transfer flow (an implementation request) and kept the brand gradient, explaining why the slop signal did not apply |
+| 2026-10-11 | same | 10 ("replace navigation with chat", real project) | 1 | 3 | 3 | 3 | n/a | 3 | None | Read the real shell and permissions; risks tied to medical data; alternatives; staged recommendation; no edits |
+| 2026-10-11 | same | 12 (ideas only, fixture) | 1 | 3 | 3 | 3 | 2 | 3 | None | Three distinct directions with comparison and recommendation; no files written |
+| 2026-10-11 | same | 15 (demo, fixture) | 1 | 2 | 2 | 3 | n/a | 3 | None | Good two-layout demo with simulated data labeled, but could not render it (no Playwright) |
+| 2026-10-11 | same | 3 (real club platform) | 2 | 3 | 3 | 2 | 2 | 3 | None | Asked before starting a dev server; still did not launch the research agents |
+| 2026-10-11 | + Chrome screenshots, agents required | 3 (real club platform) | 3 | 3 | 3 | 3 | 3 | 3 | None | Launched product-researcher and brand-analyst in parallel; verified findings in code (org theme overriding only part of the tokens, off-brand violet button, red meaning both injury and delete, gold text at 2.3:1, stale design doc) |
+| 2026-10-11 | same | 15 (demo, fixture) | 2 | 2 | 2 | 3 | n/a | 3 | None | Rendered its own demo with screenshots.mjs (Chrome), saw mobile problems and fixed the layout in three passes before handing it back |
+
+Not yet run: scenarios 4, 5, 6, 8, 9, 11, 13, 14, 16, 17, and repeated runs (the rubric asks for three per scenario).

@@ -9,7 +9,10 @@ Works for screenshots, prototypes, URLs or code. The result is an actionable rep
 
 - Which task does the screen solve, and for whom? What should the review achieve (launch, improve conversion,
   clean up)?
-- With code: read the components, styles and copy; if possible, run it and look at it.
+- With code: read the components, styles and copy, and **look at the real interface** whenever possible:
+  `node scripts/screenshots.mjs <urls>` (phone and desktop, light and dark) or a browser tool
+  (`knowledge/33-looking-at-the-real-interface.md`). If design files exist and a tool can read them, compare design
+  and build. When live references help explain an alternative, cite them (`knowledge/34-references-and-design-tools.md`).
 - With an image: describe what you see before judging it.
 - Separate what you can observe from what you are inferring (`knowledge/16-research-and-testing.md`).
 

@@ -35,16 +35,16 @@ on scroll"). The designer's job is to choose few moments and make each one earn 
   late or never if the trigger fails.
 - Hijacking scroll (the wheel advances an animation instead of the page, with no control).
 - Infinite motion in the reading area (running logos, breathing backgrounds) without pause.
-- Motion on high-stakes pages where calm matters more than character (health, finance, legal).
+- Decorative motion competing with high-stakes decisions; explanatory motion may still help in these contexts.
 
 ## Choosing between options
 
 | Need | Options | Choose by |
 | --- | --- | --- |
-| Show a workflow | Looping video · animated interface built in HTML · interactive demo · step screenshots | Video is cheap and faithful; HTML animation is crisp, translatable and accessible; demos persuade most but cost most; steps never fail |
-| Brand moment | Hero entrance · section transition · cursor or scroll effect | One moment at full strength beats many small ones |
-| Explain a change | Before/after slider · toggle · crossfade | A toggle is accessible by default; sliders need keyboard support |
-| Data or scale | Animated chart · counter · static figure | Static figures are always readable; animate only if the change itself is the message |
+| Show a workflow | Video, HTML, demo, step images | Compare fidelity, maintenance, access and loading cost |
+| Brand moment | Entrance, transition, cursor effect | Concentrate expression where it helps |
+| Explain a change | Slider, toggle, crossfade | Compare control complexity; each needs accessible behavior |
+| Data or scale | Chart, counter, static figure | Animate when change itself is the message |
 
 ## Defining the motion language
 
@@ -78,8 +78,8 @@ elements move more slowly than small ones; the same distance feels faster on a p
 
 ## Performance that goes unnoticed
 
-- **Animate only `transform` and `opacity`** (and `filter` carefully); never width, height, margins or `top/left`,
-  which recalculate layout and stutter.
+- **Prefer `transform` and `opacity`** for smooth movement; profile filters and layout-property changes.
+  Layout animation can be justified when it communicates a real change, but its cost depends on the page.
 - **`will-change` only on what is about to animate**, removed afterwards.
 - **Trigger with `IntersectionObserver`** or scroll-driven animations (`animation-timeline: view()` / `scroll()`) as
   progressive enhancement behind `@supports`, instead of listening to `scroll` in JavaScript every frame.
@@ -100,19 +100,20 @@ Separate requirements from recommendations:
 - **Pause, stop or hide** anything that moves on its own for more than 5 seconds and runs alongside other content
   (2.2.2 Pause, Stop, Hide): carousels, logo strips, background video, animated backgrounds. A visible control, not
   only on hover.
-- **Nothing flashes** more than three times per second (2.3.1 Three Flashes or Below Threshold).
-- **Motion triggered by interaction** can be disabled unless essential (2.3.3 Animation from Interactions, AAA — a
-  strong recommendation for landing pages).
+- **Flashing** must remain within 2.3.1 Three Flashes or Below Threshold (A): no more than three flashes
+  in a one-second period, or remain below the general flash and red flash thresholds.
+- **At AAA**, nonessential interaction-triggered motion can be disabled (2.3.3 Animation from Interactions).
+  This is a strong recommendation when the project targets AA, not an additional AA requirement.
 
 **Recommendations:**
 
 - **Honor `prefers-reduced-motion: reduce`**: remove movement (translation, scale, parallax, zoom, scroll-linked
   effects) and autoplay; keep short opacity fades or nothing. The final content is shown the same way.
-- **Gentle parallax**, never on long text; it can cause nausea.
+- **Avoid parallax near reading tasks**; even gentle movement can cause discomfort for some visitors.
 - **Letter-by-letter text**: the full text is in the DOM for screen readers (the container holds the real text; the
   animated pieces are hidden from assistive technology).
 - **Counters**: the final number is accessible from the start; intermediate values are not announced.
-- **Focus is not lost** in transitions: after a view change, focus moves to the new content.
+- **Focus remains logical**: move it when the interaction requires a new context, not for decorative transitions.
 
 Reduced motion means **less movement**, not "no feedback": state changes (a button pressed, a panel opened) must still
 be perceivable, via instant changes or opacity.
@@ -121,8 +122,10 @@ be perceivable, via instant changes or opacity.
 
 - Hero tabs that change the demo, with a pause button for the automatic cycle
   ([Sana](https://mobbin.com/sites/sections/7f35e77e-e242-4333-809d-49fc3156ba43)).
-- A progress line that advances with the steps ([Giga](https://mobbin.com/sites/sections/f850ffc1-be4a-4064-88d5-9b52d2ec9d52)).
-- A visualization that transforms with the story ([Wild](https://mobbin.com/sites/sections/eef9343d-0d21-41e4-9524-54462b7612db)).
+- A progress line that advances with the steps
+  ([Giga](https://mobbin.com/sites/sections/f850ffc1-be4a-4064-88d5-9b52d2ec9d52)).
+- A visualization that transforms with the story
+  ([Wild](https://mobbin.com/sites/sections/eef9343d-0d21-41e4-9524-54462b7612db)).
 - A product interface that appears piece by piece, as if someone were using it
   ([Ramp](https://mobbin.com/sites/sections/c224c647-a876-44fc-ad18-ac01acee3004)).
 
@@ -132,13 +135,13 @@ be perceivable, via instant changes or opacity.
 - **Tall or short viewports**: pinned scroll sections must not trap content that does not fit.
 - **Translations**: animated text that types or splits words breaks with other scripts (Arabic shaping, CJK line
   breaking); animate containers, not characters, when localizing.
-- **Right-to-left**: directional motion (slide from the left) mirrors.
+- **Right-to-left**: review directional motion; mirror reading-flow relationships, not physical scenes automatically.
 - **Low power mode and old devices**: test on a mid-range phone; offer the still version if frame rate drops.
 - **Print and screenshots**: the final state must be the visible one.
 
 ## Worked comparison
 
-**Brief:** a landing page for an invoice automation tool.
+**Fictional brief:** a landing page for an invoice automation tool; sizes and timings below are illustrative.
 
 **Weak:** every section fades up on scroll; the headline types itself; a background gradient pulses; logos scroll
 forever; an 18 MB hero video autoplays. Nothing explains the product, the page feels slow, and reduced-motion users get
@@ -164,7 +167,111 @@ static. The motion explains the product and costs little.
 - Navigate with the keyboard through animated components; pause controls are reachable.
 - Check that no content depends on an animation finishing.
 
+## Deciding what not to animate
+
+Start with the question that motion answers. "The invoice becomes editable fields" describes a meaningful change;
+"the hero should feel premium" names a desired impression but not yet a reason for movement. A brand moment may
+still be justified, provided it does not compete with reading, control or performance.
+
+| Situation | Option | Why | Cost |
+| --- | --- | --- | --- |
+| Static state demonstrates the benefit | Still image | Immediate inspection | Does not explain sequence |
+| Sequence matters, pace varies | User-controlled steps | Lets people inspect each change | Adds controls |
+| Behavior is evidence | Recorded walkthrough | Shows actual timing and interaction | Requires media alternatives |
+| Manipulation conveys value | Interactive sample | Lets visitors test the mechanism | Needs states and maintenance |
+| Atmosphere supports a campaign | Short optional brand moment | Adds expression | May distract from the offer |
+| Motion lacks a clear job | Omit it | Preserves attention and resources | Gives up spectacle |
+
+Do not compress a slow real process into an instant-looking animation without explaining the demonstration. A
+marketing sequence is allowed to simplify, but its timing and transitions can imply capability just as copy can.
+Distinguish a conceptual illustration from a recording of actual product behavior.
+
+## Control and state model
+
+| State | Expected behavior | Recovery or transition |
+| --- | --- | --- |
+| Initial still | Core content is available | Enhancement may load independently |
+| Loading enhancement | Poster retains meaning | Offer playback once ready |
+| Playing | Controls remain reachable | Pause without losing position |
+| Paused by visitor | Remain paused | Resume only on intentional action |
+| Off-screen | Suspend unnecessary work | Respect previous visitor pause when returning |
+| Reduced motion active | Show equivalent information | Avoid automatic spatial movement |
+| Playback failure | Preserve explanation | Offer still sequence and optional retry |
+| Ended | Hold a useful state | Replay is explicit if it aids understanding |
+| Preference changes | Apply the new preference safely | Keep current information and control context |
+| Tab restored | Resume coherently | Do not start multiple competing sequences |
+
+Separate automatic suspension from a deliberate pause. Returning to a section may resume an automatically
+suspended illustration, but should not override the visitor's choice to pause it. Store enough state to distinguish
+those cases. Test route changes and repeated initialization for duplicated observers, timers and event listeners.
+
+Keep controls in stable positions when the animation changes dimensions. A pause button that moves away from a
+pointer or disappears before keyboard focus arrives undermines the very control intended to make motion usable.
+When playback is unavailable, explain that state rather than leaving a button that appears to do nothing.
+
+## Copy and localization within motion
+
+Controls should name the action and object: the English illustration "Pause workflow animation" tells more than
+an unlabeled icon. The localized label should preserve that function using natural grammar. A toggle's accessible
+name or state must communicate whether activation will pause or resume; avoid conflicting visible and spoken states.
+
+Captions, subtitles and annotations need time for the intended audience to read. Do not assume an English timing
+track accommodates translated expansion. Prefer user-controlled progression for essential details whose reading
+time varies, and allow a transcript or step sequence to be read without synchronizing with the animation.
+
+Avoid constructing animated sentences from individually translated words. Word order, shaping and agreement can
+change the whole sequence. Animate a complete phrase or container when possible. Numbers and dates inside product
+recordings need market context; translating the surrounding page does not localize embedded data.
+
+An animated arrow might indicate reading order, physical movement or a data dependency. Only the first clearly
+suggests mirroring with a right-to-left layout. Review the intended relationship rather than applying a blanket
+horizontal flip that changes logos, objects or technical meaning.
+
+## Worked comparison: examining the invoice sequence
+
+Continue the fictional invoice example. The weak sequence instantly extracts every field and shows a celebratory
+success mark. That is attractive, but may imply that extraction needs no review and never encounters uncertainty.
+A static fallback showing only the finished result preserves the same misleading implication.
+
+A stronger sequence shows upload, extracted fields and a field flagged for review. A short caption explains that
+the operator checks the result before export. The paused and reduced-motion versions expose the same review step,
+so the truthful explanation does not depend on watching the whole animation at the intended speed.
+
+User-controlled steps are a credible alternative: they provide more inspection time and reduce ambient movement.
+Choose them when buyers need to understand the review mechanism. Prefer a concise recorded demonstration when
+fidelity to actual behavior matters more than localized interface text or precise integration with page layout.
+
+Reject a continuous loop for this case if it repeatedly pulls attention away from the approval caveat. A replay
+control preserves the ability to watch again without imposing movement throughout the reading task. If a loop is
+retained, test reading alongside it and provide applicable pause, stop or hide control.
+
+## Verification protocol and decision limits
+
+Test a static baseline before comparing motion treatments. Ask participants to explain the process, name where
+human review occurs and predict what the product will do with uncertain input. A higher play rate says little if
+people misunderstand the central limit. Measure qualified progression and expectation accuracy together.
+
+Run keyboard navigation while content starts, pauses, ends and fails. Verify that decorative animation does not
+steal focus or flood status announcements. For text that changes meaning, expose the relevant update without
+announcing every intermediate frame. Check the selected control pattern against its actual behavior.
+
+Inspect representative devices under realistic resource constraints. Measure loading, responsiveness, frame
+behavior and layout stability; record which asset or effect creates the cost. A single synthetic score can reveal
+regressions but does not establish that a motion sequence is comprehensible or comfortable.
+
+Guardrails include failed playback, blocked actions, accidental activation after layout movement and abandonment
+before essential content appears. Monitor by device and preference where available without inferring health or
+disability from a browser setting. Reduced-motion support should not require collecting sensitive personal data.
+
+Change the recommendation when the sequence teaches no more than the still, when the product's real behavior
+changes, or when maintenance prevents accurate localization. Removing an animation can be the successful outcome
+of the design process. Retain it when evidence shows that the explained relationship is otherwise hard to grasp.
+
 ## Common mistakes
+
+Animating every section often comes from demonstrating implementation effort rather than explaining the offer.
+Ask what each movement teaches and remove duplicated emphasis. Accessibility failures commonly arise when pause
+and reduced-motion behavior are added after choreography; define them as states before building the sequence.
 
 - **Animating everything on scroll.**
 - **Motion that makes people wait.**
@@ -178,8 +285,12 @@ static. The motion explains the product and costs little.
 - [ ] Each motion has a purpose: explain, direct attention or character.
 - [ ] The page works still, and with JavaScript failing.
 - [ ] Motion tokens defined and used consistently.
-- [ ] Anything moving for more than 5 seconds can be paused with a visible control.
-- [ ] Nothing flashes more than three times per second.
+- [ ] Automatically moving content meets the applicable pause, stop or hide requirement and its exceptions.
+- [ ] Flashing satisfies WCAG 2.3.1, including its threshold provisions.
 - [ ] Reduced motion removes movement and autoplay but keeps state feedback.
-- [ ] Only `transform` and `opacity` animated; off-screen media paused.
+- [ ] Animation cost profiled; unnecessary off-screen work paused.
 - [ ] Tested on a mid-range phone and with translations.
+
+- [ ] Manual pause remains respected after scrolling away and returning.
+- [ ] Localized timing and reading direction preserve the explanation.
+- [ ] Static and animated versions communicate the same limitations.

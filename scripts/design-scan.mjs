@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 // Collects design evidence from a project: what the product says it is, its stack, languages, brand assets,
-// fonts, colors, tokens, visible copy and domain hints. No dependencies.
+// fonts, colors, tokens, visible copy and domain hints. Web (CSS, Tailwind, JSX, Astro, Vue, Svelte) and native
+// (Flutter, SwiftUI/UIKit, Jetpack Compose and Android XML, React Native). No dependencies.
 // Usage: node design-scan.mjs [project folder] [--json]
 // It gathers evidence; it does not decide. Every inference still needs reading and judgment (workflows/start.md).
 
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { join, relative, basename, extname } from 'node:path';
 import { collect } from './lib/files.mjs';
 import { isMainScript } from './lib/main.mjs';
 
 const MAX_FILES = 5000;
 const MAX_BYTES = 400_000;
-const CODE = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.ts', '.mjs', '.astro', '.vue', '.svelte', '.css', '.scss', '.dart', '.swift', '.kt']);
+const CODE = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.ts', '.mjs', '.astro', '.vue', '.svelte', '.css', '.scss', '.dart', '.swift', '.kt', '.kts', '.xml']);
+// Translation sources besides JSON folders: Flutter ARB, Apple .strings and .xcstrings, Android strings.xml.
+const STRINGS = new Set(['.arb', '.strings', '.xcstrings']);
 const ASSETS = new Set(['.svg', '.png', '.jpg', '.jpeg', '.webp', '.ico', '.avif']);
 const DOCS = /^(design|brand|product|style-?guide|brand-?guidelines|design-?context|voice|tone)[\w-]*\.md$/i;
 
@@ -53,6 +56,14 @@ const readText = (path) => {
     return readFileSync(path, 'utf8');
   } catch {
     return '';
+  }
+};
+
+const readdirSafe = (path) => {
+  try {
+    return readdirSync(path);
+  } catch {
+    return [];
   }
 };
 
@@ -101,6 +112,13 @@ function readProduct(root) {
     const paragraph = text.split(/\n\s*\n/).map((p) => p.trim()).find((p) => p && !/^[#!<\[|`>-]/.test(p));
     product.readme = { title: title ? title[1].trim() : null, intro: paragraph ? paragraph.replace(/\s+/g, ' ').slice(0, 400) : null };
   }
+  const pubspec = readText(join(root, 'pubspec.yaml'));
+  if (pubspec) {
+    product.name ||= (pubspec.match(/^name:\s*(.+)$/m) || [])[1]?.trim() || null;
+    product.description ||= (pubspec.match(/^description:\s*["']?(.+?)["']?\s*$/m) || [])[1] || null;
+  }
+  const expo = readJson(join(root, 'app.json'))?.expo;
+  if (expo) product.name ||= expo.name || null;
   for (const file of ['public/manifest.json', 'public/site.webmanifest', 'manifest.json', 'static/manifest.json']) {
     const manifest = readJson(join(root, file));
     if (manifest) {
@@ -115,15 +133,29 @@ function readStack(pkg, root) {
   const deps = { ...(pkg?.dependencies || {}), ...(pkg?.devDependencies || {}) };
   const stack = STACK.filter(([dep]) => dep in deps).map(([, label]) => label);
   if (existsSync(join(root, 'components.json'))) stack.push('shadcn/ui (components.json)');
-  if (existsSync(join(root, 'pubspec.yaml'))) stack.push('Flutter');
+  const has = (...paths) => paths.some((p) => existsSync(join(root, p)));
+  if (has('pubspec.yaml')) stack.push('Flutter');
+  if (has('Package.swift') || readdirSafe(root).some((f) => f.endsWith('.xcodeproj')) || readdirSafe(join(root, 'ios')).some((f) => f.endsWith('.xcodeproj'))) stack.push('iOS (Xcode)');
+  if (has('build.gradle', 'build.gradle.kts', 'android/build.gradle', 'android/build.gradle.kts', 'app/build.gradle', 'app/build.gradle.kts')) stack.push('Android (Gradle)');
+  if (readText(join(root, 'app.json')).includes('"expo"')) stack.push('Expo config');
   const fontPackages = Object.keys(deps).filter((d) => d.startsWith('@fontsource'));
   return { stack, fontPackages };
+}
+
+// Android ships one copy per screen density (mipmap-hdpi, drawable-xxhdpi…): list each asset once.
+export function groupDensities(paths) {
+  const groups = new Map();
+  for (const path of paths) {
+    const key = path.replace(/((?:mipmap|drawable)-)[a-z]*dpi/, '$1*');
+    groups.set(key, (groups.get(key) || 0) + 1);
+  }
+  return [...groups.entries()].map(([key, n]) => (n > 1 ? `${key} (${n} densities)` : key));
 }
 
 export function scanProject(root) {
   const { product, pkg } = readProduct(root);
   const { stack, fontPackages } = readStack(pkg, root);
-  const all = collect([root], new Set([...CODE, ...ASSETS, '.md', '.json'])).slice(0, MAX_FILES);
+  const all = collect([root], new Set([...CODE, ...ASSETS, ...STRINGS, '.md', '.json'])).slice(0, MAX_FILES);
 
   const colors = new Map();
   const fonts = new Map();
@@ -144,11 +176,59 @@ export function scanProject(root) {
     const name = basename(file);
 
     if (ASSETS.has(ext)) {
-      if (/logo|brand|wordmark|favicon|apple-touch-icon|logotype|isotype|mascot/i.test(name)) brandAssets.push(rel);
+      if (/logo|brand|wordmark|favicon|apple-touch-icon|logotype|isotype|mascot|ic_launcher|appicon/i.test(rel)) brandAssets.push(rel);
       continue;
     }
     if (ext === '.md') {
       if (DOCS.test(name)) brandDocs.push(rel);
+      continue;
+    }
+    const addStrings = (entries, locale) => {
+      localeFolders.add(locale);
+      for (const entry of entries) {
+        if (localeCopy.length < 200) localeCopy.push({ ...entry, locale });
+        if (localeText.length < 5000) localeText.push(entry.text);
+      }
+    };
+    if (ext === '.arb') {
+      const json = readJson(file) || {};
+      const locale = json['@@locale'] || (name.match(/_([a-z]{2}(?:_[A-Z]{2})?)\.arb$/) || [])[1] || 'unknown';
+      addStrings(localeStrings(Object.fromEntries(Object.entries(json).filter(([k]) => !k.startsWith('@')))), locale);
+      continue;
+    }
+    if (ext === '.strings') {
+      const locale = (rel.match(/([\w-]+)\.lproj\//) || [])[1] || 'unknown';
+      const entries = [...readText(file).matchAll(/"([^"]+)"\s*=\s*"((?:[^"\\]|\\.){12,160})"\s*;/g)].map((m) => ({ key: m[1], text: m[2] }));
+      addStrings(entries, locale === 'Base' ? 'base' : locale);
+      continue;
+    }
+    if (ext === '.xcstrings') {
+      const catalog = readJson(file);
+      for (const [key, entry] of Object.entries(catalog?.strings || {})) {
+        for (const [locale, loc] of Object.entries(entry.localizations || {})) {
+          const value = loc?.stringUnit?.value;
+          if (value && value.length >= 12 && value.length <= 160) addStrings([{ key, text: value }], locale);
+        }
+      }
+      continue;
+    }
+    if (ext === '.xml' && name === 'strings.xml') {
+      const locale = (rel.match(/values-([a-z]{2}(?:-r[A-Z]{2})?)\//) || [])[1] || 'default';
+      const entries = [...readText(file).matchAll(/<string name="([^"]+)"[^>]*>([^<]{12,160})<\/string>/g)].map((m) => ({ key: m[1], text: m[2] }));
+      addStrings(entries, locale);
+      continue;
+    }
+    if (ext === '.json' && /\.colorset\/Contents\.json$/.test(rel)) {
+      const color = readJson(file)?.colors?.[0]?.color?.components;
+      if (color) {
+        const channel = (v) => {
+          const n = String(v).startsWith('0x') ? parseInt(v, 16) : Number(v) <= 1 ? Math.round(Number(v) * 255) : Number(v);
+          return n.toString(16).padStart(2, '0');
+        };
+        const hex = `#${channel(color.red)}${channel(color.green)}${channel(color.blue)}`;
+        tokens.set(rel.match(/([^/]+)\.colorset/)[1] + ' (asset catalog)', hex);
+        count(colors, hex);
+      }
       continue;
     }
     if (ext === '.json') {
@@ -167,11 +247,23 @@ export function scanProject(root) {
     if (!text) continue;
 
     if (!TEST_FILE.test(rel)) {
+      // Android XML and Kotlin use #AARRGGBB; Flutter and Compose use Color(0xAARRGGBB).
+      const argb = ext === '.xml' || ext === '.kt' || ext === '.kts';
+      for (const m of text.matchAll(/#([0-9a-fA-F]{8})\b/g)) count(colors, '#' + (argb ? m[1].slice(2) : m[1].slice(0, 6)).toLowerCase());
+      for (const m of text.matchAll(/Color\(\s*0x([0-9a-fA-F]{8})\s*\)/g)) count(colors, '#' + m[1].slice(2).toLowerCase());
+      for (const m of text.matchAll(/Color\(\s*red:\s*([\d.]+)\s*,\s*green:\s*([\d.]+)\s*,\s*blue:\s*([\d.]+)/g)) {
+        const to = (v) => Math.round(Math.min(1, Number(v)) * 255).toString(16).padStart(2, '0');
+        count(colors, `#${to(m[1])}${to(m[2])}${to(m[3])}`);
+      }
       for (const m of text.matchAll(/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/g)) count(colors, normalizeHex(m[0]));
       for (const m of text.matchAll(/\b(?:oklch|rgb|rgba|hsl|hsla)\([^)]{3,60}\)/g)) count(colors, m[0].replace(/\s+/g, ' '));
     }
 
     for (const m of text.matchAll(/font-family\s*:\s*([^;}{]+)/g)) count(fonts, m[1].split(',')[0].trim().replace(/['"]/g, ''));
+    // Flutter, React Native and Compose: fontFamily: 'X'; Android XML: android:fontFamily="@font/x"; SwiftUI: .custom("X".
+    for (const m of text.matchAll(/fontFamily\s*[:=]\s*['"](?:@font\/)?([^'"]+)['"]/g)) count(fonts, m[1]);
+    for (const m of text.matchAll(/\.custom\(\s*"([^"]+)"/g)) count(fonts, m[1]);
+    for (const m of text.matchAll(/Font\(\s*R\.font\.(\w+)/g)) count(fonts, m[1] + ' (Android res)');
     for (const m of text.matchAll(/import\s*\{([^}]+)\}\s*from\s*['"]next\/font\/(?:google|local)['"]/g)) {
       for (const f of m[1].split(',')) if (f.trim()) count(fonts, f.trim().replace(/_/g, ' ') + ' (next/font)');
     }
@@ -179,6 +271,16 @@ export function scanProject(root) {
       for (const f of m[1].split('&family=')) count(fonts, decodeURIComponent(f.split(':')[0]).replace(/\+/g, ' ') + ' (Google Fonts)');
     }
 
+    if (ext === '.xml') {
+      for (const m of text.matchAll(/<color name="([^"]+)">\s*#([0-9a-fA-F]{6,8})\s*<\/color>/g)) {
+        if (!tokens.has(m[1])) tokens.set(m[1], '#' + (m[2].length === 8 ? m[2].slice(2) : m[2]).toLowerCase());
+      }
+    }
+    if (ext === '.dart' || ext === '.kt' || ext === '.kts') {
+      for (const m of text.matchAll(/(?:val\s+|static\s+const\s+(?:Color\s+)?|\b)(\w+)\s*[:=]\s*(?:const\s+)?Color\(\s*0x([0-9a-fA-F]{8})\s*\)/g)) {
+        if (!tokens.has(m[1])) tokens.set(m[1], '#' + m[2].slice(2).toLowerCase());
+      }
+    }
     if (ext === '.css' || ext === '.scss') {
       if (/@theme\b/.test(text)) tailwindTheme = true;
       for (const m of text.matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)) {
@@ -194,6 +296,11 @@ export function scanProject(root) {
         // Translation keys ("landing.faq.title") are not copy; the locale files supply the real text.
         if (heading && !/^[\w-]+(?:\.[\w-]+)+$/.test(heading) && !headings.includes(heading)) headings.push(heading);
       }
+      // Text("…") in Flutter, SwiftUI and Compose; <Text>…</Text> in React Native.
+      for (const m of text.matchAll(/\bText\(\s*["']([^"'$\\{}]{6,100})["']|<Text[^>]*>([^<{]{6,100})<\/Text>/g)) {
+        const copy = (m[1] || m[2]).replace(/\s+/g, ' ').trim();
+        if (copy && !/^[\w-]+(?:\.[\w-]+)+$/.test(copy) && !headings.includes(copy) && headings.length < 25) headings.push(copy);
+      }
       const title = text.match(/<title>([^<{]{2,120})<\/title>/);
       if (title && !headings.includes(title[1].trim())) headings.push(title[1].trim());
     }
@@ -202,16 +309,17 @@ export function scanProject(root) {
   const copySample = [...localeCopy.filter((c) => headline.test(c.key)), ...localeCopy.filter((c) => !headline.test(c.key))].slice(0, 15);
   domainText.push(...headings, ...localeText);
 
+  for (const m of readText(join(root, 'pubspec.yaml')).matchAll(/-\s*family:\s*(.+)/g)) count(fonts, m[1].trim() + ' (pubspec)');
   const configs = ['tailwind.config.js', 'tailwind.config.ts', 'tailwind.config.mjs', 'tailwind.config.cjs'].filter((f) => existsSync(join(root, f)));
   return {
     root,
     product,
     stack,
     languages: [...new Set([...langs, ...localeFolders])],
-    brand: { assets: brandAssets.slice(0, 30), docs: brandDocs },
+    brand: { assets: groupDensities(brandAssets).slice(0, 30), docs: brandDocs },
     fonts: [...top(fonts, 10).map(([f, n]) => ({ font: f, uses: n })), ...fontPackages.map((p) => ({ font: p, uses: 0 }))],
     colors: top(colors, 15).map(([color, uses]) => ({ color, uses })),
-    tokens: { count: tokens.size, sample: [...tokens.entries()].filter(([k]) => /color|bg|background|foreground|primary|accent|brand|radius|font/i.test(k)).slice(0, 25), tailwindConfig: configs, tailwindTheme },
+    tokens: { count: tokens.size, sample: [...tokens.entries()].filter(([k, v]) => /color|bg|background|foreground|primary|secondary|surface|accent|brand|radius|font|asset catalog/i.test(k) || /^#/.test(v)).slice(0, 25), tailwindConfig: configs, tailwindTheme },
     copy: [...headings.slice(0, 10), ...copySample.map((c) => `${c.text} [${c.locale}: ${c.key}]`)].slice(0, 20),
     domains: inferDomains(domainText.join(' \n ')),
     filesScanned: all.length,
