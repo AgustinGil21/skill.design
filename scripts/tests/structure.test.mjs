@@ -107,3 +107,14 @@ test('both installers install the same skill name, agents and Codex folder, and 
   assert.match(ps, /\[switch\]\$Remove/);
   assert.match(ps, /-ItemType Junction/);
 });
+
+test('the plugin and marketplace manifests point to this skill without pinning a version', () => {
+  const plugin = JSON.parse(read('.claude-plugin/plugin.json'));
+  const marketplace = JSON.parse(read('.claude-plugin/marketplace.json'));
+  assert.equal(plugin.name, 'design');
+  assert.equal(plugin.version, undefined, 'a pinned version stops updates; commits are the version');
+  assert.deepEqual(plugin.skills, ['./']);
+  assert.equal(marketplace.plugins.length, 1);
+  assert.equal(marketplace.plugins[0].name, plugin.name);
+  assert.equal(marketplace.plugins[0].source, './');
+});

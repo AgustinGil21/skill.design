@@ -1,0 +1,15 @@
+{
+  "name": "skill-design",
+  "description": "Agustin Gil's design skill for Claude Code.",
+  "owner": {
+    "name": "Agustin Gil",
+    "url": "https://github.com/AgustinGil21"
+  },
+  "plugins": [
+    {
+      "name": "design",
+      "source": "./",
+      "description": "Interface and website design without AI slop, for products in any language."
+    }
+  ]
+}

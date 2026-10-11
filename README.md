@@ -39,6 +39,25 @@ design/
 
 Requires Node 18 or later (only for the scripts).
 
+### Claude Code plugin (recommended, updates itself)
+
+In Claude Code:
+
+```
+/plugin marketplace add AgustinGil21/skill.design
+/plugin install design@skill-design
+```
+
+Then turn on updates once: `/plugin` → **Marketplaces** → `skill-design` → **Enable auto-update**. From then on, new
+versions arrive when a session starts. Without auto-update, run `/plugin marketplace update skill-design`.
+
+The skill shows up as `/design:design` and the agents as `design:art-director`, `design:usability-reviewer`,
+`design:accessibility-auditor` and `design:interface-writer`. It works the same on macOS, Linux and Windows.
+
+Use either the plugin or the installers below, not both, or the skill will be loaded twice.
+
+### From a clone (Codex, other agents, or to edit the skill)
+
 ```bash
 git clone https://github.com/AgustinGil21/skill.design.git ~/skills/design
 cd ~/skills/design
@@ -49,7 +68,7 @@ It creates symbolic links at `~/.claude/skills/design`, `~/.claude/agents/*.md` 
 `~/.codex/skills/design`. This folder stays the single source: keep it where you cloned it, and `git pull` updates every agent at once.
 To uninstall: `./install.sh --remove`.
 
-### Windows
+#### Windows
 
 ```powershell
 git clone https://github.com/AgustinGil21/skill.design.git $HOME\skills\design

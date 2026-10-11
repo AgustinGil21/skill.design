@@ -1,0 +1,24 @@
+{
+  "name": "design",
+  "displayName": "Design",
+  "description": "Interface and website design without AI slop, for products in any language: create, review, audit accessibility, write copy, brand and landing pages.",
+  "author": {
+    "name": "Agustin Gil",
+    "url": "https://github.com/AgustinGil21"
+  },
+  "homepage": "https://github.com/AgustinGil21/skill.design",
+  "repository": "https://github.com/AgustinGil21/skill.design",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "ui",
+    "ux",
+    "accessibility",
+    "wcag",
+    "landing-page",
+    "copywriting"
+  ],
+  "skills": [
+    "./"
+  ]
+}
