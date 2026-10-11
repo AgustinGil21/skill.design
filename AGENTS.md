@@ -29,6 +29,8 @@ Summary:
   bounce, elastic or AI-style pulses unless asked).
 - Dependency-free tools (Node ≥ 18):
   - `node scripts/design-scan.mjs <project>` (web and native projects)
+  - `node scripts/reference-capture.mjs <urls> [--follow N]` (study reference sites: full scroll, slices on desktop
+    and phone, structure, type, color, motion; follow `workflows/reference.md`)
   - `node scripts/screenshots.mjs <urls>` (phone and desktop, light and dark; uses the project's Playwright or Chrome)
   - `node scripts/contrast.mjs <text> <background>`
   - `node scripts/slop.mjs <paths> [--lang en,es]` (also flags bouncy, elastic and pulsing motion)
@@ -36,7 +38,7 @@ Summary:
     too many icon families or typefaces)
   - `node scripts/a11y-static.mjs <paths>`
 - Subagent definitions in `agents/` (product researcher, brand analyst, art director, usability reviewer,
-  accessibility auditor, interface writer, prototyper): read them as role instructions if your tool has no
+  accessibility auditor, interface writer, prototyper, reference analyst): read them as role instructions if your tool has no
   subagents.
 
 To use it from a project, add a line like this to the project's `AGENTS.md`:

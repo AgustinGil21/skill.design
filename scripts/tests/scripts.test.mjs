@@ -441,3 +441,32 @@ test('design-scan: i18n and the locale in the URL', async () => {
   writeFileSync(join(none, 'package.json'), JSON.stringify({ dependencies: { react: '19.0.0' } }));
   assert.deepEqual(scanProject(none).i18n, { library: false, localeInUrl: null });
 });
+
+test('reference-capture: arguments, page folders and the report (no browser needed)', async () => {
+  const { parseArgs, slugFor, renderReport } = await import('../reference-capture.mjs');
+  const opts = parseArgs(['https://www.example.com/VI', 'https://www.example.com/VI/downloads', '--viewports', 'desktop', '--follow', '3']);
+  assert.deepEqual(opts.urls.length, 2);
+  assert.deepEqual(opts.viewports, ['desktop']);
+  assert.equal(opts.follow, 3);
+  assert.throws(() => parseArgs(['https://x.test', '--viewports', 'watch']), /Unknown viewport/);
+  assert.throws(() => parseArgs(['not a url']));
+  assert.equal(slugFor('https://www.example.com/VI/', 0), '01-example.com-vi');
+  assert.equal(slugFor('https://example.com/', 1), '02-example.com-home');
+  const page = {
+    url: 'https://example.com/', title: 'Example', lang: 'en', description: 'A test page', viewportName: 'desktop', dir: 'out/01',
+    viewport: { width: 1440, height: 900 }, height: 2700, slices: [{}, {}, {}], truncated: false, consentDismissed: 'Accept',
+    headings: [{ level: 2, text: 'Hero', y: 100 }, { level: 3, text: 'Details', y: 1000 }],
+    sections: [{ y: 0, height: 900, heading: 'Hero', text: 'Hello', images: 1, videos: 0, canvases: 0, buttons: 1, background: 'rgb(0, 0, 0)', sticky: false }],
+    layers: [{ y: 0, height: 900, background: 'image or gradient', videos: 1, canvases: 0 }],
+    actions: [{ text: 'Buy now', y: 400, filled: true, background: 'rgb(255, 0, 0)', color: 'rgb(255, 255, 255)' }],
+    nav: [{ text: 'Home', href: 'https://example.com/' }],
+    typography: { h2: { family: 'Inter', size: '48px', lineHeight: '52px', weight: '700', letterSpacing: 'normal', transform: 'none' } },
+    fonts: [{ value: 'Inter', weight: 10 }], textColors: [{ value: 'rgb(0, 0, 0)' }], backgrounds: [{ value: 'rgb(255, 255, 255)' }],
+    motion: { animatedElements: 2, elementsWithTransitions: 5, stickyElements: 1, reducedMotionRules: 0, videos: [{ autoplay: true, muted: true, loop: true, controls: false, poster: true }], canvases: 0, libraries: ['gsap'] },
+    media: { images: 3, svgs: 2, iframes: 0 },
+  };
+  const report = renderReport([page]);
+  for (const expected of ['## Example — desktop', '- h2 "Hero" (slice 1)', '  - h3 "Details" (slice 2)', '"Buy now" (slice 1', 'Cookie banner dismissed', 'Fixed or sticky background layers', 'autoplay muted loop no controls poster', 'Libraries detected: gsap']) {
+    assert.ok(report.includes(expected), expected);
+  }
+});

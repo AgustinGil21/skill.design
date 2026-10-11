@@ -20,6 +20,7 @@ design/
 │   ├── start.md          Study the project first: product, audience, stakes, tone, brand; ask; offer modes
 │   ├── ideate.md         Options with a recommendation, and honest feedback on ideas
 │   ├── prototype.md      Quick demos and prototypes
+│   ├── reference.md      Study a reference site the person shares, and translate it to their project
 │   ├── create.md         Screens, flows, components
 │   ├── landing.md        Landing pages and marketing sites
 │   ├── review.md         Critique and review with severities
@@ -28,12 +29,14 @@ design/
 │   └── brand.md          Identity, typography, color, voice
 ├── knowledge/            The base: foundations, patterns by screen type, landing pages and reasoned case studies
 ├── agents/               Subagents: product researcher, brand analyst, art director, usability reviewer,
-│                         accessibility auditor, interface writer, prototyper
-├── templates/            Brief, design context, brand audit, directions, idea feedback, states table, review report
+│                         accessibility auditor, interface writer, prototyper, reference analyst
+├── templates/            Brief, design context, brand audit, directions, idea feedback, reference report, states
+│                         table, review report
 ├── evals/                Behavioral scenarios and rubric to check the skill acts like a senior designer
 ├── scripts/              Dependency-free tools (Node ≥ 18)
 │   ├── design-scan.mjs   Evidence about a project, web or native: product, stack, languages, brand, fonts, colors, copy
 │   ├── system-check.mjs  Tokens, component size, hand-drawn icons, icon and type families
+│   ├── reference-capture.mjs  Study reference sites: full scroll, slices, structure, type, color, motion
 │   ├── screenshots.mjs   Phone and desktop, light and dark captures of a running interface
 │   ├── contrast.mjs      WCAG contrast (HEX, rgb, oklch)
 │   ├── slop.mjs          Generic copy and styles, with per-language lexicons

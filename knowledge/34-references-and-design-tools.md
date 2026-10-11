@@ -76,6 +76,13 @@ Many teams keep the intended design in a design tool. Code and design files ofte
 
 Writing to design files (creating frames, diagrams or components) is a separate request; do it only when asked.
 
+## Reference sites the person shares
+
+When the person shares links ("this is the original page, also look at these paths"), study them with
+`workflows/reference.md`: `node scripts/reference-capture.mjs <urls>` scrolls each page to the end, captures it slice
+by slice on desktop and phone, and extracts its structure; then take it apart, explain the designer's choices and
+translate them to the person's project without copying.
+
 ## Browsers and screenshots
 
 To see the running product, see [looking at the real interface](33-looking-at-the-real-interface.md) and

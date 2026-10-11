@@ -90,6 +90,7 @@ expertise applies**: read the matching workflow below; it tells you which `knowl
 | First design task in a project, "look at my project", or open help ("help me with the design") | Start | `workflows/start.md` |
 | "Give me ideas", "what could we do?", or "what do you think of this idea?" | Ideate / Feedback | `workflows/ideate.md` |
 | "Show me", "make a demo", compare directions visually | Prototype | `workflows/prototype.md` |
+| A link to a reference site ("this is the original: …, also look here: …") | Reference | `workflows/reference.md` |
 | Design or build a screen, flow or component | Create | `workflows/create.md` |
 | Design or redo a landing page or marketing site | Landing | `workflows/landing.md` |
 | Review, critique or "improve" something that exists | Review | `workflows/review.md` |
@@ -185,6 +186,7 @@ conversion forms, dark aesthetics, blogs, full recipes and CSS motion recipes).
 | Script | What for | Usage |
 | --- | --- | --- |
 | `scripts/system-check.mjs` | Tokens, component size and families: raw colors and arbitrary values in components, inline magic numbers, oversized components, icons drawn by hand, more than two icon families or typefaces | `node scripts/system-check.mjs <files or folders>` |
+| `scripts/reference-capture.mjs` | Study reference pages: scroll to the end, slices on desktop and phone, sections, headings, copy, CTAs, type, color, motion and media; extra URLs and same-site links | `node scripts/reference-capture.mjs <urls> [--follow N]` |
 | `scripts/screenshots.mjs` | Screenshots of a running interface: phone and desktop, light and dark, reduced motion (uses the project's Playwright or the installed Chrome) | `node scripts/screenshots.mjs <urls> [--out dir]` |
 | `scripts/design-scan.mjs` | Evidence about a project, web or native (Flutter, iOS, Android, React Native): product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |
 | `scripts/contrast.mjs` | WCAG contrast between two colors (HEX, rgb, simple oklch) | `node scripts/contrast.mjs "#777" "#fff"` |
@@ -213,6 +215,7 @@ questions; expected output.
 | `accessibility-auditor` | WCAG 2.2 AA audit | Audits, before launching |
 | `interface-writer` | Interface and marketing copy in any language | Copy work, reviews |
 | `prototyper` | Quick demos and variants in code | When the person wants to see or compare ideas |
+| `reference-analyst` | Captures and explains reference sites; what to take, adapt and avoid | When the person shares links (one agent per site, in parallel) |
 
 At the start of a project with more than about 30 source files, launching `product-researcher` and
 `brand-analyst` in parallel is **required**, not optional (`workflows/start.md`, step 2). Otherwise use agents when
@@ -232,6 +235,7 @@ Use the templates in `templates/`:
 - `templates/brand-audit.md` for brand studies.
 - `templates/directions.md` for options and directions with a recommendation.
 - `templates/idea-feedback.md` for feedback on the person's ideas.
+- `templates/reference-report.md` for studies of reference sites.
 
 Reports the person may want to keep or share (reviews, audits, brand studies, directions) can be saved as Markdown
 files in the project when they ask, or offered in one line when they do not.

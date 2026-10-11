@@ -47,6 +47,7 @@ Keep every Mobbin link exactly as the tool returns it, with the product name.
 | Source | What it gives | Notes |
 | --- | --- | --- |
 | Using the real product | Behavior, states, timing, errors | Screenshots with `scripts/screenshots.mjs` or a browser tool; never real personal data |
+| Public websites | Whole pages: structure, pacing, copy, type, color, motion | `scripts/reference-capture.mjs <urls>` scrolls to the end and captures every slice (see `workflows/reference.md`) |
 | Platform guidelines (Apple Human Interface Guidelines, Material Design, Windows and GNOME guidelines) | Platform conventions and the reasons behind them | Cite the guideline, check the current version |
 | Standards (WCAG 2.2, WAI-ARIA Authoring Practices) | Requirements and accessible patterns | Quote criterion numbers exactly |
 | Public design systems (GOV.UK, Atlassian, Shopify Polaris, IBM Carbon and others) | Documented decisions, often with research behind them | Good for "why", not only "what" |
