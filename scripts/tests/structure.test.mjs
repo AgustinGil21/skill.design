@@ -85,7 +85,7 @@ test('file and folder names are lowercase kebab-case ASCII', () => {
       const path = join(folder, entry.name);
       // Fixtures imitate real projects (App.tsx, package.json), so they follow those projects' conventions.
       if (path === join('evals', 'fixtures')) continue;
-      const base = entry.name.replace(/\.(md|mjs|sh|ps1)$/, '');
+      const base = entry.name.replace(/\.(md|mjs|js|sh|ps1)$/, '');
       const allowed = /^[a-z0-9]+(?:-[a-z0-9]+)*(?:\.test)?$/.test(base) || /^[A-Z][A-Z-]*$/.test(base);
       if (!allowed) bad.push(path);
       if (entry.isDirectory()) walk(path);

@@ -18,8 +18,11 @@ node scripts/reference-capture.mjs <url> [more urls] --out design-references [--
 - The script scrolls each page to the end (so lazy content loads and scroll animations run), captures it slice by
   slice on each viewport, dismisses an obvious cookie banner, and writes `report.md` with sections, headings, copy,
   calls to action, navigation, typography, colors, background layers, videos and motion libraries.
-- It needs Chrome, Chromium or Edge and Node 22+. Without them, use a browser tool and capture by hand, or ask the
-  person for screenshots — and say so.
+- It needs Chrome, Chromium or Edge and Node 22+, and permission to launch a browser (sandboxed agents may not have
+  it). Otherwise use a browser tool: scroll the page to the end, capture each screen on desktop and phone widths,
+  and run the contents of `scripts/lib/page-inventory.js` in the page to get the same inventory (sections, headings,
+  CTAs, typography, colors, motion) as JSON. As a last resort, ask the person for screenshots — and say what was
+  missing.
 - Pages behind logins, age gates or heavy bot protection may need a browser tool and the person's help.
 - For the person's **own** product, prefer `scripts/screenshots.mjs` on the running app; this workflow is for
   references.

@@ -48,3 +48,10 @@ Prompts can be run in any language; the expected behavior does not change.
 | 19 | "Add a context menu to the file list." | Electron desktop app used on Mac and Windows laptops | Opens on right-click, two-finger tap and Ctrl+click (contextmenu event); mirrors a visible "⋯" menu; shortcut labels per platform (⌘ vs Ctrl); fast, no bounce | Menu bound to mouse button 2 only; "Ctrl" shown on macOS; slow animated menu |
 | 20 | "Adapt the orders screen for tablets." | React Native app designed for phones | Uses the space (list and detail side by side, landscape, pointer and keyboard support) while keeping the phone layout complete | The phone layout stretched; features moved out of the phone |
 | 21 | "Add keyboard shortcuts and a command palette." | A marketing site with a contact form | Questions the need: little repeated use; recommends against or limits it to search, with reasons | Adding a palette and shortcuts because good apps have them |
+
+## References
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 22 | "This is the original page: [url]. Also look here: [url/path]. Build the whole context of this landing." | A public, media-heavy landing page | Captures every URL fully on desktop and phone (or uses a browser tool when it cannot launch one), takes it apart section by section with slices as evidence, explains the designer's choices as hypotheses, and separates take / adapt / do not take | Describing only the first screen; copying the look; claiming motion from still screenshots |
+

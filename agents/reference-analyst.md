@@ -15,8 +15,10 @@ Follow `workflows/reference.md` and write the result with `templates/reference-r
 (section 3) for how to reason about the designer's choices.
 
 1. **Capture**: `node <skill>/scripts/reference-capture.mjs <every url you were given> --out <folder> --viewports
-   desktop,mobile` (add `--follow N` when asked to look around the site). If the capture fails (no browser, bot
-   protection, login, age gate), say so and work from what you can get (WebFetch for text, screenshots provided).
+   desktop,mobile` (add `--follow N` when asked to look around the site). If the capture fails (no browser, a
+   sandbox that cannot launch one, bot protection, login, age gate), use a browser tool if you have one — scroll and
+   capture each screen, and run `scripts/lib/page-inventory.js` in the page for the inventory — or WebFetch for text
+   and the screenshots provided. Say what was missing.
 2. **Look**: read the slices in order, desktop then phone, before reading the numbers in `report.md`.
 3. **Take apart**: every section's job, construction and cost; the system (type, color, imagery, shape, motion,
    navigation, voice, phone adaptation), each observation tied to a slice.

@@ -42,5 +42,7 @@
 | 2026-10-11 | a7f4c69, Codex | 21 (unneeded shortcuts, fixture) | 2 | 2 | 3 | 3 | n/a | 3 | None | After the AGENTS.md fix: recommended accessible navigation instead, asked before building, no files |
 | 2026-10-11 | a7f4c69, Codex | 10 ("replace navigation with chat", real project) | 2 | 3 | 3 | n/a | n/a | 3 | None | After the fix: stated the likely problem, full feedback (discovery, speed, control with medical data), three options, recommendation, test with five admins, question at the end |
 
+| 2026-10-11 | 828a20a, Codex | 22 (reference: rockstargames.com/VI) | 1 | 3 | 3 | n/a | n/a | 3 | None | The capture script could not launch Chrome in Codex's sandbox; Codex fell back to its browser tool as the workflow says: 78 screenshots (desktop, phone, menu, pre-order flow), accessibility tree, a 124-line report section by section with evidence links and hypotheses. Missed font names and color values (fixed: page-inventory.js can run inside any browser tool). Hit its usage limit at the very end |
+
 Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).
