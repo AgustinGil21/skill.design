@@ -29,4 +29,10 @@
 | 2026-10-11 | same | 20 (tablet adaptation, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | List and detail side by side from 720 dp by window width (rotation, split view); phone unchanged; small components; new states; considered a kitchen board as alternative |
 | 2026-10-11 | same | 21 (unneeded shortcuts, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Added nothing; explained why (no daily use, two actions, accessibility costs, tone); proposed useful keyboard work and left the decision with options |
 
-Not yet run: scenarios 8 and 14, and repeated runs (the rubric asks for three per scenario).
+| 2026-10-11 | 2f285a7 | 8 (settings page within an existing brand, fixture) | 1 | 2 | 2 | 3 | 3 | 3 | None | One-column settings with every state (failed payment, paused, cancelled, loading, error); pause and cancel equally visible; small components; added missing tokens (danger, surface, on-brand) instead of raw values |
+| 2026-10-11 | same | 14 (approved component with context, fixture) | 1 | 3 | 3 | 3 | 3 | 3 | None | Reused DESIGN-CONTEXT.md (usted, teal, phone first) without redoing discovery; all spec states; native dialog with focus management; 44 px targets as a token; listed assumptions |
+| 2026-10-11 | same | 1 (kids app, fixture) | 2 | 3 | 3 | 3 | 2 | 3 | None | Consistent with run 1: same mismatch found, same two audiences, device question with options; no files written |
+| 2026-10-11 | same | 7 (bank brand, fixture) | 2 | 2 | 3 | 3 | 3 | 3 | None | Three-step flow with review, fees before sending, outcome states including timeout ("don't send it again"); kept the brand gradient as a strip and moved the form to a neutral surface for contrast; added a control border token (1.47 → 4.83:1) |
+
+Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
+with other agents (Codex through AGENTS.md).
