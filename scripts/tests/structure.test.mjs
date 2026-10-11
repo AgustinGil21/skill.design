@@ -80,7 +80,7 @@ test('file and folder names are lowercase kebab-case ASCII', () => {
     for (const entry of readdirSync(join(ROOT, folder), { withFileTypes: true })) {
       if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
       const path = join(folder, entry.name);
-      const base = entry.name.replace(/\.(md|mjs|sh)$/, '');
+      const base = entry.name.replace(/\.(md|mjs|sh|ps1)$/, '');
       const allowed = /^[a-z0-9]+(?:-[a-z0-9]+)*(?:\.test)?$/.test(base) || /^[A-Z][A-Z-]*$/.test(base);
       if (!allowed) bad.push(path);
       if (entry.isDirectory()) walk(path);
@@ -88,4 +88,22 @@ test('file and folder names are lowercase kebab-case ASCII', () => {
   };
   walk('.');
   assert.deepEqual(bad, []);
+});
+
+test('CLAUDE.md imports AGENTS.md instead of being a symlink', () => {
+  assert.equal(read('CLAUDE.md').trim(), '@AGENTS.md');
+});
+
+test('both installers install the same skill name, agents and Codex folder, and can uninstall', () => {
+  const sh = read('install.sh');
+  const ps = read('install.ps1');
+  assert.match(sh, /^NAME="design"$/m);
+  assert.match(ps, /^\$Name = 'design'$/m);
+  for (const text of [sh, ps]) {
+    assert.match(text, /agents/);
+    assert.match(text, /\.codex/);
+  }
+  assert.match(sh, /--remove/);
+  assert.match(ps, /\[switch\]\$Remove/);
+  assert.match(ps, /-ItemType Junction/);
 });

@@ -31,7 +31,8 @@ design/
 │   ├── a11y-static.mjs   Static accessibility in HTML/JSX/Astro/Vue/Svelte/CSS
 │   ├── lexicon/          Hollow-phrase lists per language (en, es, pt, fr, de)
 │   └── tests/            Tests for the scripts and the skill's structure
-└── install.sh            Installs with symbolic links (Claude Code and Codex)
+├── install.sh            Installs with symbolic links (Claude Code and Codex)
+└── install.ps1           The same for Windows (PowerShell)
 ```
 
 ## Install
@@ -47,6 +48,18 @@ cd ~/skills/design
 It creates symbolic links at `~/.claude/skills/design`, `~/.claude/agents/*.md` and, if Codex exists,
 `~/.codex/skills/design`. This folder stays the single source: keep it where you cloned it, and `git pull` updates every agent at once.
 To uninstall: `./install.sh --remove`.
+
+### Windows
+
+```powershell
+git clone https://github.com/AgustinGil21/skill.design.git $HOME\skills\design
+cd $HOME\skills\design
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+The skill folder is linked with a junction, so no admin rights are needed and `git pull` updates it. The agents are
+linked when Developer Mode is on; otherwise they are copied, and `install.ps1` must run again after each `git pull`
+to update them. To uninstall: `.\install.ps1 -Remove`. With WSL, use `install.sh` instead.
 
 For other agents, add this to each project's `AGENTS.md` (or equivalent):
 
