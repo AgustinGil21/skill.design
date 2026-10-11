@@ -19,5 +19,5 @@ Summary:
 To use it from a project, add a line like this to the project's `AGENTS.md`:
 
 ```
-For any design, interface, accessibility or copy work, follow the skill at ~/Documents/Programming/Skills/design/SKILL.md
+For any design, interface, accessibility or copy work, follow the skill at ~/skills/design/SKILL.md (use the path where you cloned it)
 ```

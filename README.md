@@ -36,19 +36,22 @@ design/
 
 ## Install
 
+Requires Node 18 or later (only for the scripts).
+
 ```bash
-cd ~/Documents/Programming/Skills/design
+git clone https://github.com/AgustinGil21/skill.design.git ~/skills/design
+cd ~/skills/design
 ./install.sh
 ```
 
 It creates symbolic links at `~/.claude/skills/design`, `~/.claude/agents/*.md` and, if Codex exists,
-`~/.codex/skills/design`. This folder stays the single source: what you edit here shows up everywhere.
+`~/.codex/skills/design`. This folder stays the single source: keep it where you cloned it, and `git pull` updates every agent at once.
 To uninstall: `./install.sh --remove`.
 
 For other agents, add this to each project's `AGENTS.md` (or equivalent):
 
 ```
-For any design, interface, accessibility or copy work, follow the skill at ~/Documents/Programming/Skills/design/SKILL.md
+For any design, interface, accessibility or copy work, follow the skill at ~/skills/design/SKILL.md (use the path where you cloned it)
 ```
 
 ## Use
@@ -78,3 +81,7 @@ node scripts/a11y-static.mjs src/
   `SKILL.md` and to the index `knowledge/README.md`.
 - Add a language to the slop detector with a new file in `scripts/lexicon/` (see its README).
 - `SKILL.md` must stay short: detail belongs in `workflows/` and `knowledge/`.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
