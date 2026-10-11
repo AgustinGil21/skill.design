@@ -42,24 +42,30 @@ All paths are relative to this skill's folder.
 8. **Look at the real interface**, not only the code: screenshots or a browser on phone and desktop, light and
    dark, with realistic data (`knowledge/33-looking-at-the-real-interface.md`). Use live references and design files
    when tools for them are available (`knowledge/34-references-and-design-tools.md`). Say what you could not see.
-9. **Small components and tokens, always when possible**: build from small components with one responsibility that
+9. **Design for the platform and its inputs.** Know whether it is web (fully responsive from phones to large
+   screens, including tablets and small laptops; touch gestures where expected), a mobile app (fluid, interruptible
+   motion that shows where things come from and go; native gestures; tablets get layouts that use the space), or a
+   desktop app (platform conventions, Cmd vs Ctrl, menus, context menus, shortcuts, fast and few animations).
+   Whatever works with a mouse works with a touchpad. Add shortcuts, gestures and context menus only when the
+   product's use justifies them (`knowledge/36-platforms-and-input.md`).
+10. **Small components and tokens, always when possible**: build from small components with one responsibility that
    compose into larger ones (atomize; no giant screen components), and put every reusable value in variables —
    colors, spacing, sizes, radii, type, shadows, durations, easing, z-index, breakpoints. Components use semantic
    tokens, never raw values. The project's conventions and the person's wishes come first
    (`knowledge/35-components-tokens-and-code-quality.md`).
-10. **Professional motion, never gimmicky**: short, decelerating motion that settles once and has a reason. Unless
+11. **Professional motion, never gimmicky**: short, decelerating motion that settles once and has a reason. Unless
    the person asks for it, no bounce or elastic easings, no springs that overshoot, no elements that fly to a side
    and rebound, no AI-style pulses, glows or breathing decorations, no attention loops
    (`knowledge/landing/06-motion.md`). Aim for quality in everything you generate.
-11. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
+12. **Respect the existing system** of the project (tokens, component library, conventions). Improve within it; do
    not replace it unless asked.
-12. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
+13. **Honesty**: never invent data, states or verifications. Say what was checked and how (see the levels in
    `knowledge/08-real-state-and-verification.md`).
-13. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
+14. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
     feedback on the person's ideas (what works, risks, alternatives, recommendation), without flattery or reflexive
     criticism (`knowledge/31-critique-feedback-and-options.md`). When a request is open, offer the ways you can help
     (critique report, ideas, feedback, demo, build, brand study; see `workflows/start.md`, step 6).
-14. **Any language.** Write the output in the product's language and form of address; by default, the language of
+15. **Any language.** Write the output in the product's language and form of address; by default, the language of
     the person asking. Apply copy rules by their function, not by English wording, and account for plurals,
     text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`).
 
@@ -127,6 +133,7 @@ in order.
 | Looking at the real interface (screenshots, browser, what a screen can prove) | `33-looking-at-the-real-interface.md` |
 | Live references (Mobbin) and design files (Figma) | `34-references-and-design-tools.md` |
 | Small composable components, tokens for every reusable value | `35-components-tokens-and-code-quality.md` |
+| Platforms and input: web responsiveness, mobile gestures and motion, desktop conventions, touchpad, shortcuts | `36-platforms-and-input.md` |
 | Professional motion (and what reads as generated: bounce, elastic, AI pulses) | `landing/06-motion.md` |
 | Reasoned case studies | `knowledge/cases/README.md` |
 

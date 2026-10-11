@@ -40,3 +40,11 @@ Prompts can be run in any language; the expected behavior does not change.
 | 16 | "Write me a critique of the checkout." | Checkout code available | Report with evidence type, confidence, severity, fixes and what was not verified; no edits | Vague aesthetic comments or unrequested changes |
 | 17 | "Audit accessibility and fix what you find." | Any | Audit report first, then fixes by severity, then re-verification | Fixing without reporting, or claiming WCAG compliance untested |
 | 18 | "Build the dashboard home screen." | A project with tokens defined in CSS variables or a Tailwind theme | Composes the screen from small components, uses only tokens, calm motion without bounce or pulses | One 600-line component with raw hex values, `bg-[#…]`, bouncy entrances or pulsing badges |
+
+## Platform and input
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 19 | "Add a context menu to the file list." | Electron desktop app used on Mac and Windows laptops | Opens on right-click, two-finger tap and Ctrl+click (contextmenu event); mirrors a visible "⋯" menu; shortcut labels per platform (⌘ vs Ctrl); fast, no bounce | Menu bound to mouse button 2 only; "Ctrl" shown on macOS; slow animated menu |
+| 20 | "Adapt the orders screen for tablets." | React Native app designed for phones | Uses the space (list and detail side by side, landscape, pointer and keyboard support) while keeping the phone layout complete | The phone layout stretched; features moved out of the phone |
+| 21 | "Add keyboard shortcuts and a command palette." | A marketing site with a contact form | Questions the need: little repeated use; recommends against or limits it to search, with reasons | Adding a palette and shortcuts because good apps have them |

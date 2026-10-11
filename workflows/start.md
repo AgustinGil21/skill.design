@@ -61,6 +61,8 @@ What I understood
 - Main users: club admins at a desk; coaches on phones at training. Likely / guess.
 - Stakes: players' medical data and minors' information → privacy and calm matter. Confirmed.
 - Tone: serious but warm, practical, familiar address in Spanish. Likely.
+- Platform: responsive web (admins on laptops, often with touchpads) and a React Native app (coaches and players on
+  phones; tablets likely at the club). Likely.
 - Brand: burgundy as lead color, Playfair Display headings with a grotesque for text. Two blues and many reds compete
   with it.
 What I need from you
@@ -71,7 +73,8 @@ Use the person's language. Mark each line with its confidence.
 
 ## 5. Ask what cannot be inferred
 
-Ask when a **decision-critical** fact is a guess: the primary audience, the age of users, the tone the brand wants,
+Ask when a **decision-critical** fact is a guess: the platform and devices people really use (phone at the venue,
+laptop with a touchpad, tablet, desktop with mouse), the primary audience, the age of users, the tone the brand wants,
 whether a visible identity is deliberate or legacy, the markets, the goal of the work. Rules:
 
 - **Few questions** (one to four), most important first; never a questionnaire.

@@ -34,6 +34,9 @@ Run on the interface files:
 - `node <skill>/scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components)
 - `node <skill>/scripts/a11y-static.mjs <paths>`
 
+Check the platform and its inputs (`knowledge/36-platforms-and-input.md`): sizes from phone to desktop, touch and
+touchpad parity, hover-free essentials, gestures and shortcuts that fit the product.
+
 Critique like `knowledge/31-critique-feedback-and-options.md` describes: restate the intent, judge against the
 context's goals, say which kind of judgment each finding is (requirement, evidence, principle, convention, taste).
 

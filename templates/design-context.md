@@ -29,6 +29,14 @@ places), **likely** (two indirect sources), **guess** (one weak signal). Guesses
 2. [ ]
 3. [ ]
 
+## Platform and input
+
+| Platform | Devices and sizes | Inputs | Expectations | Confidence |
+| --- | --- | --- | --- | --- |
+| [web / iOS / Android / macOS / Windows / Linux] | [phone, tablet, laptop, desktop, TV] | [touch, mouse, touchpad, keyboard, pen] | [gestures, shortcuts, context menus, motion style] | |
+
+Repeated daily use that justifies shortcuts, gestures or context menus: [yes, for whom / no].
+
 ## Stakes
 
 What goes wrong if the interface misleads or fails, and for whom: [money, health, privacy, safety, reputation, time,

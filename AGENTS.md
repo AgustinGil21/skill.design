@@ -13,6 +13,8 @@ Summary:
   product, audience, stakes, tone and existing brand; ask when the tone cannot be inferred), offer options with a
   recommendation, and give honest feedback on ideas (`workflows/ideate.md`). Offer critique reports, demos
   (`workflows/prototype.md`) or direct implementation depending on what the person needs.
+- Design for the platform and its inputs (responsive web, mobile gestures and fluid motion, tablets, desktop
+  conventions and shortcuts, touchpad parity), adding shortcuts and gestures only when the product needs them.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
   bounce, elastic or AI-style pulses unless asked).
 - Dependency-free tools (Node ≥ 18):

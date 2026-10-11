@@ -37,6 +37,8 @@ look at two or three real examples of the pattern before building (`knowledge/34
   mini system (a few CSS variables) for standalone demos.
 - **Small parts and variables, even in a demo**: CSS variables for colors, spacing, radii and motion; repeated
   pieces written once (a function, a template or a component). Demos often become the reference for the real build.
+- **The platform**: demos for mobile show phone and tablet; web demos work from 320 px up; desktop demos use
+  platform-correct shortcut labels. Show touch and pointer behavior when it is part of the question.
 - **Professional motion**: short and decelerating; no bounce, elastic, overshoot or pulsing decoration unless asked.
 - **Accessible basics**: semantic HTML, keyboard, visible focus, contrast, reduced motion. A prototype that only
   works with a mouse tests the wrong thing.

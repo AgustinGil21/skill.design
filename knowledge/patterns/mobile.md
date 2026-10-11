@@ -5,6 +5,9 @@ while walking, waiting, holding a child, in sunlight, with one hand, and they sw
 system's gestures and conventions usually matters more than originality — with deliberate exceptions where the product
 genuinely needs them.
 
+
+For platform detection, tablets, desktop conventions and touchpad parity, see
+[platforms and input](../36-platforms-and-input.md).
 ## The problem and who has it
 
 - **People on the move** with partial attention and intermittent connectivity.

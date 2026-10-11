@@ -46,6 +46,9 @@ from screens, which from code, and which are predictions.
   plans and players' medical records"), not a keyword.
 - **Audiences**: primary, secondary and the buyer if different; their expertise, frequency of use, devices.
 - **Jobs**: the three to five most important things people come to do.
+- **Platform, devices and input**: web, mobile app (phone, tablet), desktop app (which operating systems), or several;
+  the inputs that matter (touch, mouse, touchpad, keyboard, pen, assistive technology); whether repeated daily use
+  justifies shortcuts, gestures and context menus (`knowledge/36-platforms-and-input.md`).
 - **Stakes**: what goes wrong if the interface misleads (money lost, health data exposed, a child contacted by a
   stranger, a match day ruined). Stakes drive tone more than the category does.
 - **Tone**: place the product on the dimensions in `knowledge/30-product-domains-and-tone.md` (serious ↔ playful,

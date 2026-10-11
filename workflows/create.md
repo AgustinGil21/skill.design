@@ -15,6 +15,17 @@
 
 Fill in `templates/brief.md` (mentally or in writing, depending on size).
 
+## 1b. Platform and input
+
+Read `knowledge/36-platforms-and-input.md` for the platform in the design context. Decide, for this screen:
+
+- **Sizes**: web from 320 px to large screens (including tablet and small-laptop widths); mobile phone and tablet
+  layouts; desktop window sizes.
+- **Inputs**: touch, mouse, touchpad, keyboard, pen; nothing essential on hover; right-click parity on touchpads.
+- **Platform behavior**: gestures (mobile), shortcuts and context menus (desktop and web tools) **only if repeated
+  use justifies them**, with platform-correct modifier labels (Cmd on macOS, Ctrl elsewhere).
+- **Motion style**: fluid, spatial and interruptible on mobile; fast and minimal on desktop tools.
+
 ## 2. Find the pattern and model the information
 
 - Open the matching file in `knowledge/patterns/` (see the map in `SKILL.md`).

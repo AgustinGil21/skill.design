@@ -37,7 +37,10 @@ Works for screenshots, prototypes, URLs or code. The result is an actionable rep
    (raw values instead of tokens, oversized components) and look for gimmicky motion.
 9. **Quick accessibility**: contrast, focus, keyboard, names (`knowledge/02-accessibility.md`) plus
    `node scripts/a11y-static.mjs`. For a full audit, follow `workflows/accessibility.md`.
-10. **Ethics**: dark patterns, undue pressure (`knowledge/12-psychology-and-ethical-persuasion.md`).
+10. **Platform and input**: responsive across sizes (phone, tablet, small laptop, desktop), touch and touchpad
+    parity, hover-free essentials, gestures and shortcuts that fit the product, platform conventions
+    (`knowledge/36-platforms-and-input.md`).
+11. **Ethics**: dark patterns, undue pressure (`knowledge/12-psychology-and-ethical-persuasion.md`).
 
 For landing pages, add `knowledge/landing/08-review.md`.
 

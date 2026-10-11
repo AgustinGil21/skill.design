@@ -370,3 +370,37 @@ test('system-check: raw colors and arbitrary values in components, tokens allowe
   writeFileSync(join(dir, 'tokens.css'), '.x { color: #7a0f1e; }');
   assert.deepEqual(checkPaths([dir]), [], 'token and theme files are exempt');
 });
+
+test('design-scan: platforms and input features (web tool, mobile app, desktop app, monorepo)', async () => {
+  const { scanProject } = await import('../design-scan.mjs');
+  const { mkdirSync } = await import('node:fs');
+  const make = (files) => {
+    const dir = mkdtempSync(join(tmpdir(), 'scan-platform-'));
+    for (const [path, content] of Object.entries(files)) {
+      mkdirSync(join(dir, dirname(path)), { recursive: true });
+      writeFileSync(join(dir, path), content);
+    }
+    return dir;
+  };
+  const web = scanProject(make({
+    'package.json': JSON.stringify({ dependencies: { react: '19.0.0', cmdk: '1.0.0', '@dnd-kit/core': '6.0.0' } }),
+    'src/Row.tsx': 'export const Row = () => <tr onContextMenu={open} />;\nif (e.metaKey || e.ctrlKey) save();',
+    'src/app.css': '@media (pointer: coarse) { .row { min-height: 44px } }',
+  }));
+  assert.deepEqual(web.platforms, ['web']);
+  for (const what of ['command palette', 'drag and drop', 'context menu handlers', 'modifier-key shortcuts', 'pointer and hover media queries']) {
+    assert.ok(web.input.some((i) => i.startsWith(what)), what);
+  }
+  const mobile = scanProject(make({ 'package.json': JSON.stringify({ dependencies: { 'react-native': '0.79.0', expo: '53.0.0' } }) }));
+  assert.deepEqual(mobile.platforms, ['mobile (iOS and Android, phones and tablets)']);
+  const desktop = scanProject(make({ 'package.json': JSON.stringify({ dependencies: { react: '19.0.0', electron: '33.0.0' } }) }));
+  assert.ok(desktop.platforms.includes('desktop (cross-platform)'));
+  const monorepo = scanProject(make({ 'package.json': '{"name":"root"}', 'apps/editor/package.json': JSON.stringify({ dependencies: { react: '19.0.0' } }) }));
+  assert.deepEqual(monorepo.platforms, ['web']);
+});
+
+test('a11y: right-click detected by mouse button warns (touchpads fire contextmenu); the contextmenu event passes', () => {
+  const rules = (t) => analyzeMarkup(t, 'x.tsx').map((f) => f.rule);
+  assert.ok(rules('<div onMouseDown={(e) => { if (e.button === 2) openMenu(); }} />').includes('input contextmenu-by-button'));
+  assert.ok(!rules('<div onContextMenu={(e) => { e.preventDefault(); openMenu(); }} />').includes('input contextmenu-by-button'));
+});

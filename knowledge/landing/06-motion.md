@@ -69,6 +69,15 @@ These are guides drawn from common practice, not standards. Adjust to the brand:
 Distances stay short (8–24 px) for entrances; nothing flies from off-screen unless that is the concept. Larger
 elements move more slowly than small ones; the same distance feels faster on a phone than on a large screen.
 
+## Motion by platform
+
+- **Web marketing pages**: a few purposeful moments, as this file describes.
+- **Web and desktop tools**: fast (100–200 ms) and few; frequent actions often need no animation at all.
+- **Mobile apps**: fluid, continuous and interruptible — elements visibly come from somewhere and go somewhere,
+  transitions follow the finger and can be reversed. Use the platform's curves without overshoot.
+
+See [platforms and input](../36-platforms-and-input.md).
+
 ## Professional motion vs. generated-looking motion
 
 Some motion patterns have become the signature of generated, template-made interfaces. Avoid them unless the person

@@ -75,6 +75,11 @@ export function analyzeMarkup(text, file) {
   const add = (index, level, rule, message, excerpt = '') =>
     findings.push({ file, line: lineOf(text, index), level, rule, message, excerpt: excerpt.replace(/\s+/g, ' ').trim().slice(0, 120) });
 
+  // Right-click by mouse button only: touchpads (two-finger tap) and Ctrl+click on macOS fire contextmenu instead.
+  for (const m of text.matchAll(/\b(?:e|event|evt|ev)\.button\s*===?\s*2\b/g)) {
+    add(m.index, 'warning', 'input contextmenu-by-button', 'Right-click detected by mouse button: listen to the contextmenu event so touchpads and Ctrl+click work too', m[0]);
+  }
+
   // Images without alt (1.1.1)
   for (const m of openingTags(text, 'img|Image')) {
     if (!hasAttribute(m[2], 'alt') && !/aria-hidden\s*=\s*["{]?true/.test(m[2]) && !/role\s*=\s*["']presentation/.test(m[2])) {

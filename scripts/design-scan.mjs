@@ -48,7 +48,43 @@ const STACK = [
   ['@mui/material', 'Material UI'], ['@chakra-ui/react', 'Chakra UI'], ['antd', 'Ant Design'], ['framer-motion', 'Framer Motion'],
   ['motion', 'Motion'], ['gsap', 'GSAP'], ['three', 'Three.js'], ['phaser', 'Phaser'], ['electron', 'Electron'], ['@tauri-apps/api', 'Tauri'],
   ['i18next', 'i18next'], ['next-intl', 'next-intl'], ['react-intl', 'react-intl'],
+  ['@capacitor/core', 'Capacitor'], ['@ionic/react', 'Ionic'], ['@ionic/angular', 'Ionic'], ['react-native-web', 'React Native Web'],
+  ['react-native-reanimated', 'Reanimated'], ['react-native-gesture-handler', 'RN Gesture Handler'],
 ];
+
+// Libraries and code that show how the product handles input beyond taps and clicks.
+const INPUT_LIBS = [
+  ['react-hotkeys-hook', 'keyboard shortcuts'], ['tinykeys', 'keyboard shortcuts'], ['mousetrap', 'keyboard shortcuts'],
+  ['hotkeys-js', 'keyboard shortcuts'], ['cmdk', 'command palette'], ['kbar', 'command palette'],
+  ['@use-gesture/react', 'gestures'], ['hammerjs', 'gestures'], ['react-native-gesture-handler', 'gestures'],
+  ['@dnd-kit/core', 'drag and drop'], ['react-dnd', 'drag and drop'], ['@hello-pangea/dnd', 'drag and drop'],
+  ['@radix-ui/react-context-menu', 'context menus'], ['electron-context-menu', 'context menus'],
+];
+const INPUT_CODE = [
+  [/onContextMenu|['"]contextmenu['"]/, 'context menu handlers'],
+  [/\b(?:metaKey|ctrlKey)\b/, 'modifier-key shortcuts'],
+  [/@media[^{]*\((?:any-)?pointer:\s*(?:coarse|fine)\)|\((?:any-)?hover:\s*(?:hover|none)\)/, 'pointer and hover media queries'],
+  [/@container\b|\bcontainer-type\s*:|@container\//, 'container queries'],
+  [/\bonTouchStart\b|['"]touchstart['"]|\bonPointerDown\b|['"]pointerdown['"]/, 'touch or pointer handlers'],
+  [/\b(?:swipe|onSwipe|PanGestureHandler|Gesture\.Pan|DragGesture|detectDragGestures|GestureDetector)\b/, 'swipe or pan gestures'],
+  [/\bsharedTransition|matchedGeometryEffect|SharedTransitionLayout|Hero\(|layoutId=/, 'shared element transitions'],
+  [/\bwheel\b[^\n]{0,80}ctrlKey|ctrlKey[^\n]{0,80}\bwheel\b/, 'pinch zoom on touchpads (wheel + ctrlKey)'],
+];
+
+// Platforms the product targets, from its stack and folders. Hints, to be confirmed.
+export function inferPlatforms(stack, root) {
+  const has = (...labels) => labels.some((l) => stack.some((s) => s.startsWith(l)));
+  const dir = (d) => existsSync(join(root, d));
+  const platforms = [];
+  const mobile = has('React Native', 'Expo', 'Flutter', 'iOS', 'Android', 'Capacitor', 'Ionic');
+  const web = has('Next.js', 'Astro', 'Vue', 'Svelte', 'Angular', 'React Native Web') || (has('React') && !has('React Native', 'Expo'));
+  const desktop = has('Electron', 'Tauri') || (has('Flutter') && (dir('macos') || dir('windows') || dir('linux')));
+  if (web) platforms.push('web');
+  if (mobile) platforms.push(has('Flutter', 'React Native', 'Expo', 'Capacitor', 'Ionic') ? 'mobile (iOS and Android, phones and tablets)' : has('iOS') ? 'iOS' : 'Android');
+  if (desktop) platforms.push(has('Electron', 'Tauri') ? 'desktop (cross-platform)' : 'desktop');
+  if (has('Flutter') && dir('web')) platforms.push('web (Flutter)');
+  return [...new Set(platforms)];
+}
 
 const readText = (path) => {
   try {
@@ -75,7 +111,7 @@ const readJson = (path) => {
   }
 };
 
-const TEST_FILE = /\.(?:test|spec|stories)\.|(?:^|\/)(?:__tests__|tests?|fixtures|mocks?)\//;
+const TEST_FILE = /\.(?:test|spec|stories)\.|(?:^|\/)(?:__tests__|__mocks__|tests?|fixtures|mocks?)\//;
 
 // Flattens a translation file into its string values, preferring keys that read like headlines.
 function localeStrings(json, out = [], key = '') {
@@ -129,8 +165,21 @@ function readProduct(root) {
   return { product, pkg };
 }
 
+// Monorepos keep dependencies in workspace packages (apps/*, packages/*): read them too.
+function workspacePackages(root) {
+  const found = [];
+  for (const folder of ['apps', 'packages', 'clients', 'services']) {
+    for (const name of readdirSafe(join(root, folder))) {
+      const pkg = readJson(join(root, folder, name, 'package.json'));
+      if (pkg) found.push(pkg);
+    }
+  }
+  return found;
+}
+
 function readStack(pkg, root) {
-  const deps = { ...(pkg?.dependencies || {}), ...(pkg?.devDependencies || {}) };
+  const deps = {};
+  for (const p of [pkg, ...workspacePackages(root)]) Object.assign(deps, p?.dependencies || {}, p?.devDependencies || {});
   const stack = STACK.filter(([dep]) => dep in deps).map(([, label]) => label);
   if (existsSync(join(root, 'components.json'))) stack.push('shadcn/ui (components.json)');
   const has = (...paths) => paths.some((p) => existsSync(join(root, p)));
@@ -139,7 +188,8 @@ function readStack(pkg, root) {
   if (has('build.gradle', 'build.gradle.kts', 'android/build.gradle', 'android/build.gradle.kts', 'app/build.gradle', 'app/build.gradle.kts')) stack.push('Android (Gradle)');
   if (readText(join(root, 'app.json')).includes('"expo"')) stack.push('Expo config');
   const fontPackages = Object.keys(deps).filter((d) => d.startsWith('@fontsource'));
-  return { stack, fontPackages };
+  const inputLibs = INPUT_LIBS.filter(([dep]) => dep in deps).map(([dep, what]) => `${what} (${dep})`);
+  return { stack, fontPackages, inputLibs };
 }
 
 // Android ships one copy per screen density (mipmap-hdpi, drawable-xxhdpi…): list each asset once.
@@ -154,7 +204,8 @@ export function groupDensities(paths) {
 
 export function scanProject(root) {
   const { product, pkg } = readProduct(root);
-  const { stack, fontPackages } = readStack(pkg, root);
+  const { stack, fontPackages, inputLibs } = readStack(pkg, root);
+  const inputCode = new Map();
   const all = collect([root], new Set([...CODE, ...ASSETS, ...STRINGS, '.md', '.json'])).slice(0, MAX_FILES);
 
   const colors = new Map();
@@ -289,6 +340,10 @@ export function scanProject(root) {
       }
     }
 
+    if (!TEST_FILE.test(rel)) {
+      for (const [pattern, what] of INPUT_CODE) if (pattern.test(text) && !inputCode.has(what)) inputCode.set(what, rel);
+    }
+
     for (const m of text.matchAll(/<html[^>]*\blang=["']([\w-]+)["']/g)) langs.add(m[1]);
     if (headings.length < 25) {
       for (const m of text.matchAll(/<h[12][^>]*>([^<{]{4,120})<\/h[12]>/g)) {
@@ -315,6 +370,8 @@ export function scanProject(root) {
     root,
     product,
     stack,
+    platforms: inferPlatforms(stack, root),
+    input: [...inputLibs, ...[...inputCode.entries()].map(([what, file]) => `${what} (e.g. ${file})`)],
     languages: [...new Set([...langs, ...localeFolders])],
     brand: { assets: groupDensities(brandAssets).slice(0, 30), docs: brandDocs },
     fonts: [...top(fonts, 10).map(([f, n]) => ({ font: f, uses: n })), ...fontPackages.map((p) => ({ font: p, uses: 0 }))],
@@ -365,6 +422,12 @@ export function render(scan) {
   line();
   line('## Raw domain signals (word counts for the product-researcher agent to interpret, not conclusions)');
   list(scan.domains.map((d) => `${d.domain} (${d.strength}): ${d.hits.join(', ')}`), 'No clear domain signals: ask.');
+  line();
+  line('## Platform and input (confirm: devices and input methods change the design)');
+  list([
+    scan.platforms.length ? `Platforms: ${scan.platforms.join(', ')}` : null,
+    ...scan.input.map((i) => `Input: ${i}`),
+  ].filter(Boolean), 'Platform not detected and no special input handling found: ask which devices and inputs matter.');
   line();
   line('## Stack and languages');
   list([scan.stack.length ? `Stack: ${scan.stack.join(', ')}` : null, scan.languages.length ? `Languages: ${scan.languages.join(', ')}` : null].filter(Boolean), 'Not detected.');
