@@ -53,7 +53,9 @@ that the result still has one idea.
 Use `templates/idea-feedback.md`.
 
 1. **Restate the idea and the problem it solves.** Misunderstanding the idea makes all feedback wrong. If the problem
-   is unclear, ask about the problem before judging the solution.
+   is unclear, do not stop at a question: state the most likely problem as an explicit assumption, give the full
+   feedback under it, and ask the person to confirm or correct it at the end. A reply that is only a question hands
+   the thinking back to the person.
 2. **Separate taste from judgment.** Judge against the audience, the goals, the stakes, principles and evidence, not
    personal preference. When it is taste, say "this is taste".
 3. **Start with what genuinely works**, specifically ("putting the fee status next to each member saves the admin a

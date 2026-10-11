@@ -55,8 +55,10 @@ Saying which kind of judgment it is makes feedback negotiable where it should be
 People bring ideas in many forms: "what if we add a leaderboard?", a screenshot from another app, a sketch, a
 feature request. A senior designer:
 
-1. **Finds the need behind the idea.** "A leaderboard" may mean "players don't come to training" or "coaches want to
-   compare players". The need may have better solutions.
+1. **Finds the need behind the idea** — and when it is not stated, names the most likely need as an assumption and
+   gives feedback anyway, asking to confirm at the end, rather than replying with only a question. "A leaderboard"
+   may mean "players don't come to training" or "coaches want to compare players". The need may have better
+   solutions.
 2. **Takes the idea seriously.** Looks for what is right in it before what is wrong.
 3. **Tests it against the context**: audience, stakes, tone, brand, constraints. A leaderboard in a kids' sports app
    raises questions about pressure and privacy that it does not raise in an adult running app.

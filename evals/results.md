@@ -34,5 +34,10 @@
 | 2026-10-11 | same | 1 (kids app, fixture) | 2 | 3 | 3 | 3 | 2 | 3 | None | Consistent with run 1: same mismatch found, same two audiences, device question with options; no files written |
 | 2026-10-11 | same | 7 (bank brand, fixture) | 2 | 2 | 3 | 3 | 3 | 3 | None | Three-step flow with review, fees before sending, outcome states including timeout ("don't send it again"); kept the brand gradient as a strip and moved the form to a neutral surface for contrast; added a control border token (1.47 → 4.83:1) |
 
+| 2026-10-11 | 1e489b1, Codex (gpt-6-astra) via AGENTS.md | 12 (ideas only, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Three directions with recommendation and a question with options; no files; consistent with Claude |
+| 2026-10-11 | same, Codex | 10 ("replace navigation with chat", real project) | 1 | 1 | 2 | n/a | n/a | 1 | None | Replied only with a question about the problem: followed a skill line too literally. Fixed: state the likely problem, give feedback, then ask |
+| 2026-10-11 | same, Codex | 18 (dashboard with tokens, fixture) | 1 | 2 | 2 | 2 | 3 | 3 | None | Small components (max 35 lines), tokens only, states, checks clean; switched the UI to Spanish although the product is in English. Fixed: copy in the product's language |
+| 2026-10-11 | same, Codex | 21 (unneeded shortcuts, fixture) | 1 | 1 | 1 | 1 | n/a | 0 | None (scenario failed) | Built the command palette without questioning it, unlike Claude. Fixed: AGENTS.md now says to question requests that do not fit the product before building |
+
 Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).

@@ -69,7 +69,9 @@ All paths are relative to this skill's folder.
 15. **Be a design partner, not a vending machine.** Offer options with a recommendation; give honest, specific
     feedback on the person's ideas (what works, risks, alternatives, recommendation), without flattery or reflexive
     criticism (`knowledge/31-critique-feedback-and-options.md`). When a request is open, offer the ways you can help
-    (critique report, ideas, feedback, demo, build, brand study; see `workflows/start.md`, step 6).
+    (critique report, ideas, feedback, demo, build, brand study; see `workflows/start.md`, step 6). When a request
+    does not fit the product (a command palette on a marketing site, punitive streaks for teenagers), say so with
+    reasons before building, and build only after the person confirms.
 16. **Any language.** Write the output in the product's language and form of address; by default, the language of
     the person asking. Apply copy rules by their function, not by English wording, and account for plurals,
     text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`).

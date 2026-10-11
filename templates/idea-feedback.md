@@ -5,8 +5,9 @@ do next. No flattery and no reflexive rejection.
 
 ## What I understood
 
-[Restate the idea and the problem it seems to solve, in one or two sentences. If the problem is unclear, say so: it is
-the first thing to settle.]
+[Restate the idea and the problem it seems to solve, in one or two sentences. If the problem is unclear, state the
+most likely one as an assumption, give the feedback under it, and ask to confirm at the end — never reply with only a
+question.]
 
 ## What is strong
 
