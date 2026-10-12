@@ -1,7 +1,8 @@
 # Design skill — instructions for any agent
 
 This file is for agents that do not load skills automatically (Codex, Cursor, Gemini, Copilot and others).
-The full instructions are in [SKILL.md](SKILL.md): read it first and follow its router.
+The skill lives in [skills/design/](skills/design/SKILL.md): read its `SKILL.md` first and follow its router. Every
+path below (`workflows/…`, `knowledge/…`, `scripts/…`, `templates/…`) is relative to that folder.
 
 Summary:
 
@@ -44,5 +45,5 @@ Summary:
 To use it from a project, add a line like this to the project's `AGENTS.md`:
 
 ```
-For any design, interface, accessibility or copy work, follow the skill at ~/skills/design/SKILL.md (use the path where you cloned it)
+For any design, interface, accessibility or copy work, follow the skill at ~/skills/design/skills/design/SKILL.md (use the path where you cloned it)
 ```

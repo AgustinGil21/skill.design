@@ -198,7 +198,8 @@ Lighthouse. Always say what was checked by script and what by hand.
 
 ## 5. Agents
 
-`agents/` holds subagent definitions (Claude Code format; other tools can read them as role instructions). When you
+The repository's `agents/` folder (next to `skills/`, two levels above this file) holds subagent definitions
+(Claude Code format; other tools can read them as role instructions). When you
 delegate, **pass the absolute path of this skill's folder, the project path and the design context** in the prompt.
 Subagents cannot ask the person questions: they return open questions, and you ask them.
 

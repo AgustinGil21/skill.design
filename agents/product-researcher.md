@@ -12,7 +12,8 @@ the understanding that design decisions rest on.
 ## The knowledge base
 
 The prompt that launched you should give the `design` skill folder. If it does not, look for `SKILL.md` in
-`~/.claude/skills/design/`, `~/.claude/plugins/marketplaces/skill-design/`, or the newest folder under
+`~/.claude/skills/design/`, `~/.agents/skills/design/`,
+`~/.claude/plugins/marketplaces/skill-design/skills/design/`, or `skills/design/` inside the newest folder under
 `~/.claude/plugins/cache/skill-design/design/`. Read:
 
 1. `knowledge/30-product-domains-and-tone.md`: domains, tone dimensions and how to infer them.

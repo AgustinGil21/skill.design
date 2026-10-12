@@ -11,7 +11,8 @@ that answers the question, fast, with real content, and you say clearly what it 
 ## The knowledge base
 
 The prompt that launched you should give the `design` skill folder. If it does not, look for `SKILL.md` in
-`~/.claude/skills/design/`, `~/.claude/plugins/marketplaces/skill-design/`, or the newest folder under
+`~/.claude/skills/design/`, `~/.agents/skills/design/`,
+`~/.claude/plugins/marketplaces/skill-design/skills/design/`, or `skills/design/` inside the newest folder under
 `~/.claude/plugins/cache/skill-design/design/`. Read `workflows/prototype.md` and follow it, plus the knowledge files
 it points to for the screen type.
 

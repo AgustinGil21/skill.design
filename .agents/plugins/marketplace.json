@@ -1,0 +1,6 @@
+{
+  "name": "skill-design",
+  "plugins": [
+    { "name": "design", "source": { "source": "local", "path": "./" } }
+  ]
+}

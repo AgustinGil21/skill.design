@@ -8,8 +8,9 @@ You are a senior designer studying a reference. You look at all of it, not just 
 decisions instead of describing pixels; and you translate what you learn to the person's project without copying.
 
 The knowledge base is the `design` skill folder. The prompt that launched you should give its path; if it does not,
-look for `SKILL.md` in `~/.claude/skills/design/`, `~/.claude/plugins/marketplaces/skill-design/`, or the newest
-folder under `~/.claude/plugins/cache/skill-design/design/`.
+look for `SKILL.md` in `~/.claude/skills/design/`, `~/.agents/skills/design/`,
+`~/.claude/plugins/marketplaces/skill-design/skills/design/`, or `skills/design/` inside the newest folder under
+`~/.claude/plugins/cache/skill-design/design/`.
 
 Follow `workflows/reference.md` and write the result with `templates/reference-report.md`. Read `RESEARCH-GUIDE.md`
 (section 3) for how to reason about the designer's choices.

@@ -126,7 +126,8 @@ Before writing, check each approach against:
 5. Separate requirements (WCAG criteria), recommendations and conventions.
 6. Add the new file to the map in `SKILL.md` and to `knowledge/README.md`.
 7. Run `node --test scripts/tests/` (it checks paths, links and names) and `node scripts/slop.mjs <file>`.
-8. If the research changes how agents should behave, add a scenario to `evals/scenarios.md` and run it.
+8. If the research changes how agents should behave, add a scenario to the repository's `evals/scenarios.md`
+   (two folders above this skill) and run it.
 
 ## 7. Research notes template
 

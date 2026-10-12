@@ -1,19 +1,24 @@
-# Installs the design skill for Claude Code (and Codex if present) on Windows.
+# Installs the design skill from a clone on Windows:
+#   Claude Code:              %USERPROFILE%\.claude\skills\design and %USERPROFILE%\.claude\agents\*.md
+#   Codex and other agents:   %USERPROFILE%\.agents\skills\design (the shared skills folder)
 # The skill folder is linked with a junction (no admin rights needed), so this folder stays the single source.
+# Prefer the plugins when you only use the skill (they update themselves); see README.md.
 # Usage: .\install.ps1            install
 #        .\install.ps1 -Remove    uninstall (only removes what points here or was copied from here)
 param([switch]$Remove)
 $ErrorActionPreference = 'Stop'
 
-$Source = $PSScriptRoot
+$Repo = $PSScriptRoot
+$Source = Join-Path $Repo 'skills\design'
 $Name = 'design'
 $ClaudeDir = Join-Path $HOME '.claude'
-$CodexDir = Join-Path $HOME '.codex'
+$AgentsSkillsDir = Join-Path $HOME '.agents\skills'
+$LegacyCodexSkill = Join-Path $HOME ".codex\skills\$Name"
 
 function Test-Ours([string]$Path) {
   $item = Get-Item -LiteralPath $Path -Force -ErrorAction SilentlyContinue
   if (-not $item) { return $false }
-  if ($item.LinkType) { return ([string]$item.Target).StartsWith($Source) }
+  if ($item.LinkType) { return ([string]$item.Target).StartsWith($Repo) }
   return $false
 }
 
@@ -60,10 +65,13 @@ function Link-File([string]$Target, [string]$File) {
   }
 }
 
-$agents = Get-ChildItem -Path (Join-Path $Source 'agents') -Filter '*.md'
+$agents = Get-ChildItem -Path (Join-Path $Repo 'agents') -Filter '*.md'
+
+# Older installs linked the skill into .codex\skills, which Codex no longer prefers.
+if (Test-Ours $LegacyCodexSkill) { Remove-Link $LegacyCodexSkill; Write-Host "Removed: $LegacyCodexSkill" }
 
 if ($Remove) {
-  $targets = @((Join-Path $ClaudeDir "skills\$Name"), (Join-Path $CodexDir "skills\$Name"))
+  $targets = @((Join-Path $ClaudeDir "skills\$Name"), (Join-Path $AgentsSkillsDir $Name))
   foreach ($target in $targets) {
     if (Test-Ours $target) { Remove-Link $target; Write-Host "Removed: $target" }
   }
@@ -87,10 +95,8 @@ foreach ($agent in $agents) {
   Link-File (Join-Path $ClaudeDir "agents\$($agent.Name)") $agent.FullName
 }
 
-# Codex (if installed): the user's skills folder
-if (Test-Path -LiteralPath $CodexDir) {
-  Link-Folder (Join-Path $CodexDir "skills\$Name")
-}
+# Codex and other agents that read the shared skills folder
+Link-Folder (Join-Path $AgentsSkillsDir $Name)
 
 Write-Host ''
 if ($script:Copied) {
@@ -98,4 +104,4 @@ if ($script:Copied) {
   Write-Host 'After git pull, run install.ps1 again to update them (the skill itself updates on its own).'
 }
 Write-Host "Done. Check with: node `"$Source\scripts\contrast.mjs`" '#000' '#fff'"
-Write-Host "Other agents: point to $Source\AGENTS.md from each project's AGENTS.md."
+Write-Host "Agents without skills support: point to $Repo\AGENTS.md from each project's AGENTS.md."

@@ -1,6 +1,6 @@
 # Behavioral evaluations
 
-The tests in `scripts/tests/` check structure: paths, names, scripts. They cannot tell whether an agent using this
+The tests in `skills/design/scripts/tests/` check structure: paths, names, scripts. They cannot tell whether an agent using this
 skill **behaves like a senior designer**: reads the project before designing, asks instead of guessing, challenges a
 weak idea, offers distinct options, respects the requested delivery mode. These evaluations do.
 
