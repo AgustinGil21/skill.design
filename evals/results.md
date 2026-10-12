@@ -44,5 +44,10 @@
 
 | 2026-10-11 | 828a20a, Codex | 22 (reference: rockstargames.com/VI) | 1 | 3 | 3 | n/a | n/a | 3 | None | The capture script could not launch Chrome in Codex's sandbox; Codex fell back to its browser tool as the workflow says: 78 screenshots (desktop, phone, menu, pre-order flow), accessibility tree, a 124-line report section by section with evidence links and hypotheses. Missed font names and color values (fixed: page-inventory.js can run inside any browser tool). Hit its usage limit at the very end |
 
+| 2026-10-12 | bf63933, Codex | 1 (kids app, fixture) | 1 | 1 | 2 | n/a | n/a | 2 | None | Replied only with two option questions (delivery mode, device), without a "What I understood" summary. Fixed: AGENTS.md now requires investigating and summarizing before asking |
+| 2026-10-12 | same, Codex | 2 (README vs routes, fixture) | 1 | 2 | 3 | 2 | n/a | 3 | None | Found the contradiction, recommended the accountants' home backed by the code, asked one question, kept the product's language, recommended i18n; no files |
+| 2026-10-12 | same, Codex | 7 (bank brand, fixture) | 1 | 2 | 2 | 3 | 3 | 3 | None | Entry → review flow with labels and validation; kept brand and English; honest that fees and sending need bank integration |
+| 2026-10-12 | same, Codex | 11 (teen streaks, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Recommended accumulated check-ins without loss, asked before building, cited the rule; no files |
+
 Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).

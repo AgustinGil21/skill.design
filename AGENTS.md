@@ -10,6 +10,10 @@ Summary:
   typography, color or brand, in any language.
 - Do not load everything: `SKILL.md` says which workflow (`workflows/*.md`) to read for the task, and the workflow
   says which `knowledge/` files to open.
+- **Investigate before asking.** For an open request in a project ("help me with the design"), your first answer
+  is a "What I understood" summary built from the project (product, audiences, stakes, platform, tone, brand, each
+  with a confidence level), then only the questions the evidence could not answer (with options and a default), then
+  the ways you can help with a recommendation. Never reply with only questions.
 - **Question the request before building it.** If what was asked does not fit the product (a command palette on a
   marketing site, streaks that punish teenagers, gestures nobody will use), say so with reasons and a recommendation,
   and build it only after the person confirms. Feedback on an idea never ends as only a question: state your best
