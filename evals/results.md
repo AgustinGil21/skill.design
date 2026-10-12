@@ -49,5 +49,10 @@
 | 2026-10-12 | same, Codex | 7 (bank brand, fixture) | 1 | 2 | 2 | 3 | 3 | 3 | None | Entry → review flow with labels and validation; kept brand and English; honest that fees and sending need bank integration |
 | 2026-10-12 | same, Codex | 11 (teen streaks, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Recommended accumulated check-ins without loss, asked before building, cited the rule; no files |
 
+| 2026-10-12 | 997d434, Codex | 1 (kids app, fixture) | 2 | 3 | 3 | 3 | 2 | 3 | None | After the AGENTS.md fix: "What I understood" with confidence per item, one question with a default, i18n with locale in the URL, modes with a recommendation; no files |
+| 2026-10-12 | same, Codex | 4 (attendance, real project) | 1 | 3 | 3 | 3 | n/a | 3 | None | Separated "will attend" from "present" (same finding as Claude), large controls for use at the pitch, phone sketch; no files |
+| 2026-10-12 | same, Codex | 5 (game HUD, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Genre-appropriate findings (crosshair, blue shown as green, legibility, pointer-events); report only |
+| 2026-10-12 | same, Codex | 6 (strategy tables, fixture) | 1 | 2 | 2 | 3 | n/a | 3 | None | Kept density, sticky province column, empty state; renamed the delta to "Change" without asking what it measures (Claude asked) |
+
 Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).
