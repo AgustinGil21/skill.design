@@ -54,5 +54,10 @@
 | 2026-10-12 | same, Codex | 5 (game HUD, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Genre-appropriate findings (crosshair, blue shown as green, legibility, pointer-events); report only |
 | 2026-10-12 | same, Codex | 6 (strategy tables, fixture) | 1 | 2 | 2 | 3 | n/a | 3 | None | Kept density, sticky province column, empty state; renamed the delta to "Change" without asking what it measures (Claude asked) |
 
+| 2026-10-12 | 4fd7f75, Codex | 8 (settings within a brand, fixture) | 1 | 2 | 2 | 3 | 3 | 2 | None | Built the settings page with cancellation confirmation, kept English and the burgundy identity; system-check and slop clean. Final message too short for a whole page (fixed in AGENTS.md) |
+| 2026-10-12 | same, Codex | 9 (white-label, fixture) | 1 | 2 | 2 | 3 | 3 | 2 | None | Styles respect both tenants' tokens, AAA contrast; very short report |
+| 2026-10-12 | same, Codex | 13 (tabs or sidebar, real project) | 1 | 2 | 3 | 3 | n/a | 3 | None | Sidebar for a full settings area, tabs only inside sections, mobile list; less grounded in the real code than Claude's answer |
+| 2026-10-12 | same, Codex | 14 (approved component, fixture) | 1 | 3 | 3 | 3 | 3 | 2 | None | Implemented the spec with states, time zone and confirmation, 5 date tests, checks clean; integration notes in a doc; short final message |
+
 Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).

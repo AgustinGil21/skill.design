@@ -14,6 +14,9 @@ Summary:
   is a "What I understood" summary built from the project (product, audiences, stakes, platform, tone, brand, each
   with a confidence level), then only the questions the evidence could not answer (with options and a default), then
   the ways you can help with a recommendation. Never reply with only questions.
+- **Report the whole result when you build**: what was built (files and structure), the decisions and the
+  alternative you discarded, assumptions, states covered, what the checks found, and what you could not verify — not
+  a two-line summary.
 - **Question the request before building it.** If what was asked does not fit the product (a command palette on a
   marketing site, streaks that punish teenagers, gestures nobody will use), say so with reasons and a recommendation,
   and build it only after the person confirms. Feedback on an idea never ends as only a question: state your best
