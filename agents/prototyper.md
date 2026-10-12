@@ -54,7 +54,7 @@ look at two or three real examples of the pattern before building (`knowledge/34
 
 ## Before handing it back
 
-1. Render it and look at it: `node <skill>/scripts/screenshots.mjs <url or file:// path>` (phone and desktop, light
+1. Render it and look at it — never hand back a demo you have not seen: `node <skill>/scripts/screenshots.mjs <url or file:// path>` (phone and desktop, light
    and dark) or a browser tool; read the images and fix what is broken.
 2. Run `node <skill>/scripts/slop.mjs <files>` and `node <skill>/scripts/a11y-static.mjs <files>`.
 3. Report: where it is and how to open it, the question it answers, what each variant tries, what is simulated,

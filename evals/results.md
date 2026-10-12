@@ -59,5 +59,12 @@
 | 2026-10-12 | same, Codex | 13 (tabs or sidebar, real project) | 1 | 2 | 3 | 3 | n/a | 3 | None | Sidebar for a full settings area, tabs only inside sections, mobile list; less grounded in the real code than Claude's answer |
 | 2026-10-12 | same, Codex | 14 (approved component, fixture) | 1 | 3 | 3 | 3 | 3 | 2 | None | Implemented the spec with states, time zone and confirmation, 5 date tests, checks clean; integration notes in a doc; short final message |
 
-Every scenario has run at least once with Claude Code. Still missing: third runs, second runs for most scenarios, and runs
+| 2026-10-12 | 4e6d584, Claude Sonnet 5.5 | 3 (real club platform) | 1 | 3 | 3 | 3 | 3 | 3 | None | Launched product-researcher and brand-analyst in parallel; inverted dark-mode layers, 2.4:1 subtle text, three type systems, landing and app feeling like two products, sponsor tiers promising more than the seed supports |
+| 2026-10-12 | same, Sonnet | 15 (demo, fixture) | 1 | 2 | 2 | 3 | n/a | 3 | None | Good two-layout demo with simulated data labeled and a reasoned recommendation, but did not render it although it could (fixed: prototype workflow and agent now forbid handing back an unseen demo) |
+| 2026-10-12 | same, Sonnet | 16 (checkout critique, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | Excellent report with severity, observed vs. predicted, contrast measured; no edits |
+| 2026-10-12 | same, Sonnet | 17 (audit and fix, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Fixed each issue with its WCAG criterion; left business decisions (pre-checked newsletter) to the person; inline values remain (no tokens in the project, said so) |
+| 2026-10-12 | same, Sonnet | 19 (desktop context menu, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | contextmenu event (right-click, two-finger tap, Ctrl+click, Menu key, Shift+F10), full keyboard, no animation, per-OS labels, no invented shortcuts; explained custom vs. native menu |
+| 2026-10-12 | same, Sonnet | 20 (tablet adaptation, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Split view by window width with the breakpoint as a token, phone unchanged; did not run the skill's checks (Sonnet tends to skip verification steps) |
+
+Every scenario has run at least once with Claude Code (Opus), and with Codex or Claude Sonnet. Still missing: third runs, second runs for most scenarios, and runs
 with other agents (Codex through AGENTS.md).
