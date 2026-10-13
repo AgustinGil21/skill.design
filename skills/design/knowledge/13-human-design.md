@@ -45,7 +45,8 @@ Expression is not free: it costs attention. Spend it where attention is availabl
 | Onboarding, empty states, success | Low to medium | Low | Medium: voice and illustration that explain |
 | Core daily work (tables, editors, forms) | High | Medium | Low: expression in typography, color accents, precise details |
 | Money, health, security, legal | High | High | Minimal: calm, plain, precise |
-| Errors and failures | High stress | Varies | Minimal: empathy without jokes |
+| Failures that cost the person something (a payment, their work, access) | High stress | High | Minimal: empathy without jokes |
+| Dead ends where nothing is lost (a 404, an empty search, the end of a feed) | Low | Low | Room for a moment of care, after the way out (see below) |
 
 A product with strong character usually expresses it most at its edges and least in its core tools. That is not a
 lack of personality; it is personality with judgment.
@@ -87,6 +88,54 @@ Every expressive choice must pass three checks:
    illustration without text. Expression never overrides accessibility (see [principles](00-principles.md)).
 3. **Will it survive?** Frequency and fatigue: a delightful animation seen once is charming; seen fifty times a day,
    it is a delay. Maintenance: a hand-made illustration style needs someone to make the next twenty illustrations.
+
+## Turning a dull or negative moment into a detail that matters
+
+Every product has moments nobody designs on purpose: the page that does not exist, the search with no results, the
+wait, the end of the list, the screen after unsubscribing. Left alone they are dull at best and a small letdown at
+worst. Given a little care, they become the details people remember and mention — proof that someone thought about
+them even where nothing was expected. This is one of the clearest signs of a human behind the product.
+
+**The form is the smallest one that does the job.** It does not have to be big:
+
+| Form | When it fits | Example of the idea |
+| --- | --- | --- |
+| A line with a voice | Almost anywhere it is allowed at all; cheapest and most robust | An empty search that says what it did search and offers the nearest match, in the brand's own words |
+| A beautiful still or a short animation | A visual brand with room for it; seen rarely | The error code drawn in the brand's own visual language, settling once |
+| A small interaction or game | A dead end people may linger on; a product with a world to draw from | A sports platform's 404 that turns into a short game from that sport, with the "0" of the code as the ball |
+
+Pick it from **the product's own world**, not from a gallery of clever 404s: its domain, its vocabulary, its visual
+rule, its in-jokes. The same idea in another product would be a costume; here it is a wink only this brand could make.
+
+### Where it belongs, and where it does not
+
+The test is **what the person has lost** when they arrive:
+
+- **Nothing, or almost nothing**: a 404, an empty search, the end of a feed, an offline page, a long wait the person
+  chose, a milestone. Here a moment of care is welcome. The 404 in particular is the classic place landings and web
+  apps use for it: a dead end the visitor did not cause on purpose and can leave with one click.
+- **Something real**: a failed payment, lost work, a locked account, a server error in the middle of a task, anything
+  about health or money. No jokes, no games, no clever lines: clarity, empathy and the fastest way to recover. The
+  same brand that plays on its 404 must be plain on its 500.
+
+### How to make it without it getting in the way
+
+- **The way out comes first.** What happened and the action that gets the person back on track are visible
+  immediately, above anything playful, and stay reachable during it. The detail is a reward for staying, never a toll
+  for leaving.
+- **Keep the system.** It uses the product's type, color, grid and motion rules. A delight that brings its own fonts
+  and gradients reads as a template, not as care.
+- **Make it respond.** A detail that reacts to the person — to what they type, choose or do — feels alive; a canned
+  animation that plays the same for everyone is decoration. If it reacts, react at the right moment: when the thing
+  visibly happens, not when the click does.
+- **Give it a voice, natively.** Lines written in each language with its own idiom, not translated jokes. Enough
+  variants that a second visit does not repeat the first.
+- **Once, then settle.** Animations run once and decelerate; nothing loops for attention. Frequency matters: what
+  delights on a page seen once a month becomes a delay on a screen seen fifty times a day.
+- **Fit the room.** If it would crowd a small screen, simplify it or leave it out there rather than shrink it.
+- **Include everyone.** Playable and readable with a keyboard and a screen reader; a reduced-motion version that keeps
+  the content; no reflex-only challenge as the only way in; announce what matters, not the chatter.
+- **Respect what people chose.** It follows their theme and language like the rest of the product.
 
 ## Practices for writing like a person
 
@@ -168,7 +217,14 @@ reverse-charge note when it applies.
 
 - **Replacing one recipe with another**: grain, hand-drawn icons and custom cursors applied to everything because they
   look "human".
-- **Personality in the wrong place**: jokes in error messages, playful animation in a payment flow.
+- **Personality in the wrong place**: jokes in an error that cost the person something, playful animation in a
+  payment flow.
+- **Leaving the forgotten moments forgotten**: a default 404, a bare "No results", an empty feed end — the places
+  where a little care is cheap and noticed most.
+- **A delight that blocks the exit**: an illustration or game that pushes the way back below the fold, or that has
+  to finish before the person can leave.
+- **Borrowed delight**: a trendy 404 idea with no tie to the product, or one that brings its own style instead of the
+  product's system.
 - **Novel interactions for basic controls.**
 - **Removing things people need** in the name of minimalism.
 - **Specific-sounding but unverifiable claims**: invented numbers are worse than vague words.
@@ -181,5 +237,7 @@ reverse-charge note when it applies.
 - [ ] Every expressive choice passes the interference, exclusion and survival checks.
 - [ ] Copy is specific, true and native to each language.
 - [ ] Edges (empty, error, loading, 404, footer) were designed with care.
+- [ ] Dull or negative moments where nothing is lost carry a detail from the product's own world, in the smallest
+      form that works, with the way out first; moments where something is lost stay plain.
 - [ ] Removals were based on evidence of use and need.
 - [ ] AI output was critiqued and edited, never shipped as is.

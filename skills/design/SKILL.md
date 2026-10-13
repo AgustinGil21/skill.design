@@ -77,6 +77,12 @@ All paths are relative to this skill's folder.
     text expansion, formats and right-to-left scripts (see `knowledge/24-content-and-localization.md`). Recommend
     i18n from the start (unless the person declines): no hard-coded strings, translations loaded per locale, and on
     the web the locale in the URL (`/en/…`, `/es/…`) so each page loads only its own language.
+17. **Care in the forgotten moments.** Dull or negative moments where nothing is lost (a 404, an empty search, the
+    end of a feed, an offline page) are where a detail made with care is noticed most: a line with a voice, a
+    beautiful still or animation, or a small interaction from the product's own world, in the smallest form that
+    works. The way out comes first, it keeps the product's system, and it stays accessible. Where something is lost
+    (a failed payment, lost work, a server error) stay plain: clarity and recovery, no jokes
+    (`knowledge/13-human-design.md`).
 
 ## 2. Router: what to read for each task
 
@@ -110,7 +116,7 @@ in order.
 | Topic | File |
 | --- | --- |
 | Principles that rule the rest, and how to resolve conflicts between them | `00-principles.md` |
-| Signs of slop | `01-anti-slop.md` · avoiding it in depth: `13-human-design.md` |
+| Signs of slop | `01-anti-slop.md` · avoiding it in depth, and turning dull or negative moments into details: `13-human-design.md` |
 | Accessibility (requirements) | `02-accessibility.md` · advanced and how to test: `15-advanced-accessibility.md` |
 | Usability heuristics and laws | `03-usability.md` |
 | Interface copy | `04-interface-writing.md` · across languages: `24-content-and-localization.md` |

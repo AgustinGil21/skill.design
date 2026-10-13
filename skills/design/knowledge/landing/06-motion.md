@@ -223,6 +223,10 @@ static. The motion explains the product and costs little.
 - Throttle CPU and network in the browser tools; check that the first screen is usable before animations load.
 - Navigate with the keyboard through animated components; pause controls are reachable.
 - Check that no content depends on an animation finishing.
+- Check in a WebKit browser (Safari, or any browser built on it) as well as Chromium. WebKit ignores
+  `transform-box: fill-box` on SVG text, so a rotation or scale meant to pivot on a glyph's own corner turns about
+  the drawing's origin instead and the shape flies off. Put the element in a group translated to its pivot and
+  transform that group about `0 0`; it behaves the same everywhere.
 
 ## Deciding what not to animate
 

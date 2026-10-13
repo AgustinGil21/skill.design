@@ -119,6 +119,11 @@ affected**.
 - **Deleted object**: say so ("This video was deleted on 3 Oct") and offer the trash if it exists.
 - **An error inside a section** (a panel, a chart) with its own retry, without taking down the page
   ([Care.com](https://mobbin.com/screens/5bea7e07-ed66-498c-9862-a7e7110507f2)).
+- **A 404 is the one error page with room for care.** Nothing is lost and the way out is one click, so landings and
+  web apps use it for something special: a line with the brand's voice, the code drawn in the brand's visual
+  language, or a small interaction from the product's world. The title, the cause and the way out still come first;
+  see [turning a dull or negative moment into a detail](../13-human-design.md#turning-a-dull-or-negative-moment-into-a-detail-that-matters).
+  Server errors, lost work and no-permission pages stay plain.
 - **Avoid**: "Whoops!", large illustrations that push the way out off-screen, unexplained codes.
 
 ## Success and toasts

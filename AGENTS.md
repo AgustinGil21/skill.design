@@ -35,6 +35,9 @@ Summary:
   weights and heading levels.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
   bounce, elastic or AI-style pulses unless asked).
+- Care in the forgotten moments: where nothing is lost (a 404, an empty search, the end of a feed), turn the dull or
+  negative moment into a detail from the product's own world — a line, a still or animation, a small interaction —
+  with the way out first. Where something is lost (a payment, work, a server error), stay plain.
 - Dependency-free tools (Node ≥ 18):
   - `node scripts/design-scan.mjs <project>` (web and native projects)
   - `node scripts/reference-capture.mjs <urls> [--follow N]` (study reference sites: full scroll, slices on desktop
