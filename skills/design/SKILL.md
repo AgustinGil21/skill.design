@@ -190,7 +190,7 @@ conversion forms, dark aesthetics, blogs, full recipes and CSS motion recipes).
 | `scripts/screenshots.mjs` | Screenshots of a running interface: phone and desktop, light and dark, reduced motion (uses the project's Playwright or the installed Chrome) | `node scripts/screenshots.mjs <urls> [--out dir]` |
 | `scripts/design-scan.mjs` | Evidence about a project, web or native (Flutter, iOS, Android, React Native): product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |
 | `scripts/contrast.mjs` | WCAG contrast between two colors (HEX, rgb, simple oklch) | `node scripts/contrast.mjs "#777" "#fff"` |
-| `scripts/slop.mjs` | Detects generic copy, styles and motion (hollow phrases per language, purple-blue gradients, decorative emojis, lorem, bounce/elastic/overshoot easings, AI-style pulses) | `node scripts/slop.mjs <files or folders> [--lang en,es]` |
+| `scripts/slop.mjs` | Detects generic copy, styles and motion (hollow phrases per language, purple-blue gradients, decorative emojis, lorem, bounce/elastic/overshoot easings, AI-style pulses, linear timing on movement) | `node scripts/slop.mjs <files or folders> [--lang en,es]` |
 | `scripts/a11y-static.mjs` | Static check of HTML/JSX/Astro/Vue: images without alt, unnamed buttons, skipped headings, unlabeled fields, `outline: none`, positive `tabindex`, `lang` | `node scripts/a11y-static.mjs <files or folders>` |
 
 They are quick aids and **do not** replace testing with a keyboard, a screen reader and tools such as axe or

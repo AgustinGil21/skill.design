@@ -48,6 +48,33 @@ const STYLE_RULES = [
   },
 ];
 
+// Linear timing on something that moves on its own starts abruptly and stops dead: it reads as mechanical. Linear is
+// right when the motion follows input or time (scroll-linked, scrubbed, a continuous loop, a progress bar), so those
+// are skipped (see knowledge/landing/06-motion.md, "Ease every movement").
+const LINEAR_MOTION = 'Linear timing on movement: ease it with a cubic-bezier token; keep linear for scroll- or input-linked motion, loops and progress';
+const MOVING = /\b(?:transform|translate|scale|rotate|clip-path|inset|top|left|right|bottom|width|height|all)\b/;
+function linearMotion(text) {
+  const found = [];
+  const block = (index) => text.slice(text.lastIndexOf('{', index) + 1, (text.indexOf('}', index) + 1 || text.length + 1) - 1);
+  for (const m of text.matchAll(/\btransition\s*:\s*[^;{}]*\blinear\b[^;{}]*/g)) {
+    if (MOVING.test(m[0])) found.push(m);
+  }
+  for (const m of text.matchAll(/\banimation\s*:\s*[^;{}]*\blinear\b[^;{}]*/g)) {
+    if (/\binfinite\b/.test(m[0]) || /animation-timeline/.test(block(m.index))) continue;
+    found.push(m);
+  }
+  for (const m of text.matchAll(/\bease-linear\b/g)) {
+    const line = text.slice(text.lastIndexOf('\n', m.index) + 1, text.indexOf('\n', m.index) === -1 ? undefined : text.indexOf('\n', m.index));
+    if (/\b(?:transition|transition-(?:transform|all))\b|\b(?:-?translate|scale|rotate)-/.test(line) && !/\banimate-|\bprogress/.test(line)) found.push(m);
+  }
+  for (const m of text.matchAll(/\bease\s*:\s*['"](?:none|linear)['"]/g)) {
+    const around = text.slice(Math.max(0, m.index - 200), m.index + 200);
+    if (/\bscrub\b|\brepeat\s*:\s*(?:-1|Infinity)\b|\bprogress\b/.test(around)) continue;
+    found.push(m);
+  }
+  return found;
+}
+
 // Gimmicky motion: bounces, elastic and "back" easings, springs with overshoot, attention-seeking loops. Professional
 // motion decelerates and settles without overshooting (see knowledge/landing/06-motion.md).
 const GIMMICK = 'Bouncy, elastic or attention-seeking motion reads as generated: use a decelerating ease without overshoot';
@@ -106,6 +133,7 @@ export function analyzeText(text, file, languages = Object.keys(LEXICONS)) {
   for (const m of overshootingBeziers(text)) {
     add(m.index, 'gimmick-motion', 'Easing that overshoots (y outside 0–1): the element passes its target and bounces back', m[0]);
   }
+  for (const m of linearMotion(text)) add(m.index, 'linear-motion', LINEAR_MOTION, m[0], 'info');
   // Pulsing is legitimate for loading skeletons; as decoration (AI glow, pulsing dots or badges) it is noise.
   for (const m of text.matchAll(/\banimate-pulse\b/g)) {
     const line = text.slice(text.lastIndexOf('\n', m.index) + 1, text.indexOf('\n', m.index) === -1 ? undefined : text.indexOf('\n', m.index));

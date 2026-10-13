@@ -116,6 +116,7 @@ Search with `grep -il "<word>" knowledge/patterns/*.md` or use this table.
 | [dashboards-and-metrics](patterns/dashboards-and-metrics.md) | Dashboards, metrics, charts in product |
 | [import-tags-and-cropping](patterns/import-tags-and-cropping.md) | Importing data, tags, cropping images |
 | [micro-interactions](patterns/micro-interactions.md) | Reordering, hints, tooltips, previews |
+| [direct-manipulation](patterns/direct-manipulation.md) | Maps, globes, 3D views, zoomable canvases: touch, touchpad, wheel, inertia, keyboard |
 | [events-quizzes-and-form-builders](patterns/events-quizzes-and-form-builders.md) | Events, quizzes, form builders |
 | [templates-and-automations](patterns/templates-and-automations.md) | Template galleries, automation builders |
 

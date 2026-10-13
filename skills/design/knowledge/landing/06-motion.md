@@ -61,10 +61,38 @@ Treat motion like typography: a small set of tokens used consistently.
 
 These are guides drawn from common practice, not standards. Adjust to the brand:
 
-- **Precise brands** (developer tools, finance): short durations, no bounce, linear-ish curves.
+- **Precise brands** (developer tools, finance): short durations, no bounce, firm curves that settle quickly (a
+  steep ease-out), still eased, not linear.
 - **Warm or playful brands**: softer, slightly longer decelerating curves and larger fades — warmth comes from
   timing, color and illustration, not from bouncing.
 - **Editorial brands**: slow crossfades, little movement.
+
+### Ease every movement; linear is for time and input
+
+Objects in the world accelerate and decelerate. Movement with a constant speed starts abruptly and stops dead, and it
+reads as mechanical or unfinished, which is one of the quickest signs of generated motion. By default, every
+transition of position, size, scale or a mask uses an easing curve, defined once as tokens with `cubic-bezier()`
+(see [motion recipes](15-motion-recipes.md)):
+
+| Movement | Curve | Why |
+| --- | --- | --- |
+| Something arrives or responds | Ease-out (decelerates), for example `cubic-bezier(0.16, 1, 0.3, 1)` | Starts immediately, so it feels responsive, then settles gently |
+| Something leaves | Ease-in, for example `cubic-bezier(0.7, 0, 0.84, 0)` | Gathers speed and gets out of the way |
+| From one place to another, or a mask opening and closing | Ease-in-out, for example `cubic-bezier(0.65, 0, 0.35, 1)` | Both ends are visible, so both ends are soft |
+| A path followed inside an illustration (a ball along a pass) | Ease-in-out per segment | Each segment is a movement with its own start and stop |
+
+Linear timing is correct only where the motion is not an object moving on its own:
+
+- **Motion tied to input**: a scroll-linked effect, a drag, a scrubber. The person's hand already supplies the
+  acceleration; easing on top makes it lag behind the finger.
+- **Continuous motion with no start or end in view**: a slow idle rotation, a marquee. Easing would make it pulse.
+- **Progress that represents time or quantity**: a progress bar or a countdown should not suggest the work speeds up
+  or slows down.
+- **Opacity crossfades** where nothing moves; the curve barely shows, so pick the simplest.
+
+Library defaults are not a decision: some animation libraries default to an eased curve and others to linear, and
+CSS transitions default to `ease`. Set the curve explicitly from the tokens so every movement on the page speaks
+the same language. Bounce and elastic curves stay excluded (see the table below).
 
 Distances stay short (8–24 px) for entrances; nothing flies from off-screen unless that is the concept. Larger
 elements move more slowly than small ones; the same distance feels faster on a phone than on a large screen.
@@ -238,6 +266,30 @@ Keep controls in stable positions when the animation changes dimensions. A pause
 pointer or disappears before keyboard focus arrives undermines the very control intended to make motion usable.
 When playback is unavailable, explain that state rather than leaving a button that appears to do nothing.
 
+### Hold still while someone is looking
+
+A pause button is the minimum. Automatic motion should also stop by itself whenever it would get in the way: while a
+pointer is over something it shows, while a card or detail it opened is visible, while a finger is on it, while it
+is off-screen and while the tab is hidden. A turning globe that carries away the label someone is reading defeats
+the reason it exists. These automatic holds release on their own; a pause the person chose does not. Clear a hold
+when the element that caused it disappears (an element removed under the pointer never reports that the pointer
+left), or the motion stays frozen.
+
+### The final frame is the design
+
+With reduced motion, or when the animation cannot run, show the **end** of the illustration: the play fully drawn,
+the message delivered and counted, the word lit. The first frame is the moment before anything happened and explains
+nothing. Designing the final frame first is also a good test of the animation: if the end state does not explain
+the idea on its own, the motion is carrying meaning that a large share of visitors will never see.
+
+### Motion that explains, not motion that fills
+
+The strongest motion on a page shows how the product works: a request travelling from sender to phone to report,
+a play built pass by pass, a view opening on the thing that changed. Each stage changes one thing the visitor can
+name. If the only description of an animation is "it makes the section feel alive", compare it with a better static
+composition before keeping it. See [motion recipes](15-motion-recipes.md) for animation as a function of time and
+staged sequences, and [direct manipulation](../patterns/direct-manipulation.md) for surfaces people move themselves.
+
 ## Copy and localization within motion
 
 Controls should name the action and object: the English illustration "Pause workflow animation" tells more than
@@ -307,6 +359,10 @@ and reduced-motion behavior are added after choreography; define them as states 
 - **Infinite motion without pause.**
 - **Reduced motion ignored, or reduced to "no feedback".**
 - **Animating layout properties.**
+- **Linear timing on things that move on their own** (often a library default nobody changed): ease them, and keep
+  linear for scroll-linked motion, loops and progress.
+- **Automatic motion that keeps moving while someone inspects it.**
+- **Reduced motion showing the first frame** of an illustration instead of the last.
 - **Heavy video or 3D blocking the first screen.**
 
 ## Checklist
@@ -314,6 +370,8 @@ and reduced-motion behavior are added after choreography; define them as states 
 - [ ] Each motion has a purpose: explain, direct attention or character.
 - [ ] The page works still, and with JavaScript failing.
 - [ ] Motion tokens defined and used consistently.
+- [ ] Every movement that is not tied to input or time uses an easing curve from the tokens, not linear.
+- [ ] Automatic motion holds while it is being inspected, and reduced motion shows the final frame.
 - [ ] Automatically moving content meets the applicable pause, stop or hide requirement and its exceptions.
 - [ ] Flashing satisfies WCAG 2.3.1, including its threshold provisions.
 - [ ] Reduced motion removes movement and autoplay but keeps state feedback.

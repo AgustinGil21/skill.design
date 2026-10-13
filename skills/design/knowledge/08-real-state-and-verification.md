@@ -179,7 +179,38 @@ A short coverage table prevents the most common overstatement in design and engi
 Light and dark · relevant widths · long content and the longest language · loading · offline · near and at the limit ·
 data unavailable · error and recovery · cancel and switching methods · partial results · stale data.
 
-Plus contrast, keyboard, accessible names, overflow, and never capturing screenshots in the middle of a transition.
+Plus contrast, keyboard, accessible names, overflow, and never capturing screenshots in the middle of a transition
+by accident. Capturing the middle **on purpose** is how motion is verified (next section).
+
+## 13. Verifying motion and interaction
+
+Motion and gestures are where "it looked right when I tried it" fails most often: the defect lives in a frame, in a
+sequence, or on a device that was not on the desk. A final screenshot proves the end state, not the movement.
+
+| What to verify | How | What it catches |
+| --- | --- | --- |
+| The transition exists and has the right shape | Screenshot at a fixed time inside it (for example 250–300 ms into a 700 ms theme switch) | A transition that silently does not run, or runs the wrong direction |
+| A sequence is complete and in order | Step through the input (scroll in steps of about 30 px, advance a timer stage by stage) and record the state after each step | Skipped steps: a reading indicator that jumps from section 3 to 5 |
+| Interactions do not move the page | Read the scroll position before and after each interaction (open, choose, close with Escape) | Focus returning to a sticky control and scrolling the page several hundred pixels |
+| Gestures work on every input | Real mouse wheel, touchpad pinch in two browsers, two fingers on a phone, keyboard | A surface that zooms the browser page, or traps page scroll |
+| Reduced motion | Run the same steps with the preference on | Hidden content, first-frame illustrations, motion that still runs |
+| Automatic motion stops | Switch tabs, scroll away, hover, pause, come back | Animations that run in the background or override a chosen pause |
+
+Practical rules learned the hard way:
+
+- **Make the automation act like a person before believing a bug.** Some test drivers scroll an element into view
+  before clicking it; on a sticky header that moves the page and looks like a defect of the interface. Clicking at
+  coordinates, as a person would, separates the tool's behavior from the product's.
+- **Restoring focus can scroll.** Returning focus to a trigger in a sticky header after closing a menu scrolls the
+  page in some browsers. Use `focus({ preventScroll: true })` and verify with the scroll position, not by eye.
+- **An automated "done" is not a visual check.** After the scripted checks, look at the frames: a mask that opens from
+  the wrong point passes every assertion about attributes.
+- **In unit tests, the environment has no layout.** Simulated DOMs report zero heights and positions, so logic that
+  depends on them needs a guard (which also protects real pages that do not scroll). Fake timers must include
+  `requestAnimationFrame` and `performance`, and chained timeouts advance one stage at a time: one large jump fires
+  only the first.
+- **Record the evidence in the report**: which inputs, browsers, widths and preferences were exercised, and which
+  were not.
 
 ## Worked comparison
 
@@ -230,3 +261,5 @@ provider was not reproduced, and that is recorded as pending.
 - [ ] Intent, acceptance and confirmation are distinguished.
 - [ ] Partial and degraded states are explicit.
 - [ ] The verification level and the coverage (what was and was not tested) are reported.
+- [ ] Motion was verified mid-transition and as a recorded sequence, and the scroll position was checked around each
+  interaction.

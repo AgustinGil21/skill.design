@@ -340,6 +340,205 @@ For hero tabs that rotate demos (as in [Sana](https://mobbin.com/sites/sections/
 - Prefer small distances on decorative layers. Keep reading text stationary; a controlled motion demonstration
   can justify another treatment when an equivalent readable presentation remains available.
 - Without support or with reduced motion, the layer is static.
+- Keep to one scroll-linked effect per page. Two of them compete for the same scroll and the page starts to feel
+  like it is moving the reader instead of the other way round.
+
+## 11. An animation as a function of time
+
+For a choreographed illustration with several moving parts (a tactics board where players run and the ball travels,
+a diagram where a request moves between services), do not chain tweens and callbacks. Describe the scene as data and
+compute everything on screen from one number: the elapsed time.
+
+```js
+// The scene is data: who starts where, the paths, and timed steps (seconds from the start).
+const scene = {
+  players: [{ id: 'cb', at: [21, 46] }, { id: 'dm', at: [38, 31] }],
+  ball: [21, 46],
+  paths: { pass: [[21, 46], [38, 31]] },
+  steps: [
+    { at: 0.3, duration: 0.7, reveal: 'pass' },
+    { at: 0.3, duration: 0.7, follow: 'ball', path: 'pass' },
+  ],
+};
+
+const duration = (scene) => Math.max(...scene.steps.map((s) => s.at + (s.duration ?? 0)));
+
+// Everything visible at time t. Pure: same scene and t, same picture.
+function stateAt(scene, t) {
+  const positions = Object.fromEntries(scene.players.map((p) => [p.id, p.at]));
+  positions.ball = scene.ball;
+  const revealed = {};
+  for (const step of scene.steps) {
+    if (t < step.at) continue;
+    const progress = Math.min((t - step.at) / step.duration, 1);
+    if (step.reveal) revealed[step.reveal] = progress;
+    if (step.follow) positions[step.follow] = pointAlong(scene.paths[step.path], easeInOut(progress));
+  }
+  return { positions, revealed };
+}
+```
+
+A clock adds real elapsed time each frame and only runs when it should:
+
+```js
+let time = 0;
+let last = null;
+function frame(now) {
+  if (!running()) { last = null; return; } // paused, off-screen, hidden tab or reduced motion
+  time += last === null ? 0 : (now - last) / 1000;
+  last = now;
+  draw(stateAt(scene, Math.min(time, duration(scene))));
+  requestAnimationFrame(frame);
+}
+```
+
+Why this shape:
+
+- **Reduced motion is free**: draw `stateAt(scene, duration(scene))`, the final frame, which is the complete
+  explanation. Showing the first frame instead would show nothing happening.
+- **Pause is free** (WCAG 2.2.2): stop adding time. Resuming continues from the same frame, not from the start.
+- **It is testable without a browser**: assert the state at 0, halfway and at the end of every scene; check that
+  every revealed path ends fully drawn.
+- **Several scenes play in turn** with a hold between them (about two seconds on the final frame, so it can be read).
+  A scene chosen by hand while paused plays once and stops on its final frame; it does not resume the cycle.
+- **Stop the clock off-screen and in hidden tabs**, and keep the person's pause separate from those automatic stops.
+
+When not to use it: a single entrance or a hover effect. A transition in CSS is simpler and enough.
+
+## 12. A staged sequence that tells cause and effect
+
+To show how something flows through a product (a message sent on the web, received on a phone, confirmed, counted
+in a report), animate the **stages**, not the decoration. A counter from 0 to N advances with timers once the
+illustration enters the viewport for the first time:
+
+```js
+const DELAYS = [700, 650, 1000, 700]; // time spent in stage 0, 1, 2, 3
+let stage = 0;
+
+function advance() {
+  if (stage >= DELAYS.length) return;
+  timer = setTimeout(() => { stage += 1; render(stage); advance(); }, DELAYS[stage]);
+}
+
+if (reduceMotion.matches) render(DELAYS.length); // the final stage: everything delivered and counted
+else onFirstView(illustration, advance);
+```
+
+- Each stage changes one thing the visitor can name: the button reads "Sent", the notification appears, the answer
+  turns to "Confirmed", the count goes from 30 to 31. Connections between steps draw when their stage arrives.
+- The whole sequence lasts a few seconds and runs once. It is not a loop.
+- The illustration as a whole has one accessible name describing the flow; the intermediate stages are not
+  announced.
+- With reduced motion, show the final stage immediately: it contains the whole story.
+
+## 13. A flicker with a flash budget
+
+A wordmark that switches on like an old tube, a status light that comes alive: flicker is effective once and
+dangerous if careless. **WCAG 2.3.1 Three Flashes or Below Threshold (A)** limits flashes to three in any one
+second, and large elements are the riskiest. Encode the flicker as data so the limit can be tested:
+
+```js
+// [seconds, level 0–1]: a near-full flash that dies, a half-power attempt, a drop, then on for good.
+const FLICKER = [[0.18, 0.85], [0.24, 0], [0.62, 0.35], [0.7, 0], [1.12, 1], [1.2, 0.08], [1.55, 1]];
+```
+
+```js
+// A test, not a comment: count rises in level and check every one-second window.
+const flashes = FLICKER.filter(([, level], i) => i > 0 && level > FLICKER[i - 1][1]).map(([at]) => at);
+for (const start of flashes) {
+  assert(flashes.filter((at) => at >= start && at < start + 1).length <= 3);
+}
+```
+
+- **Desynchronize slightly**: offset each letter by a few milliseconds and let one letter lag and skip a step.
+  Perfectly synchronized flicker is what makes the effect read as generated.
+- **Play once**, when the element first enters the viewport. Never loop it.
+- **With reduced motion, the element is simply on.** The flicker never runs.
+- **Off and on are colors, not opacity**: "off" is the background color and "on" the ink, so the effect reads the
+  same in light and dark themes.
+
+## 14. A theme switch with direction
+
+Switching between light and dark can be a View Transition of the whole viewport with a different mask for each
+direction: to light, a rectangle opens from the center; to dark, the light view closes from top and bottom like
+eyelids. Because the transition captures the viewport, it works at any scroll position.
+
+```js
+function switchTheme(next) {
+  const root = document.documentElement;
+  const target = resolve(next); // 'system' resolves to the operating system's preference
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !document.startViewTransition || root.dataset.theme === target) {
+    apply(next);
+    return;
+  }
+  root.dataset.themeTransition = target === 'light' ? 'open' : 'close';
+  const transition = document.startViewTransition(() => {
+    apply(next); // must update the DOM synchronously inside the callback
+    root.dataset.theme = target;
+  });
+  transition.finished.finally(() => delete root.dataset.themeTransition);
+}
+```
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme-transition]::view-transition-old(root),
+  html[data-theme-transition]::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+  html[data-theme-transition='open']::view-transition-new(root) {
+    animation: theme-open 700ms var(--ease-move) both;
+  }
+  html[data-theme-transition='close']::view-transition-old(root) {
+    z-index: 1;
+    animation: theme-close 650ms var(--ease-move) both;
+  }
+}
+@keyframes theme-open { from { clip-path: inset(50% 50% 50% 50%); } to { clip-path: inset(0); } }
+@keyframes theme-close { from { clip-path: inset(0); } to { clip-path: inset(50% 0 50% 0); } }
+```
+
+- **A data attribute on the root picks the direction**; the CSS only reads it. Remove it when the transition ends.
+- **No transition when the painted theme does not change** (choosing "System" while the system is already light).
+- **Frameworks that batch updates** must flush the change inside the callback (in React, `flushSync`); otherwise the
+  "new" snapshot is taken before the DOM changed and nothing animates.
+- **Under a second.** It is feedback for a choice the person just made, not a show; repeated switching must not queue
+  long animations.
+- Restricting it to one area of the product (a public site, not the application) is a valid choice: the same
+  preference can switch instantly inside a tool where people change it to work, not to look.
+
+## 15. A reading position indicator that does not skip sections
+
+A table of contents that marks the section being read usually marks the last heading above a line about a third of
+the way down the viewport. The closing sections of a document are often too short to ever reach that line before
+the page ends, so the indicator stops early. The obvious fix, "mark the last heading at the bottom of the page",
+jumps over the sections in between.
+
+Slide the line down over the last stretch of scroll instead, so every closing section takes its turn:
+
+```js
+const READING_LINE = 0.35; // a third of the way down
+const END_STRETCH = 0.6;   // over the last 60% of a viewport of scroll, the line slides to the bottom
+
+function readingLine() {
+  const maxScroll = document.documentElement.scrollHeight - innerHeight;
+  const stretch = innerHeight * END_STRETCH;
+  const progress = Math.min(Math.max((scrollY - (maxScroll - stretch)) / stretch, 0), 1);
+  const top = innerHeight * READING_LINE;
+  return top + (innerHeight - 24 - top) * progress;
+}
+
+function activeHeading(headings) {
+  if (document.documentElement.scrollHeight <= innerHeight) return headings[0]; // nothing to scroll
+  const line = readingLine();
+  const passed = headings.filter((h) => h.getBoundingClientRect().top <= line);
+  return passed.at(-1) ?? headings[0];
+}
+```
+
+- Mark the active link with `aria-current="location"`; do not move focus or announce the change.
+- A page that does not scroll keeps the first heading: it has no end to reach.
+- Verify it by scrolling in small steps from top to bottom and recording which heading is marked: the sequence must
+  contain every heading, in order (see [real state and verification](../08-real-state-and-verification.md)).
 
 ## Choose the behavior before the recipe
 
@@ -417,7 +616,14 @@ cleanup of observers and event listeners on removal, localized strings, error pr
 - **Hiding content with an initial `opacity: 0`** that depends on JavaScript.
 - **`autoplay` in the markup** when reduced motion should prevent playback.
 - **Reduced motion that only shortens durations** but keeps translation and scale.
+- **Linear timing on movement** that is not tied to scroll, input or time: use the easing tokens (recipe 1).
 - **Long durations for interactions** (a menu that takes 600 ms to open feels slow).
+- **Chained tweens for a choreographed scene**: impossible to pause, test or show as a final frame. Compute the scene
+  from time (recipe 11).
+- **Reduced motion that shows the first frame** of an illustration, where nothing has happened yet. Show the last.
+- **A flicker or flash checked by eye**: encode it as data and test the three-flashes limit (recipe 13).
+- **A reading indicator that jumps to the last heading at the bottom**, skipping the short sections before it
+  (recipe 15).
 
 ## Checklist
 
@@ -427,3 +633,7 @@ cleanup of observers and event listeners on removal, localized strings, error pr
 - [ ] No autoplay with reduced motion; media pauses off-screen and in hidden tabs.
 - [ ] Focus handled after view changes.
 - [ ] Numbers formatted per locale; no live announcements of counters.
+- [ ] Choreographed illustrations are a function of time; reduced motion shows the final frame.
+- [ ] Any flicker is data with a test for WCAG 2.3.1, plays once and never runs with reduced motion.
+- [ ] Automatic illustrations stop off-screen, in hidden tabs and while the person interacts with them.
+- [ ] At most one scroll-linked effect per page.

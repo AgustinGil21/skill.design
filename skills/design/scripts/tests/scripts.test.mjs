@@ -353,6 +353,23 @@ test('slop: flags bouncy, elastic and attention-seeking motion on web and native
   assert.equal(decorative[0].level, 'info');
 });
 
+test('slop: flags linear timing on movement, but not scroll-linked motion, loops, progress or opacity', () => {
+  const flagged = (text, file = 'x.css') => analyzeText(text, file, []).filter((f) => f.rule === 'linear-motion');
+  assert.equal(flagged('transition: transform 300ms linear;').length, 1);
+  assert.equal(flagged('.panel { animation: slide-in 400ms linear both; }').length, 1);
+  assert.equal(flagged('<div className="transition-transform duration-300 ease-linear hover:-translate-y-1" />', 'x.tsx').length, 1);
+  const gsap = flagged("gsap.to(card, { x: 120, ease: 'none' })", 'x.ts');
+  assert.equal(gsap.length, 1);
+  assert.equal(gsap[0].level, 'info');
+  // Linear is right when the motion follows input or time, and invisible on opacity alone.
+  assert.equal(flagged('transition: opacity 200ms linear;').length, 0);
+  assert.equal(flagged('.reveal { animation: reveal linear both; animation-timeline: view(); }').length, 0);
+  assert.equal(flagged('animation: marquee 40s linear infinite;').length, 0);
+  assert.equal(flagged("gsap.to(img, { y: 0, ease: 'none', scrollTrigger: { scrub: 0.6 } })", 'x.ts').length, 0);
+  assert.equal(flagged("gsap.to(globe, { rotation: 360, ease: 'none', repeat: -1 })", 'x.ts').length, 0);
+  assert.equal(flagged('<div className="h-1 transition-[width] ease-linear progress-bar" />', 'x.tsx').length, 0);
+});
+
 test('system-check: raw colors and arbitrary values in components, tokens allowed in token files, large components', async () => {
   const { analyzeFile, checkPaths, HUGE_COMPONENT_LINES } = await import('../system-check.mjs');
   const rules = (f) => f.map((x) => x.rule).sort();

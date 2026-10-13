@@ -41,7 +41,7 @@ Summary:
     and phone, structure, type, color, motion; follow `workflows/reference.md`)
   - `node scripts/screenshots.mjs <urls>` (phone and desktop, light and dark; uses the project's Playwright or Chrome)
   - `node scripts/contrast.mjs <text> <background>`
-  - `node scripts/slop.mjs <paths> [--lang en,es]` (also flags bouncy, elastic and pulsing motion)
+  - `node scripts/slop.mjs <paths> [--lang en,es]` (also flags bouncy, elastic and pulsing motion, and linear timing on movement)
   - `node scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components, hand-drawn icons,
     too many icon families or typefaces)
   - `node scripts/a11y-static.mjs <paths>`

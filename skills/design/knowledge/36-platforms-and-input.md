@@ -148,6 +148,10 @@ Many people use laptops without a mouse. Everything that works with a mouse must
 - **Hover is less precise**: menus that close when the pointer leaves by a pixel are frustrating; use small delays and
   safe triangles for submenus.
 - **Swipe navigation** (two-finger swipe back) should not fight horizontal scrolling inside the app.
+- **Surfaces inside a scrolling page** (a map or globe in a landing section) take the wheel and pinch only after the
+  person engages with them (a press or keyboard focus); passing over them keeps scrolling the page. Safari on macOS
+  also sends its own gesture events for pinch. The full recipe, with inertia and keyboard parity, is in
+  [direct manipulation](patterns/direct-manipulation.md).
 
 ## 6. Shortcuts, gestures and muscle memory
 
