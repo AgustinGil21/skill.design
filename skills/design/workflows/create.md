@@ -86,7 +86,9 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
 - **Tokens for every reusable value**: colors, spacing, sizes, radii, type, shadows, durations, easing, z-index. Use
   the project's existing tokens; add missing ones in its format instead of writing raw values.
 - **Motion**: decelerating, settles once, with a reduced version; no bounce, elastic, overshoot or AI-style pulses
-  unless asked (`knowledge/landing/06-motion.md`).
+  unless asked (`knowledge/landing/06-motion.md`). Pick the technique by the motion's job
+  (`knowledge/37-animation-techniques.md`; for Rive, Lottie, video, particles or shaders,
+  `knowledge/38-authored-and-rendered-motion.md`).
 - Write or update tests if the project has them.
 
 ## 9. Verify and close

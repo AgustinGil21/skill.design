@@ -368,6 +368,8 @@ test('slop: flags linear timing on movement, but not scroll-linked motion, loops
   assert.equal(flagged("gsap.to(img, { y: 0, ease: 'none', scrollTrigger: { scrub: 0.6 } })", 'x.ts').length, 0);
   assert.equal(flagged("gsap.to(globe, { rotation: 360, ease: 'none', repeat: -1 })", 'x.ts').length, 0);
   assert.equal(flagged('<div className="h-1 transition-[width] ease-linear progress-bar" />', 'x.tsx').length, 0);
+  // A declaration ends at the line: prose that mentions an animation and, later, a linear curve is not CSS.
+  assert.equal(flagged('- Android, fling animation: a guide\n- MDN, the linear() easing', 'a.md').length, 0);
 });
 
 test('system-check: raw colors and arbitrary values in components, tokens allowed in token files, large components', async () => {

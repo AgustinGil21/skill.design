@@ -28,6 +28,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Use live references (Mobbin) and design files (Figma) | [34-references-and-design-tools](34-references-and-design-tools.md) |
 | Build from small components and tokens; keep code professional | [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) |
 | Design for the platform: web sizes, mobile gestures and motion, desktop conventions, touchpad, shortcuts | [36-platforms-and-input](36-platforms-and-input.md) |
+| Choose how to animate something, and combine techniques into one moment | [37-animation-techniques](37-animation-techniques.md) · [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) · [motion](landing/06-motion.md) |
 | Give it character without slop | [01-anti-slop](01-anti-slop.md) · [13-human-design](13-human-design.md) · [11-brand-and-identity](11-brand-and-identity.md) |
 | Choose type, color, layout and imagery | [09-typography](09-typography.md) · [10-color](10-color.md) · [17-composition-and-layout](17-composition-and-layout.md) · [19-imagery-icons-and-illustration](19-imagery-icons-and-illustration.md) · [05-visual-system](05-visual-system.md) |
 | Persuade without manipulating | [12-psychology-and-ethical-persuasion](12-psychology-and-ethical-persuasion.md) |
@@ -87,6 +88,8 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [34-references-and-design-tools](34-references-and-design-tools.md) | Live references by job and platform, design files as intent, working without tools |
 | [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) | Composition over giant components, tokens for every reusable value, exceptions, checking |
 | [36-platforms-and-input](36-platforms-and-input.md) | Identifying the platform, responsive web, mobile and tablet, desktop conventions, touchpad parity, shortcuts and muscle memory |
+| [37-animation-techniques](37-animation-techniques.md) | Picking a technique by its job: keyframes, springs, gestures, physics, SVG paths, layout transitions, combining them |
+| [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) | Rive and Lottie, skeletal rigs, flipbooks and video, particles, shaders: costs, fallbacks, accessibility |
 | [sources](sources.md) | Where the knowledge comes from and how to add to it |
 
 ## Patterns by screen type

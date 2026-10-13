@@ -145,6 +145,8 @@ in order.
 | Small composable components, tokens for every reusable value | `35-components-tokens-and-code-quality.md` |
 | Platforms and input: web responsiveness, mobile gestures and motion, desktop conventions, touchpad, shortcuts | `36-platforms-and-input.md` |
 | Professional motion (and what reads as generated: bounce, elastic, AI pulses) | `landing/06-motion.md` |
+| Choosing an animation technique by its job: keyframes, springs, gestures, physics, SVG paths, layout transitions, combining them | `37-animation-techniques.md` |
+| Designer-made and rendered motion: Rive, Lottie, skeletal rigs, video and sprites, particles, shaders | `38-authored-and-rendered-motion.md` |
 | Reasoned case studies | `knowledge/cases/README.md` |
 
 ### Patterns by screen type (`knowledge/patterns/`)

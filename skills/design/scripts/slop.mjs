@@ -56,10 +56,10 @@ const MOVING = /\b(?:transform|translate|scale|rotate|clip-path|inset|top|left|r
 function linearMotion(text) {
   const found = [];
   const block = (index) => text.slice(text.lastIndexOf('{', index) + 1, (text.indexOf('}', index) + 1 || text.length + 1) - 1);
-  for (const m of text.matchAll(/\btransition\s*:\s*[^;{}]*\blinear\b[^;{}]*/g)) {
+  for (const m of text.matchAll(/\btransition\s*:\s*[^;{}\n]*\blinear\b[^;{}\n]*/g)) {
     if (MOVING.test(m[0])) found.push(m);
   }
-  for (const m of text.matchAll(/\banimation\s*:\s*[^;{}]*\blinear\b[^;{}]*/g)) {
+  for (const m of text.matchAll(/\banimation\s*:\s*[^;{}\n]*\blinear\b[^;{}\n]*/g)) {
     if (/\binfinite\b/.test(m[0]) || /animation-timeline/.test(block(m.index))) continue;
     found.push(m);
   }
@@ -84,7 +84,7 @@ const MOTION_RULES = [
   { pattern: /\banimation(?:-name)?\s*:\s*[^;]*\b(?:bounce\w*|wobble|jello|tada|rubber\w*|heart-?beat|jiggle|glow\w*|breath\w*)\b/gi, message: GIMMICK },
   { pattern: /\b(?:easeOutBack|easeInOutBack|easeInBack|easeOutElastic|easeInOutElastic|easeOutBounce|easeInOutBounce|backOut|backInOut|backIn)\b/g, message: GIMMICK },
   { pattern: /\bease\s*:\s*['"](?:elastic|bounce|back|anticipate)[^'"]*['"]|\b(?:Elastic|Bounce|Back)\.ease\w*/g, message: GIMMICK },
-  { pattern: /\bbounce\s*:\s*(?:0?\.\d*[1-9]|[1-9])/g, message: 'Spring with bounce: set bounce to 0 or use a decelerating ease' },
+  { pattern: /\bbounce\s*:\s*(?:0?\.\d*[1-9]|[1-9])/g, message: 'Spring with bounce: set bounce to 0, unless it continues a gesture released with momentum (keep it small)' },
   { pattern: /\bCurves\.(?:bounce\w*|elastic\w*|easeOutBack|easeInOutBack|easeInBack)\b/g, message: GIMMICK },
   { pattern: /\.(?:bouncy|snappy)\b|\.spring\([^)]*bounce:\s*0?\.\d*[1-9]/g, message: 'Bouncy SwiftUI spring: use .smooth or an ease without overshoot' },
   { pattern: /\bSpring\.DampingRatio(?:HighBouncy|MediumBouncy|LowBouncy)\b/g, message: 'Bouncy Compose spring: use DampingRatioNoBouncy or a tween' },

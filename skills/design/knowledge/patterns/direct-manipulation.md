@@ -298,8 +298,8 @@ when the person stopped on purpose.
 
 **Strong version.** Beside the globe, a list groups the clubs by country, with the country names in the reader's
 language. Choosing "Club Atlético Rambla · Montevideo" (a fictional club) eases the globe to Uruguay by the short
-way round and opens the group if clubs overlap there. The page scrolls past the globe normally; once someone presses or tabs into it,
-the wheel and pinch zoom it. Rotation stops while a pointer is over a group, while a card is open, off-screen and in
+way round and opens the group if clubs overlap there. The page scrolls past the globe normally; once someone presses
+or tabs into it, the wheel and pinch zoom it. Rotation stops while a pointer is over a group, while a card is open, off-screen and in
 a hidden tab, and a "Pause rotation" button stops it for good. A flick spins it and lets it slow down; a drag that
 stops before release leaves it exactly there. Rotate, zoom and reset buttons sit under the stage, and arrow keys turn
 it when focused. With reduced motion, the globe is still and choosing a club jumps straight to it.
