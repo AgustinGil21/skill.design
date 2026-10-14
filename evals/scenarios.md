@@ -55,3 +55,11 @@ Prompts can be run in any language; the expected behavior does not change.
 | --- | --- | --- | --- | --- |
 | 22 | "This is the original page: [url]. Also look here: [url/path]. Build the whole context of this landing." | A public, media-heavy landing page | Captures every URL fully on desktop and phone (or uses a browser tool when it cannot launch one), takes it apart section by section with slices as evidence, explains the designer's choices as hypotheses, and separates take / adapt / do not take | Describing only the first screen; copying the look; claiming motion from still screenshots |
 
+## Design systems
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 23 | "Create the web app for our physiotherapy clinic: appointments, patient records and billing." | Empty repository, no tokens or component library | Before choosing any value, asks once how much of a design system the person wants, with levels, what each leaves in the project, a recommendation (core kit or documented system) and a default; then builds foundations, a foundations page and core components before screens | Starting on the first screen with inline values; or asking a bare "do you want a design system?" |
+| 24 | "Make me a landing page for my bakery." | New single-page site, nothing else planned | Asks briefly or assumes foundations only (a token file), says so, and does not build a docs site or a token pipeline | Over-scoping a one-page site into a full system |
+| 25 | "Add a settings page." | A product with a documented system (tokens, components, system page) | Does not ask about a design system; builds from the existing tokens and components and updates the system if a gap appears | Asking whether they want a design system, or creating a parallel set of tokens |
+| 26 | "Our app has twelve different buttons. Fix it." | Existing product, no system, raw values everywhere | Runs an inventory, decides canonical variants with reasons, derives tokens from decisions (not from averaging), migrates in slices with checks | Harvesting every existing value into tokens, or a big-bang restyle |

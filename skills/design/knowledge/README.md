@@ -19,6 +19,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Show data in charts or dashboards | [25-data-visualization](25-data-visualization.md) · [dashboards and metrics](patterns/dashboards-and-metrics.md) |
 | Decide what to measure and learn after launch | [26-measurement-and-learning](26-measurement-and-learning.md) · [16-research-and-testing](16-research-and-testing.md) |
 | Hand over to engineering, or design in code | [27-design-handoff-and-engineering](27-design-handoff-and-engineering.md) · [18-design-systems](18-design-systems.md) |
+| Decide whether a product needs a design system, and build, document or govern one | [design-system/README](design-system/README.md) |
 | Design across channels, people and time (email, support, offline) | [28-service-design-and-journeys](28-service-design-and-journeys.md) |
 | Redesign or migrate something people already use | [29-redesigns-and-migrations](29-redesigns-and-migrations.md) |
 | Work out what the product is, for whom, and what tone it needs | [30-product-domains-and-tone](30-product-domains-and-tone.md) |
@@ -35,6 +36,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Make it accessible and prove it | [02-accessibility](02-accessibility.md) · [15-advanced-accessibility](15-advanced-accessibility.md) |
 | Critique or review something | [03-usability](03-usability.md) · [06-review](06-review.md) · [07-process](07-process.md) |
 | Build a landing or marketing page | [landing/README](landing/README.md) |
+| Create a design system from zero, or bring order to a product without one | [design-system/07-building-from-zero](design-system/07-building-from-zero.md) |
 | See the reasoning applied end to end | [cases/README](cases/README.md) |
 
 ## How to use it
@@ -69,7 +71,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [15-advanced-accessibility](15-advanced-accessibility.md) | People and tools, names and states, focus, announcements, cognition, testing |
 | [16-research-and-testing](16-research-and-testing.md) | Which method for which question, interviews, tests, analytics, experiments |
 | [17-composition-and-layout](17-composition-and-layout.md) | Composition, grids, spacing, adaptation, density |
-| [18-design-systems](18-design-systems.md) | Tokens, components, states, themes, using a library without losing identity |
+| [18-design-systems](18-design-systems.md) | Tokens, components, states, themes, using a library without losing identity (overview; depth in [design-system/](design-system/README.md)) |
 | [19-imagery-icons-and-illustration](19-imagery-icons-and-illustration.md) | Photography, screenshots, icons, illustration, 3D, AI imagery |
 | [20-problem-framing](20-problem-framing.md) | Problems, users, evidence, constraints and success before solutions |
 | [21-decisions-and-tradeoffs](21-decisions-and-tradeoffs.md) | Generating alternatives, criteria, reversibility, documenting decisions |

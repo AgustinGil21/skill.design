@@ -15,6 +15,12 @@
 
 Fill in `templates/brief.md` (mentally or in writing, depending on size).
 
+**Building something complete from zero?** If the request is a whole new product, app or site and the project has no
+system (no tokens, no component library, no documented style), ask once how much of a design system the person wants
+before choosing any value, then follow `workflows/design-system.md` for the system part
+(`knowledge/design-system/01-deciding-scope.md`). Skip the question for a single screen or component in an existing
+product, or for a throwaway prototype.
+
 ## 1b. Platform and input
 
 Read `knowledge/36-platforms-and-input.md` for the platform in the design context. Decide, for this screen:
@@ -62,8 +68,8 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
 
 ## 6. Apply the visual system
 
-- Use the project's tokens. With no system: `knowledge/18-design-systems.md` to create a minimal one (color, type,
-  spacing, radii) and `knowledge/09-typography.md`, `knowledge/10-color.md`,
+- Use the project's tokens. With no system: build the level the person chose (`workflows/design-system.md`); at the
+  least, a minimal one (color, type, spacing, radii) with `knowledge/18-design-systems.md` and `knowledge/09-typography.md`, `knowledge/10-color.md`,
   `knowledge/17-composition-and-layout.md` to choose values.
 - Hierarchy through size and weight before color; space to group before borders.
 - Icons from a single maintained family (two at most), never drawn by you; a text label when their meaning is not

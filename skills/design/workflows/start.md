@@ -96,6 +96,7 @@ what each produces, and recommend one based on what you found:
 | **Demo** | A quick prototype to see and compare ideas | `workflows/prototype.md` |
 | **Build it** | Implementation in the project's code | `workflows/create.md` or `workflows/landing.md` |
 | **Brand study** | Full brand audit and, if wanted, a direction | `workflows/brand.md` |
+| **Design system** | Tokens, core components and documentation at the level the product needs | `workflows/design-system.md` |
 
 When the request is already specific ("build the pricing page"), do not show the menu: do it, and mention in one
 line the other options that could help ("I can also show two directions as a demo before building").

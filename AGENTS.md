@@ -35,6 +35,10 @@ Summary:
   weights and heading levels.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
   bounce, elastic or AI-style pulses unless asked).
+- Offer a design system when building from zero: when the person asks to create something complete (a new product,
+  app or site) and the project has no system, ask once — before choosing any value — how much of one they want
+  (foundations as tokens, core components, a documented system), with a recommendation and a default; then follow
+  `workflows/design-system.md`. Do not ask when a system exists, for a single screen, or for a throwaway prototype.
 - Care in the forgotten moments: where nothing is lost (a 404, an empty search, the end of a feed), turn the dull or
   negative moment into a detail from the product's own world — a line, a still or animation, a small interaction —
   with the way out first. Where something is lost (a payment, work, a server error), stay plain.

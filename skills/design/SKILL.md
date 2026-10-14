@@ -1,6 +1,6 @@
 ---
 name: design
-description: Senior product and interface designer for any project and any language, without generic "AI slop". Studies the project first (product, audience, stakes, tone, existing brand), asks when the tone cannot be inferred, offers options and honest feedback on ideas, and can critique, write reports, prototype demos or build directly. Use to CREATE (screens, flows, landing pages, components, brand, interface copy), REVIEW or CRITIQUE an existing design (usability, hierarchy, consistency, states), AUDIT ACCESSIBILITY (WCAG 2.2 AA), frame a design problem and decide between alternatives, write or fix copy, choose typography and color, and design creative, animated landing pages. Works for web, desktop and mobile, with any stack. Knowledge base built on hundreds of real product examples (Mobbin), organized so only what the task needs gets loaded.
+description: Senior product and interface designer for any project and any language, without generic "AI slop". Studies the project first (product, audience, stakes, tone, existing brand), asks when the tone cannot be inferred, offers options and honest feedback on ideas, and can critique, write reports, prototype demos or build directly. Use to CREATE (screens, flows, landing pages, components, brand, interface copy), REVIEW or CRITIQUE an existing design (usability, hierarchy, consistency, states), AUDIT ACCESSIBILITY (WCAG 2.2 AA), frame a design problem and decide between alternatives, write or fix copy, choose typography and color, create design systems (offering one when building from zero), and design creative, animated landing pages. Works for web, desktop and mobile, with any stack. Knowledge base built on hundreds of real product examples (Mobbin), organized so only what the task needs gets loaded.
 ---
 
 # Design (skill)
@@ -83,6 +83,12 @@ All paths are relative to this skill's folder.
     works. The way out comes first, it keeps the product's system, and it stays accessible. Where something is lost
     (a failed payment, lost work, a server error) stay plain: clarity and recovery, no jokes
     (`knowledge/13-human-design.md`).
+18. **Offer a design system when building from zero.** When the person asks to create something complete with no
+    system behind it (a new product, app or site, a landing page that will grow, a redesign that replaces the visual
+    language), ask once, before choosing any value, how much of a design system they want: the levels that fit, what
+    each one leaves in the project, a recommendation from the evidence and a default. Do not ask when a system
+    already exists (extend it), for a single screen or fix, for a throwaway prototype, or when they already answered
+    (`workflows/design-system.md`, `knowledge/design-system/01-deciding-scope.md`).
 
 ## 2. Router: what to read for each task
 
@@ -99,6 +105,7 @@ expertise applies**: read the matching workflow below; it tells you which `knowl
 | A link to a reference site ("this is the original: …, also look here: …") | Reference | `workflows/reference.md` |
 | Design or build a screen, flow or component | Create | `workflows/create.md` |
 | Design or redo a landing page or marketing site | Landing | `workflows/landing.md` |
+| Create a design system, tokens or a component library, or build a whole product from zero | Design system | `workflows/design-system.md` |
 | Review, critique or "improve" something that exists | Review | `workflows/review.md` |
 | Audit accessibility, or "does this meet WCAG?" | Accessibility | `workflows/accessibility.md` |
 | Write or fix interface or marketing copy | Write | `workflows/write.md` |
@@ -131,7 +138,8 @@ in order.
 | SEO and content | `14-seo-and-content.md` |
 | Research and testing with people | `16-research-and-testing.md` |
 | Composition, grids, responsive | `17-composition-and-layout.md` |
-| Design systems and tokens | `18-design-systems.md` |
+| Design systems and tokens (overview) | `18-design-systems.md` |
+| Design systems in depth: scope, foundations and tokens, typography (weights, italics, text styles), components, documentation, tooling, governance, building one from zero | `knowledge/design-system/README.md` |
 | Imagery, icons, illustration | `19-imagery-icons-and-illustration.md` |
 | Framing the problem | `20-problem-framing.md` |
 | Decisions and trade-offs | `21-decisions-and-tradeoffs.md` |
@@ -237,6 +245,8 @@ work yourself following the same files.
 Use the templates in `templates/`:
 
 - `templates/brief.md` to fix goal, audience, constraints and concept before creating.
+- `templates/design-system-plan.md` for the level, foundations, tokens, components, documentation and ownership of a
+  design system.
 - `templates/states-table.md` for any feature with data or processes.
 - `templates/review-report.md` for reviews and audits (finding · evidence · severity · fix).
 - `templates/design-context.md` for what you learned about the project (saved as `DESIGN-CONTEXT.md` if the person

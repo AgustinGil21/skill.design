@@ -3,7 +3,13 @@
 > **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
 > `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
 
-The full guide lives in `knowledge/landing/`. Order:
+The full guide lives in `knowledge/landing/`.
+
+**New site with no system?** Before the visual idea becomes values, ask once how much of a design system the person
+wants (`knowledge/design-system/01-deciding-scope.md`): usually foundations as tokens for a single page, the core
+components too when the site will grow or an app will share its look. Skip it when the project already has a system.
+
+Order:
 
 1. **Strategy** — `knowledge/landing/01-strategy-and-structure.md`: one goal, a concrete audience, its stage of
    decision, the main objection, the real proof available, the type of page. Separate what you know from what you

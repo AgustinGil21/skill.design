@@ -14,10 +14,11 @@ skill.design/
 ├── skills/design/            The skill (the folder agents load)
 │   ├── SKILL.md              Entry point: rules, router by task, knowledge map
 │   ├── workflows/            How to work in each mode: start, ideate, prototype, reference, create, landing,
-│   │                         review, accessibility, write, brand
-│   ├── knowledge/            Foundations, patterns by screen type, landing pages and reasoned cases
-│   ├── templates/            Brief, design context, brand audit, directions, idea feedback, reference report,
-│   │                         states table, review report
+│   │                         design system, review, accessibility, write, brand
+│   ├── knowledge/            Foundations, patterns by screen type, landing pages, design systems and
+│   │                         reasoned cases
+│   ├── templates/            Brief, design context, design system plan, brand audit, directions, idea feedback,
+│   │                         reference report, states table, review report
 │   ├── scripts/              Dependency-free tools (Node ≥ 18; reference-capture needs Node ≥ 22)
 │   │   ├── design-scan.mjs        Evidence about a project, web or native
 │   │   ├── system-check.mjs       Tokens, component size, hand-drawn icons, icon and type families

@@ -4,6 +4,10 @@ How a designer builds, governs and evolves a design system as a product maintain
 memory of decisions: it lets new work come out coherent without rethinking everything — as long as it is maintained,
 adopted and allowed to change.
 
+This file is the overview. The full guide — deciding how much system a product needs and asking the person,
+foundations and token architecture, components and patterns, documentation, design-to-code tooling, governance, and
+the step-by-step method for building one from zero — is in [design-system/](design-system/README.md).
+
 ## What it is and why it matters
 
 A design system is the set of tokens, components, patterns, guidelines and processes a team shares to build products

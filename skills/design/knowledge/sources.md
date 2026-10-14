@@ -164,6 +164,28 @@ Last reviewed: October 2026.
 - **Unicode CLDR** and **ICU MessageFormat**: locale data and plural rules for localization.
 - **Fogg Behavior Model**, **self-determination theory**, **catalogs of deceptive design patterns**.
 
+### Design systems (`design-system/`)
+
+Researched in October 2026. Practitioner and community sources; claims are attributed in the files.
+
+- **Design Tokens Community Group, Format Module 2025.10** (with Color and Resolver modules): first stable version,
+  published 28 October 2025 as a Community Group report, not a W3C Standard. <https://www.designtokens.org/TR/2025.10/format/>
+- **GOV.UK Design System, contribution criteria**: useful and unique at proposal; usable, consistent and versatile
+  before publication. <https://design-system.service.gov.uk/community/contribution-criteria>
+- **Nathan Curtis (EightShapes)**: team models for scaling a design system (solitary, centralized, federated), "The
+  Fallacy of Federated Design Systems", and versioning design systems.
+  <https://nathanacurtis.substack.com/p/the-fallacy-of-federated-design-systems-23b9a9a05542>
+- **Brad Frost, Atomic Design** and his later reflections on where it fell short.
+  <https://bradfrost.com/links/post/where-atomic-design-fell-short/>
+- **Figma, "Design systems 104: making metrics matter"** and **"How Pinterest's design systems team measures
+  adoption"**: detachment, overrides and usage as signals, without a standard healthy rate.
+  <https://www.figma.com/blog/design-systems-104-making-metrics-matter/>
+- **zeroheight, measuring the developer side of a design system**: coverage per product over raw instance counts.
+  <https://zeroheight.com/help/guides/how-to-measure-the-dev-side-of-a-design-system/>
+- **The Interactive Studio, "Cómo crear un design system paso a paso" (2026)**: foundations, components and patterns
+  in practice, publishing as a living site, and an agency estimate of two to four months for a first functional
+  version. <https://insights.theinteractive.studio/es/como-crear-un-design-system-paso-a-paso>
+
 Standards and guides are updated. When this knowledge base cites a version or a threshold, verify it against the
 current official source before treating it as binding.
 
