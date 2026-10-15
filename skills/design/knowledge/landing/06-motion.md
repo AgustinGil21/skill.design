@@ -114,7 +114,7 @@ explicitly asks for them (or the product is a game or toy where they are part of
 | Avoid | Why it reads as cheap | Use instead |
 | --- | --- | --- |
 | **Bounce and elastic easings** (`easeOutBack`, `elastic`, `bounce`, springs with bounce > 0) | The element overshoots its target and wobbles back: it calls attention to the animation, not the content | A decelerating ease-out or a critically damped spring that settles once. Exception: a small overshoot (bounce around 0.15, kept below about 0.4) when the motion continues a gesture released with momentum, as Apple recommends; never on color or opacity (see [animation techniques](../37-animation-techniques.md)) |
-| **Elements that fly in, hit an edge and rebound** | Physics theater with no meaning | A short fade plus 8–16 px of translation |
+| **Elements that fly in, hit an edge and rebound** | Physics theater with no meaning | A short fade plus 8–16 px of translation. Real physics is a different thing: an object the reader sees as physical, moved by forces they can see, landing or being caught (see [physical motion](18-physical-motion.md)) |
 | **AI-style pulses and glows** (pulsing orbs, breathing gradients, glowing borders, ping dots on everything) | Signals "AI" without saying anything; constant motion in the periphery | A static status indicator; motion only when the state changes |
 | **Infinite floating, wiggling or breathing decorations** | Distracts reading, costs battery, fails WCAG 2.2.2 when it lasts | Stillness; one purposeful moment |
 | **Attention loops** (`animate-bounce` arrows, shaking buttons, ping badges) | Nagging; people learn to ignore it | Clear copy and hierarchy; a single change when something new arrives |

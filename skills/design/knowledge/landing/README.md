@@ -36,6 +36,7 @@ onwards) and goes deeper than [product pages](../patterns/product-pages.md).
 | --- | --- |
 | [14-recipes.md](14-recipes.md) | Skeletons with reasoning: SaaS, AI, physical product, waitlist, portfolio, comparison, app, event |
 | [15-motion-recipes.md](15-motion-recipes.md) | Accessible base CSS and JS: tokens, reveal, feedback, pausable strip, video, view transitions, tabs, counters |
+| [18-physical-motion.md](18-physical-motion.md) | Objects that fall, collide, swing and get thrown; scroll-driven scenes; when physics earns its place, how to build it, the browser traps and how to test it |
 
 ## The five questions a landing page answers
 
