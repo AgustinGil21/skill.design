@@ -25,6 +25,9 @@ progress interfaces fail: guilt, abandonment after a broken streak, or goals tha
 
 ## Entering an amount and transferring
 
+For first payments to new recipients, name checks, scam warnings and crypto wallets, see
+[wallets, transfers and crypto](wallets-and-crypto.md).
+
 - **The amount is the protagonist**: a large number at the top, a numeric keypad at the bottom, the primary button
   between them or above the keypad ([Wise](https://mobbin.com/screens/8c812490-e9a3-4ed1-b169-a118c88a3c57),
   [KOHO](https://mobbin.com/screens/20bd1b95-09b1-4b90-a7d9-d58cc386a3d5)).

@@ -186,6 +186,46 @@ Researched in October 2026. Practitioner and community sources; claims are attri
   in practice, publishing as a living site, and an agency estimate of two to four months for a first functional
   version. <https://insights.theinteractive.studio/es/como-crear-un-design-system-paso-a-paso>
 
+### Product archetypes, flows and color psychology (November 2026)
+
+Researched in November 2026 for [product archetypes](39-product-archetypes.md), the [slop catalog](slop/README.md),
+[trials and cancelling](patterns/cancellation-and-retention.md), [wallets and crypto](patterns/wallets-and-crypto.md),
+[feeds](patterns/feeds-and-social-posting.md), streaks in [gamification](patterns/badges-and-gamification.md) and color
+psychology in [color](10-color.md). Mobbin flows and screens from Duolingo, Finch, Brilliant, Noom, Cal AI, Runna,
+Headspace, Pillow, Givingli, Deepstash, Glovo, foodpanda, Mesh, Dropbox, Monarch, Vocabulary, Jira, Slack, Linear, X,
+Digg, Handshake, Whatnot, Fable, Phantom, Uniswap, Coinbase Wallet, Binance, Starling, ANZ Plus, Notion, Bolt and Uber,
+cited where used. Legal sources are secondary summaries; verify before relying on them.
+
+- **European Commission**, preliminary findings on TikTok's addictive design under the DSA (February 2026).
+  <https://digital-strategy.ec.europa.eu/en/news/commission-preliminarily-finds-tiktoks-addictive-design-breach-digital-services-act>
+- **FTC negative option rule**: vacatur of the 2024 amendments (July 2025), restored rule (February 2026), new ANPRM
+  (March 2026), as summarized by Crowell & Moring. <https://www.crowell.com/en/insights/client-alerts/clicking-all-the-right-boxes-ftc-moves-to-revive-click-to-cancel-rule-following-eighth-circuit-vacatur>
+- **California AB 2863** (Automatic Renewal Law amendments, from July 2025), as summarized by Davis Wright Tremaine.
+  <https://dwt.com/insights/2024/10/ab-2863-updates-california-automatic-renewal-law>
+- **EU Directive 2023/2673**, withdrawal function from 19 June 2026, as summarized by Greenberg Traurig.
+  <https://www.gtlaw.com/en/insights/2026/5/eu-consumer-law-new-withdrawal-button-requirements-for-online-contracts>
+- **UK DMCC Act subscription regime**, expected January 2027, as summarized by Lewis Silkin.
+  <https://www.lewissilkin.com/insights/2026/09/15/key-takeaways-the-subscription-shake-up-are-you-ready-for-january-2027-102o14n>
+- **Duolingo engineering blog**, Rive state machines for World Character visemes.
+  <https://blog.duolingo.com/world-character-visemes>
+- **Duolingo streak decisions** as described by its retention team on Lenny's Podcast (secondary summaries only;
+  figures treated as unverified).
+- **Apple Human Interface Guidelines, Playing haptics.** <https://developer.apple.com/design/human-interface-guidelines/playing-haptics>
+- **FIDO Alliance passkey design guidelines.** <https://fidoalliance.org/design-guidelines>
+- **Linear UI refresh changelog** (March 2026). <https://linear.app/changelog/2026-03-12-ui-refresh>
+- **Baymard Institute**, checkout usability research (guest checkout prominence; account creation as a stated reason
+  for abandonment). <https://baymard.com/research/checkout-usability>
+- **Labrecque and Milne (2012)**, "Exciting red and competent blue: the importance of color in marketing", *Journal of
+  the Academy of Marketing Science* 40(5). <https://link.springer.com/article/10.1007/s11747-010-0245-y>
+- **Gnambs (2020)**, meta-analysis finding limited evidence for the effect of red on cognitive performance; failed
+  replications of red priming and "red dress" effects (BPS, *The Psychologist*, "Seeing red").
+  <https://www.bps.org.uk/psychologist/seeing-red>
+- **The sparkles icon for AI**: commentary on its ambiguity, including a Nielsen Norman Group analysis as summarized
+  by Big Medium. <https://bigmedium.com/ideas/your-sparkles-are-fizzling.html>
+- **Practitioner write-ups on the "vibe-coded" look** (defaults such as Inter, purple gradients on white, shadcn
+  greys, Lucide everywhere, gradient text, nested cards): blogs and posts, used only as signals of what people
+  recognize, not as evidence of effect.
+
 Standards and guides are updated. When this knowledge base cites a version or a threshold, verify it against the
 current official source before treating it as binding.
 

@@ -118,6 +118,8 @@ See [plans and pricing tables](plans-and-pricing-tables.md).
 
 ## Cancelling
 
+In depth, with trials, retention offers and the law by market: [trials, renewals and cancelling](cancellation-and-retention.md).
+
 - **Findable** in plan settings, with its own button
   ([Disney+](https://mobbin.com/flows/07613377-f2a2-45b1-8440-c422450b41ab),
   [Open](https://mobbin.com/flows/f9200ba9-accf-4eb9-a210-0c50d7375f99)).

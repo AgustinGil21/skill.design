@@ -66,6 +66,7 @@
 | 2026-10-12 | same, Sonnet | 19 (desktop context menu, fixture) | 1 | 3 | 3 | 3 | n/a | 3 | None | contextmenu event (right-click, two-finger tap, Ctrl+click, Menu key, Shift+F10), full keyboard, no animation, per-OS labels, no invented shortcuts; explained custom vs. native menu |
 | 2026-10-12 | same, Sonnet | 20 (tablet adaptation, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Split view by window width with the breakpoint as a token, phone unchanged; did not run the skill's checks (Sonnet tends to skip verification steps) |
 
-Every scenario has run at least once with Claude Code (Opus), and again with Codex or Claude Sonnet. Still missing:
+Scenarios 1–26 have run at least once with Claude Code (Opus), and again with Codex or Claude Sonnet. Scenarios
+27–33 (slop catalog, archetypes and flows, added 2026-11-02) have not run yet. Still missing:
 third runs of each scenario. Known tendencies: Codex follows AGENTS.md literally, so rules it needs must be explicit
 there; Sonnet reasons well but tends to skip verification steps (rendering demos, running the checks).

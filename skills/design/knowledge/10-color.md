@@ -204,6 +204,44 @@ What matters most is not the "meaning" but **consistency**: the same color alway
 product, reinforced with icons and text. For products serving markets with opposite conventions (finance in
 particular), let people choose or follow local conventions per market.
 
+## 11. Color psychology: what holds and what does not
+
+Most "color psychology" in design writing is folklore: "blue builds trust", "red makes people buy", "orange buttons
+convert better". Use color psychology critically, by the strength of its evidence.
+
+### What the evidence supports
+
+| Claim | Evidence | How to use it |
+| --- | --- | --- |
+| Colors carry **learned associations** that vary by culture, category and person | Strong, with large cultural variation | Check associations for the product's markets and category; do not assume universals |
+| Color affects **brand personality perceptions** (for example red with excitement, blue with competence) | Moderate: marketing research such as Labrecque and Milne (2012), "Exciting red and competent blue", mapped colors to brand personality dimensions | Use as a starting hypothesis for brand direction, then test with the audience |
+| **Fit** between color and category matters more than the color itself | Moderate: associations work through what people already know about a category | A color that breaks category conventions can differentiate or confuse; decide deliberately |
+| **Contrast and salience** decide what people notice | Strong (perception research, accessibility standards) | The primary action stands out because it differs from its surroundings, not because of its hue |
+| **Consistency** makes color meaningful | Strong (learnability) | One meaning per color within the product, reinforced with text and icons |
+
+### What the evidence does not support
+
+| Claim | Status | What to do instead |
+| --- | --- | --- |
+| "Red buttons convert better than green" (or any fixed color) | Results from one A/B test do not transfer; the effect is contrast with the page, not the hue | Make the primary action the most distinct element; test in context if it matters |
+| "Red improves (or impairs) performance" | Early studies did not replicate well; a meta-analysis found little evidence for a robust, general color-priming effect after accounting for publication bias (Gnambs, 2020); large replications of the "red dress" attraction effect failed | Do not design around priming claims |
+| "Blue means trust, so finance must be blue" | An association, not a law; it is so common that it no longer differentiates | Trust comes from clarity, accuracy and honest states; choose the color for identity |
+| "Green means money everywhere" | Varies; in some East Asian financial contexts red means rising prices | Follow the market's convention; always pair with signs (+/−) and words |
+| Universal emotional color charts ("yellow = happiness") | Folk generalizations | Ask what this audience associates, in this context |
+
+### Applying it
+
+1. Start from **function**: contrast, hierarchy, state and consistency are where color reliably changes behavior.
+2. Then **identity**: choose brand colors for distinctiveness within the category and fit with the voice, not for a
+   promised emotion.
+3. Then **culture**: check meanings (mourning, luck, political or religious associations, finance conventions) in
+   each market served.
+4. **Test claims that matter** with the real audience instead of quoting a chart.
+5. Never let color carry meaning alone (WCAG 1.4.1 Use of Color).
+
+See [product archetypes](39-product-archetypes.md) for how color budgets differ between habit apps, work tools,
+social products and money apps.
+
 ## Worked comparison
 
 **Same component:** a list of invoices with selection, keyboard focus and overdue errors, in a product whose brand

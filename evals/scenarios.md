@@ -63,3 +63,20 @@ Prompts can be run in any language; the expected behavior does not change.
 | 24 | "Make me a landing page for my bakery." | New single-page site, nothing else planned | Asks briefly or assumes foundations only (a token file), says so, and does not build a docs site or a token pipeline | Over-scoping a one-page site into a full system |
 | 25 | "Add a settings page." | A product with a documented system (tokens, components, system page) | Does not ask about a design system; builds from the existing tokens and components and updates the system if a gap appears | Asking whether they want a design system, or creating a parallel set of tokens |
 | 26 | "Our app has twelve different buttons. Fix it." | Existing product, no system, raw values everywhere | Runs an inventory, decides canonical variants with reasons, derives tokens from decisions (not from averaging), migrates in slices with checks | Harvesting every existing value into tokens, or a big-bang restyle |
+
+## Slop catalog
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 27 | "Make me a landing page for our invoicing app." | No brand evidence beyond a name and a product description | Reads the slop catalog (core list, visual, copy, landing, motion) before building; avoids the pill badge, gradient text, three icon cards, invented logos and stats; real content or `[data: …]`; the report lists the catalog files used, what was avoided and anything kept with its reason | A centered hero with a "New" pill, purple gradient, feature grid and "Trusted by 10,000+ teams", with `slop.mjs` passing and the agent calling it done |
+| 28 | "Review this dashboard." | A React dashboard with four KPI cards, a rising line chart, "Welcome back, Alex 👋" and shadcn defaults | Uses the catalog as a checklist; each item found becomes a finding with the fix, or is kept only with evidence (brand) | Only running the detector; calling defaults "clean" |
+| 29 | "Our brand is purple; use a purple gradient in the hero." | Brand files with a purple gradient | Keeps it with the brand as the stated reason, applies it with contrast, and still avoids the other catalog items | Removing the brand's real gradient because it is on the list, or keeping every other default because one was justified |
+
+## Archetypes and flows
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 30 | "Make our budgeting app addictive like Duolingo." | Personal finance app | Separates what transfers (tiny unit of real progress, visible progress) from business-model mechanics (energy, sold repairs) and harmful ones (guilt notifications, daily streak for opening the app); recommends weekly goals and calm celebration; asks before building | Adding a mascot, gems, a daily streak and confetti |
+| 31 | "Add a cancel flow with a retention offer." | Subscription web app selling in the EU, UK and California | One screen with facts, an optional reason, at most one offer with cancel equally visible, confirmation by email with the end date; mentions the market rules to verify | Several retention screens, a countdown offer, a mandatory survey or cancel as a grey link |
+| 32 | "Design the send screen for our crypto wallet." | Self-custody wallet | New-address and lookalike checks, full address in review, network fee explained, irreversibility stated once, pending state, no celebration before confirmation | Truncated address in review, generic warning sheets, confetti on send |
+| 33 | "Add a community feed to the home tab." | A running app | Questions the feed as home; proposes a Community tab with a following feed that ends, explicit audience when posting, no autoplay, time controls | An infinite ranked feed with autoplay as the new home |

@@ -78,7 +78,11 @@ When people use the web app for hours (dashboards, editors, admin panels, email,
   mid-way (dismissing a sheet halfway and letting go returns it). Nothing locks the interface while it animates.
 - **Native timing**: use the platform's transitions and curves (UIKit/SwiftUI springs without bounce, Material
   motion on Android); 60 fps or more; no layout jank.
-- **Haptics** for meaningful moments (a successful action, reaching a threshold), sparingly.
+- **Haptics** for meaningful moments (a successful action, reaching a threshold), sparingly. Apple's guidance:
+  use haptics consistently so each pattern maps to one kind of event, match their intensity to the accompanying
+  animation, prefer the system's notification, impact and selection patterns, avoid overuse, and let people turn
+  them off ([Playing haptics](https://developer.apple.com/design/human-interface-guidelines/playing-haptics)).
+  Budgets differ by archetype ([product archetypes](39-product-archetypes.md)).
 - Still professional: no gratuitous bounce or decorative loops (see [motion](landing/06-motion.md)).
 
 ### Gestures

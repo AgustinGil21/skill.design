@@ -89,6 +89,24 @@ Most products combine several. The design question is how to present them withou
 - **Status in settings** ("On · 0 trusted devices · 2/10 codes used") with "Regenerate codes" and "Turn off" (which
   asks to confirm identity).
 
+### Offering and managing passkeys
+
+- **Offer a passkey after a successful sign-in**, not before the person has an account: one sentence on the benefit
+  ("Sign in with Face ID instead of a password") and the system sheet does the rest
+  ([Bolt](https://mobbin.com/flows/d1987aec-1591-4f87-ad7c-dc5b0bbe85b4),
+  [Uber](https://mobbin.com/flows/d7833185-7480-4280-b400-f6c761ae5916)).
+- **On the web, let the browser suggest passkeys in the username field** (WebAuthn conditional mediation, "autofill")
+  so returning people do not need a separate "Sign in with passkey" button; keep the button as a fallback.
+- **A passkeys list** in security settings with the device or manager that holds each one, when it was created, and
+  delete; "Add passkey" available any time ([Notion](https://mobbin.com/flows/6758e285-ee03-4474-a332-33c64c409598),
+  [Bolt](https://mobbin.com/flows/d1987aec-1591-4f87-ad7c-dc5b0bbe85b4)).
+- **Account checkup** that shows which protections are on (passkey, two-step verification, phone, email) with one
+  action each ([Uber](https://mobbin.com/flows/d7833185-7480-4280-b400-f6c761ae5916)).
+- **Keep another method** until the person has passkeys on more than one device or manager; say what happens if a
+  device is lost.
+- The FIDO Alliance publishes passkey design guidelines with tested patterns and content principles
+  ([FIDO design guidelines](https://fidoalliance.org/design-guidelines)).
+
 ## Recovery as a primary journey
 
 Recovery is not an edge case; it is how many people experience the product's security.
