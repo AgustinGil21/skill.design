@@ -9,7 +9,8 @@ The project's conventions and the person's wishes come first: if the codebase or
 the person asks for something specific, follow that. Apply these rules whenever there is room to.
 
 For the system side (layers, contracts, governance), see [design systems](18-design-systems.md); for handoff, see
-[design handoff and engineering](27-design-handoff-and-engineering.md).
+[design handoff and engineering](27-design-handoff-and-engineering.md). For architecture, comments, Tailwind,
+frameworks, testing, tooling and performance, see [engineering](engineering/README.md).
 
 ## Small components that compose
 

@@ -503,3 +503,31 @@ test('reference-capture: the index of pages studied accumulates across runs and 
   assert.match(md, /^# Pages studied/);
   assert.match(md, /\| https:\/\/b\.test\/pricing \| desktop \| 2 \| 1 \|/);
 });
+
+test('system-check: arbitrary values already on the spacing scale get the class to use', async () => {
+  const { analyzeFile, spacingScaleClass } = await import('../system-check.mjs');
+  assert.equal(spacingScaleClass('h-[256px]'), 'h-64');
+  assert.equal(spacingScaleClass('mt-[1rem]'), 'mt-4');
+  assert.equal(spacingScaleClass('w-[250px]'), 'w-62.5');
+  assert.equal(spacingScaleClass('h-[251px]'), 'h-62.75');
+  assert.equal(spacingScaleClass('h-[250.5px]'), null);
+  const found = analyzeFile('<div className="h-[256px] p-[13.5px]" />', 'Box.tsx');
+  assert.deepEqual(found.map((f) => [f.rule, f.level]), [['arbitrary-on-scale', 'warning'], ['arbitrary-value', 'info']]);
+});
+
+test('system-check: comments inside markup and comments that restate the code', async () => {
+  const { analyzeFile } = await import('../system-check.mjs');
+  const rules = (text, file = 'Card.tsx') => analyzeFile(text, file).map((f) => f.rule);
+  assert.deepEqual(rules('return (\n  <div>\n    {/* Header */}\n    <PlanHeader />\n  </div>\n);'), ['markup-comment']);
+  assert.deepEqual(rules('<template>\n  <!-- Actions -->\n  <PlanActions />\n</template>', 'Plan.vue'), ['markup-comment']);
+  assert.deepEqual(rules('// Handle the cancel click\nconst onCancel = () => {};'), ['restating-comment']);
+  assert.deepEqual(rules('// Added error handling as requested\ntry { run(); } catch {}'), ['restating-comment']);
+  assert.deepEqual(rules('// Safari fires resize before layout settles; measure on the next frame.\nrequestAnimationFrame(measure);'), []);
+});
+
+test('system-check: version ranges in package.json', async () => {
+  const { packageRanges } = await import('../system-check.mjs');
+  const pkg = JSON.stringify({ dependencies: { react: '^19.2.0', vite: '8.0.3', ui: 'workspace:*' }, devDependencies: { vitest: '~4.0.1' } }, null, 2);
+  assert.deepEqual(packageRanges(pkg, 'package.json').map((f) => f.excerpt), ['"react": "^19.2.0"', '"vitest": "~4.0.1"']);
+  assert.deepEqual(packageRanges('{ "dependencies": { "react": "19.2.0" } }', 'package.json'), []);
+});

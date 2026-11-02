@@ -36,14 +36,21 @@ documentation home, source of truth, checks, owner. For a level-1 system, a few 
 
 ## 3. Build in order
 
+**The system comes first.** When a design system is in scope, no product screen is coded until steps 1–3 exist:
+screens built before their tokens and components fill with raw values and one-off variants that later have to be
+hunted down. The stack is the person's choice (`knowledge/engineering/04-frameworks-and-stacks.md`); read the docs of
+the styling and component libraries in use before writing tokens or components
+(`knowledge/engineering/03-styling-and-tailwind.md`).
+
 Follow `knowledge/design-system/07-building-from-zero.md` (path A for a new product, path B for an existing one):
 
 1. Foundations as tokens — `knowledge/design-system/02-foundations-and-tokens.md`, with `knowledge/09-typography.md`
    and `knowledge/design-system/08-typography-in-the-system.md` (family roles, weights, italics, text styles),
    `knowledge/10-color.md`, `knowledge/17-composition-and-layout.md`.
 2. A foundations page, checked in every mode before going on.
-3. Core components in use × risk order — `knowledge/design-system/03-components-and-patterns.md` and
-   `knowledge/35-components-tokens-and-code-quality.md`.
+3. Core components in use × risk order — `knowledge/design-system/03-components-and-patterns.md`,
+   `knowledge/35-components-tokens-and-code-quality.md` and `knowledge/engineering/02-components-and-comments.md`
+   (atomic, configured by parameters, tested per variant and state: `knowledge/engineering/05-testing.md`).
 4. Patterns and templates for the first release's recurring tasks.
 5. Documentation at the chosen level — `knowledge/design-system/04-documentation.md`, including the short rules file
    agents read.

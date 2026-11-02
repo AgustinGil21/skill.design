@@ -226,6 +226,27 @@ cited where used. Legal sources are secondary summaries; verify before relying o
   greys, Lucide everywhere, gradient text, nested cards): blogs and posts, used only as signals of what people
   recognize, not as evidence of effect.
 
+### Engineering (November 2026)
+
+For [engineering](engineering/README.md). Official documentation was read through Context7 where available; the rest
+are official announcements or clearly marked secondary sources. Versions change; verify before relying on them.
+
+- **pnpm documentation** (v11 and v12): `.npmrc` limited to auth and registry from v11; `minimumReleaseAge` (default
+  1440 minutes, strict only when set explicitly), `trustPolicy`, `blockExoticSubdeps`, `allowBuilds` and
+  `strictDepBuilds`. <https://pnpm.io/supply-chain-security>
+- **Tailwind CSS v4 documentation**: theme variables in `@theme`, spacing utilities as multiples of `--spacing`.
+  <https://tailwindcss.com/docs/theme>
+- **React Compiler 1.0** (react.dev, October 2025): production-ready; manual memoization as an escape hatch.
+  <https://react.dev/blog/2025/10/07/react-compiler-1>
+- **Vitest 4** (VoidZero, October 2025): stable Browser Mode, visual regression, Playwright traces.
+  <https://voidzero.dev/posts/announcing-vitest-4>
+- **Oxfmt beta** (Oxc, February 2026), Prettier conformance and roadmap to 1.0. <https://oxc.rs/blog/2026-02-24-oxfmt-beta>
+- **Biome**, comparison with other tools. <https://biomejs.dev/introduction/comparison-with-other-tools>
+- **TanStack Start 1.0** (October 2026). <https://tanstack.com/blog/announcing-tanstack-start-v1>
+- Framework comparison write-ups (Astro, Next.js, TanStack Start, React Router, Vite SPA) from 2026 blogs, used only
+  for tendencies, with version claims checked against official sources.
+- Practitioner writing on AI-generated comments (restating code, change-log comments, tutorial voice).
+
 Standards and guides are updated. When this knowledge base cites a version or a threshold, verify it against the
 current official source before treating it as binding.
 

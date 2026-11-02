@@ -12,6 +12,7 @@ Background: [components, tokens and code quality](../35-components-tokens-and-co
 | Tell | Why it reads as generated | Do instead |
 | --- | --- | --- |
 | Raw hex and arbitrary values in components (`bg-[#7a0f1e]`, `rounded-[13px]`, `mt-[37px]`) | Values nobody can maintain; inconsistency grows | Semantic tokens (`--color-action`, `--radius-control`) or theme keys |
+| Arbitrary values that are already on the framework's scale (`h-[256px]`, `p-[16px]`, `max-w-[1280px]`) | Shows the scale was never learned | The scale class (`h-64`, `p-4`, `max-w-7xl`) or a named token ([styling and Tailwind](../engineering/03-styling-and-tailwind.md)) |
 | Tailwind palette names as the design (`bg-indigo-600`, `text-slate-500`) used directly across components | The palette of the framework, not of the product | Map the framework's palette to semantic names once, then use the semantic names |
 | shadcn/ui installed with its defaults untouched (neutral base, default radius, default ring) | The single most common generated look | Adjust the theme variables to the brand before building screens |
 | Spacing values that vary randomly (`p-3`, `p-5`, `p-7` side by side) | No rhythm | A spacing scale applied by relationship |
@@ -58,3 +59,25 @@ Background: [components, tokens and code quality](../35-components-tokens-and-co
 | Inline SVG icons written by hand | Wrong proportions | The project's icon family |
 | Dark mode via `dark:` classes sprinkled with different values each time | Inconsistent themes | Theme tokens that switch together |
 | Fonts loaded from several sources with fallbacks that shift layout | Layout shift, inconsistency | One font strategy with matched fallbacks |
+
+## Comments
+
+| Tell | Why it reads as generated | Do instead |
+| --- | --- | --- |
+| `{/* Header */}`, `{/* Actions */}` inside the returned JSX, or `<!-- Section -->` in templates | Labels for parts that should be components | Extract the part into a named component |
+| Comments that restate the code (`// State for the modal`, `// Handle click`, `// Map over items`) | Tutorial voice | Delete; name things well |
+| Change-log comments (`// Added error handling as requested`, `// Updated to use the new API`) | Conversation with the assistant left in the code | Delete; history belongs in commits |
+| Comments addressed to the reader (`// Feel free to customize`, `// You can change this`) | Template voice | Delete |
+| `// TODO: implement` in delivered code | Unfinished work presented as done | Finish it or record it outside the code |
+| Section banners and comment blocks on every function | Over-commenting hides the comments that matter | Comments only for why ([components and comments](../engineering/02-components-and-comments.md)) |
+
+## Dependencies and tooling
+
+| Tell | Why it reads as generated | Do instead |
+| --- | --- | --- |
+| Version ranges (`^`, `~`, `latest`) in `package.json` | Unreviewed versions enter on any install | Exact versions, updates through a tool ([tooling and supply chain](../engineering/06-tooling-and-supply-chain.md)) |
+| Packages added for things the platform does (date formatting, deep clone, UUIDs, class toggling) | Weight and attack surface for nothing | Platform APIs (`Intl`, `structuredClone`, `crypto.randomUUID`) |
+| Old, slow defaults chosen from memory (Jest and Prettier in a new Vite project, Create React App) | Training-data defaults, not current choices | Current tools checked against their docs (Vitest, Oxlint/Biome, a maintained framework) |
+| Library APIs written from memory without checking the version | Deprecated or wrong APIs | Read the current docs for the installed version |
+| A stack chosen without asking | The person's decision taken silently | Recommend with reasons and ask ([frameworks and stacks](../engineering/04-frameworks-and-stacks.md)) |
+| `useEffect` for fetching and derived state; `useMemo`/`useCallback` everywhere | Patterns from old tutorials | The framework's data loading or a query library; derive during render; the React Compiler where available |

@@ -27,6 +27,21 @@ before choosing any value, then follow `workflows/design-system.md` for the syst
 (`knowledge/design-system/01-deciding-scope.md`). Skip the question for a single screen or component in an existing
 product, or for a throwaway prototype.
 
+## 1c. Engineering before code
+
+Read `knowledge/engineering/README.md` and, for this task, `knowledge/engineering/02-components-and-comments.md` and
+`knowledge/engineering/03-styling-and-tailwind.md`.
+
+- **Stack**: in an existing project, use its framework, libraries and conventions. In a new one, recommend and ask
+  (`knowledge/engineering/04-frameworks-and-stacks.md`); the person decides.
+- **Libraries**: before using any framework or library, read its current documentation for the version in use
+  (rules, recommended patterns, pitfalls) and say what you checked.
+- **Design system first**: when a system is in scope, its tokens and core components exist before this screen.
+- **Architecture**: choose structure, state placement and patterns for this case and state why
+  (`knowledge/engineering/01-architecture-and-patterns.md`).
+- **New project setup**: `knowledge/engineering/06-tooling-and-supply-chain.md` (pnpm, exact versions, security
+  settings, linter and formatter) and `knowledge/engineering/05-testing.md`.
+
 ## 1b. Platform and input
 
 Read `knowledge/36-platforms-and-input.md` for the platform in the design context. Decide, for this screen:
@@ -101,7 +116,8 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
   unless asked (`knowledge/landing/06-motion.md`). Pick the technique by the motion's job
   (`knowledge/37-animation-techniques.md`; for Rive, Lottie, video, particles or shaders,
   `knowledge/38-authored-and-rendered-motion.md`).
-- Write or update tests if the project has them.
+- Write or update tests at the right level (`knowledge/engineering/05-testing.md`): component behavior by role and
+  name, states, accessibility checks; end-to-end for critical journeys.
 
 ## 9. Verify and close
 

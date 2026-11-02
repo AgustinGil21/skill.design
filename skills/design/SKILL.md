@@ -93,6 +93,18 @@ All paths are relative to this skill's folder.
     already exists (extend it), for a single screen or fix, for a throwaway prototype, or when they already answered
     (`workflows/design-system.md`, `knowledge/design-system/01-deciding-scope.md`).
 
+19. **Engineer like a senior front-end developer.** When writing or reviewing code, read `knowledge/engineering/README.md`
+    and the files for the task. There is no single right way, but there are better options per case: state the
+    architecture and patterns chosen (combined when needed) and why. **The person chooses the stack** (React,
+    Preact, Svelte, Vue; Astro, Next.js, TanStack Start, React Router, a Vite SPA): recommend, then ask. **Before
+    using any framework or library, read its current documentation** for its rules and pitfalls. When a design
+    system is in scope, its tokens and core components come **before** any screen code. Atomic, reusable components
+    configured by parameters; no arbitrary values where a token or the framework's scale has the value (`h-64`, not
+    `h-[256px]`); no comments that restate code, narrate changes or label parts of markup (a part that needs a label
+    is a component). Current, fast tooling (Vitest, Playwright, Oxlint/Biome), pnpm with exact versions and its
+    supply-chain settings (`knowledge/engineering/06-tooling-and-supply-chain.md`). The project's conventions come
+    first.
+
 ## 2. Router: what to read for each task
 
 Route on two axes. **First, what the person wants delivered**: a critique or report, ideas or feedback on an idea, a
@@ -109,6 +121,7 @@ expertise applies**: read the matching workflow below; it tells you which `knowl
 | Design or build a screen, flow or component | Create | `workflows/create.md` |
 | Design or redo a landing page or marketing site | Landing | `workflows/landing.md` |
 | Create a design system, tokens or a component library, or build a whole product from zero | Design system | `workflows/design-system.md` |
+| Choose a stack, structure code, write tests, configure tooling, or review code quality | Engineering | `knowledge/engineering/README.md` |
 | Review, critique or "improve" something that exists | Review | `workflows/review.md` |
 | Audit accessibility, or "does this meet WCAG?" | Accessibility | `workflows/accessibility.md` |
 | Write or fix interface or marketing copy | Write | `workflows/write.md` |
@@ -162,6 +175,7 @@ in order.
 | Looking at the real interface (screenshots, browser, what a screen can prove) | `33-looking-at-the-real-interface.md` |
 | Live references (Mobbin) and design files (Figma) | `34-references-and-design-tools.md` |
 | Small composable components, tokens for every reusable value | `35-components-tokens-and-code-quality.md` |
+| Engineering: architecture and patterns, components and comments, Tailwind and styling, frameworks and stacks, testing, tooling and supply chain, performance | `knowledge/engineering/README.md` |
 | Platforms and input: web responsiveness, mobile gestures and motion, desktop conventions, touchpad, shortcuts | `36-platforms-and-input.md` |
 | Professional motion (and what reads as generated: bounce, elastic, AI pulses) | `landing/06-motion.md` |
 | Choosing an animation technique by its job: keyframes, springs, gestures, physics, SVG paths, layout transitions, combining them | `37-animation-techniques.md` |
@@ -211,7 +225,7 @@ conversion forms, dark aesthetics, blogs, full recipes and CSS motion recipes).
 
 | Script | What for | Usage |
 | --- | --- | --- |
-| `scripts/system-check.mjs` | Tokens, component size and families: raw colors and arbitrary values in components, inline magic numbers, oversized components, icons drawn by hand, more than two icon families or typefaces | `node scripts/system-check.mjs <files or folders>` |
+| `scripts/system-check.mjs` | Tokens, component size and families: raw colors and arbitrary values in components (naming the scale class when one exists), inline magic numbers, oversized components, icons drawn by hand, more than two icon families or typefaces, comments inside markup or restating the code, version ranges in `package.json` | `node scripts/system-check.mjs <files or folders>` |
 | `scripts/reference-capture.mjs` | Study reference pages: scroll to the end, slices on desktop and phone, sections, headings, copy, CTAs, type, color, motion and media; extra URLs and same-site links | `node scripts/reference-capture.mjs <urls> [--follow N]` |
 | `scripts/screenshots.mjs` | Screenshots of a running interface: phone and desktop, light and dark, reduced motion (uses the project's Playwright or the installed Chrome) | `node scripts/screenshots.mjs <urls> [--out dir]` |
 | `scripts/design-scan.mjs` | Evidence about a project, web or native (Flutter, iOS, Android, React Native): product description, stack, languages, brand assets, fonts, colors, tokens, visible copy, raw domain signals | `node scripts/design-scan.mjs <project> [--json]` |

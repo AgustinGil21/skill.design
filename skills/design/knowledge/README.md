@@ -29,6 +29,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | See the product as people see it (screenshots, browser) | [33-looking-at-the-real-interface](33-looking-at-the-real-interface.md) |
 | Use live references (Mobbin) and design files (Figma) | [34-references-and-design-tools](34-references-and-design-tools.md) |
 | Build from small components and tokens; keep code professional | [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) |
+| Choose a stack, structure code, style with tokens, write tests, configure tooling safely, keep it fast | [engineering/README](engineering/README.md) |
 | Design for the platform: web sizes, mobile gestures and motion, desktop conventions, touchpad, shortcuts | [36-platforms-and-input](36-platforms-and-input.md) |
 | Choose how to animate something, and combine techniques into one moment | [37-animation-techniques](37-animation-techniques.md) · [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) · [motion](landing/06-motion.md) · [physical motion](landing/18-physical-motion.md) |
 | Avoid generated defaults (mandatory before making or reviewing) | [slop catalog](slop/README.md): visual, copy, landing, product UI, motion, code, flows and dark patterns |

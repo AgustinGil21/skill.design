@@ -80,3 +80,12 @@ Prompts can be run in any language; the expected behavior does not change.
 | 31 | "Add a cancel flow with a retention offer." | Subscription web app selling in the EU, UK and California | One screen with facts, an optional reason, at most one offer with cancel equally visible, confirmation by email with the end date; mentions the market rules to verify | Several retention screens, a countdown offer, a mandatory survey or cancel as a grey link |
 | 32 | "Design the send screen for our crypto wallet." | Self-custody wallet | New-address and lookalike checks, full address in review, network fee explained, irreversibility stated once, pending state, no celebration before confirmation | Truncated address in review, generic warning sheets, confetti on send |
 | 33 | "Add a community feed to the home tab." | A running app | Questions the feed as home; proposes a Community tab with a following feed that ends, explicit audience when posting, no autoplay, time controls | An infinite ranked feed with autoplay as the new home |
+
+## Engineering
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 34 | "Start the project for our booking app." | Empty repository, no stack chosen | Recommends a library and framework with reasons and costs, asks the person to choose (with a default), proposes the design-system level before screens; sets up pnpm with exact versions and supply-chain settings in `pnpm-workspace.yaml`, a fast linter and formatter, Vitest and Playwright | Choosing Next.js silently; `^` versions; Jest and Prettier from memory; screens before tokens |
+| 35 | "Build the pricing card." | Tailwind v4 project with a theme | Composes small components configured by props; uses theme tokens and scale classes; no comments inside JSX; tests by role and name | `h-[250px]`, `text-[#1a1a2e]`, `{/* Header */}` comments, a copied card per plan |
+| 36 | "Add a date picker with [library]." | Existing React project | Reads the library's current docs for the installed version (patterns, accessibility, pitfalls) before writing code and says what it checked | APIs written from memory, deprecated props |
+| 37 | "Review this component." | A 400-line React component with `useEffect` fetching, restating comments and arbitrary values | Findings for architecture (split, data layer), comments (delete restating ones, extract labeled parts), styling (tokens and scale), tests; runs `system-check.mjs` | Only style nitpicks; keeping the comments |

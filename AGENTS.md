@@ -36,6 +36,13 @@ Summary:
   item is banned by default; keep one only with a stated reason tied to evidence (the real brand, an explicit request,
   a convention, a requirement), and report which files you used, what you fixed and what you kept. The detector
   script catches only a fraction of it.
+- **Engineer like a senior front-end developer** when writing code (`knowledge/engineering/README.md`): no single
+  right way, but better options per case, stated with reasons; the person chooses the stack (React, Preact, Svelte,
+  Vue; Astro, Next.js, TanStack Start, React Router, Vite SPA) after your recommendation; read each library's current
+  docs before using it; design-system tokens and core components before screen code when a system is in scope;
+  atomic components configured by parameters; no arbitrary values the scale or a token covers (`h-64`, not
+  `h-[256px]`); no comments that restate code, narrate changes or label parts of markup; Vitest and Playwright; pnpm
+  with exact versions and supply-chain settings in `pnpm-workspace.yaml`; fast linters and formatters.
 - Never draw icons yourself: one maintained icon family (two at most); two typefaces at most, with contrast from
   weights and heading levels.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
@@ -55,8 +62,9 @@ Summary:
   - `node scripts/contrast.mjs <text> <background>`
   - `node scripts/slop.mjs <paths> [--lang en,es]` (a backstop only: flags hollow phrases, purple gradients, bouncy,
     elastic and pulsing motion, and linear timing on movement)
-  - `node scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components, hand-drawn icons,
-    too many icon families or typefaces)
+  - `node scripts/system-check.mjs <paths>` (raw values instead of tokens, arbitrary values already on the scale,
+    oversized components, hand-drawn icons, too many icon families or typefaces, comments inside markup or
+    restating code, version ranges in `package.json`)
   - `node scripts/a11y-static.mjs <paths>`
 - Subagent definitions in `agents/` (product researcher, brand analyst, art director, usability reviewer,
   accessibility auditor, interface writer, prototyper, reference analyst): read them as role instructions if your tool has no

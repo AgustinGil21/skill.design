@@ -155,3 +155,15 @@ test('the slop catalog is mandatory: cited by SKILL.md, AGENTS.md and every work
     assert.ok(index.includes(`(${file})`), `${file} is not listed in the catalog index`);
   }
 });
+
+test('the engineering guide is required by SKILL.md, AGENTS.md and the create and design-system workflows', () => {
+  const guide = 'knowledge/engineering/README.md';
+  assert.ok(read('SKILL.md').includes(guide));
+  assert.ok(readRepo('AGENTS.md').includes(guide));
+  assert.ok(read('workflows/create.md').includes(guide));
+  assert.ok(read('workflows/design-system.md').includes('knowledge/engineering/'));
+  const index = read(guide);
+  for (const file of readdirSync(join(ROOT, 'knowledge', 'engineering')).filter((f) => f !== 'README.md')) {
+    assert.ok(index.includes(`(${file})`), `${file} is not listed in the engineering index`);
+  }
+});

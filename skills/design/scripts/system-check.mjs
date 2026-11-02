@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Checks that interfaces are built from tokens, small components and few families: hard-coded colors and arbitrary
 // values in components, magic numbers in inline styles, oversized components, icons drawn by hand, more than two icon
-// families and more than two typefaces. No dependencies.
+// families, more than two typefaces, comments inside markup or restating the code, and version ranges in package.json.
+// No dependencies.
 // Usage: node system-check.mjs <files or folders> [--json] [--no-fail]
 // Token, theme and palette files are exempt: raw values belong there. Every finding needs judgment
 // (see knowledge/35-components-tokens-and-code-quality.md).
@@ -81,6 +82,61 @@ export function fontFamilies(text) {
   return fonts;
 }
 
+
+// Tailwind v4 spacing utilities are multiples of --spacing (0.25rem = 4px by default), so `h-[256px]` is `h-64`.
+const SPACING_UTILITY = /^(-?)(p[xytrblse]?|m[xytrblse]?|gap(?:-[xy])?|space-[xy]|w|h|min-w|min-h|max-h|size|top|right|bottom|left|inset(?:-[xy])?|translate-[xy])-\[(\d+(?:\.\d+)?)(px|rem)\]$/;
+export function spacingScaleClass(cls) {
+  const m = cls.match(SPACING_UTILITY);
+  if (!m) return null;
+  const px = m[4] === 'rem' ? Number(m[3]) * 16 : Number(m[3]);
+  const steps = px / 4;
+  if (!Number.isFinite(steps) || steps <= 0 || !Number.isInteger(steps * 4)) return null;
+  return `${m[1]}${m[2]}-${steps}`;
+}
+
+// Comments inside markup label parts that should be components; restating and change-log comments are noise
+// (see knowledge/engineering/02-components-and-comments.md).
+const RESTATING = /^\s*(?:\/\/|\/\*+|\*)\s*(?:imports?\b|import (?:react|components|hooks)|state (?:for|to)\b|handle(?:s|r)? (?:the )?\w+ (?:click|change|submit)|render(?:s|ing)? (?:the )?(?:component|jsx|ui|list|items)|return(?:s)? (?:the )?(?:jsx|component|markup)|loop (?:through|over)|map(?:ping)? (?:over|through)|(?:added|updated|changed|fixed|modified|refactored)\b.*(?:as requested|per (?:your|the) request|now\b)|as requested\b|todo:? implement|feel free to|you can (?:customize|change|adjust))/i;
+export function commentFindings(text, ext) {
+  const found = [];
+  if (ext === '.tsx' || ext === '.jsx') {
+    for (const m of text.matchAll(/\{\s*\/\*[\s\S]*?\*\/\s*\}/g)) {
+      found.push({ index: m.index, rule: 'markup-comment', level: 'warning', message: 'Comment inside JSX: a part that needs a label should be its own component', excerpt: m[0] });
+    }
+  }
+  if (ext === '.vue' || ext === '.svelte' || ext === '.astro') {
+    for (const m of text.matchAll(/<!--[\s\S]*?-->/g)) {
+      found.push({ index: m.index, rule: 'markup-comment', level: 'warning', message: 'Comment inside the template: a part that needs a label should be its own component', excerpt: m[0] });
+    }
+  }
+  let index = 0;
+  for (const line of text.split('\n')) {
+    if (RESTATING.test(line)) {
+      found.push({ index, rule: 'restating-comment', level: 'warning', message: 'Comment that restates the code, narrates a change or addresses the reader: delete it; comments explain why', excerpt: line });
+    }
+    index += line.length + 1;
+  }
+  return found;
+}
+
+// Ranges (^, ~, *, x, >=) let unreviewed versions in; exact versions plus an update tool keep changes reviewable
+// (see knowledge/engineering/06-tooling-and-supply-chain.md).
+export function packageRanges(text, file) {
+  let pkg;
+  try { pkg = JSON.parse(text); } catch { return []; }
+  const findings = [];
+  for (const field of ['dependencies', 'devDependencies', 'optionalDependencies']) {
+    for (const [name, version] of Object.entries(pkg[field] ?? {})) {
+      if (typeof version !== 'string' || /^(?:workspace|catalog|link|file|npm):/.test(version)) continue;
+      if (/^[\^~*]|^>=?|\bx\b|\|\||^latest$/.test(version)) {
+        const index = text.indexOf(`"${name}"`);
+        findings.push({ file, line: lineOf(text, Math.max(0, index)), rule: 'version-range', level: 'warning', message: `${field}: "${name}" uses a range; pin an exact version and update through a tool`, excerpt: `"${name}": "${version}"` });
+      }
+    }
+  }
+  return findings;
+}
+
 export function analyzeFile(text, file) {
   const findings = [];
   const ext = extname(file).toLowerCase();
@@ -114,7 +170,13 @@ export function analyzeFile(text, file) {
     add(m.index, 'arbitrary-color', 'Arbitrary color value: add it to the theme as a token', m[0]);
   }
   for (const m of text.matchAll(/\b(?:rounded(?:-[trblse]{1,2})?|p[xytrblse]?|m[xytrblse]?|gap(?:-[xy])?|space-[xy]|w|h|min-w|min-h|max-w|max-h|size|text|leading|tracking|top|right|bottom|left|inset(?:-[xy])?|translate-[xy]|duration|delay|z)-\[-?\d[^\]]*\]/g)) {
-    add(m.index, 'arbitrary-value', 'Arbitrary size or spacing: use the scale, or add a token if the value is needed', m[0], 'info');
+    const onScale = spacingScaleClass(m[0]);
+    if (onScale) add(m.index, 'arbitrary-on-scale', `Arbitrary value that is already on the spacing scale: use ${onScale}`, m[0]);
+    else add(m.index, 'arbitrary-value', 'Arbitrary size or spacing: use the scale, or add a token if the value is needed', m[0], 'info');
+  }
+
+  if (COMPONENT.has(ext)) {
+    for (const finding of commentFindings(text, ext)) add(finding.index, finding.rule, finding.message, finding.excerpt, finding.level);
   }
 
   // Magic numbers in inline styles (React style objects, Vue/Svelte style attributes).
@@ -152,8 +214,12 @@ export function checkPaths(paths) {
   const findings = [];
   const icons = new Map();
   const fonts = new Map();
-  for (const file of collect(paths, EXTENSIONS)) {
+  for (const file of collect(paths, new Set([...EXTENSIONS, '.json']))) {
     if (SKIP.test(file)) continue;
+    if (extname(file) === '.json') {
+      if (basename(file) === 'package.json') findings.push(...packageRanges(readFileSync(file, 'utf8'), file));
+      continue;
+    }
     const text = readFileSync(file, 'utf8');
     for (const family of iconFamilies(text)) if (!icons.has(family)) icons.set(family, file);
     for (const font of fontFamilies(text)) if (!fonts.has(font)) fonts.set(font, file);
