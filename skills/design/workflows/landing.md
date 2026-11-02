@@ -11,6 +11,10 @@ components too when the site will grow or an app will share its look. Skip it wh
 
 Order:
 
+0. **Read the slop catalog first** — `knowledge/slop/README.md` (core list), `knowledge/slop/01-visual.md`,
+   `knowledge/slop/02-copy.md`, `knowledge/slop/03-landing-and-marketing.md` and
+   `knowledge/slop/05-motion-and-interaction.md`. Every item is banned by default; a landing page is where generated
+   defaults show most.
 1. **Strategy** — `knowledge/landing/01-strategy-and-structure.md`: one goal, a concrete audience, its stage of
    decision, the main objection, the real proof available, the type of page. Separate what you know from what you
    assume.
@@ -31,8 +35,9 @@ Order:
    `knowledge/14-seo-and-content.md`, including multilingual SEO when the site has more than one language.
 8. **Make it feel human** — `knowledge/13-human-design.md`: cover the logo, read only the headlines, name the
    intentional decisions.
-9. **Review** — `knowledge/landing/08-review.md` plus `node scripts/slop.mjs`, `node scripts/a11y-static.mjs` and
-   the contrast of every color pair.
+9. **Review** — the slop catalog's final pass (`knowledge/slop/README.md`) section by section,
+   `knowledge/landing/08-review.md`, then `node scripts/slop.mjs` (backstop), `node scripts/a11y-static.mjs` and the
+   contrast of every color pair.
 
 Deliver: the implemented page (or the design), the copy, the visual idea in one sentence and the review result with
 what is still missing (for example real data marked `[data: …]`).

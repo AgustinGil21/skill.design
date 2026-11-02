@@ -140,3 +140,18 @@ test('the Codex plugin and marketplace expose the skill from skills/', () => {
   assert.ok(existsSync(join(REPO, 'skills', 'design', 'SKILL.md')), 'Codex reads skills/<name>/SKILL.md');
   assert.deepEqual(marketplace.plugins, [{ name: 'design', source: { source: 'local', path: './' } }]);
 });
+
+test('the slop catalog is mandatory: cited by SKILL.md, AGENTS.md and every workflow that makes or reviews', () => {
+  const catalog = 'knowledge/slop/README.md';
+  assert.ok(existsSync(join(ROOT, catalog)));
+  for (const file of ['SKILL.md', 'workflows/create.md', 'workflows/landing.md', 'workflows/review.md', 'workflows/prototype.md']) {
+    assert.ok(read(file).includes(catalog), `${file} must require ${catalog}`);
+  }
+  assert.ok(read('workflows/write.md').includes('knowledge/slop/02-copy.md'));
+  assert.ok(readRepo('AGENTS.md').includes(catalog));
+  // Every catalog file is reachable from the catalog index.
+  const index = read(catalog);
+  for (const file of readdirSync(join(ROOT, 'knowledge', 'slop')).filter((f) => f !== 'README.md')) {
+    assert.ok(index.includes(`(${file})`), `${file} is not listed in the catalog index`);
+  }
+});

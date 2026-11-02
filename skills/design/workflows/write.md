@@ -17,5 +17,7 @@
    - Confirmations state the concrete consequence ("14 files will be deleted. This can't be undone.").
    - No hollow words or adjective triads (`knowledge/13-human-design.md`).
    - Variables, plurals and gender handled by the localization system, never by concatenating fragments.
-5. Run `node scripts/slop.mjs <files> --lang <languages>` to catch generic phrases.
+5. Check every piece against `knowledge/slop/02-copy.md` (and `knowledge/slop/07-flows-and-dark-patterns.md` for
+   paywalls, consent, cancelling or notifications), then run `node scripts/slop.mjs <files> --lang <languages>` as a
+   backstop.
 6. When fixing existing copy, deliver a before/after table with the reason for each change.

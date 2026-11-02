@@ -15,6 +15,12 @@
 
 Fill in `templates/brief.md` (mentally or in writing, depending on size).
 
+**Read the slop catalog now, before any visual or copy decision**: `knowledge/slop/README.md` (core list), plus
+`knowledge/slop/01-visual.md`, `knowledge/slop/04-product-ui.md` and `knowledge/slop/06-code-and-components.md`; add
+`knowledge/slop/02-copy.md` when writing copy, `knowledge/slop/05-motion-and-interaction.md` when adding motion and
+`knowledge/slop/07-flows-and-dark-patterns.md` for any flow with money, consent, sign-up or cancelling. Every item is
+banned by default.
+
 **Building something complete from zero?** If the request is a whole new product, app or site and the project has no
 system (no tokens, no component library, no documented style), ask once how much of a design system the person wants
 before choosing any value, then follow `workflows/design-system.md` for the system part
@@ -99,7 +105,8 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
 
 ## 9. Verify and close
 
-1. `node scripts/a11y-static.mjs <touched files>`, `node scripts/slop.mjs <touched files>` and
+1. Go through the slop catalog's final pass (`knowledge/slop/README.md`) item by item against what you built; then
+   `node scripts/a11y-static.mjs <touched files>`, `node scripts/slop.mjs <touched files>` (a backstop only) and
    `node scripts/system-check.mjs <touched files>` (raw values, arbitrary values, oversized components).
 2. Contrast of any new color pair with `node scripts/contrast.mjs`.
 3. Look at the real result: capture it with `node scripts/screenshots.mjs <urls>` or a browser tool and review the
@@ -107,5 +114,5 @@ Read `knowledge/36-platforms-and-input.md` for the platform in the design contex
    it exists, reduced motion, the longest locale. Compare with screenshots taken before the change.
 4. Go through `knowledge/06-review.md`.
 5. Report the whole result, not only the last change: what was built (files and structure), what was done, which
-   assumptions were made, which alternative was discarded and why, and which level of
-   verification was reached.
+   assumptions were made, which alternative was discarded and why, which slop catalog files you used with what you
+   fixed and kept (and why), and which level of verification was reached.

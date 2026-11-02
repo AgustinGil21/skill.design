@@ -36,7 +36,9 @@ voice (`knowledge/30-product-domains-and-tone.md`). Preserve the established voi
 the evidence about voice conflicts (playful onboarding, institutional errors), say so and put the question in Open
 questions.
 
-Run `node <skill>/scripts/slop.mjs <paths> --lang <languages>` to catch generic phrases.
+Read `knowledge/slop/02-copy.md` before writing (and `knowledge/slop/07-flows-and-dark-patterns.md` for paywalls,
+consent, cancelling or notifications); every item is banned by default. Then run
+`node <skill>/scripts/slop.mjs <paths> --lang <languages>` as a backstop.
 
 Deliver a table: location (file:line or screen) · current copy · proposed copy · reason. For marketing, two or three
 headline options with the recommended one marked. Do not invent figures or promises: if a fact is missing, leave

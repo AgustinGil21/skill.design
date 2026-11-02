@@ -58,7 +58,9 @@ its tests and naming.
 1. `node scripts/system-check.mjs <components and screens>`: no raw values, no oversized components, one icon family,
    two typefaces at most.
 2. `node scripts/contrast.mjs` for every semantic text and non-text pair in every mode.
-3. `node scripts/a11y-static.mjs` and `node scripts/slop.mjs` on what was built.
+3. The slop catalog (`knowledge/slop/01-visual.md`, `knowledge/slop/05-motion-and-interaction.md`,
+   `knowledge/slop/06-code-and-components.md`) against the foundations: a system built on library defaults spreads
+   them everywhere. Then `node scripts/a11y-static.mjs` and `node scripts/slop.mjs` on what was built.
 4. The foundations page and real screens on phone and desktop, light and dark, reduced motion, longest language
    (`node scripts/screenshots.mjs <urls>`).
 5. `knowledge/06-review.md`.

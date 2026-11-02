@@ -23,6 +23,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Design across channels, people and time (email, support, offline) | [28-service-design-and-journeys](28-service-design-and-journeys.md) |
 | Redesign or migrate something people already use | [29-redesigns-and-migrations](29-redesigns-and-migrations.md) |
 | Work out what the product is, for whom, and what tone it needs | [30-product-domains-and-tone](30-product-domains-and-tone.md) |
+| Understand how habit apps, work tools, social products and money apps are designed, before imitating one | [39-product-archetypes](39-product-archetypes.md) |
 | Give critique, respond to an idea, present options, ask good questions | [31-critique-feedback-and-options](31-critique-feedback-and-options.md) |
 | Study an existing brand before changing anything | [32-reading-an-existing-brand](32-reading-an-existing-brand.md) |
 | See the product as people see it (screenshots, browser) | [33-looking-at-the-real-interface](33-looking-at-the-real-interface.md) |
@@ -30,6 +31,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Build from small components and tokens; keep code professional | [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) |
 | Design for the platform: web sizes, mobile gestures and motion, desktop conventions, touchpad, shortcuts | [36-platforms-and-input](36-platforms-and-input.md) |
 | Choose how to animate something, and combine techniques into one moment | [37-animation-techniques](37-animation-techniques.md) · [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) · [motion](landing/06-motion.md) · [physical motion](landing/18-physical-motion.md) |
+| Avoid generated defaults (mandatory before making or reviewing) | [slop catalog](slop/README.md): visual, copy, landing, product UI, motion, code, flows and dark patterns |
 | Give it character without slop | [01-anti-slop](01-anti-slop.md) · [13-human-design](13-human-design.md) · [11-brand-and-identity](11-brand-and-identity.md) |
 | Choose type, color, layout and imagery | [09-typography](09-typography.md) · [10-color](10-color.md) · [17-composition-and-layout](17-composition-and-layout.md) · [19-imagery-icons-and-illustration](19-imagery-icons-and-illustration.md) · [05-visual-system](05-visual-system.md) |
 | Persuade without manipulating | [12-psychology-and-ethical-persuasion](12-psychology-and-ethical-persuasion.md) |
@@ -45,7 +47,8 @@ Do not read everything. Find the decision or problem you face below and open onl
   for the screen type.
 - **While designing:** [00-principles](00-principles.md), [05-visual-system](05-visual-system.md),
   [04-interface-writing](04-interface-writing.md), and the visual foundations.
-- **Before calling it done:** [06-review](06-review.md), [02-accessibility](02-accessibility.md),
+- **Before designing anything:** the [slop catalog](slop/README.md) core list and the files for the task.
+- **Before calling it done:** the catalog's final pass, [06-review](06-review.md), [02-accessibility](02-accessibility.md),
   [01-anti-slop](01-anti-slop.md), and the verification levels in
   [08-real-state-and-verification](08-real-state-and-verification.md).
 
@@ -63,7 +66,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [07-process](07-process.md) | How to design step by step and how to critique |
 | [08-real-state-and-verification](08-real-state-and-verification.md) | States table, consistency between views, errors by stage, verification levels |
 | [09-typography](09-typography.md) | Choosing and pairing families, scales, measures, craft details, loading |
-| [10-color](10-color.md) | Palettes in OKLCH, contrast, palettes with character, dark mode, color in data |
+| [10-color](10-color.md) | Palettes in OKLCH, contrast, palettes with character, dark mode, color in data, color psychology with its evidence |
 | [11-brand-and-identity](11-brand-and-identity.md) | Brand platform, voice, core elements, distinctive assets, guidelines |
 | [12-psychology-and-ethical-persuasion](12-psychology-and-ethical-persuasion.md) | How people process and decide, biases used honestly, dark patterns, trust |
 | [13-human-design](13-human-design.md) | Roots of slop and how to make a person visible behind the work |
@@ -91,6 +94,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [35-components-tokens-and-code-quality](35-components-tokens-and-code-quality.md) | Composition over giant components, tokens for every reusable value, exceptions, checking |
 | [36-platforms-and-input](36-platforms-and-input.md) | Identifying the platform, responsive web, mobile and tablet, desktop conventions, touchpad parity, shortcuts and muscle memory |
 | [37-animation-techniques](37-animation-techniques.md) | Picking a technique by its job: keyframes, springs, gestures, physics, SVG paths, layout transitions, combining them |
+| [39-product-archetypes](39-product-archetypes.md) | Habit consumer apps, work tools, social and content, money apps: decisions, motion, color, density, what transfers and what harms |
 | [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) | Rive and Lottie, skeletal rigs, flipbooks and video, particles, shaders: costs, fallbacks, accessibility |
 | [sources](sources.md) | Where the knowledge comes from and how to add to it |
 
@@ -156,12 +160,14 @@ Search with `grep -il "<word>" knowledge/patterns/*.md` or use this table.
 | --- | --- |
 | [plans-and-pricing-tables](patterns/plans-and-pricing-tables.md) | Plan cards and comparison in product |
 | [usage-limits-and-subscriptions](patterns/usage-limits-and-subscriptions.md) | Usage and quotas, meters, limit warnings, upgrading, cancelling |
+| [cancellation-and-retention](patterns/cancellation-and-retention.md) | Trials, renewal reminders, cancel flows, retention offers, pausing, the law by market |
+| [wallets-and-crypto](patterns/wallets-and-crypto.md) | New recipients, name checks, scam warnings, crypto sends, recovery phrases, signing |
 | [checkout-and-scheduling](patterns/checkout-and-scheduling.md) | Checkout, payment methods, subscriptions, picking a time |
 | [failed-payments](patterns/failed-payments.md) | Failed and uncertain payments, dunning |
 | [enterprise-contact-and-quotes](patterns/enterprise-contact-and-quotes.md) | Enterprise plans, contacting sales, quotes |
 | [money-and-progress](patterns/money-and-progress.md) | Amounts and transfers, transactions, goals and streaks |
 | [referrals](patterns/referrals.md) | Referral programs |
-| [badges-and-gamification](patterns/badges-and-gamification.md) | Badges, achievements, gamification |
+| [badges-and-gamification](patterns/badges-and-gamification.md) | Badges, achievements, streaks and habit loops, celebrations |
 | [commerce-and-maps](patterns/commerce-and-maps.md) | Product detail, cart, map search |
 | [comparison-support-and-reviews](patterns/comparison-support-and-reviews.md) | Comparison tables, support requests, reviews |
 
@@ -177,6 +183,7 @@ Search with `grep -il "<word>" knowledge/patterns/*.md` or use this table.
 | [media-players](patterns/media-players.md) | Audio and video players |
 | [accessible-media](patterns/accessible-media.md) | Captions, transcripts, audio description |
 | [downloads-and-offline-content](patterns/downloads-and-offline-content.md) | Downloads and offline content |
+| [feeds-and-social-posting](patterns/feeds-and-social-posting.md) | Feeds, ends and pacing, autoplay, composer with audience, time controls |
 | [messaging](patterns/messaging.md) | Chat between people |
 | [calls](patterns/calls.md) | Audio and video calls |
 

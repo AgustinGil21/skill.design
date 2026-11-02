@@ -49,7 +49,8 @@ Standalone demos go in a `design-demos/` folder (or where the person says), neve
   `node scripts/screenshots.mjs file:///absolute/path/to/demo.html` (it works with the installed Chrome, no
   Playwright needed) or open it with a browser tool, read the images on phone and desktop, and fix what is broken.
   Only if no browser is available at all, say so explicitly.
-- `node scripts/slop.mjs <files>` and `node scripts/a11y-static.mjs <files>`.
+- The slop catalog's core list (`knowledge/slop/README.md`) against the demo: a demo full of generated defaults
+  answers the wrong question. Then `node scripts/slop.mjs <files>` and `node scripts/a11y-static.mjs <files>`.
 - Look at it on a narrow width and with the keyboard.
 
 ## 5. Present it and decide what's next

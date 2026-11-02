@@ -56,7 +56,8 @@ look at two or three real examples of the pattern before building (`knowledge/34
 
 1. Render it and look at it — never hand back a demo you have not seen: `node <skill>/scripts/screenshots.mjs <url or file:// path>` (phone and desktop, light
    and dark) or a browser tool; read the images and fix what is broken.
-2. Run `node <skill>/scripts/slop.mjs <files>` and `node <skill>/scripts/a11y-static.mjs <files>`.
+2. Check the demo against the slop catalog's core list (`knowledge/slop/README.md`; read it before building too),
+   then run `node <skill>/scripts/slop.mjs <files>` and `node <skill>/scripts/a11y-static.mjs <files>`.
 3. Report: where it is and how to open it, the question it answers, what each variant tries, what is simulated,
    what you could not verify, and the recommended next step (test with people, refine, build for real, discard).
 

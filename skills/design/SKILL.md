@@ -34,11 +34,14 @@ All paths are relative to this skill's folder.
    states is not finished.
 6. **Accessible by default**: semantic HTML, keyboard, visible focus, AA contrast, never color alone, respect
    reduced motion.
-7. **No slop, judged in context**: no default purple-blue gradients, no three cards with generic icons, no adjective
-   triads, no decorative emojis, no undecided typography. Every element answers "what does this communicate?". Slop
-   signals are questions, not verdicts: an established brand's real identity wins over the list, and an unusual
-   palette needs a reason as much as a conventional one. Do not replace generic with a new house style (cream,
-   terracotta and editorial serifs everywhere); fit the product.
+7. **No slop: read the catalog before making anything.** Before generating, changing or reviewing an interface,
+   page, copy, motion or flow, read `knowledge/slop/README.md` (its core list, every time) and the catalog files it
+   points to for the task. Every item in the catalog is **banned by default**; keeping one needs a stated reason tied
+   to evidence (the brand's real identity, an explicit request, a platform convention, a requirement), never "it
+   looks modern" or "the library ships it". When you finish, report which catalog files you used, what you fixed and
+   what you kept with its reason. `scripts/slop.mjs` is only a backstop: most slop (structure, copy, flows) cannot be
+   detected by a script. Do not replace generic with a new house style (cream, terracotta and editorial serifs
+   everywhere); fit the product.
 8. **Look at the real interface**, not only the code: screenshots or a browser on phone and desktop, light and
    dark, with realistic data (`knowledge/33-looking-at-the-real-interface.md`). Use live references and design files
    when tools for them are available (`knowledge/34-references-and-design-tools.md`). Say what you could not see.
@@ -123,7 +126,8 @@ in order.
 | Topic | File |
 | --- | --- |
 | Principles that rule the rest, and how to resolve conflicts between them | `00-principles.md` |
-| Signs of slop | `01-anti-slop.md` · avoiding it in depth, and turning dull or negative moments into details: `13-human-design.md` |
+| **Slop catalog (mandatory before making or reviewing)**: visual, copy, landing, product UI, motion, code, flows and dark patterns | `knowledge/slop/README.md` |
+| Why slop happens and how to think about it | `01-anti-slop.md` · avoiding it in depth, and turning dull or negative moments into details: `13-human-design.md` |
 | Accessibility (requirements) | `02-accessibility.md` · advanced and how to test: `15-advanced-accessibility.md` |
 | Usability heuristics and laws | `03-usability.md` |
 | Interface copy | `04-interface-writing.md` · across languages: `24-content-and-localization.md` |
@@ -132,7 +136,7 @@ in order.
 | Design process and critique | `07-process.md` |
 | Real states, consistency, verification | `08-real-state-and-verification.md` |
 | Typography | `09-typography.md` |
-| Color | `10-color.md` |
+| Color, including color psychology (what the evidence supports and what is folklore) | `10-color.md` |
 | Brand and identity | `11-brand-and-identity.md` |
 | Psychology and ethical persuasion | `12-psychology-and-ethical-persuasion.md` |
 | SEO and content | `14-seo-and-content.md` |
@@ -152,6 +156,7 @@ in order.
 | Service design and journeys | `28-service-design-and-journeys.md` |
 | Redesigns and migrations | `29-redesigns-and-migrations.md` |
 | Product domains, audiences and tone (kids, finance, health, games, AI, B2B…) | `30-product-domains-and-tone.md` |
+| Product archetypes: how habit apps (Duolingo), work tools (Jira, Slack, Linear), social products and money apps (banks, wallets, crypto) are designed, what transfers and what harms | `39-product-archetypes.md` |
 | Critique, feedback on ideas, presenting options, asking questions | `31-critique-feedback-and-options.md` |
 | Reading and auditing an existing brand | `32-reading-an-existing-brand.md` |
 | Looking at the real interface (screenshots, browser, what a screen can prove) | `33-looking-at-the-real-interface.md` |
@@ -183,6 +188,10 @@ Before designing a screen, find its pattern: `grep -il "<word>" knowledge/patter
 | AI: chat, agents, generation | `ai-chat-and-agents.md` · first run and sharing: `ai-first-run-and-sharing.md` |
 | Dashboards, charts, metrics | `dashboards-and-metrics.md` · plans: `plans-and-pricing-tables.md` |
 | Usage, limits, subscriptions | `usage-limits-and-subscriptions.md` · failed payments: `failed-payments.md` |
+| Trials, renewals, cancelling, retention offers (and the law by market) | `cancellation-and-retention.md` |
+| Paying new recipients, scam warnings, crypto wallets, recovery phrases, signing | `wallets-and-crypto.md` |
+| Feeds, infinite scroll, autoplay, posting with an audience, time controls | `feeds-and-social-posting.md` |
+| Streaks, habit loops, badges, celebrations | `badges-and-gamification.md` |
 | Kanban and record details | `boards-and-record-details.md` |
 | Editors, canvas, timeline | `editors-and-creative-tools.md` · captions: `batches-approvals-and-captions.md` |
 | Files, import, sharing | `file-upload-and-sharing.md` · `import-tags-and-cropping.md` · `publishing-file-browsing-and-audit-logs.md` |
@@ -262,7 +271,8 @@ files in the project when they ask, or offered in one line when they do not.
 
 ## 7. Before calling anything done
 
-1. Go through `knowledge/06-review.md` (and `knowledge/landing/08-review.md` for landing pages).
+1. Go through the final pass in `knowledge/slop/README.md` with the catalog files for the task, then
+   `knowledge/06-review.md` (and `knowledge/landing/08-review.md` for landing pages).
 2. Run `scripts/slop.mjs`, `scripts/a11y-static.mjs` and `scripts/system-check.mjs` on what you touched; fix or
    justify each finding.
 3. Verify in the real result (browser, device) whenever possible, and say which level of verification was reached.

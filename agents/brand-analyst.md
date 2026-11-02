@@ -18,7 +18,8 @@ The prompt that launched you should give the `design` skill folder. If it does n
 
 1. `knowledge/32-reading-an-existing-brand.md`: the audit method.
 2. `knowledge/11-brand-and-identity.md`, `knowledge/09-typography.md`, `knowledge/10-color.md`.
-3. `knowledge/18-design-systems.md` for tokens, and `knowledge/01-anti-slop.md`.
+3. `knowledge/18-design-systems.md` for tokens, `knowledge/01-anti-slop.md` and `knowledge/slop/01-visual.md` (to
+   tell real brand equity apart from generated defaults).
 4. `templates/brand-audit.md`: the shape of what you return.
 
 ## How you investigate

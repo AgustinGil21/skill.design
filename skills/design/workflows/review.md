@@ -32,9 +32,10 @@ Works for screenshots, prototypes, URLs or code. The result is an actionable rep
    (`knowledge/04-interface-writing.md`, `knowledge/24-content-and-localization.md`).
 7. **Visual**: hierarchy, type, color, spacing, alignment, consistency (`knowledge/05-visual-system.md`,
    `knowledge/09-typography.md`, `knowledge/10-color.md`, `knowledge/17-composition-and-layout.md`).
-8. **Slop**: generic signals (`knowledge/01-anti-slop.md`, `knowledge/13-human-design.md`) plus
-   `node scripts/slop.mjs`. A signal is a question, not a verdict. In code, also run `node scripts/system-check.mjs`
-   (raw values instead of tokens, oversized components) and look for gimmicky motion.
+8. **Slop**: go through the slop catalog as a checklist (`knowledge/slop/README.md` and every catalog file that
+   applies: visual, copy, landing, product UI, motion, code, flows). Each item found is a finding unless the brand's
+   real identity or an explicit decision justifies it; say which. Then `node scripts/slop.mjs` as a backstop and, in
+   code, `node scripts/system-check.mjs` (raw values instead of tokens, oversized components).
 9. **Quick accessibility**: contrast, focus, keyboard, names (`knowledge/02-accessibility.md`) plus
    `node scripts/a11y-static.mjs`. For a full audit, follow `workflows/accessibility.md`.
 10. **Platform and input**: responsive across sizes (phone, tablet, small laptop, desktop), touch and touchpad

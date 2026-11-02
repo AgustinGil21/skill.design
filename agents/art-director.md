@@ -26,7 +26,8 @@ Read, in this order:
 1. `knowledge/landing/05-art-direction-and-creativity.md`
 2. `knowledge/09-typography.md` and `knowledge/10-color.md`
 3. `knowledge/11-brand-and-identity.md`
-4. `knowledge/13-human-design.md` and `knowledge/01-anti-slop.md`
+4. `knowledge/slop/README.md` and every catalog file it lists for visual, landing and motion work (mandatory: each
+   item is banned by default in your directions), then `knowledge/13-human-design.md` and `knowledge/01-anti-slop.md`
 5. `knowledge/19-imagery-icons-and-illustration.md`
 6. `knowledge/21-decisions-and-tradeoffs.md`
 7. `knowledge/30-product-domains-and-tone.md` and `knowledge/32-reading-an-existing-brand.md`

@@ -30,8 +30,11 @@ review, and the matching pattern in `knowledge/patterns/`, including its "when n
 anything yourself), and read the images (`knowledge/33-looking-at-the-real-interface.md`). Say which findings come
 from screens, which from code, and which are predictions.
 
+Go through the slop catalog as a checklist (`knowledge/slop/README.md` and the catalog files that apply); each item
+found is a finding unless the brand or an explicit decision justifies it.
+
 Run on the interface files:
-- `node <skill>/scripts/slop.mjs <paths>` (copy, styles and gimmicky motion)
+- `node <skill>/scripts/slop.mjs <paths>` (a backstop for copy, styles and gimmicky motion)
 - `node <skill>/scripts/system-check.mjs <paths>` (raw values instead of tokens, oversized components)
 - `node <skill>/scripts/a11y-static.mjs <paths>`
 

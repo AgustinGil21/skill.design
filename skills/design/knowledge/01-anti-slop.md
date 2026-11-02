@@ -20,11 +20,18 @@ It matters because:
 - **It wastes attention.** Decoration competes with content for the same limited attention.
 - **It makes everything look the same.** When every product uses the same defaults, no product is memorable.
 
-## Signal, not verdict
+**The full, item-by-item list lives in the [slop catalog](slop/README.md), and reading it is mandatory** before
+making or reviewing anything. This file explains the reasoning behind it.
 
-Every item below is a **signal**: a reason to ask "was this decided?". It is not proof of a problem. A purple
-gradient can be a deliberate brand decision; a three-column feature grid can be the clearest way to compare three
-things. Treat signals as questions, and judge them by what the element communicates, for whom, in this context.
+## Banned by default, kept only with evidence
+
+Every item in the catalog is **banned by default**. That is not the same as "always wrong": a purple gradient can be
+a deliberate, long-standing brand decision; a three-column grid can be the clearest way to compare three things. The
+difference is who carries the burden of proof. Generated output reaches for these defaults constantly, so the agent
+does not start from "is this a problem?" but from "what evidence lets me keep it?". Acceptable evidence: the brand's
+real, existing identity; an explicit request from the person; a platform convention people rely on; a requirement.
+Unacceptable: "it looks modern", "it is popular", "the library ships it". Judge each case by what the element
+communicates, for whom, in this context, and write the reason down.
 
 | Signal | Becomes a problem when… | Is fine when… |
 | --- | --- | --- |
@@ -156,10 +163,14 @@ Not all slop is equally harmful. Fix in this order:
 4. **Slop that only looks generic**: default gradients, shadows and illustrations. Worth fixing for brand and trust,
    after the above.
 
-## Using the detector without obeying it blindly
+## Using the detector without relying on it
 
-`scripts/slop.mjs` finds common signals in code and copy: hollow phrases per language, default purple-blue gradients,
-decorative glows, emoji in headings and buttons, adjective triads and placeholder content.
+`scripts/slop.mjs` finds a few signals that can be matched in text: hollow phrases per language, default purple-blue
+gradients, decorative glows, emoji in headings and buttons, adjective triads, placeholder content and gimmicky
+easings. That is a small fraction of the [catalog](slop/README.md): it cannot see a template page structure, a
+fake dashboard screenshot, a hollow headline in words it does not know, a cancel flow with three retention screens
+or a feature grid that says nothing. The catalog, read and applied by judgment, is the check; the detector is a
+backstop that catches what slipped through.
 
 - **A finding is a question.** Read the context: a hollow phrase inside a quote of a competitor is not your copy; a
   gradient defined in the brand tokens may be intentional.
@@ -211,5 +222,6 @@ Could this screen belong to another product if you swapped the logo? If yes, it 
 - [ ] Copy is specific and verifiable; no hollow headlines, triads or filler in any language.
 - [ ] Conventions are kept where speed and certainty matter; distinctiveness lives in content, voice and imagery.
 - [ ] Nothing misleading: no fake data, fake progress, fake urgency.
-- [ ] The slop detector was run with the product's languages, and each finding was decided, not just obeyed.
+- [ ] The slop catalog files for the task were read before making and used as a final pass; kept items have reasons.
+- [ ] The slop detector was run as a backstop with the product's languages, and each finding was decided.
 - [ ] With the logo covered, the screen still belongs recognizably to this product.
