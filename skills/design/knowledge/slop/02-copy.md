@@ -86,6 +86,7 @@ writing in another language, look for the equivalents.
 | "Trusted by leading companies" over a logo strip | Implies endorsements | Only customers who agreed, named |
 | "#1 X tool" / "The best X" | Superlative without evidence | A specific, attributable fact |
 | Before/after numbers with no baseline | Persuasion without meaning | Baseline, period, sample and source |
+| Trivia written as a selling point: "Available in 3 languages!", "Now with dark mode!", "100% responsive!" (in Spanish: "¡Disponible en 3 idiomas!", "¡Ahora con modo oscuro!", "¡100% responsive!") | Exclamation-marked filler that every product could claim | Cut it, or state the fact that decides for this audience, without the exclamation ([prominence test](03-landing-and-marketing.md#highlighting-what-does-not-matter)) |
 
 ## AI-feature copy
 

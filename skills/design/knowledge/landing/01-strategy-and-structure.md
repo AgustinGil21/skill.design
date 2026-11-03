@@ -15,6 +15,11 @@ about the product) and helps them decide whether to take a next step. Strategy d
 - **How long and in what order** the argument unfolds.
 - **How success is measured** — including what happens after the click.
 
+
+**Earn the highlight.** Space on a landing page goes to what moves the decision: what the product does, for whom,
+the proof and the answer to the main objection. Details that every product has (languages, dark mode, responsiveness,
+the stack) or numbers about the team do not earn a badge or a feature card; apply the prominence test in the
+[landing slop catalog](../slop/03-landing-and-marketing.md).
 ## Intent and stage of decision
 
 Visitors arrive at different stages. The same product needs different pages (or different sections) for each.

@@ -17,6 +17,32 @@ Background: [landing pages](../landing/README.md) · [strategy and structure](..
 | A page that never shows the actual product | Hides what is sold | Real screens, a real demo, the real object, early |
 | Long page for a simple, known product | Scroll for its own sake | As long as the decision needs |
 
+## Highlighting what does not matter
+
+Generated pages fill space by promoting whatever is at hand: implementation details, features every product has, or
+numbers about the team instead of the customer. Each one takes the place of something the visitor needed to decide.
+
+**The prominence test.** For every badge, highlight, stat, feature card and claim above the fold, ask: *would the
+visitor this page is for decide differently if this line were missing?* If not, cut it or move it to where someone
+looking for it will find it (the FAQ, the specs, the footer). If yes, keep it and make it specific.
+
+| Tell | Why it reads as generated | Do instead |
+| --- | --- | --- |
+| "Available in 3 languages!", "Translated into Spanish and English!" as a badge or feature | Localization is expected, not a reason to choose; it says the page had nothing better | A language selector, or the market-specific fact when it decides ("Invoices that meet Spanish and Portuguese tax rules") |
+| "Dark mode", "Responsive", "Mobile friendly", "Works on all devices" as headline features | Table stakes for any modern product | Show the product working on the visitor's device; mention it only where it is a real differentiator for this audience |
+| "Built with Next.js / React / AI / Rust" for a non-technical audience | The stack is the team's concern, not the buyer's | What the technology lets the person do, or nothing; tech details for developer audiences only |
+| "Fast", "Secure", "SSL encrypted", "GDPR compliant" as standalone badges | Claims everyone makes; unverifiable without detail | The specific, checkable fact where it matters ("Data stored in the EU, access logged per user"), linked to proof |
+| Feature counts ("50+ features", "100+ integrations", "1,000+ templates") | Volume instead of value; usually padded | The three that matter to this audience, shown working |
+| Numbers about the makers ("10,000 commits", "2 years in development", "Made with ❤️ by 3 people") | The visitor does not buy effort | Outcomes for customers, or a short honest story on the About page |
+| "Free forever!", "No credit card required!" repeated as highlights | One useful reassurance turned into a slogan | Say it once, next to the sign-up action |
+| Celebrating launch trivia ("v2.0 is here!", "Now with emojis!") in the hero | Internal news, not visitor value | The change only if it solves something the visitor cares about, said as the benefit |
+| Highlighting a minor feature because it was the last one built | Roadmap pride, not visitor priority | Order by what drives the decision for this audience |
+| Badges, pills and checkmarks on every line | Everything highlighted means nothing is | Highlight one thing per section, at most |
+
+**Exceptions** come from the audience, not the feature: languages are the point for a translation or language-learning
+product, or for a buyer who must roll out to teams in several countries; the stack is the point for developer tools;
+security is the point for a security product. Then say it specifically and show proof.
+
 ## Hero
 
 | Tell | Why it reads as generated | Do instead |
