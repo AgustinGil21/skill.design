@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s12-give-me-ideas-for-the-onboarding
+description: "Scenario 12: Any project with a design context"
+tags: [scenario-12]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Two to four distinct directions with a recommendation; no application files"
+context:
+  scaffold_script: fixture.sh

@@ -1,0 +1,1 @@
+{ "name": "crm", "private": true, "description": "CRM for real estate agencies", "dependencies": { "react": "^19.2.0", "tailwindcss": "^4.1.14" } }

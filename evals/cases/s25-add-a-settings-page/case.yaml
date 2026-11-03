@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s25-add-a-settings-page
+description: "Scenario 25: A product with a documented system (tokens, components, system page)"
+tags: [scenario-25]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Does not ask about a design system; builds from the existing tokens and components and updates the system if a gap appears"
+context:
+  scaffold_script: fixture.sh

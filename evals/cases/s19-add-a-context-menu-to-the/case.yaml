@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s19-add-a-context-menu-to-the
+description: "Scenario 19: Electron desktop app used on Mac and Windows laptops"
+tags: [scenario-19]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Opens on right-click, two-finger tap and Ctrl+click (contextmenu event); mirrors a visible \"⋯\" menu; shortcut labels per platform (⌘ vs Ctrl); fast, no bounce"
+context:
+  scaffold_script: fixture.sh

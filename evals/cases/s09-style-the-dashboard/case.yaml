@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s09-style-the-dashboard
+description: "Scenario 9: White-label product with two clients' assets in the repository"
+tags: [scenario-9]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Identifies brand ownership and theme boundaries; asks which client or how themes work"
+context:
+  scaffold_script: fixture.sh

@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s38-update-the-navigation-for-the-new
+description: "Scenario 38: SwiftUI notes app (minimum iOS 26) with a custom opaque navigation bar and tab bar in brand teal"
+tags: [scenario-38]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Checks the current Liquid Glass guidance; replaces custom bars with system `NavigationStack`, toolbar and `TabView` so they adopt the material; keeps the brand in tint and content; mentions legibility, accessibility settings and the icon's appearances"
+context:
+  scaffold_script: fixture.sh

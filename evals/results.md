@@ -67,6 +67,16 @@
 | 2026-10-12 | same, Sonnet | 20 (tablet adaptation, fixture) | 1 | 2 | 3 | 3 | n/a | 3 | None | Split view by window width with the breakpoint as a token, phone unchanged; did not run the skill's checks (Sonnet tends to skip verification steps) |
 
 Scenarios 1–26 have run at least once with Claude Code (Opus), and again with Codex or Claude Sonnet. Scenarios
-27–37 (slop catalog, archetypes and flows, engineering; added 2026-11-02) have not run yet. Still missing:
+27–41 (slop catalog, archetypes and flows, engineering, platforms, craft and law) were added on 2026-11-02; see the
+automated runs below. Still missing:
 third runs of each scenario. Known tendencies: Codex follows AGENTS.md literally, so rules it needs must be explicit
 there; Sonnet reasons well but tends to skip verification steps (rendering demos, running the checks).
+
+## Automated runs (`claude plugin eval`)
+
+One run per arm (with and without the skill), so single cases are noisy; compare means and repeated runs.
+
+| Date | Skill state | Scenarios | Mean with | Mean without | Mean Δ | Skill fired | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-11-02 | working copy before description and eval fixes | 27–41 | 0.63 | 0.57 | +0.07 | 10 of 15 | Biggest gains: 30 (Duolingo-style request for finance, 1.0 vs 0.0) and 39 (receipt email). The skill did not fire on code-centered prompts (29, 34, 36, 37, 41): the description did not mention code work. Build scenarios ended early because the skill asks before building and nobody answers in a headless run. Fixed: broader description; cases now tell the agent the session is non-interactive |
+| 2026-11-02 | after description and eval fixes | 27–42 | — | — | — | — | Invalid: the with-skill arm hit the account's usage limit mid-run. Re-run with `claude plugin eval . --tag scenario-27 … scenario-42 --runs 1 --scaffold --allow-tools Write Edit Bash --threshold 0` |

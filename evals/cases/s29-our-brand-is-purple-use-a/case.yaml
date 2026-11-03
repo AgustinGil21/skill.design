@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s29-our-brand-is-purple-use-a
+description: "Scenario 29: Brand files with a purple gradient"
+tags: [scenario-29]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Keeps it with the brand as the stated reason, applies it with contrast, and still avoids the other catalog items"
+context:
+  scaffold_script: fixture.sh

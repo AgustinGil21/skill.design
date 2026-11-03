@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s16-write-me-a-critique-of-the
+description: "Scenario 16: Checkout code available"
+tags: [scenario-16]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Report with evidence type, confidence, severity, fixes and what was not verified; no edits"
+context:
+  scaffold_script: fixture.sh

@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s17-audit-accessibility-and-fix-what-you
+description: "Scenario 17: Any"
+tags: [scenario-17]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Audit report first, then fixes by severity, then re-verification"
+context:
+  scaffold_script: fixture.sh

@@ -1,0 +1,34 @@
+import { Package, TrendingUp, Users, DollarSign, Sparkles } from 'lucide-react';
+
+export function Dashboard() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-8">
+      {/* Header */}
+      <h1 className="text-3xl font-semibold">Welcome back, Alex 👋</h1>
+      <p className="text-gray-400">Here's what's happening with your business today.</p>
+      {/* KPI cards */}
+      <div className="mt-8 grid grid-cols-4 gap-6">
+        {[
+          { label: 'Revenue', value: '$12,345', change: '+12.5%', icon: DollarSign },
+          { label: 'Users', value: '1,234', change: '+8.2%', icon: Users },
+          { label: 'Orders', value: '567', change: '+23.1%', icon: Package },
+          { label: 'Growth', value: '89%', change: '+4.3%', icon: TrendingUp },
+        ].map((kpi) => (
+          <div key={kpi.label} className="rounded-2xl border bg-white/70 p-6 shadow-xl backdrop-blur">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100">
+              <kpi.icon className="h-5 w-5 text-purple-600" />
+            </div>
+            <p className="mt-4 text-sm text-gray-400">{kpi.label}</p>
+            <p className="text-2xl font-semibold">{kpi.value}</p>
+            <p className="text-sm text-green-500">{kpi.change}</p>
+          </div>
+        ))}
+      </div>
+      {/* AI insights */}
+      <button className="mt-8 flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 text-white animate-pulse">
+        <Sparkles className="h-4 w-4" /> Generate AI Insights
+      </button>
+      <div className="mt-8 h-[300px] rounded-2xl border bg-white/70 p-6 shadow-xl">Chart</div>
+    </div>
+  );
+}

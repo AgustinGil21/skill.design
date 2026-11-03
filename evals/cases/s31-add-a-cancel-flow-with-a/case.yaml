@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s31-add-a-cancel-flow-with-a
+description: "Scenario 31: Subscription web app selling in the EU, UK and California"
+tags: [scenario-31]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "One screen with facts, an optional reason, at most one offer with cancel equally visible, confirmation by email with the end date; mentions the market rules to verify"
+context:
+  scaffold_script: fixture.sh

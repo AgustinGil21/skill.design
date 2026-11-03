@@ -19,3 +19,19 @@ temporary folder before running a scenario, so any file the agent writes does no
 | `marketing-site/` | 21 (shortcuts and a command palette that are not needed) |
 | `burgundy-brand-app/` | 8 (add a page within an existing brand that has inconsistencies) |
 | `approved-component/` | 14 (implement an approved component with a design context already in place) |
+| `invoicing-landing/` | 27 (landing page without generated defaults) |
+| `generated-dashboard/` | 28 (review a dashboard full of generated defaults) |
+| `budgeting-app/` | 30 ("addictive like Duolingo" for personal finance) |
+| `subscription-web-app/` | 31 (cancel flow for EU, UK and California) |
+| `crypto-wallet/` | 32 (send screen for a self-custody wallet) |
+| `running-app/` | 33 (a community feed as the home tab) |
+| `empty-booking-app/` | 34 (choose a stack and set up a project) |
+| `tailwind-pricing/` | 35 (components with Tailwind v4 tokens) |
+| `messy-component/` | 37 (code review of a component with generated habits) |
+| `ios-notes-app/` | 38 (adopt the current iOS design language) |
+| `pricing-page-polish/` | 40 (the craft pass before launch) |
+
+`subscription-web-app/` also serves scenario 39, `kids-reading-app/` scenario 41,
+`bank-with-purple-brand/` scenario 29, and `tokens-dashboard/` scenario 36. The mapping the runner uses
+is [scenario-fixtures.json](../scenario-fixtures.json).
+

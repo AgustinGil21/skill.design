@@ -1,0 +1,1 @@
+{ "name": "ops-dashboard", "private": true, "description": "Operations dashboard for a parcel delivery company", "dependencies": { "react": "19.2.0", "tailwindcss": "4.1.14", "lucide-react": "0.545.0" } }

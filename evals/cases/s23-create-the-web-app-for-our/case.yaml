@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s23-create-the-web-app-for-our
+description: "Scenario 23: Empty repository, no tokens or component library"
+tags: [scenario-23]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Before choosing any value, asks once how much of a design system the person wants, with levels, what each leaves in the project, a recommendation (core kit or documented system) and a default; then builds foundations, a foundations page and core components before screens"
+context:
+  scaffold_script: fixture.sh

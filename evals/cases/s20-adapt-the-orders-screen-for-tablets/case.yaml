@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s20-adapt-the-orders-screen-for-tablets
+description: "Scenario 20: React Native app designed for phones"
+tags: [scenario-20]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Uses the space (list and detail side by side, landscape, pointer and keyboard support) while keeping the phone layout complete"
+context:
+  scaffold_script: fixture.sh

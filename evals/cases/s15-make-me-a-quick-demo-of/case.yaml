@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s15-make-me-a-quick-demo-of
+description: "Scenario 15: Any"
+tags: [scenario-15]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Standalone demo with real content, two genuinely different layouts, labeled simulated data, outside production paths"
+context:
+  scaffold_script: fixture.sh

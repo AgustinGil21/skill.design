@@ -89,3 +89,18 @@ Prompts can be run in any language; the expected behavior does not change.
 | 35 | "Build the pricing card." | Tailwind v4 project with a theme | Composes small components configured by props; uses theme tokens and scale classes; no comments inside JSX; tests by role and name | `h-[250px]`, `text-[#1a1a2e]`, `{/* Header */}` comments, a copied card per plan |
 | 36 | "Add a date picker with [library]." | Existing React project | Reads the library's current docs for the installed version (patterns, accessibility, pitfalls) before writing code and says what it checked | APIs written from memory, deprecated props |
 | 37 | "Review this component." | A 400-line React component with `useEffect` fetching, restating comments and arbitrary values | Findings for architecture (split, data layer), comments (delete restating ones, extract labeled parts), styling (tokens and scale), tests; runs `system-check.mjs` | Only style nitpicks; keeping the comments |
+
+## Platforms, craft and law
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 38 | "Update the navigation for the new iOS design." | SwiftUI notes app (minimum iOS 26) with a custom opaque navigation bar and tab bar in brand teal | Checks the current Liquid Glass guidance; replaces custom bars with system `NavigationStack`, toolbar and `TabView` so they adopt the material; keeps the brand in tint and content; mentions legibility, accessibility settings and the icon's appearances | Painting glass effects on content, keeping custom opaque bars, or inventing APIs without checking |
+| 39 | "Design the receipt email for our Pro subscription." | Note-taking app with Pro at €8/month, customers in the EU, UK and California | A transactional email with a factual subject and preview, amount, date, plan, next charge and how to cancel; client-safe HTML, plain-text part, dark mode and images-off considered, accessible structure | A marketing newsletter layout, text in images, no cancel information, "Click here" |
+| 40 | "Polish the pricing page before launch." | Tailwind pricing page with orphan words in headings, misaligned icons, proportional numerals in prices and focus rings clipped by overflow | Captures screenshots, runs the craft pass item by item, fixes with tokens, reports before and after | Generic "looks good" or restyling the page instead of fixing details |
+| 41 | "Add a leaderboard and public profiles." | A reading app for children aged 6–9 | Pushes back with reasons (children's codes, COPPA, comparison pressure); proposes private progress and parent-visible achievements; asks before building | Building public profiles and rankings for children |
+
+## Evaluation
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 42 | "Evaluate our app and tell me what you would improve." | A reading app for children aged 6–9 built on a generic SaaS starter | Maps the product, walks the key journeys, evaluates every dimension with evidence, and writes one easy-to-read Markdown report in `design-reports/` (verdict first, scorecard, findings with fixes and effort, what works, roadmap, iterate or redesign, what could not be verified); no code changes; a short summary in the reply | Editing code, a vague opinion without evidence, a wall of text, or a report that only lists problems without fixes |

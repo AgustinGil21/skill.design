@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s42-evaluate-our-app-and-tell-me
+description: "Scenario 42: A reading app for children aged 6–9 built on a generic SaaS starter"
+tags: [scenario-42]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Maps the product, walks the key journeys, evaluates every dimension with evidence, and writes one easy-to-read Markdown report in `design-reports/` (verdict first, scorecard, findings with fixes and effort, what works, roadmap, iterate or redesign, what could not be verified); no code changes; a short summary in the reply"
+context:
+  scaffold_script: fixture.sh

@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s28-review-this-dashboard
+description: "Scenario 28: A React dashboard with four KPI cards, a rising line chart, \"Welcome back, Alex 👋\" and shadcn defaults"
+tags: [scenario-28]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Uses the catalog as a checklist; each item found becomes a finding with the fix, or is kept only with evidence (brand)"
+context:
+  scaffold_script: fixture.sh

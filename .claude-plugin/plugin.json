@@ -20,5 +20,8 @@
   ],
   "skills": [
     "./skills/design"
-  ]
+  ],
+  "experimental": {
+    "evals": "evals/cases"
+  }
 }

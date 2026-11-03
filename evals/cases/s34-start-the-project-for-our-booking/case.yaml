@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s34-start-the-project-for-our-booking
+description: "Scenario 34: Empty repository, no stack chosen"
+tags: [scenario-34]
+plugins: ["../../.."]
+runs: 3
+expected_outcome: "Recommends a library and framework with reasons and costs, asks the person to choose (with a default), proposes the design-system level before screens; sets up pnpm with exact versions and supply-chain settings in `pnpm-workspace.yaml`, a fast linter and formatter, Vitest and Playwright"
+context:
+  scaffold_script: fixture.sh
