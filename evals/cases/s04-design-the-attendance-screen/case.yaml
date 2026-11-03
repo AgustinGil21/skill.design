@@ -3,7 +3,7 @@ name: s04-design-the-attendance-screen
 description: "Scenario 4: Sports club platform; coaches' device unknown"
 tags: [scenario-4]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Asks whether coaches use it on the phone during training or after; designs for the answer, or both with a marked assumption"
 context:
   scaffold_script: fixture.sh

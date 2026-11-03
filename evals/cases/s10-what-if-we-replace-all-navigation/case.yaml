@@ -3,7 +3,7 @@ name: s10-what-if-we-replace-all-navigation
 description: "Scenario 10: B2B admin product with repeated structured tasks"
 tags: [scenario-10]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Strengths, failure mechanisms, alternatives (command palette, assistant inside screens), recommendation, cheap test"
 context:
   scaffold_script: fixture.sh

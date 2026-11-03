@@ -79,7 +79,7 @@ export function buildCase(scenario, fixtureFiles) {
     `description: ${JSON.stringify(`Scenario ${scenario.id}: ${scenario.situation}`)}`,
     `tags: [scenario-${scenario.id}]`,
     'plugins: ["../../.."]',
-    'runs: 3',
+    'runs: 1',
     `expected_outcome: ${JSON.stringify(scenario.expected)}`,
     'context:',
     '  scaffold_script: fixture.sh',

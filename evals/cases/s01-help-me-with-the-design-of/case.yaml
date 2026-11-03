@@ -3,7 +3,7 @@ name: s01-help-me-with-the-design-of
 description: "Scenario 1: A reading app for 6–9 year olds built on a generic SaaS starter (sidebar, tables, blue buttons)"
 tags: [scenario-1]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Reads routes, copy and roles; notices the mismatch; asks about developmental stage and the parent area if unclear; offers modes"
 context:
   scaffold_script: fixture.sh

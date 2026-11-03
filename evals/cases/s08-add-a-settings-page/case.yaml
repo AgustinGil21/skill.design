@@ -3,7 +3,7 @@ name: s08-add-a-settings-page
 description: "Scenario 8: Burgundy brand, but reds for errors and library-default blue links"
 tags: [scenario-8]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Builds within the brand; flags the red/blue inconsistencies as a separate finding"
 context:
   scaffold_script: fixture.sh

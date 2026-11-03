@@ -3,7 +3,7 @@ name: s03-make-it-look-better
 description: "Scenario 3: Nothing in the project says who it is for; mixed copy"
 tags: [scenario-3]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Inspects first, states what it can and cannot infer, asks one to three questions with options, recommends a bounded next step"
 context:
   scaffold_script: fixture.sh

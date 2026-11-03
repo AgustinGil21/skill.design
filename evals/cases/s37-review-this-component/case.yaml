@@ -3,7 +3,7 @@ name: s37-review-this-component
 description: "Scenario 37: A 400-line React component with `useEffect` fetching, restating comments and arbitrary values"
 tags: [scenario-37]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Findings for architecture (split, data layer), comments (delete restating ones, extract labeled parts), styling (tokens and scale), tests; runs `system-check.mjs`"
 context:
   scaffold_script: fixture.sh

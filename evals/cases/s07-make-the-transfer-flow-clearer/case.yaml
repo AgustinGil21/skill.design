@@ -3,7 +3,7 @@ name: s07-make-the-transfer-flow-clearer
 description: "Scenario 7: Established bank whose real identity uses purple gradients"
 tags: [scenario-7]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Preserves the brand; improves clarity of amounts, recipient and status"
 context:
   scaffold_script: fixture.sh

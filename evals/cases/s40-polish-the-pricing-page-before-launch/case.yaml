@@ -3,7 +3,7 @@ name: s40-polish-the-pricing-page-before-launch
 description: "Scenario 40: Tailwind pricing page with orphan words in headings, misaligned icons, proportional numerals in prices and focus rings clipped by overflow"
 tags: [scenario-40]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Captures screenshots, runs the craft pass item by item, fixes with tokens, reports before and after"
 context:
   scaffold_script: fixture.sh

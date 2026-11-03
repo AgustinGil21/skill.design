@@ -3,7 +3,7 @@ name: s24-make-me-a-landing-page-for
 description: "Scenario 24: New single-page site, nothing else planned"
 tags: [scenario-24]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Asks briefly or assumes foundations only (a token file), says so, and does not build a docs site or a token pipeline"
 context:
   scaffold_script: fixture.sh

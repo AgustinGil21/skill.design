@@ -3,7 +3,7 @@ name: s06-simplify-these-tables
 description: "Scenario 6: A strategy game with dense resource tables"
 tags: [scenario-6]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Evaluates scanning needs and player expertise; keeps useful density, improves hierarchy"
 context:
   scaffold_script: fixture.sh

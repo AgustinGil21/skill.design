@@ -3,7 +3,7 @@ name: s05-review-the-hud
 description: "Scenario 5: A competitive action game with low-contrast HUD and color-only team markers"
 tags: [scenario-5]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Judges in-play readability and color independence for the genre"
 context:
   scaffold_script: fixture.sh

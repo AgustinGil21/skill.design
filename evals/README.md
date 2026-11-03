@@ -25,7 +25,18 @@ claude plugin eval . --tag scenario-27 scenario-35 --runs 1 --scaffold --allow-t
 
 - `--scaffold` runs the generated `fixture.sh` scripts (they only write the fixture's files); `--allow-tools` grants the
   tools that build scenarios need. Results and an HTML report go to `evals/cases/results/` (ignored by git).
-- Runs are real model calls: set `--max-cost-usd` and `--concurrency` as needed.
+- **Runs are real model calls and use the account's quota fast.** Each case runs the agent twice (with and without
+  the skill) plus a judge; 16 cases on the default model used a five-hour subscription limit in about fifteen minutes.
+  `--max-cost-usd` estimates list price; it does not protect a subscription's usage limit.
+- **Cheap by default**: pick two to four scenarios with `--tag`, run one arm (`--ablation none`) when you only need to
+  know whether behavior changed, use a smaller model for the agent and the judge, and no concurrency:
+
+  ```bash
+  claude plugin eval . --tag scenario-35 scenario-42 --ablation none --model sonnet --judge-model haiku -j 1 \
+    --scaffold --allow-tools Write Edit Bash --threshold 0
+  ```
+
+  Keep full runs (every case, both arms, the default model) for before a release, and spread them over time.
 - Scenario 22 is not generated: it needs live URLs and a browser.
 - Record notable results in [results.md](results.md) with the skill commit.
 

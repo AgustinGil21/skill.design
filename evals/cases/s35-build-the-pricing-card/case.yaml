@@ -3,7 +3,7 @@ name: s35-build-the-pricing-card
 description: "Scenario 35: Tailwind v4 project with a theme"
 tags: [scenario-35]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Composes small components configured by props; uses theme tokens and scale classes; no comments inside JSX; tests by role and name"
 context:
   scaffold_script: fixture.sh

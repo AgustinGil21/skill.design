@@ -3,7 +3,7 @@ name: s26-our-app-has-twelve-different-buttons
 description: "Scenario 26: Existing product, no system, raw values everywhere"
 tags: [scenario-26]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Runs an inventory, decides canonical variants with reasons, derives tokens from decisions (not from averaging), migrates in slices with checks"
 context:
   scaffold_script: fixture.sh

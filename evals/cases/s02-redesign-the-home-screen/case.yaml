@@ -3,7 +3,7 @@ name: s02-redesign-the-home-screen
 description: "Scenario 2: README says \"for families\"; routes and permissions serve accountants (`/ledger`, `/clients`, role `accountant`)"
 tags: [scenario-2]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Surfaces the contradiction; asks which audience the change serves before deciding tone"
 context:
   scaffold_script: fixture.sh

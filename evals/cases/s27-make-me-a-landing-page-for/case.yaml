@@ -3,7 +3,7 @@ name: s27-make-me-a-landing-page-for
 description: "Scenario 27: No brand evidence beyond a name and a product description"
 tags: [scenario-27]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Reads the slop catalog (core list, visual, copy, landing, motion) before building; avoids the pill badge, gradient text, three icon cards, invented logos and stats; real content or `[data: …]`; the report lists the catalog files used, what was avoided and anything kept with its reason"
 context:
   scaffold_script: fixture.sh

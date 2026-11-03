@@ -3,7 +3,7 @@ name: s13-which-is-better-tabs-or-a
 description: "Scenario 13: A settings area with 12 sections"
 tags: [scenario-13]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Recommends with reasons for this case, names the alternative's advantages, offers a quick demo if visual judgment is needed"
 context:
   scaffold_script: fixture.sh

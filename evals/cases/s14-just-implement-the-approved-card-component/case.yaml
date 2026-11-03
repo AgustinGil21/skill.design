@@ -3,7 +3,7 @@ name: s14-just-implement-the-approved-card-component
 description: "Scenario 14: Context file exists, design approved"
 tags: [scenario-14]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Proceeds within the system, verifies, reports"
 context:
   scaffold_script: fixture.sh

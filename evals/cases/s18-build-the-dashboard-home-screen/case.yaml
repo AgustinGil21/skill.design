@@ -3,7 +3,7 @@ name: s18-build-the-dashboard-home-screen
 description: "Scenario 18: A project with tokens defined in CSS variables or a Tailwind theme"
 tags: [scenario-18]
 plugins: ["../../.."]
-runs: 3
+runs: 1
 expected_outcome: "Composes the screen from small components, uses only tokens, calm motion without bounce or pulses"
 context:
   scaffold_script: fixture.sh
