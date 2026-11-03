@@ -31,7 +31,8 @@ knowledge files only when a step needs a decision this card does not settle.
 - Accessible: semantic elements, keyboard, visible focus, AA contrast, never color alone, reduced motion.
 - Copy in the product's language and form of address; strings in locale files.
 - One icon family, never drawn by hand; two typefaces at most.
-- Motion short and decelerating, settling once; no bounce, overshoot, pulses or decorative loops.
+- Motion short and decelerating, settling once; no bounce, overshoot, pulses or decorative loops. Nothing appears out
+  of nowhere: everything grows from what caused it and returns there (`knowledge/45-spatial-continuity.md`).
 - Declining, cancelling and leaving as easy as accepting.
 - Demos: label simulated data in the demo; never hand back a demo you have not looked at.
 

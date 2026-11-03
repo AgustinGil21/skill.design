@@ -198,6 +198,7 @@ test('time-sensitive knowledge files carry a valid freshness stamp', async () =>
     'knowledge/patterns/app-icons-and-brand-touchpoints.md', 'knowledge/engineering/04-frameworks-and-stacks.md',
     'knowledge/engineering/05-testing.md', 'knowledge/engineering/06-tooling-and-supply-chain.md',
     'knowledge/engineering/08-web-platform.md', 'knowledge/engineering/10-native-apps.md',
+    'knowledge/landing/19-scroll-choreography.md', 'knowledge/45-spatial-continuity.md',
   ];
   const missing = timeSensitive.filter((path) => !readStamp(read(path)));
   assert.deepEqual(missing, [], 'add "> Verified: YYYY-MM-DD · Review by: YYYY-MM-DD · Time-sensitive: …" under the title');

@@ -90,7 +90,7 @@ on the code. The `visual-qa` agent runs it when delegated. Fix what you can; rep
 
 | Check | Why | How |
 | --- | --- | --- |
-| Motion starts from where things come from | Spatial continuity | Origin-aware transforms (`transform-origin` at the trigger) |
+| Motion starts from where things come from | Spatial continuity | Menus grow from their trigger, details from their card, sheets from their edge, and return the same way ([spatial continuity](45-spatial-continuity.md)) |
 | Interruptible | Reversing mid-animation should not jump | Transitions over keyframes for state changes; springs on native |
 | Exit faster than enter | Leaving should not hold people up | Shorter exit durations |
 | No animation on first paint of content | Content should be readable at once | Animate changes, not arrival, except one purposeful moment |

@@ -68,8 +68,9 @@ function linearMotion(text) {
     if (/\b(?:transition|transition-(?:transform|all))\b|\b(?:-?translate|scale|rotate)-/.test(line) && !/\banimate-|\bprogress/.test(line)) found.push(m);
   }
   for (const m of text.matchAll(/\bease\s*:\s*['"](?:none|linear)['"]/g)) {
-    const around = text.slice(Math.max(0, m.index - 200), m.index + 200);
-    if (/\bscrub\b|\brepeat\s*:\s*(?:-1|Infinity)\b|\bprogress\b/.test(around)) continue;
+    // A scrubbed timeline sets `scrub` once, often several tweens before this one.
+    const around = text.slice(Math.max(0, m.index - 800), m.index + 200);
+    if (/\bscrub\b|\bcontainerAnimation\b|\brepeat\s*:\s*(?:-1|Infinity)\b|\bprogress\b/.test(around)) continue;
     found.push(m);
   }
   return found;

@@ -207,6 +207,11 @@ reverse-charge note when it applies.
 
 ## Final test
 
+**The experience speaks for itself.** The best approval a design gets is when people use it without anything
+explaining or decorating it: clean, clear and confidently executed. Ask: *would this be understood and convincing if
+every badge, tooltip, adjective and decoration were removed?* If the design needs them to make its case, the work is
+not done; if it works without them, most of them can go.
+
 - **Cover the logo**: is it recognizable as this brand?
 - **Read only the headlines**: do they tell a story only this product could tell?
 - **Show it for ten seconds**: does the person remember something concrete?

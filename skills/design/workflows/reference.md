@@ -33,6 +33,11 @@ node scripts/reference-capture.mjs <url> [more urls] --out design-references [--
 For several sites or long pages, delegate each site to a `reference-analyst` agent in parallel, passing the skill
 folder, the URLs, the person's goal and the capture folder.
 
+
+**Interactive effects need a real browser.** Headless captures miss effects that live in WebGL or react to the
+pointer (cursor reveals, hover distortions, 3D heroes). When the site has canvases or the person mentions an
+interaction, study it in a real browser with a GPU (a browser tool, or ask the person for a screenshot or a screen
+recording), moving the pointer slowly over the hero and the images, and say which effects could not be seen.
 ## 2. Look before reading the numbers
 
 Read the slices **in order**, desktop first, then phone:

@@ -55,7 +55,8 @@ Summary:
 - Never draw icons yourself: one maintained icon family (two at most); two typefaces at most, with contrast from
   weights and heading levels.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
-  bounce, elastic or AI-style pulses unless asked).
+  bounce, elastic or AI-style pulses unless asked), and nothing appears out of nowhere: menus grow from their button,
+  details from their card, sheets from their edge, and each returns the way it came (`knowledge/45-spatial-continuity.md`).
 - Offer a design system when building from zero: when the person asks to create something complete (a new product,
   app or site) and the project has no system, ask once — before choosing any value — how much of one they want
   (foundations as tokens, core components, a documented system), with a recommendation and a default; then follow

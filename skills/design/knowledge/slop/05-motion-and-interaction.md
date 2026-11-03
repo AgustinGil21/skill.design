@@ -7,6 +7,12 @@ when it is expressive by nature).
 Background: [motion](../landing/06-motion.md) · [animation techniques](../37-animation-techniques.md) ·
 [authored and rendered motion](../38-authored-and-rendered-motion.md) · [platforms and input](../36-platforms-and-input.md).
 
+
+**Default motion versus requested choreography.** These items ban motion that nobody decided: effects applied by
+default, everywhere, without a story. When the person asks for an expressive, animated landing page, scroll scenes
+that move sideways, zoom, rotate, pin, transform a persistent object or reveal through masks are the brief, not slop —
+build them with the rules in [scroll choreography](../landing/19-scroll-choreography.md): one idea per scene, moves from
+the product's world, readable end states, native scrolling, and reduced-motion and mobile versions.
 ## Entrances and scroll
 
 | Tell | Why it reads as generated | Do instead |
@@ -15,11 +21,11 @@ Background: [motion](../landing/06-motion.md) · [animation techniques](../37-an
 | Staggered entrance on every list and grid (cards appear one by one) | Delay for its own sake; people wait to read | Show lists immediately; stagger only small sets where order carries meaning, under ~300ms total |
 | Numbers that count up from zero | Theater; the real number is hidden for seconds | Show the number; animate only when the value changes live |
 | Parallax on every section | Disorienting; motion sickness for some people | Parallax only when depth explains something, with a reduced-motion version |
-| Scroll-jacking (scroll moves slides instead of the page) | Takes control from the person | Native scroll; scroll-linked effects that follow, never override |
+| Scroll-jacking (the wheel is captured to jump between slides, snapping that fights the person) | Takes control from the person | Native scroll; pinned scenes that advance and reverse with the person's scroll are fine ([scroll choreography](../landing/19-scroll-choreography.md)) |
 | Text that types itself letter by letter in the hero | Delays the message; generated cliché | Static text |
 | Words that rotate in the headline ("for designers / developers / founders") | Hides the message behind a carousel | One audience per page or a sentence that covers them |
-| Sticky scroll storytelling for a simple product | Long, slow, hard on phones | Short sections with real screens |
-| Horizontal scroll sections on desktop | Unexpected; hard with mouse wheels | Vertical flow; horizontal only for carousels people control |
+| Sticky scroll storytelling nobody asked for, on a page meant to convert fast | Long, slow, hard on phones | Short sections with real screens; save scroll scenes for expressive pages the person asked for |
+| Horizontal sections that need a horizontal wheel or a drag to get through | Unexpected; hard with mouse wheels and keyboards | A pinned horizontal track driven by the normal vertical scroll, with a vertical stack on phones and reduced motion; or carousels people control |
 
 ## Easing, springs and timing
 
@@ -43,7 +49,7 @@ Background: [motion](../landing/06-motion.md) · [animation techniques](../37-an
 | Shimmer on text or buttons to attract clicks | Attention bait | A clear primary action |
 | Infinite marquees of logos, testimonials or features | Movement to fake abundance; hard to read, needs pause control (WCAG 2.2.2) | Static content; if it moves, it can be paused |
 | Animated gradient mesh backgrounds | Battery and attention cost for mood | Static background |
-| Cursor followers, blob cursors, magnetic buttons | Novelty that interferes with pointing | Native cursor; hover states |
+| Custom cursors and blob cursors by default; magnetic effects on every button | Novelty that interferes with pointing | Native cursor; hover states. On requested expressive pages, subtle pointer-driven depth or a magnetic call to action is fine, only on fine pointers and never required ([scroll choreography](../landing/19-scroll-choreography.md#pointer-and-hover-as-a-second-input)) |
 | Particle backgrounds (stars, dots, connections) | Generic "tech" decoration | Remove, unless the product is about the thing the particles show |
 | Lottie animations of generic characters for every state | Decoration that delays | Animation only where it shows a change or a result |
 
@@ -62,6 +68,9 @@ Background: [motion](../landing/06-motion.md) · [animation techniques](../37-an
 | Tell | Why it reads as generated | Do instead |
 | --- | --- | --- |
 | Every route change fades the whole page | Slow, hides continuity | Instant navigation, or a transition that connects where things come from and go |
+| Menus, popovers and dialogs that fade or pop in at the center, unrelated to the control that opened them | Breaks cause and effect; the eye has to search | Grow from the trigger (morph or anchored scale) and return to it ([spatial continuity](../45-spatial-continuity.md)) |
+| Opening with one animation and closing with another, or closing instantly | The way back is lost | Close along the same path, reversed |
+| A card that opens a page with no visual link between them | The new view feels unrelated | Container transform or shared element from the card |
 | Modals that zoom in from the center with a bounce | Toy-like | A short fade and a small scale or slide, without overshoot |
 | Page-transition curtains, wipes and loaders between pages | Theater on every click | Native navigation speed |
 | Accordions that animate height slowly | Waiting to read | Fast (≤200ms) or instant |

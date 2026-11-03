@@ -77,6 +77,9 @@ not designed yet, whatever else is good about it.
 23. Toasts, modals and confirmations for everything; spinners covering screens that could stay visible.
 24. Consent, paywalls and cancel flows with a highlighted "Accept"/"Stay" and a grey "No thanks" link.
 25. The same layout rhythm repeated down the page: heading, subhead, grid, heading, subhead, grid.
+26. Trivia promoted as selling points: "Available in 3 languages!", "Dark mode", "Responsive", "Built with Next.js",
+    "50+ features", numbers about the team. Everything highlighted must change the visitor's decision (the prominence
+    test in [03-landing-and-marketing](03-landing-and-marketing.md)).
 
 ## How to use the catalog files
 
@@ -97,4 +100,6 @@ tell is common in them. The product's language decides; see [content and localiz
 - [ ] Copy test: every headline and button says something specific and verifiable in the product's language.
 - [ ] Motion test: every animation has a job; nothing bounces, pulses, floats or loops for decoration.
 - [ ] Flow test: declining, leaving and cancelling are as easy and as visible as accepting.
+- [ ] Speaks-for-itself test: the experience is understood and convincing without badges, tooltips, adjectives or
+  decoration explaining it — clean, clear and confidently executed.
 - [ ] I reported which catalog files I used, what I fixed and what I kept with its reason.

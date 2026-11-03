@@ -60,7 +60,9 @@ Each rule links to where it is explained. The cards apply them per mode.
 11. **Small components and tokens for every reusable value**; the project's conventions first
     (`knowledge/35-components-tokens-and-code-quality.md`).
 12. **Professional motion**: short, decelerating, settles once, has a reason; no bounce, elastic, overshoot or
-    AI-style pulses unless asked (`knowledge/landing/06-motion.md`).
+    AI-style pulses unless asked (`knowledge/landing/06-motion.md`). **Nothing appears out of nowhere**: menus grow
+    from their button, details expand from their card, sheets come from their edge, and each returns the way it came
+    (`knowledge/45-spatial-continuity.md`).
 13. **Respect the existing system**; improve within it.
 14. **Any language**: the product's language and form of address; rules by function; i18n from the start with the
     locale in the URL on the web (`knowledge/24-content-and-localization.md`).
@@ -165,9 +167,11 @@ in order.
 | Watch, TV, car, spatial and voice interfaces | `43-other-surfaces.md` |
 | Sound and haptics as design materials | `44-sound-and-haptics.md` |
 | Professional motion (and what reads as generated: bounce, elastic, AI pulses) | `landing/06-motion.md` |
+| Spatial continuity: everything comes from somewhere (morph from the trigger, container transform, shared elements, edge origins, the way back) | `45-spatial-continuity.md` |
 | Choosing an animation technique by its job: keyframes, springs, gestures, physics, SVG paths, layout transitions, combining them | `37-animation-techniques.md` |
 | Designer-made and rendered motion: Rive, Lottie, skeletal rigs, video and sprites, particles, shaders | `38-authored-and-rendered-motion.md` |
 | Physical motion on landing pages: falling, stacking, carrying and throwing, pendulums, scroll-driven scenes, testing them | `landing/18-physical-motion.md` |
+| Scroll choreography for expressive landings: horizontal tracks, zoom, rotation, pinned scenes, persistent objects, masks, color by section, pointer depth (GSAP and CSS) | `landing/19-scroll-choreography.md` |
 | The craft pass: the last 10% (optical alignment, text wrapping, numerals, hit areas, focus, safe areas, scroll, motion details) | `knowledge/polish.md` |
 | Inclusive design beyond WCAG (older adults, low literacy, slow devices) and the law (EAA, ADA, children's codes) | `41-inclusive-design-and-accessibility-law.md` |
 | Design leadership: product principles, vision, running critiques and design reviews, heuristic evaluation | `42-design-leadership.md` |

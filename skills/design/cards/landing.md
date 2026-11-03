@@ -17,7 +17,10 @@ on.
 5. **System.** Foundations as tokens before sections (ask about a design system once if the site will grow).
 6. **Build.** Read `cards/code.md`. Astro or static rendering unless the person chose otherwise; images sized and
    modern; fonts subset; motion on transform and opacity.
-7. **Motion.** A few moments with a purpose; content visible without waiting; a reduced version for each.
+7. **Motion.** A few moments with a purpose; content visible without waiting; a reduced version for each. When the
+   person asks for an animated, expressive page, choreograph scroll scenes (sideways travel, zoom, rotation, pinned
+   scenes, a persistent object that transforms, mask reveals, color by section, subtle pointer depth) with
+   `knowledge/landing/19-scroll-choreography.md`.
 8. **Look and polish.** Phone and desktop screenshots, full page; the craft pass (`knowledge/polish.md`).
 9. **Final pass.** `knowledge/slop/01-visual.md`, `knowledge/slop/02-copy.md`,
    `knowledge/slop/05-motion-and-interaction.md`; `knowledge/landing/08-review.md`; the scripts.
@@ -28,7 +31,13 @@ Pill badge above the headline · gradient text · purple or blue gradient backgr
 two buttons and nothing else · tilted screenshot with a glow · logo strip or stats strip without real, sourced data ·
 three or six icon cards · bento grid of tiny mock UIs · testimonial carousel with generated faces · every section
 fading up on scroll · counting numbers · infinite marquees · FAQ with invented questions · "Ready to get started?"
-band repeating the hero · hollow headlines, triads and hype verbs in any language.
+band repeating the hero · hollow headlines, triads and hype verbs in any language · trivia promoted as selling
+points ("Available in 3 languages!", "Dark mode", "Responsive", "Built with Next.js", feature counts, numbers about
+the team).
+
+**The prominence test**: for every highlight, badge, stat and feature, ask whether the visitor this page is for would
+decide differently without it. If not, cut it or move it to the FAQ, specs or footer. What the page highlights must
+describe what it presents and answer the visitor's questions, not fill space.
 
 Keep one only with evidence (the brand's real identity, an explicit request) and say so.
 

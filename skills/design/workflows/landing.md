@@ -29,7 +29,9 @@ Order:
    editorial (`17`).
 5. **Hero and sections** — `knowledge/landing/02-hero.md`, `knowledge/landing/03-sections.md`.
 6. **Motion** — `knowledge/landing/06-motion.md` and the base code in `knowledge/landing/15-motion-recipes.md`
-   (objects that fall, get thrown or ride a scroll-driven scene: `knowledge/landing/18-physical-motion.md`):
+   (objects that fall, get thrown or ride a scroll-driven scene: `knowledge/landing/18-physical-motion.md`; when the
+   person asks for an expressive, animated page with scroll scenes — sideways travel, zoom, rotation, pinned scenes,
+   mask reveals, a persistent object that transforms: `knowledge/landing/19-scroll-choreography.md`):
    a few moments with a purpose, a reduced version, transform and opacity only.
 7. **Accessibility, performance and SEO** — `knowledge/landing/07-accessibility-performance-and-seo.md` and
    `knowledge/14-seo-and-content.md`, including multilingual SEO when the site has more than one language.

@@ -106,6 +106,7 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [42-design-leadership](42-design-leadership.md) | Product principles, vision, critiques, design reviews, heuristic evaluation, decision records |
 | [43-other-surfaces](43-other-surfaces.md) | Watch, TV, car, spatial and voice interfaces |
 | [44-sound-and-haptics](44-sound-and-haptics.md) | Sound and haptics as design materials, accessibly |
+| [45-spatial-continuity](45-spatial-continuity.md) | Everything comes from somewhere: morphs from the trigger, container transforms, shared elements, the way back |
 | [polish](polish.md) | The craft pass: the last 10% checked on screenshots |
 | [sources](sources.md) | Where the knowledge comes from and how to add to it |
 
