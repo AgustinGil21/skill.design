@@ -11,10 +11,10 @@ components too when the site will grow or an app will share its look. Skip it wh
 
 Order:
 
-0. **Read the slop catalog first** — `knowledge/slop/README.md` (core list), `knowledge/slop/01-visual.md`,
-   `knowledge/slop/02-copy.md`, `knowledge/slop/03-landing-and-marketing.md` and
-   `knowledge/slop/05-motion-and-interaction.md`. Every item is banned by default; a landing page is where generated
-   defaults show most.
+0. **Read the slop core list and the landing catalog first** — `knowledge/slop/README.md` and
+   `knowledge/slop/03-landing-and-marketing.md`. Every item is banned by default; a landing page is where generated
+   defaults show most. The visual, copy and motion files (`knowledge/slop/01-visual.md`, `knowledge/slop/02-copy.md`,
+   `knowledge/slop/05-motion-and-interaction.md`) are the final pass in step 9.
 1. **Strategy** — `knowledge/landing/01-strategy-and-structure.md`: one goal, a concrete audience, its stage of
    decision, the main objection, the real proof available, the type of page. Separate what you know from what you
    assume.

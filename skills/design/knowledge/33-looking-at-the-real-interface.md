@@ -40,6 +40,9 @@ the Chrome or Edge already installed. Without Playwright it explains the alterna
 behind a login need a session: capture public pages with the script, and authenticated ones with a browser tool or
 the person's screenshots. Agents can read the resulting images.
 
+
+Native apps: `node scripts/native-screenshots.mjs --platform ios|android [--large-text]` captures a booted simulator
+or emulator in light and dark (and with large text). Before/after: `node scripts/visual-diff.mjs before/ after/`.
 ## How to look
 
 ### 1. The first five seconds

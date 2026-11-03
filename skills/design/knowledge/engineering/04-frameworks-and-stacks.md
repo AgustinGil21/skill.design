@@ -1,5 +1,7 @@
 # Frameworks and stacks
 
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: framework versions and maturity.
+
 Choosing the UI library and the meta-framework is a decision with long consequences: hiring, hosting, performance,
 what is easy and what is painful for years. **The person makes it.** The skill's job is to ask, recommend with
 reasons, and explain what each option costs. In an existing project, the stack is already decided: work within it.

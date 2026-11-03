@@ -33,6 +33,10 @@ Do not read everything. Find the decision or problem you face below and open onl
 | Design for the platform: web sizes, mobile gestures and motion, desktop conventions, touchpad, shortcuts | [36-platforms-and-input](36-platforms-and-input.md) |
 | Choose how to animate something, and combine techniques into one moment | [37-animation-techniques](37-animation-techniques.md) · [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) · [motion](landing/06-motion.md) · [physical motion](landing/18-physical-motion.md) |
 | Avoid generated defaults (mandatory before making or reviewing) | [slop catalog](slop/README.md): visual, copy, landing, product UI, motion, code, flows and dark patterns |
+| Finish to the last detail (alignment, wrapping, focus, stability) | [polish](polish.md) |
+| Design for the current platform language, other surfaces, sound and haptics | [40-platform-design-languages](40-platform-design-languages.md) · [43-other-surfaces](43-other-surfaces.md) · [44-sound-and-haptics](44-sound-and-haptics.md) |
+| Design for everyone and within the law | [41-inclusive-design-and-accessibility-law](41-inclusive-design-and-accessibility-law.md) |
+| Write principles, frame a vision, run critiques and reviews | [42-design-leadership](42-design-leadership.md) |
 | Give it character without slop | [01-anti-slop](01-anti-slop.md) · [13-human-design](13-human-design.md) · [11-brand-and-identity](11-brand-and-identity.md) |
 | Choose type, color, layout and imagery | [09-typography](09-typography.md) · [10-color](10-color.md) · [17-composition-and-layout](17-composition-and-layout.md) · [19-imagery-icons-and-illustration](19-imagery-icons-and-illustration.md) · [05-visual-system](05-visual-system.md) |
 | Persuade without manipulating | [12-psychology-and-ethical-persuasion](12-psychology-and-ethical-persuasion.md) |
@@ -97,6 +101,12 @@ Do not read everything. Find the decision or problem you face below and open onl
 | [37-animation-techniques](37-animation-techniques.md) | Picking a technique by its job: keyframes, springs, gestures, physics, SVG paths, layout transitions, combining them |
 | [39-product-archetypes](39-product-archetypes.md) | Habit consumer apps, work tools, social and content, money apps: decisions, motion, color, density, what transfers and what harms |
 | [38-authored-and-rendered-motion](38-authored-and-rendered-motion.md) | Rive and Lottie, skeletal rigs, flipbooks and video, particles, shaders: costs, fallbacks, accessibility |
+| [40-platform-design-languages](40-platform-design-languages.md) | Liquid Glass, Material 3 Expressive, Fluent 2: what changed and how to adopt them |
+| [41-inclusive-design-and-accessibility-law](41-inclusive-design-and-accessibility-law.md) | Older adults, low literacy, slow devices; EAA, ADA, COPPA, UK children's codes |
+| [42-design-leadership](42-design-leadership.md) | Product principles, vision, critiques, design reviews, heuristic evaluation, decision records |
+| [43-other-surfaces](43-other-surfaces.md) | Watch, TV, car, spatial and voice interfaces |
+| [44-sound-and-haptics](44-sound-and-haptics.md) | Sound and haptics as design materials, accessibly |
+| [polish](polish.md) | The craft pass: the last 10% checked on screenshots |
 | [sources](sources.md) | Where the knowledge comes from and how to add to it |
 
 ## Patterns by screen type
@@ -120,6 +130,7 @@ Search with `grep -il "<word>" knowledge/patterns/*.md` or use this table.
 | --- | --- |
 | [forms](patterns/forms.md) | Labels, validation, errors, passwords, long forms |
 | [wizards-and-collaboration](patterns/wizards-and-collaboration.md) | Wizards, final review, comments, presence |
+| [realtime-collaboration-and-local-first](patterns/realtime-collaboration-and-local-first.md) | Editing together, presence, sync status, conflicts, offline-first |
 | [dates-and-filters](patterns/dates-and-filters.md) | Date ranges, single dates, filters |
 | [tables-and-lists](patterns/tables-and-lists.md) | Views, filters, selection, bulk actions, density |
 | [boards-and-record-details](patterns/boards-and-record-details.md) | Kanban, record details, inline editing, rich text |
@@ -137,6 +148,8 @@ Search with `grep -il "<word>" knowledge/patterns/*.md` or use this table.
 | [empty-loading-and-error-states](patterns/empty-loading-and-error-states.md) | Empty, skeletons, progress, errors, error pages, toasts |
 | [dialogs-overlays-and-confirmations](patterns/dialogs-overlays-and-confirmations.md) | Which layer to use, dialogs, panels, menus, confirm vs. undo |
 | [notifications](patterns/notifications.md) | Inbox, what to notify, badges, system notices |
+| [email](patterns/email.md) | Transactional and product emails: anatomy, rendering, dark mode, deliverability |
+| [app-icons-and-brand-touchpoints](patterns/app-icons-and-brand-touchpoints.md) | App icons, favicons, launch screens, social previews, store listings, widgets |
 | [tracking-and-offline](patterns/tracking-and-offline.md) | Following a process in progress, working offline |
 | [batches-approvals-and-captions](patterns/batches-approvals-and-captions.md) | Batches and queues, approvals, caption editing |
 | [triage-roles-and-celebrations](patterns/triage-roles-and-celebrations.md) | Triage inboxes, roles, celebrations |

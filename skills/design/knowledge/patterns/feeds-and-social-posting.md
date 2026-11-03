@@ -1,5 +1,7 @@
 # Feeds and social posting
 
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: EU regulatory action on addictive design.
+
 Feeds (home timelines, community lists, activity streams, "for you" pages) and the composer that feeds them. A feed
 is one of the most powerful patterns in software and one of the most criticized: it decides what people see, how long
 they stay and how they feel when they leave. This pattern covers feed models, ending and pacing, autoplay, posting

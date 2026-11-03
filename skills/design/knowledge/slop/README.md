@@ -9,9 +9,13 @@ concrete tells, why each one reads as generated, and what to do instead.
 
 ## The rule
 
-1. **Read before you make anything.** Before generating or changing an interface, a landing page, copy, motion or a
-   flow, read [the core list](#the-core-list-read-every-time) below and the catalog files for what you are making
-   (table in the next section). Before reviewing, read the same files and use them as a checklist.
+1. **Read before you make, check before you finish.** Before generating or changing an interface, a landing page,
+   copy, motion or a flow, read [the core list](#the-core-list-read-every-time) below (and, for landing pages,
+   [03-landing-and-marketing](03-landing-and-marketing.md); for flows with money, consent or cancelling,
+   [07-flows-and-dark-patterns](07-flows-and-dark-patterns.md)). Before calling the work done, go through the catalog
+   files for every area you touched (table in the next section) as the final pass. When reviewing, use those files as
+   the checklist from the start. This order keeps the list in front of the agent without loading every file before the
+   first line is written.
 2. **Every item is banned by default.** Using one needs a stated reason tied to evidence: the brand's real, existing
    identity (`DESIGN-CONTEXT.md`, brand files, tokens), an explicit request from the person, a platform convention the
    person relies on, or a requirement (accessibility, law). "It looks nice", "it is modern", "most sites do it" and

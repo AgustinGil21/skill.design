@@ -1,5 +1,7 @@
 # Product archetypes: how habit apps, work tools, social products and money apps are designed, and why
 
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: product screens and regulatory action cited.
+
 Products that serve the same kind of relationship with people end up with similar design DNA: a language-learning
 app and a meditation app share more with each other than with the bank that charges for both. This file takes apart
 four archetypes that people often ask to imitate — **habit-forming consumer apps** (Duolingo and the like), **work

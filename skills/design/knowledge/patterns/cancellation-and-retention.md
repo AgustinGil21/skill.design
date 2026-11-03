@@ -1,5 +1,7 @@
 # Trials, renewals, cancelling and retention
 
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: subscription and cancellation law by market.
+
 How a subscription starts, renews and ends. Cancelling is where a product shows whether it respects people: it is also
 one of the most regulated flows in consumer software, and one of the most manipulated. This pattern covers free
 trials, renewal reminders, the cancel flow, retention offers, pausing, what happens after cancelling, and the legal

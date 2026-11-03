@@ -9,6 +9,10 @@ The other half of the craft is restraint: add shortcuts, gestures, context menus
 product needs them**. A booking form does not need a command palette; a code editor without keyboard shortcuts is
 broken. Knowing which is which separates a good designer from a mediocre one. The person always has the last word.
 
+
+For the current visual languages of each platform (Liquid Glass, Material 3 Expressive, Fluent 2), see
+[platform design languages](40-platform-design-languages.md); for watch, TV, car, spatial and voice, see
+[other surfaces](43-other-surfaces.md); for sound and haptics, [sound and haptics](44-sound-and-haptics.md).
 ## 1. Identify the platform first
 
 Part of `workflows/start.md`. Evidence:

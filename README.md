@@ -29,8 +29,9 @@ skill.design/
 │   ├── WRITING-GUIDE.md      How the knowledge base is written
 │   └── RESEARCH-GUIDE.md     How to research and add knowledge
 ├── agents/                   Subagents for Claude Code: product researcher, brand analyst, art director,
-│                             usability reviewer, accessibility auditor, interface writer, prototyper, reference analyst
-├── evals/                    Behavioral scenarios, rubric, fixtures and results
+│                             usability reviewer, accessibility auditor, interface writer, prototyper, reference analyst,
+│                             visual QA, front-end reviewer
+├── evals/                    Behavioral scenarios, rubric, fixtures, results and `claude plugin eval` cases
 ├── .claude-plugin/           Claude Code plugin and marketplace
 ├── .codex-plugin/            Codex plugin
 ├── .agents/plugins/          Codex marketplace
@@ -53,7 +54,8 @@ Choose **one** way per agent; installing the same skill twice makes it load twic
 Turn on updates once: `/plugin` → **Marketplaces** → `skill-design` → **Enable auto-update**. Without it, run
 `/plugin marketplace update skill-design`. The skill shows up as `/design:design` and the agents as
 `design:product-researcher`, `design:brand-analyst`, `design:art-director`, `design:usability-reviewer`,
-`design:accessibility-auditor`, `design:interface-writer`, `design:prototyper` and `design:reference-analyst`.
+`design:accessibility-auditor`, `design:interface-writer`, `design:prototyper`, `design:reference-analyst`,
+`design:visual-qa` and `design:frontend-reviewer`.
 
 ### Codex (plugin)
 
@@ -131,8 +133,13 @@ node scripts/a11y-static.mjs src/
   both plugin manifests).
 - Research with `skills/design/RESEARCH-GUIDE.md`, write with `skills/design/WRITING-GUIDE.md`; add new files to the map
   in `SKILL.md` and to `knowledge/README.md`.
-- Check behavior with the scenarios in `evals/`.
-- `SKILL.md` must stay short: detail belongs in `workflows/` and `knowledge/`.
+- Run `node scripts/freshness.mjs` from `skills/design/` every few months: it lists knowledge with laws, platform or
+  tool versions past their review date.
+- Check behavior with the scenarios in `evals/`: `node evals/build-cases.mjs` regenerates the cases after editing
+  `scenarios.md` or a fixture, and `claude plugin eval . --scaffold --allow-tools Write Edit Bash` runs them with and
+  without the skill (see `evals/README.md`).
+- `SKILL.md` and the mode cards (`skills/design/cards/`) must stay short: detail belongs in `workflows/` and
+  `knowledge/`.
 
 ## License
 

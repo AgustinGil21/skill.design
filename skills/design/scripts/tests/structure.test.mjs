@@ -53,7 +53,7 @@ const PROJECT_FILES = new Set(['DESIGN-CONTEXT.md', 'DESIGN.md', 'PRODUCT.md', '
 test('every path cited in SKILL.md, AGENTS.md, workflows, agents and templates exists', () => {
   // Paths are cited relative to the skill folder, wherever the citing file lives.
   const dirFiles = (base, dir) => readdirSync(join(base, dir)).map((f) => join(base, dir, f));
-  const files = [join(ROOT, 'SKILL.md'), join(REPO, 'AGENTS.md'), ...dirFiles(ROOT, 'workflows'), ...dirFiles(REPO, 'agents'), ...dirFiles(ROOT, 'templates')];
+  const files = [join(ROOT, 'SKILL.md'), join(REPO, 'AGENTS.md'), ...dirFiles(ROOT, 'workflows'), ...dirFiles(ROOT, 'cards'), ...dirFiles(REPO, 'agents'), ...dirFiles(ROOT, 'templates')];
   const missing = [];
   for (const absolute of files) {
     const file = absolute.startsWith(ROOT) ? absolute.slice(ROOT.length + 1) : absolute.slice(REPO.length + 1);
@@ -91,7 +91,9 @@ test('file and folder names are lowercase kebab-case ASCII', () => {
       const path = join(folder, entry.name);
       // Fixtures imitate real projects (App.tsx, package.json), so they follow those projects' conventions.
       if (path === join('evals', 'fixtures')) continue;
-      const base = entry.name.replace(/\.(md|mjs|js|sh|ps1)$/, '');
+      // Eval results are generated and ignored by git.
+      if (path === join('evals', 'cases', 'results')) continue;
+      const base = entry.name.replace(/\.(md|mjs|js|sh|ps1|yaml|json)$/, '');
       const allowed = /^[a-z0-9]+(?:-[a-z0-9]+)*(?:\.test)?$/.test(base) || /^[A-Z][A-Z-]*$/.test(base);
       if (!allowed) bad.push(path);
       if (entry.isDirectory()) walk(path);
@@ -166,4 +168,48 @@ test('the engineering guide is required by SKILL.md, AGENTS.md and the create an
   for (const file of readdirSync(join(ROOT, 'knowledge', 'engineering')).filter((f) => f !== 'README.md')) {
     assert.ok(index.includes(`(${file})`), `${file} is not listed in the engineering index`);
   }
+});
+
+test('every mode card is listed in SKILL.md', () => {
+  const skill = read('SKILL.md');
+  for (const file of readdirSync(join(ROOT, 'cards'))) assert.ok(skill.includes(`cards/${file}`), `cards/${file} is not in SKILL.md`);
+});
+
+test('the claude plugin eval cases are generated from scenarios.md and up to date', async () => {
+  const { buildAll } = await import(join(REPO, 'evals', 'build-cases.mjs'));
+  const stale = [];
+  for (const { name, files } of buildAll()) {
+    for (const [path, text] of files) {
+      const full = join(REPO, 'evals', 'cases', name, path);
+      if (!existsSync(full) || readFileSync(full, 'utf8') !== text) stale.push(`${name}/${path}`);
+    }
+  }
+  assert.deepEqual(stale, [], 'run node evals/build-cases.mjs');
+  const plugin = JSON.parse(readRepo('.claude-plugin/plugin.json'));
+  assert.equal(plugin.experimental?.evals, 'evals/cases');
+});
+
+test('time-sensitive knowledge files carry a valid freshness stamp', async () => {
+  const { readStamp } = await import(join(ROOT, 'scripts', 'freshness.mjs'));
+  const timeSensitive = [
+    'knowledge/39-product-archetypes.md', 'knowledge/40-platform-design-languages.md',
+    'knowledge/41-inclusive-design-and-accessibility-law.md', 'knowledge/patterns/cancellation-and-retention.md',
+    'knowledge/patterns/feeds-and-social-posting.md', 'knowledge/patterns/email.md',
+    'knowledge/patterns/app-icons-and-brand-touchpoints.md', 'knowledge/engineering/04-frameworks-and-stacks.md',
+    'knowledge/engineering/05-testing.md', 'knowledge/engineering/06-tooling-and-supply-chain.md',
+    'knowledge/engineering/08-web-platform.md', 'knowledge/engineering/10-native-apps.md',
+  ];
+  const missing = timeSensitive.filter((path) => !readStamp(read(path)));
+  assert.deepEqual(missing, [], 'add "> Verified: YYYY-MM-DD · Review by: YYYY-MM-DD · Time-sensitive: …" under the title');
+});
+
+test('the Codex eval runner reads generated cases and builds judge prompts', async () => {
+  const { readCase, judgePrompt } = await import(join(REPO, 'evals', 'run-codex.mjs'));
+  const dir = join(REPO, 'evals', 'cases', readdirSync(join(REPO, 'evals', 'cases')).find((d) => d.startsWith('s13-')));
+  const c = readCase(dir);
+  assert.equal(c.scenario, 13);
+  assert.ok(c.prompt.length > 10 && !c.prompt.startsWith('---'));
+  const llm = c.graders.filter((g) => g.type === 'llm');
+  assert.equal(llm.length, 2);
+  assert.match(judgePrompt(llm[0], c.prompt, 'answer', []), /PASS or FAIL/);
 });

@@ -8,8 +8,9 @@ Summary:
 
 - Use this skill whenever the task touches interfaces, websites, landing pages, interface copy, accessibility,
   typography, color or brand, in any language.
-- Do not load everything: `SKILL.md` says which workflow (`workflows/*.md`) to read for the task, and the workflow
-  says which `knowledge/` files to open.
+- Do not load everything: read the card for your mode first (`cards/create.md`, `cards/landing.md`,
+  `cards/review.md`, `cards/code.md`); `SKILL.md` says which workflow (`workflows/*.md`) to read for other tasks, and
+  the workflow says which `knowledge/` files to open, only when a decision needs them.
 - **Investigate before asking.** For an open request in a project ("help me with the design"), your first answer
   is a "What I understood" summary built from the project (product, audiences, stakes, platform, tone, brand, each
   with a confidence level), then only the questions the evidence could not answer (with options and a default), then
@@ -31,6 +32,10 @@ Summary:
   (`workflows/prototype.md`) or direct implementation depending on what the person needs.
 - Design for the platform and its inputs (responsive web, mobile gestures and fluid motion, tablets, desktop
   conventions and shortcuts, touchpad parity), adding shortcuts and gestures only when the product needs them.
+- **Evaluating an existing app** ("evaluate it", "what would you improve?", "should we redesign?"): follow
+  `workflows/evaluate.md`. Map the whole product, walk the key journeys on real screens, evaluate every dimension
+  with evidence, and deliver one easy-to-read Markdown report (`templates/app-evaluation.md`) in `design-reports/`:
+  verdict first, scorecard, findings with fixes, a roadmap, iterate-or-redesign. No code changes.
 - **Read the slop catalog before making or reviewing anything** (`knowledge/slop/README.md`: the core list every
   time, plus the files for the task — visual, copy, landing, product UI, motion, code, flows and dark patterns). Every
   item is banned by default; keep one only with a stated reason tied to evidence (the real brand, an explicit request,
@@ -43,6 +48,10 @@ Summary:
   atomic components configured by parameters; no arbitrary values the scale or a token covers (`h-64`, not
   `h-[256px]`); no comments that restate code, narrate changes or label parts of markup; Vitest and Playwright; pnpm
   with exact versions and supply-chain settings in `pnpm-workspace.yaml`; fast linters and formatters.
+- **Finish with the craft pass** (`knowledge/polish.md`) on screenshots: wrapping, optical alignment, numerals, hit
+  areas, focus, layout stability, safe areas, themes. Check the current platform design language before designing
+  native screens (`knowledge/40-platform-design-languages.md`) and flag legal requirements (accessibility law,
+  children, subscriptions) that may apply (`knowledge/41-inclusive-design-and-accessibility-law.md`).
 - Never draw icons yourself: one maintained icon family (two at most); two typefaces at most, with contrast from
   weights and heading levels.
 - Build from small composable components and use tokens for every reusable value; keep motion professional (no
@@ -65,10 +74,13 @@ Summary:
   - `node scripts/system-check.mjs <paths>` (raw values instead of tokens, arbitrary values already on the scale,
     oversized components, hand-drawn icons, too many icon families or typefaces, comments inside markup or
     restating code, version ranges in `package.json`)
+  - `node scripts/native-screenshots.mjs --platform ios|android [--large-text]` (simulator or emulator, light and dark)
+  - `node scripts/visual-diff.mjs <before> <after>` (before/after comparison with a diff image)
+  - `node scripts/freshness.mjs` (knowledge past its review date)
   - `node scripts/a11y-static.mjs <paths>`
 - Subagent definitions in `agents/` (product researcher, brand analyst, art director, usability reviewer,
-  accessibility auditor, interface writer, prototyper, reference analyst): read them as role instructions if your tool has no
-  subagents.
+  accessibility auditor, interface writer, prototyper, reference analyst, visual QA, front-end reviewer): read them as
+  role instructions if your tool has no subagents.
 
 To use it from a project, add a line like this to the project's `AGENTS.md`:
 

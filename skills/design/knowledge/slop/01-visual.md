@@ -29,6 +29,7 @@ Background: [color](../10-color.md) · [typography](../09-typography.md) · [com
 | Brand color on large surfaces at full saturation | Tiring; hides content | Saturated color in small areas (actions, highlights); calmer tints for surfaces |
 | A different accent per section of a landing page | Looks like assembled blocks from different templates | One accent system for the whole page |
 | "Glassmorphism": frosted translucent panels with white borders over blobs | Generated-premium look; contrast depends on what is behind | Opaque surfaces with clear elevation; translucency only where the platform uses it (system bars, sheets) |
+| Liquid Glass imitated on content (cards, rows, web pages) | Apple's material belongs to the functional layer on Apple platforms; on content and on the web it is a costume | System components on Apple platforms; the brand's own surfaces elsewhere ([platform design languages](../40-platform-design-languages.md)) |
 | Glowing borders or `box-shadow` halos in the accent color | The "AI glow"; decoration that suggests importance everywhere | Elevation from the system's shadow scale, or a plain border |
 | Dark mode made by inverting the light palette | Wrong contrast, saturated colors vibrate on dark | Design dark tokens: lower saturation, lighter elevated surfaces, rechecked contrast |
 | Charts in rainbow categorical colors | No meaning in the order; color-blind collisions | A validated categorical palette, or one hue and grey for "the rest" |

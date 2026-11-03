@@ -111,6 +111,19 @@ apply a recipe.
 - **Fix what the analysis flagged as wrong** (see `.work/analisis-astra.md` while it exists), for example
   contradictions between files or code samples that do not do what they promise.
 
+## Time-sensitive content
+
+Laws, platform design languages, OS and tool versions, browser support and pricing rules go stale. A file that states
+them carries a stamp right under its title:
+
+```
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: <what changes>.
+```
+
+Write dated facts with their date in the text ("as of late 2026", "applicable since 28 June 2025"). When you re-check
+the content against current sources, move both dates forward. `node scripts/freshness.mjs` lists the files that are
+due; add new time-sensitive files to the list in `scripts/tests/structure.test.mjs`.
+
 ## Style
 
 - Clear, direct English with plain words. Established technical terms (WCAG, ARIA, OKLCH, token) are fine,

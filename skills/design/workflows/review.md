@@ -2,6 +2,9 @@
 
 Works for screenshots, prototypes, URLs or code. The result is an actionable report, not an opinion.
 
+To evaluate a **whole** existing app or site ("evaluate our app", "what would you improve?", "should we redesign?"),
+follow `workflows/evaluate.md` instead: it maps the product, walks its key journeys and writes one Markdown report.
+
 > **Context first.** If this is the first design task in the project and there is no `DESIGN-CONTEXT.md`, run
 > `workflows/start.md` (or at least its evidence step) so audience, stakes, tone and brand guide every decision below.
 

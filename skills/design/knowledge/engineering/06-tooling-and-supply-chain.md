@@ -1,5 +1,7 @@
 # Tooling and supply chain
 
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: pnpm settings and linter and formatter status.
+
 The package manager, its security settings, version pinning, linting and formatting. Supply-chain attacks on npm
 packages (compromised maintainers, malicious versions published for a few hours, typosquatting, install scripts) are
 frequent, and generated projects are especially exposed because they install many packages with loose versions.

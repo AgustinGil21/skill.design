@@ -1,5 +1,7 @@
 # Testing
 
+> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: test runner versions and features.
+
 What to test, at which level, with which current tools, so tests catch real regressions without slowing the team.
 The project's existing runner and conventions come first; for new projects, choose current, fast tools.
 
@@ -51,6 +53,20 @@ is slow and brittle; testing only units misses broken journeys.
 2. The main journey of the product.
 3. Components in the design system (every variant and state), because everything depends on them.
 4. Logic with many branches (formatting, pricing, validation).
+
+## Visual regression
+
+Visual tests catch what behavior tests cannot: a token change that shifts every button, a font that failed to load, a
+dark-mode regression.
+
+- **What to snapshot**: every design-system component in each variant and state, in light and dark, at the longest
+  locale; a few key screens at phone and desktop sizes.
+- **Tools**: Vitest Browser Mode screenshot assertions, Playwright `toHaveScreenshot`, Storybook's test runner with a
+  visual service (for example Chromatic) when the team reviews changes in a hosted UI; on native,
+  screenshot tests per platform ([native apps](10-native-apps.md)).
+- **Stable baselines**: fixed fonts, disabled animations (or reduced motion), fixed dates and data, the same browser
+  version in CI; otherwise diffs become noise and people approve them without looking.
+- **Review diffs like code**: an intended change updates the baseline in the same pull request, with the reason.
 
 ## Component library testing
 

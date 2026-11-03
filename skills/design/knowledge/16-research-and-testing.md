@@ -4,6 +4,9 @@ How a designer learns from people instead of guessing: choosing the question fir
 right people, running sessions without leading them, turning observations into decisions, and knowing what the
 evidence does and does not prove. No lab is needed; asking well and watching carefully are.
 
+
+Ready-to-use kits live in the skill's `templates/` folder: interview guide, usability test script, survey and research
+synthesis. Adapt them to the question; never run a study without writing the decision it informs first.
 ## What it is and why it matters
 
 Research reduces uncertainty about decisions. That is its only purpose in product design. A study that does not

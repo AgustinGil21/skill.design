@@ -15,11 +15,11 @@
 
 Fill in `templates/brief.md` (mentally or in writing, depending on size).
 
-**Read the slop catalog now, before any visual or copy decision**: `knowledge/slop/README.md` (core list), plus
-`knowledge/slop/01-visual.md`, `knowledge/slop/04-product-ui.md` and `knowledge/slop/06-code-and-components.md`; add
-`knowledge/slop/02-copy.md` when writing copy, `knowledge/slop/05-motion-and-interaction.md` when adding motion and
-`knowledge/slop/07-flows-and-dark-patterns.md` for any flow with money, consent, sign-up or cancelling. Every item is
-banned by default.
+**Read the slop core list now, before any visual or copy decision** (`knowledge/slop/README.md`); every item is
+banned by default. For flows with money, consent, sign-up or cancelling, also read
+`knowledge/slop/07-flows-and-dark-patterns.md` now. At the final pass, go through the area files you touched:
+`knowledge/slop/01-visual.md`, `knowledge/slop/04-product-ui.md`, `knowledge/slop/06-code-and-components.md`, plus
+`knowledge/slop/02-copy.md` for copy and `knowledge/slop/05-motion-and-interaction.md` for motion.
 
 **Building something complete from zero?** If the request is a whole new product, app or site and the project has no
 system (no tokens, no component library, no documented style), ask once how much of a design system the person wants

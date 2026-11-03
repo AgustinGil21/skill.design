@@ -247,6 +247,32 @@ are official announcements or clearly marked secondary sources. Versions change;
   for tendencies, with version claims checked against official sources.
 - Practitioner writing on AI-generated comments (restating code, change-log comments, tutorial voice).
 
+### Platforms, law, web platform and evaluation (November 2026)
+
+For [platform design languages](40-platform-design-languages.md), [inclusive design and the law](41-inclusive-design-and-accessibility-law.md),
+[web platform](engineering/08-web-platform.md), [email](patterns/email.md),
+[app icons and touchpoints](patterns/app-icons-and-brand-touchpoints.md) and the evaluation setup. Mostly secondary
+sources (trade press, law-firm and vendor summaries) checked against each other; verify against the official text
+before relying on a date or a requirement.
+
+- **Liquid Glass** (iOS 26, 2025) and its iOS 27 refinements (WWDC 2026): MacRumors guide, Tom's Guide, BGR, Tech Times
+  coverage; Apple's WWDC sessions on Icon Composer. <https://www.macrumors.com/guide/ios-26-liquid-glass/>
+- **Material 3 Expressive** and Android 16 edge-to-edge: 9to5Google, ProAndroidDev.
+  <https://9to5google.com/2025/05/13/android-16-material-3-expressive-redesign/>
+- **European Accessibility Act** (applicable since 28 June 2025; EN 301 549) and early enforcement, as summarized by
+  Level Access and others. <https://www.levelaccess.com/compliance-overview/european-accessibility-act-eaa/>
+- **ADA Title II web rule** compliance dates extended to April 2027 and April 2028.
+  <https://www.consumerfinancialserviceslawmonitor.com/2026/04/doj-extends-title-ii-ada-web-accessibility-rule-compliance-deadlines-for-state-and-local-governments/>
+- **COPPA amendments** (effective June 2025, compliance April 2026), as summarized by Hunton.
+  <https://www.hunton.com/privacy-and-cybersecurity-law-blog/coppa-rule-amendment-compliance-deadline-approaches>
+- **UK Online Safety Act children's codes** (enforced from July 2025), as summarized by CMS.
+  <https://cms.law/en/gbr/legal-updates/online-safety-act-ofcom-publishes-children-s-online-safety-codes-and-risk-assessment-guidance>
+- **CSS anchor positioning and popover support** (Baseline 2026) and `text-wrap: pretty` support: MDN and the
+  web-features explorer. <https://developer.mozilla.org/docs/Web/CSS/anchor-name>
+- **HTML email** rendering and dark mode: vendor guides; caniemail.com for client support.
+- **Claude Code plugin evals** (`claude plugin eval`): case format, graders and ablation.
+  <https://code.claude.com/docs/en/plugin-evals>
+
 Standards and guides are updated. When this knowledge base cites a version or a threshold, verify it against the
 current official source before treating it as binding.
 

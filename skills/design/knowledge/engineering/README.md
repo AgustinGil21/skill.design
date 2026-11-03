@@ -36,6 +36,13 @@ It extends [components, tokens and code quality](../35-components-tokens-and-cod
 10. **Safe, fast, reproducible tooling**: a secure package manager configuration, exact versions with a release-age
     delay, fast linters and formatters ([tooling and supply chain](06-tooling-and-supply-chain.md)).
 11. **Performance is a design property** ([performance](07-performance.md)).
+12. **The platform before a library**: native dialogs, popovers, anchor positioning, container queries, view
+    transitions, with fallbacks ([web platform](08-web-platform.md)).
+13. **Secure by default**: no untrusted HTML, no secrets in the client, safe links and frames
+    ([front-end security](09-frontend-security.md)).
+14. **Native apps follow their platform's idioms** ([native and cross-platform apps](10-native-apps.md)).
+15. **Ready for production**: error boundaries, feature flags, monitoring, a tracking plan, safe releases
+    ([production readiness](11-production-readiness.md)).
 
 ## What to read
 
@@ -47,6 +54,10 @@ It extends [components, tokens and code quality](../35-components-tokens-and-cod
 | Writing or reviewing tests | [05-testing](05-testing.md) |
 | Adding a dependency or touching package configuration | [06-tooling-and-supply-chain](06-tooling-and-supply-chain.md) |
 | Anything users will load (pages, images, fonts, bundles) | [07-performance](07-performance.md) |
+| Dialogs, popovers, tooltips, accordions, transitions, responsive components | [08-web-platform](08-web-platform.md) |
+| User content, rich text, links, auth flows, third-party scripts, secrets | [09-frontend-security](09-frontend-security.md) |
+| iOS, Android, React Native, Flutter | [10-native-apps](10-native-apps.md) |
+| Shipping: errors, flags, monitoring, analytics, CI, releases | [11-production-readiness](11-production-readiness.md) |
 | Reviewing code | All of them, plus [slop: code and components](../slop/06-code-and-components.md) |
 
 ## Researching a library before using it

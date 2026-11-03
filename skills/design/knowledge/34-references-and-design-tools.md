@@ -8,6 +8,9 @@ use references without copying, and what to do when no tool is available.
 Tools vary by environment. Check which ones are available in the session (their names usually mention Mobbin,
 Figma, a browser or a design canvas) and use them; never assume one exists.
 
+
+To create design files (screens, components and variables in Figma or another canvas tool), follow the
+[design-in-tool workflow](../workflows/design-in-tool.md).
 ## Live references (Mobbin and similar libraries)
 
 The knowledge base already cites hundreds of Mobbin examples. A live search adds what a fixed base cannot: the
