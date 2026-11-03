@@ -531,3 +531,39 @@ test('system-check: version ranges in package.json', async () => {
   assert.deepEqual(packageRanges(pkg, 'package.json').map((f) => f.excerpt), ['"react": "^19.2.0"', '"vitest": "~4.0.1"']);
   assert.deepEqual(packageRanges('{ "dependencies": { "react": "19.2.0" } }', 'package.json'), []);
 });
+
+test('freshness: flags stamps past their review date and malformed stamps', async () => {
+  const { checkFreshness, readStamp } = await import('../freshness.mjs');
+  const ok = '# Title\n\n> Verified: 2026-11-02 · Review by: 2027-05-02 · Time-sensitive: platform versions.\n';
+  assert.deepEqual(readStamp(ok), { verified: '2026-11-02', reviewBy: '2027-05-02', what: 'platform versions.' });
+  assert.deepEqual(checkFreshness([['a.md', ok]], '2026-12-01'), []);
+  assert.deepEqual(checkFreshness([['a.md', ok]], '2027-06-01').map((f) => f.rule), ['stale']);
+  assert.deepEqual(checkFreshness([['b.md', '> Verified: soon']], '2026-12-01').map((f) => f.rule), ['stamp-format']);
+  assert.deepEqual(checkFreshness([['c.md', '# No stamp']], '2026-12-01'), []);
+});
+
+test('visual-diff: encodes and decodes PNG, and counts changed pixels', async () => {
+  const { decodePng, encodePng, diffImages } = await import('../visual-diff.mjs');
+  const make = (w, h, fill) => ({ width: w, height: h, pixels: Buffer.alloc(w * h * 4, fill) });
+  const a = make(4, 3, 200);
+  const roundTrip = decodePng(encodePng(a));
+  assert.equal(roundTrip.width, 4);
+  assert.ok(roundTrip.pixels.equals(a.pixels));
+  const b = make(4, 3, 200);
+  b.pixels[0] = 0;
+  const result = diffImages(a, b, 0.1);
+  assert.equal(result.changed, 1);
+  assert.equal(diffImages(a, make(4, 3, 210), 0.1).changed, 0, 'small differences within the threshold are ignored');
+  assert.equal(diffImages(a, make(5, 3, 200), 0.1).sizeChanged, true);
+});
+
+test('native-screenshots: plans appearance, text size and capture commands per platform', async () => {
+  const { plan } = await import('../native-screenshots.mjs');
+  const ios = plan({ platform: 'ios', name: 'orders', largeText: true });
+  assert.ok(ios.some((s) => s.args.join(' ') === 'simctl ui booted appearance dark'));
+  assert.ok(ios.some((s) => s.args.at(-1) === join('screenshots', 'orders-ios-dark-large-text.png')));
+  const android = plan({ platform: 'android', device: 'emulator-5554' });
+  assert.ok(android.some((s) => s.capture === join('screenshots', 'screen-android-light.png')));
+  assert.ok(android.every((s) => s.args[0] === '-s'));
+  assert.throws(() => plan({ platform: 'web' }));
+});
