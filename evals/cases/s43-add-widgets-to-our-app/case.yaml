@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: s43-add-widgets-to-our-app
+description: "Scenario 43: A personal finance app (React Native) for people with irregular income"
+tags: [scenario-43]
+plugins: ["../../.."]
+runs: 1
+expected_outcome: "Asks or infers which jobs people check or repeat; proposes one to three widgets with one question each (for example \"safe to spend\" and quick add), a size ladder that adds depth, states including private on the lock screen and stale data, rendering modes, and platform notes for iOS and Android; recommends against widgets that only show the logo"
+context:
+  scaffold_script: fixture.sh

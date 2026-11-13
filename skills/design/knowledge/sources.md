@@ -273,6 +273,24 @@ before relying on a date or a requirement.
 - **Claude Code plugin evals** (`claude plugin eval`): case format, graders and ablation.
   <https://code.claude.com/docs/en/plugin-evals>
 
+### Widgets and live activities (November 2026)
+
+For [widgets and live activities](patterns/widgets-and-live-activities.md). About seventy Mobbin screens of home screen
+widgets across sizes, lock screen live activities and Dynamic Island presentations (Google Calendar, GitHub, Transit,
+Instagram, Spotify, Perplexity, Pinterest, Moonly, Polarsteps, Public, Mercury, Strava, Apple Fitness, MyFitnessPal,
+Alma, BitePal, Todoist, Tiimo, Abode, Tide Guide, Apple News, HYPE, Reddit, American Airlines, Duolingo, Waymo,
+Blinkit, Discord, WHOOP, Yazio, Oura, Granola, Tinder, FocusFlight and others), cited where used; a user-supplied
+example of Apple Weather's widget sizes on macOS; a video of AI-generated live cards studied frame by frame
+(<https://x.com/JamesC_Alpha/status/2120651508689813604>).
+
+- Apple Human Interface Guidelines, Widgets and Live Activities (rendering modes, presentations, the 28 pt circle for
+  compact and minimal content); WidgetKit documentation.
+- Android: canonical widget layouts and Jetpack Glance responsive sizing
+  <https://developer.android.com/design/ui/mobile/guides/widgets/layouts>; Live Update notifications in Android 16
+  <https://developer.android.com/develop/ui/compose/notifications/live-update>.
+- Microsoft: PWA-driven widgets for the Windows 11 Widgets Board with Adaptive Cards
+  <https://learn.microsoft.com/microsoft-edge/progressive-web-apps-chromium/how-to/widgets>.
+
 Standards and guides are updated. When this knowledge base cites a version or a threshold, verify it against the
 current official source before treating it as binding.
 

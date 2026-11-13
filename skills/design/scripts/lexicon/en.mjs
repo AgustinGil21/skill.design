@@ -3,7 +3,7 @@
 export default [
   ['seamless(?:ly)?', 'Filler: say what integrates with what'],
   ['supercharge[sd]?', 'Hype verb: say the concrete result'],
-  ['unlock(?:s|ing)?', 'Hype verb: say what the person can now do'],
+  ['unlock(?:s|ing)?(?!\\s+(?:the\\s+|your\\s+|their\\s+|a\\s+)?(?:phone|device|screen|door|car|iphone|app))(?!\\s*$)', 'Hype verb: say what the person can now do'],
   ['next[- ]gen(?:eration)?', 'Marketing filler'],
   ['cutting[- ]edge', 'Marketing filler'],
   ['game[- ]chang(?:er|ing)', 'Marketing filler'],

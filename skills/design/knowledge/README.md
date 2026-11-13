@@ -150,6 +150,8 @@ Search with `grep -il "<word>" knowledge/patterns/*.md` or use this table.
 | [dialogs-overlays-and-confirmations](patterns/dialogs-overlays-and-confirmations.md) | Which layer to use, dialogs, panels, menus, confirm vs. undo |
 | [notifications](patterns/notifications.md) | Inbox, what to notify, badges, system notices |
 | [email](patterns/email.md) | Transactional and product emails: anatomy, rendering, dark mode, deliverability |
+| [widgets-case-studies](patterns/widgets-case-studies.md) | Real widgets and live activities taken apart: size ladders, one app with many questions, action widgets, social, habit, deliveries, the Dynamic Island, configuration and discovery |
+| [widgets-and-live-activities](patterns/widgets-and-live-activities.md) | When to build widgets, one idea across sizes, rendering modes, states, freshness, interactivity, live activities and the Dynamic Island, Android, Windows and web |
 | [app-icons-and-brand-touchpoints](patterns/app-icons-and-brand-touchpoints.md) | App icons, favicons, launch screens, social previews, store listings, widgets |
 | [tracking-and-offline](patterns/tracking-and-offline.md) | Following a process in progress, working offline |
 | [batches-approvals-and-captions](patterns/batches-approvals-and-captions.md) | Batches and queues, approvals, caption editing |

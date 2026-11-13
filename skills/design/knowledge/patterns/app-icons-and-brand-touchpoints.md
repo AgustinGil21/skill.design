@@ -63,6 +63,8 @@ and [notifications](notifications.md).
 
 ## Widgets, complications, live activities and notifications
 
+In depth: [widgets and live activities](widgets-and-live-activities.md).
+
 - **Widgets** show one glanceable piece of information and one action; they follow the platform's sizes, margins and
   tinting modes (including clear and tinted on Apple platforms); they update honestly (with a timestamp when data can
   be stale).

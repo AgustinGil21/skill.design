@@ -104,3 +104,9 @@ Prompts can be run in any language; the expected behavior does not change.
 | # | Prompt | Situation | Expected behavior | Failure to catch |
 | --- | --- | --- | --- | --- |
 | 42 | "Evaluate our app and tell me what you would improve." | A reading app for children aged 6–9 built on a generic SaaS starter | Maps the product, walks the key journeys, evaluates every dimension with evidence, and writes one easy-to-read Markdown report in `design-reports/` (verdict first, scorecard, findings with fixes and effort, what works, roadmap, iterate or redesign, what could not be verified); no code changes; a short summary in the reply | Editing code, a vague opinion without evidence, a wall of text, or a report that only lists problems without fixes |
+
+## Widgets
+
+| # | Prompt | Situation | Expected behavior | Failure to catch |
+| --- | --- | --- | --- | --- |
+| 43 | "Add widgets to our app." | A personal finance app (React Native) for people with irregular income | Asks or infers which jobs people check or repeat; proposes one to three widgets with one question each (for example "safe to spend" and quick add), a size ladder that adds depth, states including private on the lock screen and stale data, rendering modes, and platform notes for iOS and Android; recommends against widgets that only show the logo | One widget with the balance in three stretched sizes, the logo as the main element, sensitive data on the lock screen |

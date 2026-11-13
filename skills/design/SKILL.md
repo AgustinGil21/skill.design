@@ -182,8 +182,8 @@ in order.
 Before designing a screen, find its pattern: `grep -il "<word>" knowledge/patterns/*.md`, or the full index in
 `knowledge/README.md` (navigation, forms, tables, states, dialogs, search, notifications, onboarding, sign-in,
 permissions, AI, dashboards, plans, subscriptions and cancelling, payments, wallets, feeds, gamification, editors,
-files, mobile, checkout, messaging, media, safety, privacy, email, app icons and brand touchpoints, real-time
-collaboration, and more).
+files, mobile, checkout, messaging, media, safety, privacy, email, app icons and brand touchpoints, widgets and live
+activities (home and lock screen, Dynamic Island, Android, Windows), real-time collaboration, and more).
 
 ### Landing pages (`knowledge/landing/`)
 

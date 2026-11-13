@@ -9,7 +9,8 @@ Android Auto, visionOS, Alexa and Google Assistant), because they change and som
 ## Watch (watchOS, Wear OS)
 
 - **Glances of a few seconds**: one piece of information or one action per screen; the most important first.
-- **Complications and tiles** are often the main interface: glanceable, current, honest about freshness.
+- **Complications and tiles** are often the main interface: glanceable, current, honest about freshness (the same
+  rules as [widgets and live activities](patterns/widgets-and-live-activities.md)).
 - **Input**: taps, the crown or bezel for scrolling and values, short dictation; no typing.
 - **Notifications** carry most of the value; actionable from the wrist.
 - **Large, high-contrast text; dark backgrounds** (OLED and battery); always-on states dimmed.

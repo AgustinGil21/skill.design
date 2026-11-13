@@ -93,6 +93,9 @@ conditions that the basic view can't show. Switching will remove the groups." Ne
 
 ## Live activities and widgets (lock screen, home screen)
 
+In depth, with sizes, rendering modes, the Dynamic Island and every platform:
+[widgets and live activities](widgets-and-live-activities.md).
+
 ### When to use them
 
 - **Only for something in progress with an end** (an order, a ride, a workout, an upload), not advertising.

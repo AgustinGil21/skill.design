@@ -132,3 +132,16 @@ Background: [usability](../03-usability.md) · [states](../23-states-transitions
 | A social feed as the home of a tool | Engagement mechanics where people come to do a task | Start from the task; an activity view filtered by relevance |
 | Neobank styling (big balance, four round action buttons, black cards) for a product with no money in it | Costume | Lead with what this product's people check most |
 | Business-model mechanics copied as patterns (energy that runs out, upsell cards in the sidebar, sold streak repairs) | They serve the original company's revenue, not the person | Leave them out unless the business model and the ethics have been decided explicitly |
+
+## Widgets and live activities
+
+| Tell | Why it reads as generated | Do instead |
+| --- | --- | --- |
+| The app's screen shrunk into a widget, or the logo as the main element ("Open app") | Presence, not usefulness; people remove it | One question per widget, answered by its content ([widgets](../patterns/widgets-and-live-activities.md)) |
+| A widget that fails the one-second test: it neither tells something nor offers a specific reason to tap | Generic content, text to read, a vague "Discover more" | An instant answer, or the real item (cover, thumbnail, photo, title) that the tap opens |
+| Hooks that over-promise: clickbait, fake "new", blurred content, a refresh button on a feed | Taps without value; trust lost | The person's own things, shown as they are, opening straight into them |
+| The same layout stretched to every size, half empty in large, truncated in small | Sizes not designed | Each size adds a layer of the same answer; skip sizes that add nothing |
+| Ads, upsells or guilt ("Don't forget me!") in widgets and live activities | Uses the most-seen surface against the person | Useful content only; reminders the person asked for |
+| Live data without a time, or a live activity that never ends | Untrustworthy | Timestamps the system keeps current; end activities with a final state |
+| Only the full-color mode designed | Turns into a grey block when tinted or on the lock screen | Design accented and vibrant modes, over several wallpapers |
+
